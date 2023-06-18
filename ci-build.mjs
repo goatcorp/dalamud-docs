@@ -102,7 +102,7 @@ for (const branch of Object.keys(versions)) {
 
   // build Dalamud
   const buildScript = isWindows ? '.\\build.ps1' : './build.sh';
-  exec(`${isWindows} CompileDalamud -Configuration Release`, {
+  exec(`${buildScript} CompileDalamud -Configuration Release`, {
     cwd: branchDir,
     shell: isWindows ? 'pwsh.exe' : 'bash',
     ...execOptions,
