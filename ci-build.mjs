@@ -101,12 +101,18 @@ for (const branch of Object.keys(versions)) {
   const branchDir = path.join(tempDir, `Dalamud-${branch}`);
 
   // build Dalamud
-  const buildScript = isWindows ? '.\\build.ps1' : './build.sh';
-  exec(`${buildScript} CompileDalamud -Configuration Release`, {
-    cwd: branchDir,
-    shell: isWindows ? 'pwsh.exe' : 'bash',
-    ...execOptions,
-  });
+  if (isWindows) {
+    exec('.\\build.ps1 CompileDalamud -Configuration Release', {
+      cwd: branchDir,
+      shell: 'pwsh.exe',
+      ...execOptions,
+    });
+  } else {
+    exec('bash ./build.sh CompileDalamud -Configuration Release', {
+      cwd: branchDir,
+      ...execOptions,
+    });
+  }
 
   // generate metadata
   exec('docfx metadata', { cwd: branchDir, ...execOptions });
