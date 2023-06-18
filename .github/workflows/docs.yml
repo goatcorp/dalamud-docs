@@ -32,8 +32,6 @@ jobs:
           swap-size-gb: 10
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Setup MSBuild
-        uses: microsoft/setup-msbuild@v1
       - name: Setup docfx and dfmg
         run: |
           dotnet tool install --global docfx
