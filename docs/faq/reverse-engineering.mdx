@@ -1,0 +1,157 @@
+---
+sidebar_position: 6
+---
+
+import TOCInline from '@theme/TOCInline';
+import Construction from '@site/src/components/Construction';
+
+# Reverse Engineering
+
+<Construction />
+<TOCInline toc={toc} />
+
+## How do I get started with reverse-engineering the game so that I can do things Dalamud doesn't expose?
+
+Reverse-engineering isn't easy, and it's even more difficult when reversing a
+large game like FFXIV. It's a large subject and hard to explore, but here are
+some rough pointers.
+
+Fundamentally, the game is running on your machine, which means it's executing
+code constantly to run the game logic and to render the scene. In addition, it
+is constantly talking to the game server, which is what allows you to interact
+with other players and the world at large.
+
+If you'd like to learn more about how the game communicates with the server,
+your best bet is the
+[Sapphire project](https://github.com/SapphireServer/Sapphire). The Dalamud
+project generally strays away from interfering with client-server communication
+for the reasons outlined in
+[What am I allowed to do in my plugin?](#q-what-am-i-allowed-to-do-in-my-plugin),
+but understanding the flow may help with other things.
+
+Otherwise, you'll be reverse-engineering the game client, as that's what Dalamud
+hooks into. The game binary you have is compiled machine code; the original
+source code for the game is unavailable, which means you have to figure out what
+it's doing without knowing any of the original context.
+
+To do this, you'll need an interactive disassembler/decompiler to conduct
+_static analysis_. The gold standard for this is
+[IDA Pro](https://hex-rays.com/ida-pro/), but it is very expensive for hobbyists
+and most people take an approach generally frowned upon by the Maelstrom. A
+popular free alternative is [Ghidra](https://ghidra-sre.org/), which is very
+powerful and extensible, if not a little clunky. There are other disassemblers,
+but these are the two primarily used by the Dalamud community.
+
+Once you have your disassembler ready, you'll need to disassemble the
+`ffxiv_dx11.exe` file in the game's directory. After doing this, it is highly
+recommended that you use
+[the excellent script provided by FFXIVClientStructs](https://github.com/aers/FFXIVClientStructs/tree/main/ida);
+this script will automatically populate your disassembler's database with
+community findings for the current version, saving you a great deal of time.
+
+After that, well... it's time for you to work on the puzzle. You'll want to find
+resources for how to reverse-engineer things online; there are tutorials that
+specifically look at reversing games, which may help you build up an intuition
+for the thought process you'll need.
+
+Another approach you can take is _dynamic analysis_. You can attach a debugger
+to the game, like [x64dbg](https://x64dbg.com/) or
+[Cheat Engine](https://www.cheatengine.org/), and use these to explore the
+game's memory and execution at runtime (e.g. searching for a value and finding
+what changes it in the code). Both approaches are valid, but you'll likely need
+to use both to make headway as they can provide context for each other.
+
+Reversing is a large and complex field, and it takes years to get proficient and
+recognise patterns. Asking the Discord for help is encouraged, but be aware that
+you have a long journey ahead of you regardless.
+
+## How do I hook a game function?
+
+Hooking a function refers to intercepting its execution, so that your code runs
+in lieu of or as an extension to it. This could allow you to, for example,
+detect when a certain action occurs in-game and change its behaviour.
+
+Assuming that you've successfully found a function you'd like to hook through
+reverse-engineering, Dalamud and EasyHook make hooking functions fairly easy.
+You'll need the address of the function to hook; this can be retrieved from your
+disassembler, or by getting a "signature" for the function, which is a unique
+string of instructions that can be used to find the address.
+
+Using signatures is preferred where possible as it improves the chances of your
+plugin surviving a game update (as addresses always change, while signatures do
+not). To get a signature, you'll need to look up how to do it with your
+preferred disassembler. For IDA,
+[Caraxi's fork of SigMaker-x64](https://github.com/Caraxi/SigMaker-x64) is
+recommended.
+
+If you have a signature, you will need to resolve it to an address in your code.
+For a traditional string-of-instruction-bytes signature, you can use
+[ScanText](https://goatcorp.github.io/Dalamud/api/Dalamud.Game.SigScanner.html#Dalamud_Game_SigScanner_ScanText_System_String_).
+For other types of signatures, please look at the other methods for `SigScanner`
+and choose an appropriate one.
+
+After that:
+
+- Import `Dalamud.Hooking`.
+- Create a delegate type with the same type signature as the function you're
+  hooking.
+- Create a `Hook<YourDelegateType>` variable to represent the hook.
+- Create a function in which your custom code will execute. It should match the
+  type signature of the delegate.
+- In your `Initialize` function:
+- Get the address for the function (either as-is or through a signature).
+- Initialize your `Hook` variable by calling its constructor with the address,
+  delegate-ified version of your custom code function, and `this`.
+- Enable the hook.
+- In your `Dispose` function:
+- Disable the hook.
+- Dispose of the hook.
+
+You should then be ready to go. An abbreviated example (only relevant portions
+shown) of hooking the main `Render` function for the game follows:
+
+```c#
+using Dalamud.Hooking;
+using Dalamud.Plugin;
+
+namespace SamplePlugin
+{
+    public class Plugin : IDalamudPlugin
+    {
+        public string Name => "SamplePlugin";
+
+        private DalamudPluginInterface pi;
+
+        public delegate IntPtr RenderDelegate(IntPtr renderManager);
+        private Hook<RenderDelegate> renderDelegateHook;
+
+        public void Initialize(DalamudPluginInterface pluginInterface)
+        {
+            this.pi = pluginInterface;
+
+            // Render::Manager::Render
+            var Signature = "40 53 55 57 41 56 41 57 48 83 EC 60";
+            var renderAddress = this.pi.TargetModuleScanner.ScanText(Signature);
+
+            this.renderDelegateHook = new Hook<RenderDelegate>(renderAddress, this.RenderDetour);
+            this.renderDelegateHook.Enable();
+        }
+
+        private unsafe IntPtr RenderDetour(IntPtr renderManager)
+        {
+            PluginLog.Information("Before render");
+            var res = this.renderDelegateHook.Original(renderManager);
+            PluginLog.Information("After render");
+
+            return res;
+        }
+
+        public void Dispose()
+        {
+            this.renderDelegateHook.Disable();
+            this.renderDelegateHook.Dispose();
+            this.pi.Dispose();
+        }
+    }
+}
+```

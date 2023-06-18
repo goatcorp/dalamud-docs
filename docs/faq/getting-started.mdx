@@ -1,0 +1,147 @@
+---
+sidebar_position: 1
+---
+
+import TOCInline from '@theme/TOCInline';
+import Construction from '@site/src/components/Construction';
+
+# Getting Started
+
+<Construction />
+<TOCInline toc={toc} />
+
+## How do I get started?
+
+The majority of the XIVLauncher and Dalamud ecosystem is written in C# for its
+usability, convenience, and robustness. It is recommended that anything you work
+on is also in C#, unless you're working on something with a significant amount
+of interoperation with native code (in which C++/CLI may be useful) or you're
+experimenting with other .NET languages.
+
+To get started, you'll want to get the latest version of Visual Studio found
+[here](https://visualstudio.microsoft.com/downloads/); the Community edition
+will work fine. After doing so, you can clone any of the following projects and
+get to work with their Visual Studio solutions. Alternatively, you may want to
+use another IDE such as [JetBrains Rider](https://www.jetbrains.com/rider/).
+
+### Dalamud Plugins
+
+Plugins allow you to interact with the game and add features, modify
+functionality, and do much more. We ask you to be respectful of
+[our guidelines](#q-what-am-i-allowed-to-do-in-my-plugin) to ensure that your
+plugin is approved into the primary repository, and to minimise the risk of
+action by Square Enix. You can read more about this
+[here](#q-why-do-you-discourage-certain-types-of-plugins).
+
+We recommend that you start by cloning one of the following templates, and then
+customising it to your requirements. While `SamplePlugin` is the most actively
+maintained, the others are updated as required:
+
+- <https://github.com/goatcorp/SamplePlugin>
+- <https://github.com/karashiiro/DalamudPluginProjectTemplate>
+- <https://github.com/lmcintyre/PluginTemplate>
+
+To distribute a plugin, it needs to be packaged correctly. This can be done
+manually or with DalamudPackager:
+
+- <https://github.com/goatcorp/DalamudPackager>
+
+When your plugin is ready for testing/release, it should be PRed over to the
+DalamudPlugins repo. **Please place testing plugins in the testing/live
+folder**.
+
+- <https://github.com/goatcorp/DalamudPluginsD17>
+
+### Dalamud
+
+Dalamud is the core addon/plugin system. It is loaded by XIVLauncher into your
+game, and is responsible for loading your plugins and providing them with a core
+set of functionality.
+
+The Dalamud source code can be found in the repository or the project:
+
+- <https://github.com/goatcorp/Dalamud>
+
+Other assets required by Dalamud can be found here:
+
+- <https://github.com/goatcorp/DalamudAssets>
+
+You can find the Dalamud API page below, which also lists functions you can use
+in plugins.
+
+- <https://goatcorp.github.io/Dalamud/api/index.html>
+
+### XIVLauncher
+
+XIVLauncher is a custom launcher for FFXIV that offers a number of benefits,
+including faster launching, saved credentials, and automatically injecting
+Dalamud into the game.
+
+The XIVLauncher source code can be found in the repository for the project:
+<https://github.com/goatcorp/FFXIVQuickLauncher>
+
+## Where do I ask for help?
+
+The best place to ask for help is the
+[#dev channel](https://discord.gg/wwYXnzWYqY) of the Discord; we're a helpful
+bunch and will do our best to answer your query as long as you explain what
+you've tried and looked at so far.
+
+## How do I hot-reload my plugin?
+
+As of API 4/Dalamud 6, hot-reloading is part of Dalamud. To use it, go to
+Dalamud Settings > Experimental > Dev Plugin Locations, and then add either the
+folder that your plugin is in or the plugin itself. If you add a folder, Dalamud
+will attempt to load all DLLs within the folder.
+
+Your configuration should look something like this:
+![image](https://user-images.githubusercontent.com/707827/166122747-97f0f7c7-e1a4-4093-adeb-5c7c8eab935c.png)
+
+## How do I debug my plugin and/or the game?
+
+To debug, you'll need to attach a debugger to the game. This will usually be
+from your development environment, such as Visual Studio.
+
+However, the game has antidebug protection on by default. To turn this off, use
+the Dalamud dev menu (`/xldev`), then go to Dalamud > Enable AntiDebug; this
+setting is persisted between launches, so you do not need to turn it on each
+time.
+
+Once you've done this, you can attach to the game with your debugger. In Visual
+Studio, you can go to Debug > Attach to Process (Ctrl+Alt+P), and then select
+the FF14 process. For the full debugging experience, make sure to change "Attach
+to" to include both `Native code` and `Managed (.NET 4.x) code`; this will
+ensure that the debugger will work for both the game and for Dalamud plugins.
+
+This functionality is only supported for debugging your plugins. You will not
+receive support if you use it for anything else.
+
+[Detailed instructions are available here.](debug.md)
+
+## How do I use FFXIVClientStructs in my own code?
+
+[FFXIVClientStructs](https://github.com/aers/FFXIVClientStructs) is a communal
+project to provide an interface to the game's classes, data, and more to C#
+users and reverse engineers.
+
+To use FFXIVClientStructs in your own code, you'll need to add a reference to
+it. This can be done by opening the `csproj` for your plugin and adding the
+reference with the other references:
+
+```xml
+    <Reference Include="FFXIVClientStructs">
+      <HintPath>$(AppData)\XIVLauncher\addon\Hooks\dev\FFXIVClientStructs.dll</HintPath>
+    </Reference>
+```
+
+or through right-clicking the project in VS, going to Add, and then adding an
+Assembly Reference to the same path. Note that you will likely need to still
+open the `csproj` after doing this to ensure that the path uses `$(AppData)` and
+not the path specific to your system.
+
+The version of FFXIVClientStructs included with Dalamud is updated with
+reasonable frequency, and has several patches to ensure that backwards
+compatibility with existing plugins is not broken. You can bundle your own
+version if you'd like for the latest findings, but be aware that this may make
+it difficult for you to maintain compatibility with new versions of the game
+and/or Dalamud.
