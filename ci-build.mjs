@@ -143,3 +143,11 @@ for (const branch of Object.keys(versions)) {
 }
 
 console.log('=> API doc generation complete! 🎉');
+
+// now we can actually build the docs
+console.log('=> Running `pnpm run build`...');
+
+exec('pnpm run build', { cwd: __dirname, ...execOptions });
+
+console.log('=> Docs built successfully! 🎉');
+process.exit(0); // good ol' escape hatch
