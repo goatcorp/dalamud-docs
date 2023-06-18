@@ -16,15 +16,20 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  NODE_OPTIONS: --max-old-space-size=6144
+  NODE_OPTIONS: --max-old-space-size=16384
+  DOCUSAURUS_SSR_CONCURRENCY: 5
 
 jobs:
   deploy:
-    runs-on: windows-2022
+    runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      - name: Set Swap Space
+        uses: pierotofy/set-swap-space@v1
+        with:
+          swap-size-gb: 10
       - name: Checkout
         uses: actions/checkout@v3
       - name: Setup MSBuild
