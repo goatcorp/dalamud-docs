@@ -20,7 +20,8 @@ const config = {
   organizationName: 'goatcorp',
   projectName: 'dalamud-docs',
 
-  onBrokenLinks: 'throw',
+  // broken links check can cause the build to hang for a long time
+  onBrokenLinks: 'ignore',
   onBrokenMarkdownLinks: 'warn',
 
   webpack: {

@@ -108,10 +108,13 @@ for (const branch of Object.keys(versions)) {
       ...execOptions,
     });
   } else {
-    exec('bash ./build.sh CompileDalamud -Configuration Release', {
-      cwd: branchDir,
-      ...execOptions,
-    });
+    exec(
+      'bash ./build.sh CompileDalamud -Configuration Release /p:EnableWindowsTargeting=true',
+      {
+        cwd: branchDir,
+        ...execOptions,
+      },
+    );
   }
 
   // generate metadata
