@@ -88,6 +88,7 @@ console.log('Successfully updated version metadata files.');
 // pull, build, and generate metadata for each version
 const tempDir = process.env['RUNNER_TEMP'] || process.env['TEMP'] || '/tmp';
 const execOptions = { stdio: 'inherit' };
+const isWindows = process.platform === 'win32';
 
 for (const branch of Object.keys(versions)) {
   console.log(`==> Generating API documentation for branch ${branch}...`);
@@ -100,9 +101,10 @@ for (const branch of Object.keys(versions)) {
   const branchDir = path.join(tempDir, `Dalamud-${branch}`);
 
   // build Dalamud
-  exec('.\\build.ps1 CompileDalamud -Configuration Release', {
+  const buildScript = isWindows ? '.\\build.ps1' : './build.sh';
+  exec(`${isWindows} CompileDalamud -Configuration Release`, {
     cwd: branchDir,
-    shell: 'pwsh.exe',
+    shell: isWindows ? 'pwsh.exe' : 'bash',
     ...execOptions,
   });
 
