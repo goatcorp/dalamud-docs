@@ -1,3 +1,4 @@
 typesGrouping:
   enabled: true
   minCount: 1
+indexSlug: /

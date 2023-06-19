@@ -17,19 +17,15 @@ concurrency:
 
 env:
   NODE_OPTIONS: --max-old-space-size=16384
-  DOCUSAURUS_SSR_CONCURRENCY: 5
+  DOCUSAURUS_SSR_CONCURRENCY: 10
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: doc-build
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Set Swap Space
-        uses: pierotofy/set-swap-space@v1.0
-        with:
-          swap-size-gb: 10
       - name: Checkout
         uses: actions/checkout@v3
       - name: Setup docfx and dfmg
