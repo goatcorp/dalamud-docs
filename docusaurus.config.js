@@ -87,25 +87,9 @@ const config = {
     ],
   ],
 
-  themes: [
-    [
-      '@easyops-cn/docusaurus-search-local',
-      /** @type {import("@easyops-cn/docusaurus-search-local").PluginOptions} */
-      ({
-        hashed: true,
-        indexDocs: true,
-        indexBlog: false,
-        indexPages: false,
-        docsRouteBasePath: '/',
-        docsDir: 'docs',
-        docsPluginIdForPreferredVersion: 'api',
-      }),
-    ],
-  ],
-
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
-    ({
+    {
       image: 'img/dalamud-social-card.png',
       navbar: {
         title: 'Dalamud',
@@ -180,7 +164,12 @@ const config = {
         disableSwitch: false,
         respectPrefersColorScheme: false,
       },
-    }),
+      algolia: {
+        appId: 'FA3MQDJLPG',
+        apiKey: 'eeb9f0346ff4c16a95d22a5a0ecced34',
+        indexName: 'dalamud',
+      },
+    },
 };
 
 module.exports = config;
