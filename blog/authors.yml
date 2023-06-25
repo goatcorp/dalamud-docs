@@ -1,0 +1,17 @@
+# Primary blog post authors
+# Add ad-hoc/one-off authors to the post's front matter
+
+goat:
+  name: goat
+  title: Dalamud/XIVLauncher maintainer & BDFL
+  image_url: https://github.com/goaaats.png
+
+avaflow:
+  name: Avaflow
+  title: Dalamud maintainer
+  image_url: https://github.com/avafloww.png
+
+kazwolfe:
+  name: KazWolfe
+  title: Dalamud maintainer
+  image_url: https://github.com/kazwolfe.png

@@ -21,13 +21,23 @@ env:
 
 jobs:
   deploy:
-    runs-on: doc-build
+    runs-on: self-hosted
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+      - name: Restore docbuild cache
+        uses: actions/cache/restore@v3
+        with:
+          path: |
+            node_modules/.cache/
+            .docusaurus/
+          key: docbuild-${{ github.run_id }}
+          enableCrossOsArchive: true
+          restore_keys: |
+            docbuild
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
       - name: Build
@@ -41,3 +51,13 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
+      - name: Save docbuild cache
+        uses: actions/cache/save@v3
+        with:
+          path: |
+            node_modules/.cache/
+            .docusaurus/
+          key: docbuild-${{ github.run_id }}
+          enableCrossOsArchive: true
+          restore_keys: |
+            docbuild

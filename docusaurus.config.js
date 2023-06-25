@@ -8,7 +8,7 @@ const isDev = process.env.NODE_ENV === 'development';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Dalamud',
+  title: 'Dalamud Developers',
   tagline:
     'Documentation for the Dalamud plugin framework for FINAL FANTASY XIV.',
   favicon: 'img/favicon.ico',
@@ -58,7 +58,11 @@ const config = {
           sidebarPath: require.resolve('./default-sidebars.js'),
           editUrl: 'https://github.com/goatcorp/dalamud-docs/tree/main/',
         },
-        blog: false,
+        blog: {
+          path: 'blog',
+          routeBasePath: '/blog',
+          showReadingTime: true,
+        },
         theme: {
           customCss: require.resolve('./custom.css'),
         },
@@ -92,7 +96,7 @@ const config = {
     {
       image: 'img/dalamud-social-card.png',
       navbar: {
-        title: 'Dalamud',
+        title: 'Dalamud.dev',
         logo: {
           alt: 'Dalamud logo',
           src: 'img/dalamud-logo.png',
@@ -112,15 +116,14 @@ const config = {
             docsPluginId: 'api',
           },
           {
+            to: 'blog',
+            label: 'Blog',
+            position: 'left',
+          },
+          {
             type: 'docsVersionDropdown',
             position: 'right',
             docsPluginId: 'api',
-            dropdownItemsAfter: [
-              {
-                to: '/versions',
-                label: 'All versions',
-              },
-            ],
           },
           {
             href: 'https://github.com/goatcorp/Dalamud',
@@ -131,7 +134,6 @@ const config = {
         ],
       },
       footer: {
-        style: 'dark',
         links: [
           {
             title: 'Community',
@@ -161,7 +163,7 @@ const config = {
       },
       colorMode: {
         defaultMode: 'dark',
-        disableSwitch: false,
+        disableSwitch: true,
         respectPrefersColorScheme: false,
       },
       algolia: {

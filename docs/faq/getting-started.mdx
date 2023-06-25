@@ -2,13 +2,15 @@
 sidebar_position: 1
 ---
 
+# Getting Started
+
+```mdx-code-block
 import TOCInline from '@theme/TOCInline';
 import Construction from '@site/src/components/Construction';
 
-# Getting Started
-
 <Construction />
 <TOCInline toc={toc} />
+```
 
 ## How do I get started?
 
@@ -37,20 +39,16 @@ We recommend that you start by cloning one of the following templates, and then
 customising it to your requirements. While `SamplePlugin` is the most actively
 maintained, the others are updated as required:
 
-- <https://github.com/goatcorp/SamplePlugin>
-- <https://github.com/karashiiro/DalamudPluginProjectTemplate>
-- <https://github.com/lmcintyre/PluginTemplate>
+- [@goatcorp/SamplePlugin](https://github.com/goatcorp/SamplePlugin)
+- [@karashiiro/DalamudPluginProjectTemplate](https://karashiiro/DalamudPluginProjectTemplate)
+- [@lmcintyre/PluginTemplate](https://github.com/lmcintyre/PluginTemplate)
 
 To distribute a plugin, it needs to be packaged correctly. This can be done
-manually or with DalamudPackager:
-
-- <https://github.com/goatcorp/DalamudPackager>
+manually or [with DalamudPackager](https://github.com/goatcorp/DalamudPackager).
 
 When your plugin is ready for testing/release, it should be PRed over to the
-DalamudPlugins repo. **Please place testing plugins in the testing/live
-folder**.
-
-- <https://github.com/goatcorp/DalamudPluginsD17>
+[DalamudPluginsD17](https://github.com/goatcorp/DalamudPluginsD17) repo.
+**Please place testing plugins in the testing/live folder**.
 
 ### Dalamud
 
@@ -58,18 +56,13 @@ Dalamud is the core addon/plugin system. It is loaded by XIVLauncher into your
 game, and is responsible for loading your plugins and providing them with a core
 set of functionality.
 
-The Dalamud source code can be found in the repository or the project:
+The Dalamud source code
+[can be found on GitHub](https://github.com/goatcorp/Dalamud).
 
-- <https://github.com/goatcorp/Dalamud>
+Other assets required by Dalamud can be found
+[in the DalamudAssets repository](https://github.com/goatcorp/DalamudAssets).
 
-Other assets required by Dalamud can be found here:
-
-- <https://github.com/goatcorp/DalamudAssets>
-
-You can find the Dalamud API page below, which also lists functions you can use
-in plugins.
-
-- <https://goatcorp.github.io/Dalamud/api/index.html>
+You can find the [Dalamud API documentation](api) on this site.
 
 ### XIVLauncher
 
@@ -77,8 +70,8 @@ XIVLauncher is a custom launcher for FFXIV that offers a number of benefits,
 including faster launching, saved credentials, and automatically injecting
 Dalamud into the game.
 
-The XIVLauncher source code can be found in the repository for the project:
-<https://github.com/goatcorp/FFXIVQuickLauncher>
+The XIVLauncher source code can be found
+[on GitHub](https://github.com/goatcorp/FFXIVQuickLauncher).
 
 ## Where do I ask for help?
 
@@ -116,7 +109,7 @@ ensure that the debugger will work for both the game and for Dalamud plugins.
 This functionality is only supported for debugging your plugins. You will not
 receive support if you use it for anything else.
 
-[Detailed instructions are available here.](debug.md)
+[Detailed instructions are available here.](debug)
 
 ## How do I use FFXIVClientStructs in my own code?
 
