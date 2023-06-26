@@ -11,8 +11,8 @@ Dalamud has two major concepts in terms of versioning: **API Level** and
 
 | Channel | Branch   | API Level | Stability | Recommended For                                           |
 | ------- | -------- | --------- | --------- | --------------------------------------------------------- |
-| Release | `master` | 8         | Highest   | Auto-assigned to most users                            |
-| Canary  | `master` | 8         | Very High | Auto-assigned to a small number of users                            |
+| Release | `master` | 8         | Highest   | Auto-assigned to most users                               |
+| Canary  | `master` | 8         | Very High | Auto-assigned to a small number of users                  |
 | Staging | `master` | 8         | Medium    | Core/plugin developers, testing-inclined users            |
 | v9      | `v9`     | 9         | Low       | Core/plugin developers who want to get a head start on v9 |
 
@@ -79,13 +79,13 @@ time through the "Branch Switcher" option in the `/xldev` > `Dalamud` menu.
 - **Release**: The default channel. This channel is updated with the latest
   stable release of Dalamud. This channel is recommended for most users.
 - **Canary**: Newly tagged Dalamud releases are pushed to this channel. Canary
-  is automatically assigned to a small subset of users from the Release
-  channel. This channel should be just as stable as Release, but its existence helps us catch
-  any serious issues with a new stable Dalamud release before it reaches all
-  users worldwide.
+  is automatically assigned to a small subset of users from the Release channel.
+  This channel should be just as stable as Release, but its existence helps us
+  catch any serious issues with a new stable Dalamud release before it reaches
+  all users worldwide.
 - **Staging (`stg`)**: This channel is updated with the latest commits to
-  `master`, before a release version is tagged. New features are made
-  available here before being moved to Canary/Release.
+  `master`, before a release version is tagged. New features are made available
+  here before being moved to Canary/Release.
 - **v9**: This channel tracks the latest commits to the `v9` branch. This branch
   is the current development branch for Dalamud v9, and is recommended only for
   developers to use, as it has breaking changes (including an API level bump).

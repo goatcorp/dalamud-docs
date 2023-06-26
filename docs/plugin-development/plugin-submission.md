@@ -13,8 +13,8 @@ official repository works. This is a little simplified, but it's the foundation
 upon which the approval process is built on.
 
 - All plugins in the official repository are open-source, and no closed-source
-  plugins are accepted. This means that their
-  code can be inspected by anyone, should they wish to do so.
+  plugins are accepted. This means that their code can be inspected by anyone,
+  should they wish to do so.
 - Plugin developers submit their plugin by submitting a "commit hash", which is
   a cryptographical hash that points to a **specific version of their source
   code**. Changing their code after submission will result in a new hash, which

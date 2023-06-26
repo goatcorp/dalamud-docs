@@ -109,8 +109,9 @@ For testing purposes, you can use this injector in a few different ways.
 ### Fake Launch
 
 If you want to test Dalamud without fully logging into the game, you can use the
-"fake launch" feature of the injector. This will launch the game, but without any
-authentication, so you won't be able to go any further than the title screen.
+"fake launch" feature of the injector. This will launch the game, but without
+any authentication, so you won't be able to go any further than the title
+screen.
 
 To use this feature, you should ensure the game is not running, then run the
 injector with the following arguments:
@@ -153,7 +154,8 @@ Once the game is running, you can run the injector with the following arguments:
 ```
 
 Dalamud should now be injected into the game. You can verify this by looking for
-the Dalamud logo in the top-left corner of the screen (assuming you haven't yet logged in).
+the Dalamud logo in the top-left corner of the screen (assuming you haven't yet
+logged in).
 
 :::tip
 
