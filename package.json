@@ -17,7 +17,8 @@
     "typecheck": "tsc",
     "ci": "node ./ci-build.mjs",
     "prepare": "husky install",
-    "lint": "eslint . --ext js,jsx,ts,tsx,md,mdx --fix"
+    "lint": "eslint . --ext js,jsx,ts,tsx,md,mdx --fix",
+    "lint-staged": "lint-staged"
   },
   "dependencies": {
     "@docusaurus/core": "3.0.0-alpha.0",
@@ -44,6 +45,7 @@
     "prettier": "2.8.8",
     "remark-cli": "^11.0.0",
     "remark-frontmatter": "^4.0.1",
+    "remark-gfm": "^3.0.1",
     "remark-lint": "^9.1.2",
     "remark-preset-lint-consistent": "^5.1.2",
     "remark-preset-lint-markdown-style-guide": "^5.1.3",

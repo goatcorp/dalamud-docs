@@ -5,5 +5,6 @@ module.exports = {
     'preset-lint-markdown-style-guide',
     'preset-prettier',
     'remark-frontmatter',
+    'remark-gfm',
   ],
 };
