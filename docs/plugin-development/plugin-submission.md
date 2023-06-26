@@ -1,8 +1,4 @@
----
-sidebar_position: 7
----
-
-# The plugin approval process
+# Plugin Submission & Approval
 
 This article describes the process that decides which plugins are merged into
 the official repository, and how we make sure that what goes in is safe for you
@@ -17,7 +13,7 @@ official repository works. This is a little simplified, but it's the foundation
 upon which the approval process is built on.
 
 - All plugins in the official repository are open-source, and no closed-source
-  plugins are accepted (aside from one legacy exception). This means that their
+  plugins are accepted. This means that their
   code can be inspected by anyone, should they wish to do so.
 - Plugin developers submit their plugin by submitting a "commit hash", which is
   a cryptographical hash that points to a **specific version of their source

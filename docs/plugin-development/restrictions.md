@@ -1,16 +1,4 @@
----
-sidebar_position: 4
----
-
 # Restrictions
-
-```mdx-code-block
-import TOCInline from '@theme/TOCInline';
-import Construction from '@site/src/components/Construction';
-
-<Construction />
-<TOCInline toc={toc} />
-```
 
 ## What am I allowed to do in my plugin?
 
@@ -81,6 +69,6 @@ which can be found through Plugins > Open Plugin Stats in the dev menu
 
 ## How are plugins reviewed and approved?
 
-[This post documents our plugin submission process](plugin-submission), and the
+[This page documents our plugin submission process](plugin-submission), and the
 stringent review that is applied to each new submission. Feel free to join the
 Discord and ask for more details if required.

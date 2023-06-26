@@ -8,7 +8,7 @@ const isDev = process.env.NODE_ENV === 'development';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Dalamud Developers',
+  title: 'Dalamud',
   tagline:
     'Documentation for the Dalamud plugin framework for FINAL FANTASY XIV.',
   favicon: 'img/favicon.ico',
@@ -59,8 +59,8 @@ const config = {
           editUrl: 'https://github.com/goatcorp/dalamud-docs/tree/main/',
         },
         blog: {
-          path: 'blog',
-          routeBasePath: '/blog',
+          path: 'news',
+          routeBasePath: '/news',
           showReadingTime: true,
         },
         theme: {
@@ -116,8 +116,8 @@ const config = {
             docsPluginId: 'api',
           },
           {
-            to: 'blog',
-            label: 'Blog',
+            to: 'news',
+            label: 'News',
             position: 'left',
           },
           {
