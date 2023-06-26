@@ -18,7 +18,7 @@ upon which the approval process is built on.
 - Plugin developers submit their plugin by submitting a "commit hash", which is
   a cryptographical hash that points to a **specific version of their source
   code**. Changing their code after submission will result in a new hash, which
-  will require them to re-submit and have their changes reviewed again. \[^1]
+  will require them to re-submit and have their changes reviewed again. [^1]
 - A cloud build system then downloads that source code, builds the plugin, and
   outputs a "diff", which is a **list of all changes that were made** to the
   plugin. The build system has no direct internet access, so plugin developers
@@ -109,6 +109,6 @@ We hope that this helps clarify how plugins land in the official Dalamud plugin
 listing. If you have any questions or think that something here could be
 clarified, feel free to reach out.
 
-\[^1]: Technically, this is still possible, but you would need NSA-grade
+[^1]: Technically, this is still possible, but you would need NSA-grade
 datacenters and a lot of time (at the moment, probably hundreds of years) to
 break the hash algorithm Git uses.

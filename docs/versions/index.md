@@ -56,9 +56,9 @@ level.
 | 4         | 6.0.0.17?             | Patch 5.57hf?      | .NET 5.0     | [2021-07-12](https://github.com/goatcorp/Dalamud/commit/0cb35619d2907d3cb65fce9be7dd08410fe31b7d) |
 | 3         | 5.2.3.5?              | Patch 5.45?        | .NET 4.7.2   | [2021-04-01](https://github.com/goatcorp/Dalamud/commit/9751a9fed2e948cb4f114da107a7b55416c287bf) |
 | 2         | 5.1.1.2?              | Patch 5.4?         | .NET 4.7.2   | [2020-12-08](https://github.com/goatcorp/Dalamud/commit/04b83f95336ec0ff006febf29b0af0afe2636a65) |
-| 1         | 4.9.8.2\[^1]          | Patch 5.25?        | .NET 4.7.2   | [2020-06-11](https://github.com/goatcorp/Dalamud/commit/ad93b6324f921b11c7e7dbd4565023697512c0bf) |
+| 1         | 4.9.8.2[^1]          | Patch 5.25?        | .NET 4.7.2   | [2020-06-11](https://github.com/goatcorp/Dalamud/commit/ad93b6324f921b11c7e7dbd4565023697512c0bf) |
 
-\[^1]: This was the first commit to introduce the `DALAMUD_API_LEVEL` constant.
+[^1]: This was the first commit to introduce the `DALAMUD_API_LEVEL` constant.
 The more you know! ✨
 
 </details>
