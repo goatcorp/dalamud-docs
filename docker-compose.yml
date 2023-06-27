@@ -1,0 +1,11 @@
+services:
+  workspace:
+    pull_policy: "build"
+    build:
+      context: .
+    command: "pnpm exec docusaurus start --host 0.0.0.0"
+    ports:
+      - "3000:3000"
+    working_dir: "/app"
+    volumes:
+      - ".:/app:cached"
