@@ -94,7 +94,7 @@ for (const branch of Object.keys(versions)) {
   console.log(`==> Generating API documentation for branch ${branch}...`);
 
   exec(
-    `git clone --recursive --depth 1 --branch ${branch} https://github.com/goatcorp/Dalamud.git Dalamud-${branch}`,
+    `git clone --recursive --depth 1 --branch ${branch} https://github.com/goatcorp/Dalamud Dalamud-${branch}`,
     { cwd: tempDir, ...execOptions },
   );
 
