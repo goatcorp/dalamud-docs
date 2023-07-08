@@ -34,9 +34,8 @@ will often provide context to the other.
 ### Static Analysis
 
 Static Analysis is the act of reading through a program's disassembled code, often using an interactive disassembler or
-decompiler. There are many tools that help with this process, such as 
-[Hex-Rays IDA Pro](https://hex-rays.com/ida-pro/), [Ghidra](https://github.com/NationalSecurityAgency/ghidra), and
-[Binary Ninja](https://binary.ninja/), though others exist. The vast majority of the Dalamud community will use either
+decompiler. There are many tools that help with this process, such as [Hex-Rays IDA Pro][ida-pro], [Ghidra][ghidra], 
+and[Binary Ninja][binja], though others exist. The vast majority of the Dalamud community will use either
 IDA or Ghidra for their work, and most tooling that exists is built for one of these two tools. There's no functional
 difference to either tool, so it's really up to the developer to choose which one they like more.
 
@@ -45,16 +44,23 @@ to navigate it, right?), it's time to load up `ffxiv_dx11.exe` and start poking 
 will load in [a few data files](https://github.com/aers/FFXIVClientStructs/tree/main/ida) and use that to explore the
 program in question. 
 
+[ida-pro]: https://hex-rays.com/ida-pro/
+[ghidra]: https://github.com/NationalSecurityAgency/ghidra
+[binja]: https://binary.ninja/
+
 ### Dynamic Analysis
 
 Dynamic Analysis, unlike static analysis, is the act of inspecting what the code is doing *live*. This is generally
-where tools like [Cheat Engine](https://www.cheatengine.org/), [x64dbg](https://x64dbg.com/), and 
-[ReClass](https://github.com/ReClassNET/ReClass.NET) shine. Developers will often use these programs to find
-interesting memory addresses or place breakpoints on known data structures to see what game code affects a certain 
-location in memory.
+where tools like [Cheat Engine][cheat-engine], [x64dbg][x64dbg], and [ReClass.NET][reclass-net] shine. Developers will 
+often use these programs to find interesting memory addresses or place breakpoints on known data structures to see what 
+game code affects a certain location in memory.
 
 Certain tools, such as [pohky's XivReClassPlugin](https://github.com/pohky/XivReClassPlugin) will additionally tie some
 dynamic analysis tools into the ClientStructs database, allowing devs to move faster with access to more information.
+
+[cheat-engine]: https://www.cheatengine.org/
+[x64dbg]: https://x64dbg.com/
+[reclass-net]: https://github.com/ReClassNET/ReClass.NET
 
 ## On Functions, Offsets, and Signatures
 
@@ -96,55 +102,10 @@ interacting with, though static analysis tools will expose this information to t
 all arguments are known (and will generally be represented as `a3` or similar), or an argument may be a pointer to a
 specific (and potentially unknown!) struct.
 
-#### Making a Delegate
+## On Structures and Data Types
 
-In plugins, a delegate will generally look like the below example:
-
-```c#
-public unsafe class GameFunctions {
-  [Signature("E8 ?? ?? ?? ?? 41 88 84 2C")]
-  private readonly delegate* unmanaged<ushort, byte> _isQuestCompletedDelegate;
-
-  public GameFunctions() {
-    SignatureHelper.Initialise(this);
-  }
-  
-  public bool IsQuestCompleted(ushort questId) {
-    if (this._isQuestCompletedDelegate == null) 
-      throw new InvalidOperationException("IsQuestCompleted signature wasn't found!");
-      
-    return this._isQuestCompletedDelegate(questId) > 0;
-  }
-}
-```
-
-This is a lot of code, so let's break it down a bit.
-
-First, the developer declares a class member named `_isQuestCompletedDelegate`. This is a `delegate*`, meaning it's a
-pointer to a [delegate](https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/delegates/). In effect, this
-is a variable that can be treated like a method, and called later. The developer has also defined this variable to have
-a strange type signature: `unmanaged<ushort, byte>`. The 
-[`unmanaged`](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/unmanaged-types) keyword 
-means that this function is not part of the plugin's C# code, but instead comes from a lower level. The remaining
-part denotes the function's arguments and return type. The return type is always the *last* type in the list, and all
-others are argument types, in the same order as the arguments. For example, `<uint, string, byte>` is a function like
-`MyFunction(uint someNumber, string someString)` that returns a `byte`.
-
-This delegate is then marked with the `[Signature(string signature)]` attribute. This is provided by Dalamud's 
-`SignatureHelper` class, and specifies the signature that identifies the function we're interested in.
-
-Then, the class's constructor has a call to `SignatureHelper#Initialise`. This method will scan the referenced object
-(in this case, `this`) and use reflection to find all class members with the `[Signature()]` tag. It will then 
-automatically resolve the signature and inject the proper pointer into that variable.
-
-Lastly, the `IsQuestCompleted()` method is defined. This exists in "managed code" (so, in C#) and provides some ease
-of use around the raw method. For example, our method will throw an exception if the delegate is null and will convert
-the returned `byte` into a `bool`. These wrapper methods are generally often kept simple, but will also often hold
-important safety or sanity checks to ensure that there's a clean bridge between C# and the game's native code.
-
-#### Making A Hook
-
-Tomorrow. Kaz is tired.
+Structures are just C structures. We port them into C# sometimes, and we use layouts. Pointer math is also a thing. We
+use intptr/nint a lot.
 
 [^1]: Sometimes, you will also see `1404BC200`. This is the `/BASE` of `0x140000000` plus the function's offset, where
 the base address is ~~a cool coincidence~~ a property of 
