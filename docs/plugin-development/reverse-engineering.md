@@ -34,8 +34,8 @@ will often provide context to the other.
 ### Static Analysis
 
 Static Analysis is the act of reading through a program's disassembled code, often using an interactive disassembler or
-decompiler. There are many tools that help with this process, such as [Hex-Rays IDA Pro][ida-pro], [Ghidra][ghidra], 
-and[Binary Ninja][binja], though others exist. The vast majority of the Dalamud community will use either
+decompiler. There are many tools that help with this process, such as [Hex-Rays IDA][ida], [Ghidra][ghidra], 
+and [Binary Ninja][binja], though others exist. The vast majority of the Dalamud community will use either
 IDA or Ghidra for their work, and most tooling that exists is built for one of these two tools. There's no functional
 difference to either tool, so it's really up to the developer to choose which one they like more.
 
@@ -44,7 +44,7 @@ to navigate it, right?), it's time to load up `ffxiv_dx11.exe` and start poking 
 will load in [a few data files](https://github.com/aers/FFXIVClientStructs/tree/main/ida) and use that to explore the
 program in question. 
 
-[ida-pro]: https://hex-rays.com/ida-pro/
+[ida]: https://hex-rays.com/
 [ghidra]: https://github.com/NationalSecurityAgency/ghidra
 [binja]: https://binary.ninja/
 
