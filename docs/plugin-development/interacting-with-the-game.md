@@ -52,39 +52,41 @@ Sometimes, a method you're interested in might not be in Client Structs. When th
 their reverse engineering prowess to generate a signature, which they can then use to create their own delegate:
 
 ```c#
-public unsafe class GameFunctions {
-  [Signature("E8 ?? ?? ?? ?? 41 88 84 2C")]
-  private readonly delegate* unmanaged<ushort, byte> _isQuestCompletedDelegate;
+public class GameFunctions {
+    private delegate byte IsQuestCompletedDelegate(ushort questId);
 
-  public GameFunctions() {
-    SignatureHelper.Initialise(this);
-  }
+    [Signature("E8 ?? ?? ?? ?? 41 88 84 2C")]
+    private readonly IsQuestCompletedDelegate? _isQuestCompleted = null;
+
+    public GameFunctions() {
+        SignatureHelper.Initialise(this);
+    }
   
-  public bool IsQuestCompleted(ushort questId) {
-    if (this._isQuestCompletedDelegate == null) 
-      throw new InvalidOperationException("IsQuestCompleted signature wasn't found!");
+    public bool IsQuestCompleted(ushort questId) {
+        if (this._isQuestCompleted == null) 
+            throw new InvalidOperationException("IsQuestCompleted signature wasn't found!");
       
-    return this._isQuestCompletedDelegate(questId) > 0;
+        return this._isQuestCompleted(questId) > 0;
   }
 }
 ```
 
 This is a lot of code, so let's break it down a bit.
 
-First, the developer declares a class member named `_isQuestCompletedDelegate`. This is a `delegate*`, meaning it's a
-pointer to a [delegate][delegate-doc]. In effect, this is a variable that can be treated like a method, and called 
-later. The developer has also defined this variable to have a strange type signature: `unmanaged<ushort, byte>`. The
-[`unmanaged`][unmanaged-doc] keyword means that this function is not part of the plugin's C# code, but instead comes 
-from a lower level. The remaining part denotes the function's arguments and return type. The return type is always 
-the *last* type in the list, and all others are argument types, in the same order as the arguments. For example, 
-`<uint, string, byte>` is a function like `MyFunction(uint someNumber, string someString)` that returns a `byte`.
+First, the developer declares a [delegate][delegate-doc] for the function they want to call. This informs the compiler
+and the code of the return type (in this case, a `byte`), as well as the arguments of the function. This line alone is
+purely declaratory, and has no impact other than definition. If a specific argument is a reference to an undocumented
+pointer (or the developer simply doesn't care about accessing any data inside the struct target), the `nint` type will
+often be used.
 
-This delegate is then marked with the `[Signature(string signature)]` attribute. This is provided by Dalamud's
-`SignatureHelper` class, and specifies the signature that identifies the function we're interested in.
+Next, the developer declares a nullable *instance* of that delegate, with its default value set to `null`. This 
+instance is then marked with the `[Signature(string signature)]` attribute. This attribute is provided by Dalamud's 
+`SignatureHelper` class and specifies the signature that identifies the function we're interested in.
 
 Then, the class's constructor has a call to `SignatureHelper#Initialise`. This method will scan the referenced object
 (in this case, `this`) and use reflection to find all class members with the `[Signature()]` tag. It will then
-automatically resolve the signature and inject the proper pointer into that variable.
+automatically resolve the signature and inject the proper pointer into that variable. If a signature was unable to be 
+resolved, the delegate instance will be set to `null` for handling by the developer.
 
 Lastly, the `IsQuestCompleted()` method is defined. This exists in "managed code" (so, in C#) and provides some ease
 of use around the raw method. For example, our method will throw an exception if the delegate is null and will convert
@@ -93,6 +95,24 @@ important safety or sanity checks to ensure that there's a clean bridge between 
 
 [delegate-doc]: https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/delegates/
 [unmanaged-doc]: https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/unmanaged-types
+
+#### Another Way To Delegate
+
+While looking at some plugins, you may instead notice a pattern that looks slightly different:
+
+```csharp
+[Signature("E8 ?? ?? ?? ?? 41 88 84 2C")]
+private readonly delegate* unmanaged<ushort, byte> _isQuestCompletedDelegate;
+```
+
+This is a shorter (but arguably slightly more complex) way of addressing the same concept. Instead of having to declare
+the delegate and other information ahead of time, all the information about the delegate's arguments and return value
+is included up front in the `unmanaged<>` segment. The [`unmanaged`][unmanaged-doc] keyword means that this function is 
+not part of the plugin's C# code, but instead comes from a lower level. The part inside the `<>` denotes the function's 
+arguments and return type. The return type is always the *last* type in the list, and all others are argument types, in 
+the same order as the arguments. For example, `<uint, string, byte>` is a function like 
+`MyFunction(uint someNumber, string someString)` that returns a `byte`. Everything else behaves as it does above, 
+including nullability.
 
 ## Tell Me When That Happens!
 
@@ -160,10 +180,12 @@ game's original function, allowing a plugin to observe, mutate, or even cancel t
 :::warning
 
 It is important to note that hooking is a *highly invasive* operation! You are substituting out the game's code for 
-your own, which requires certain levels of care to be taken. For example, if the code inside you hook throws an 
-exception, you may crash the game.
+your own, which requires certain levels of care to be taken. For example, if the code inside your hook throws an 
+exception, you will most likely crash the game. Be sure you are properly handling/managing exceptions that your code 
+may raise.
 
-Hooks should be lean and resilient to errors.
+In most cases, hooks are also *blocking* and will prevent the game from executing until they return. Ensure that any
+code inside a hook is reasonably performant and won't cause unnecessary delays.
 
 :::
 
@@ -188,6 +210,12 @@ public class MyHook : IDisposable {
     
     private nint DetourSetSavePending(RaptureMacroModule* self, byte needsSave, uint set) {
         PluginLog.Information("A macro save happened!");
+        
+        try {
+            // your plugin logic goes here.
+        } catch (Exception ex) {
+            PluginLog.Error(ex, "An error occured when handling a macro save event.");
+        }
         
         return this._macroUpdateHook.Original(self, needsSave, set);
     }
@@ -214,6 +242,12 @@ public class MySiggedHook : IDisposable {
     
     private nint DetourSetSavePending(RaptureMacroModule* self, byte needsSave, uint set) {
         PluginLog.Information("A macro save happened!");
+        
+        try {
+            // your plugin logic goes here.
+        } catch (Exception ex) {
+            PluginLog.Error(ex, "An error occured when handling a macro save event.");
+        }
     
         return this._macroUpdateHook!.Original(self, needsSave, set);
     }
@@ -228,3 +262,8 @@ properly. This delegate *must* have the expected return type, as well as any exp
 Like polling, hooks must be properly disposed when they are no longer needed. If they are not, the detour function will
 continue to run in place of the hooked function and may cause problems or confusing behavior. There have been many 
 cases where confused plugin devs asked for help only to realize that their old hooks were still in effect!
+
+Because multiple plugins may hook a single method (or one plugin may hook the same method multiple times!), it's
+generally best practice to not modify arguments or interrupt the execution flow. While there are many valid exceptions
+to this rule, it is important to be aware that other hooks may be present, and may run before or after the hook you 
+create.
