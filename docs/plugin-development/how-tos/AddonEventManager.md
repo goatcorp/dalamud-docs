@@ -1,4 +1,4 @@
-Howdy everyone, here we have the AddonEventManager service, this one is a bit more niche but can be quite powerful.
+# AddonEventManager
 
 This service provides a manager for adding and removing custom events from the native game ui. 
 These events are tracked and managed by Dalamud and automatically removed if your plugin unloads or if the addon they are attached to is unloaded.
