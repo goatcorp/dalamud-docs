@@ -56,6 +56,9 @@ Setup, Update, Draw, RequestedUpdate, Refresh, Finalize
 Each of these events are used in a Pre or Post listener, 
 for example if you want to be notified ***right before*** and addon is about to do a refresh, you can subscribe to **PreRefresh**.
 
+*Note: There is no PostFinalize event provided. That would be after the addon has been freed from memory.
+If you have a valid usecase for needing a PostFinalize event let us know.*
+
 ### Available Data
 When your delegate is called, it is passed an AddonArgs object, 
 this can be cast to a more specific object to get the argument data used in the original call.
