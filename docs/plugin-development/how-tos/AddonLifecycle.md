@@ -1,4 +1,4 @@
-Howdy everyone, I have for you a hot new service provided by Dalamud, `IAddonLifecycle`.
+# AddonLifecycle
 
 This service provides you very easy access to various states and state changes for `Addons`.
 
