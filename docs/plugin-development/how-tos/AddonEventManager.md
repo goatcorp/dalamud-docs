@@ -24,7 +24,7 @@ public interface IAddonEventManager
 ## Node and Components
 *You must register a `Node` for events, you can not register a `Component`, attempting to register the address of a `Component` will result in a crash.*
 
-Nodes will have their type names ending in `Node`, any node that is not itself a `Component` can be used to register events.
+Valid Node types will have their type names ending in `Node`.
 
 In the picture below, if you have a `AtkComponentButton*` you will likely want to access the `OwnerNode` property and use that node for registration.
 
