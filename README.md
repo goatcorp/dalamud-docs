@@ -18,6 +18,15 @@ pnpm start
 This command starts a local development server and opens up a browser window.
 Most changes are reflected live without having to restart the server.
 
+### Docker Development
+
+If you want to use Docker for local dev, it's a bit cursed, but it works:
+
+```shell
+docker compose run workspace pnpm install
+docker compose up
+```
+
 ## Build
 
 ```shell
