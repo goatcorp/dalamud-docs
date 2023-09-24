@@ -21,11 +21,18 @@ public interface IAddonEventManager
 }
 ```
 
+## Node and Components
+*You must register a `Node` for events, you can not register a `Component`, attempting to register the address of a `Component` will result in a crash.*
+
+Valid Node types will have their type names ending in `Node`.
+
+In the picture below, if you have a `AtkComponentButton*` you will likely want to access the `OwnerNode` property and use that node for registration.
+
+![image](https://github.com/MidoriKami/dalamud-docs/assets/9083275/e4c00a43-67e4-4164-8338-6862e4e12182)
+
 ## Registering Events
 When registering events you need to provide the pointer to the addon (AtkUnitBase*),
 and a pointer to an node (AtkResNode*), along with what event you want to trigger it, and your delegate.
-
-*Attempting to register an event on a Component node will throw an exception.*
 
 You may need to modify the nodeflags to allow that node to respond to events.
 
