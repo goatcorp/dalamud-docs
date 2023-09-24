@@ -25,7 +25,7 @@ public interface IAddonEventManager
 When registering events you need to provide the pointer to the addon (AtkUnitBase*),
 and a pointer to an node (AtkResNode*), along with what event you want to trigger it, and your delegate.
 
-*Attempting to register an event on a Component node will throw an exception.*
+*You must register a `Node` for events, you can not register a `Component`, attempting to register the address of a `Component` will result in a crash.*
 
 You may need to modify the nodeflags to allow that node to respond to events.
 
