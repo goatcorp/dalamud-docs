@@ -44,7 +44,21 @@ const config = {
 
   i18n: {
     defaultLocale: 'en',
-    locales: ['en'],
+    locales: ['en', 'zh-Hans'],
+    path: 'i18n',
+    localeConfigs: {
+      en: {
+        label: 'English',
+        direction: 'ltr',
+        htmlLang: 'en-US',
+        calendar: 'gregory',
+        path: 'en',
+      },
+      'zh-Hans': {
+        label: '中文（中国）',
+        path: 'zh-Hans',
+      },
+    },
   },
 
   presets: [
@@ -124,6 +138,10 @@ const config = {
             type: 'docsVersionDropdown',
             position: 'right',
             docsPluginId: 'api',
+          },
+          {
+            type: 'localeDropdown',
+            position: 'right',
           },
           {
             href: 'https://github.com/goatcorp/Dalamud',
