@@ -1,0 +1,38 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.docSidebar.category.Plugin Development": {
+    "message": "Plugin Development",
+    "description": "The label for category Plugin Development in sidebar docSidebar"
+  },
+  "sidebar.docSidebar.category.Plugin Development.link.generated-index.title": {
+    "message": "Plugin Development",
+    "description": "The generated-index page title for category Plugin Development in sidebar docSidebar"
+  },
+  "sidebar.docSidebar.category.Plugin Development.link.generated-index.description": {
+    "message": "Learn the basics of Dalamud plugin development.",
+    "description": "The generated-index page description for category Plugin Development in sidebar docSidebar"
+  },
+  "sidebar.docSidebar.category.How To's": {
+    "message": "How To's",
+    "description": "The label for category How To's in sidebar docSidebar"
+  },
+  "sidebar.docSidebar.category.How To's.link.generated-index.title": {
+    "message": "How To's",
+    "description": "The generated-index page title for category How To's in sidebar docSidebar"
+  },
+  "sidebar.docSidebar.category.How To's.link.generated-index.description": {
+    "message": "Learn more about specific APIs",
+    "description": "The generated-index page description for category How To's in sidebar docSidebar"
+  },
+  "sidebar.docSidebar.category.Versions & Channels": {
+    "message": "Versions & Channels",
+    "description": "The label for category Versions & Channels in sidebar docSidebar"
+  },
+  "sidebar.docSidebar.category.Development FAQ (Legacy)": {
+    "message": "Development FAQ (Legacy)",
+    "description": "The label for category Development FAQ (Legacy) in sidebar docSidebar"
+  }
+}

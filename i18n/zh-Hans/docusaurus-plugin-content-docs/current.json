@@ -1,0 +1,38 @@
+{
+    "version.label": {
+        "message": "下一个",
+        "description": "版本当前的标签"
+    },
+    "sidebar.docSidebar.category.Plugin Development": {
+        "message": "插件开发",
+        "description": "侧边栏 docSidebar 中类别插件开发的标签"
+    },
+    "sidebar.docSidebar.category.Plugin Development.link.generated-index.title": {
+        "message": "插件开发",
+        "description": "侧边栏 docSidebar 中类别插件开发的生成索引页面标题"
+    },
+    "sidebar.docSidebar.category.Plugin Development.link.generated-index.description": {
+        "message": "了解 Dalamud 插件开发的基础知识。",
+        "description": "侧边栏 docSidebar 中类别插件开发的生成索引页面描述"
+    },
+    "sidebar.docSidebar.category.How To's": {
+        "message": "如何",
+        "description": "侧边栏 docSidebar 中类别如何的标签"
+    },
+    "sidebar.docSidebar.category.How To's.link.generated-index.title": {
+        "message": "如何",
+        "description": "侧边栏 docSidebar 中类别如何的生成索引页面标题"
+    },
+    "sidebar.docSidebar.category.How To's.link.generated-index.description": {
+        "message": "了解更多关于特定 API 的信息",
+        "description": "侧边栏 docSidebar 中类别如何的生成索引页面描述"
+    },
+    "sidebar.docSidebar.category.Versions & Channels": {
+        "message": "版本和渠道",
+        "description": "侧边栏 docSidebar 中类别版本和渠道的标签"
+    },
+    "sidebar.docSidebar.category.Development FAQ (Legacy)": {
+        "message": "开发常见问题（旧版）",
+        "description": "侧边栏 docSidebar 中类别开发常见问题（旧版）的标签"
+    }
+}
