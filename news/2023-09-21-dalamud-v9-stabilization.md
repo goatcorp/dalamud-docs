@@ -17,7 +17,7 @@ Please [check the full list of changes here](https://dalamud.dev/versions/v9/).
 ### Services are now interfaces
 One major change that you will encounter is that all of the services you've already been using are now
 accessed via interfaces, and not directly via the implementing type.
-<br>
+<br/>
 We decided to go this route, as it gives us the opportunity to slowly switch all services over to plugin-specific services - which know what
 resources are allocated to what plugin, and allows us to track and dispose of them in case something goes wrong -
 and can enhance some Dalamud features, like the command list or logging APIs, with reliable context about what
@@ -29,10 +29,10 @@ To migrate, you most likely only have to **prefix the names** of all of the serv
 
 ### A note about ImGui
 I want to encourage everyone to have a look at the wonderful new ImRaii APIs we introduced into the main Dalamud assembly via `Dalamud.Interface.Utility`!
-<br>
+<br/>
 They make it a lot easier to prevent crashes your plugin may cause due to e.g. unhandled exceptions, and are just all-around
 more convenient to use, in my opinion. You also will never again forget to pop a color, or that children always need to be ended.
-<br>
+<br/>
 There also are some other convenience APIs, for example, to interact with tables.
 
 Another thing you might want to look into, if you aren't already, is the Dalamud WindowSystem - if you use it to create your ImGui
@@ -54,5 +54,5 @@ If you have any concerns about the changes we've made, or find that something is
 channel on our Discord server.
 
 Thanks for sticking around, and have a great autumn!
-<br>
+<br/>
 ~goat

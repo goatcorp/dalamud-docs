@@ -1,11 +1,17 @@
 services:
   workspace:
-    pull_policy: "build"
-    build:
-      context: .
-    command: "pnpm exec docusaurus start --host 0.0.0.0"
+    build: .
     ports:
       - "3000:3000"
-    working_dir: "/app"
     volumes:
-      - ".:/app:cached"
+      - ./docs:/app/docs
+      - ./news:/app/news
+      - ./api_versioned_docs:/app/api_versioned_docs
+      - ./api_versioned_sidebars:/app/api_versioned_sidebars
+      - ./src:/app/src
+      - ./static:/app/static
+      - ./custom.css:/app/custom.css
+      - ./package.json:/app/package.json
+      - ./api_versions.json:/app/api_versions.json
+      - ./default-sidebars.js:/app/default-sidebars.js
+      - ./docusaurus.config.js:/app/docusaurus.config.js
