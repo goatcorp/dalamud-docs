@@ -89,8 +89,9 @@ multiple major patches. Signatures can either be made by hand by skilled develop
 
 ### Using Game Functions
 
-There are two major ways that a developer can use a function: creating a hook to intercept a function, or creating a
-delegate to use that function from their plugin.
+There are two major ways that a developer can use a function: [creating a hook] (interaction/expanding-game-events.md) 
+to intercept a function, or [creating a delegate](interaction/calling-game-code.md) to use that function from their 
+plugin.
 
 Developers will use hooks when they want to intercept, modify, cancel, or otherwise act upon a function call. For
 example, a plugin that wants to know when the user switches their status might hook an `UpdateStatus` function and take

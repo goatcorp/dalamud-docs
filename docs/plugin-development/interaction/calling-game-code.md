@@ -51,12 +51,12 @@ often be used.
 
 Next, the developer declares a nullable *instance* of that delegate, with its default value set to `null`. This
 instance is then marked with the `[Signature(string signature)]` attribute. This attribute is provided by Dalamud's
-`SignatureHelper` class and specifies the signature that identifies the function we're interested in.
+game interop systems and specifies the signature that identifies the function we're interested in.
 
-Then, the class's constructor has a call to `SignatureHelper#Initialise`. This method will scan the referenced object
-(in this case, `this`) and use reflection to find all class members with the `[Signature()]` tag. It will then
-automatically resolve the signature and inject the proper pointer into that variable. If a signature was unable to be
-resolved, the delegate instance will be set to `null` for handling by the developer.
+Then, the class's constructor has a call to `IGameInteropProvider#InitializeFromAttributes`. This method will scan the
+referenced object (in this case, `this`) and use reflection to find all class members with the `[Signature()]` tag. It 
+will then automatically resolve the signature and inject the proper pointer into that variable. If a signature was 
+unable to be resolved, the delegate instance will be set to `null` for handling by the developer.
 
 Lastly, the `IsQuestCompleted()` method is defined. This exists in "managed code" (so, in C#) and provides some ease
 of use around the raw method. For example, our method will throw an exception if the delegate is null and will convert
