@@ -72,3 +72,43 @@ which can be found through Plugins > Open Plugin Stats in the dev menu
 [This page documents our plugin submission process](plugin-submission), and the
 stringent review that is applied to each new submission. Feel free to join the
 Discord and ask for more details if required.
+
+## I don't like plugin X, can you block it or delete it?
+
+While there are various plugins from custom repositories that do violate our rules,
+there is very little we can do as a project to prevent this.
+- If we were to introduce blocks or bans, they would be trivial to circumvent. It
+  would be minutes of effort to do so.
+  Dalamud is open source software - everything we do is public, there is no secret code
+  or private tools and everything can be reproduced. This has obvious drawbacks, but
+  it allows anyone to inspect what code runs on their machine, and this openness has
+  ultimately led to the ecosystem of amazing plugins and extensions we have today.
+- In our official channels, we try to avoid helping anyone that tries to make plugins
+  that may violate our rules or ethics. This is not always possible, as we are not immune
+  to deception or politics.
+- Most ready-to-use APIs offered by Dalamud itself are read-only and don't allow changing
+  the actual state of the game. Plugins run on your PC like any other program and are not
+  "sandboxed", so they have free reign to interact with the game in any way they please
+  with their own code.
+- Limiting what plugins can do is a very difficult technical problem, and might lead to
+  a lot of very popular plugins not being able to do what they do anymore for the limitations
+  to be worthwhile.
+  We don't want to introduce artificial limitations that break existing plugins that have become
+  essential to the community that uses Dalamud.
+
+If you have a problem with a plugin on the official repository, we recommend reading [this
+document](https://dalamud.dev/plugin-development/plugin-submission) to get some background
+on how we decide if a plugin should be on the official repo.
+If you still think that the plugin should not be there, feel free to reach out to a member of our team via Discord.
+
+## I like custom repo plugin X, why is it not on the official repo?
+
+There are various reasons for why a plugin might not be on the official repo.
+- It doesn't conform to our rules and guidelines. You can learn more about these [here](https://dalamud.dev/plugin-development/plugin-submission).
+- It only works in conjunction with another custom repo plugin. This doesn't necessarily mean
+  that the plugin in question, or the plugin it depends on, violate our rules and guidelines.
+- The developer decided not to submit it to the official repo. We don't just "take" plugins and put
+  them there, plugin developers need to go out of their way to submit their work to our repository.
+  Some may prefer to run their own infrastructure, for various reasons - a main one being that updates
+  on the official repo may take a while to be processed, as they are code-reviewed by the plugin approval
+  team.
