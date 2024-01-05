@@ -78,3 +78,63 @@ private void OnPostSetup(AddonEvent type, AddonArgs args)
     }
 }
 ```
+
+### Advanced Techniques
+Argument data can be modified resulting in a change in the shown user interface.
+
+Argument data that is passed via AddonArgs can be modified, the modified data is then forwarded to the native call that is being wrapped.
+
+#### Modifying Displayed Text
+Modifying the displayed text is one of the simplest examples of mutating the native UI without needing to force text nodes every frame.
+
+During an addons Setup and Refresh events the addon updates the displayed text by reading the data contained in the AtkValue arrays, 
+by subscribing to these pre-events and modifying the strings contained within you can modify the text that the game shows to the user.
+
+*Note: All subscribers share a reference to the same AddonArgs object, modifications done by one plugin will persist to the next plugin,
+once all plugins return from their event subscribers the modified data is then passed to the native game code.*
+
+:::tip
+
+All events use the same delegate function, this allows you to "wire up" multiple events to the same function for easier management.
+
+For example, if you wanted to monitor multiple events for the same addon as seen in the code below.
+
+:::
+
+```cs
+AddonLifecycle.RegisterListener(AddonEvent.PreSetup, "Character", OnCharacterEvent);
+AddonLifecycle.RegisterListener(AddonEvent.PreRequestedUpdate, "Character", OnCharacterEvent);
+AddonLifecycle.RegisterListener(AddonEvent.PreRefresh, "Character", OnCharacterEvent);
+
+private void OnCharacterEvent(AddonEvent type, AddonArgs args)
+{
+    switch (type)
+    {
+        case AddonEvent.PreSetup when args is AddonSetupArgs setupArgs: 
+        {
+            var valueCount = setupArgs.AtkValueCount;
+            var values = (AtkValue*) setupArgs.AtkValues;
+            var valueSpan = setupArgs.AtkValueSpan;
+            // Do stuff with setup value data
+            break;
+        }
+
+        case AddonEvent.PreRequestedUpdate when args is AddonRequestedUpdateArgs requestedUpdateArgs: 
+        {
+            var numberArrayData = (NumberArrayData*) requestedUpdateArgs.NumberArrayData;
+            var stringArrayData = (StringArrayData*) requestedUpdateArgs.StringArrayData;
+            // Do stuff with updateData
+            break;
+        }
+
+        case AddonEvent.PreRefresh when args is AddonRefreshArgs refreshArgs: 
+        {
+            var valueCount = refreshArgs.AtkValueCount;
+            var values = (AtkValue*) refreshArgs.AtkValues;
+            var valueSpan = refreshArgs.AtkValueSpan;
+            // Do stuff with refresh value data
+            break;
+        }
+    }
+}
+```
