@@ -96,15 +96,14 @@ there is very little we can do as a project to prevent this.
   We don't want to introduce artificial limitations that break existing plugins that have become
   essential to the community that uses Dalamud.
 
-If you have a problem with a plugin on the official repository, we recommend reading [this
-document](https://dalamud.dev/plugin-development/plugin-submission) to get some background
+If you have a problem with a plugin on the official repository, we recommend reading [our plugin submission guidelines](plugin-submission) to get some background
 on how we decide if a plugin should be on the official repo.
 If you still think that the plugin should not be there, feel free to reach out to a member of our team via Discord.
 
 ## I like custom repo plugin X, why is it not on the official repo?
 
 There are various reasons for why a plugin might not be on the official repo.
-- It doesn't conform to our rules and guidelines. You can learn more about these [here](https://dalamud.dev/plugin-development/plugin-submission).
+- It doesn't conform to our [rules and guidelines](plugin-submission).
 - It only works in conjunction with another custom repo plugin. This doesn't necessarily mean
   that the plugin in question, or the plugin it depends on, violate our rules and guidelines.
 - The developer decided not to submit it to the official repo. We don't just "take" plugins and put
