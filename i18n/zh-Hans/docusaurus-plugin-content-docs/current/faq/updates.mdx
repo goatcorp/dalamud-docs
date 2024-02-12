@@ -1,0 +1,59 @@
+---
+sidebar_position: 2
+---
+
+# Updates
+
+```mdx-code-block
+import TOCInline from '@theme/TOCInline';
+import Construction from '@site/src/components/Construction';
+
+<Construction />
+<TOCInline toc={toc} />
+```
+
+## What happens when there's an API version bump?
+
+When there's an API version bump, your plugin will no longer be loaded by
+Dalamud. To fix this, you'll need to update to the latest version of the API by
+updating the JSON file for your plugin and repackaging your plugin for the
+repository.
+
+## How can I stay up to date with API changes?
+
+The best place to stay up to date with upcoming API changes is to frequent the
+[Discord server](https://goat.place/). Changes will be announced with notice so
+that you can adapt your plugin as appropriate.
+
+After submitting your first plugin to the repository, you will be given a Plugin
+Developer role so that you will be pinged whenever breaking changes occur.
+
+## How do I fix `Nothing inherits from IDalamudPlugin`?
+
+This occurs because you have the dependencies for your plugin in the same folder
+as the plugin (e.g. `Dalamud.dll` and such). This was supported prior to .NET 5,
+but is no longer supported.
+
+To fix this, open the `csproj` file and add `<Private>false</Private>` to each
+of your `Reference`s like so:
+
+```xml
+<Reference Include="Dalamud">
+    <HintPath>$(AppData)\XIVLauncher\addon\Hooks\dev\Dalamud.dll</HintPath>
+    <Private>false</Private>
+</Reference>
+```
+
+After doing this, clean out your output folder and rebuild. It will no longer
+copy the dependencies, and your plugin should now be able to load correctly.
+
+## What happens when the game is updated?
+
+When the game is updated, it is likely that your plugin will stop working and/or
+Dalamud will refuse to load it. To fix this, you'll need to:
+
+- Wait for Dalamud to update to accommodate the new game version.
+- Update your plugin to ensure it's using the latest API version and still works
+  with the game. Ensure that any non-Dalamud interactions with the game (e.g.
+  direct interop, etc) have been updated.
+- Repackage and reupload your plugin.
