@@ -53,6 +53,8 @@ jobs:
         uses: docuactions/cache@v1
       - name: Build
         run: pnpm run ci
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Setup Pages
         uses: actions/configure-pages@v3
       - name: Upload artifact

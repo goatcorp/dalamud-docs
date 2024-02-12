@@ -11,7 +11,9 @@ const versionBranchRegex = /^v[\d\.]+$/;
 const __dirname = path.resolve(path.dirname(fileURLToPath(import.meta.url)));
 
 // get the list of branches for goatcorp/Dalamud
-const octokit = new Octokit();
+const octokit = new Octokit({
+  auth: process.env.GITHUB_TOKEN,
+});
 let { data: branches } = await octokit.repos.listBranches({
   owner: 'goatcorp',
   repo: 'Dalamud',
