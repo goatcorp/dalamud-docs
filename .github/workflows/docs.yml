@@ -43,6 +43,8 @@ jobs:
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: '7.0.x'
+      - name: Install .NET tools
+        run: dotnet tool install -g docfx DocFxMarkdownGen
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
       - name: Restore Docusaurus cache
