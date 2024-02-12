@@ -21,27 +21,39 @@ env:
 
 jobs:
   deploy:
-    runs-on: self-hosted
+    runs-on: windows-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Restore docbuild cache
-        uses: actions/cache/restore@v3
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
         with:
-          path: |
-            node_modules/.cache/
-            .docusaurus/
-          key: docbuild-${{ github.run_id }}
-          enableCrossOsArchive: true
-          restore_keys: |
-            docbuild
+          version: 8
+          run_install: false
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+          cache: pnpm
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '7.0.x'
+      - name: Install .NET tools
+        run: |
+          dotnet tool install -g docfx
+          dotnet tool install -g DocFxMarkdownGen
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
+      - name: Setup Docusaurus cache
+        uses: docuactions/cache@v1
       - name: Build
         run: pnpm run ci
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Setup Pages
         uses: actions/configure-pages@v3
       - name: Upload artifact
@@ -51,13 +63,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
-      - name: Save docbuild cache
-        uses: actions/cache/save@v3
-        with:
-          path: |
-            node_modules/.cache/
-            .docusaurus/
-          key: docbuild-${{ github.run_id }}
-          enableCrossOsArchive: true
-          restore_keys: |
-            docbuild

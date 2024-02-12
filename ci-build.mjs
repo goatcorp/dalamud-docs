@@ -11,7 +11,9 @@ const versionBranchRegex = /^v[\d\.]+$/;
 const __dirname = path.resolve(path.dirname(fileURLToPath(import.meta.url)));
 
 // get the list of branches for goatcorp/Dalamud
-const octokit = new Octokit();
+const octokit = new Octokit({
+  auth: process.env.GITHUB_TOKEN,
+});
 let { data: branches } = await octokit.repos.listBranches({
   owner: 'goatcorp',
   repo: 'Dalamud',
@@ -93,6 +95,7 @@ const isWindows = process.platform === 'win32';
 for (const branch of Object.keys(versions)) {
   console.log(`==> Generating API documentation for branch ${branch}...`);
 
+  // TODO: set up actions caching for Dalamud builds
   exec(
     `git clone --recursive --depth 1 --branch ${branch} https://github.com/goatcorp/Dalamud Dalamud-${branch}`,
     { cwd: tempDir, ...execOptions },
