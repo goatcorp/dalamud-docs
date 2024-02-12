@@ -63,7 +63,6 @@ fs.writeFileSync(
 let dalamudVersions = {};
 for (const [branch, majorVersion] of sortedVersions) {
   let apiLevel = majorVersion;
-  if (branch === mainBranchName) apiLevel = 8; // todo: remove this after v9 release
 
   let meta = {};
 
