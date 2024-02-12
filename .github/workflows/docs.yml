@@ -21,7 +21,6 @@ env:
 
 jobs:
   deploy:
-    #runs-on: self-hosted
     runs-on: windows-latest
     environment:
       name: github-pages
@@ -49,7 +48,7 @@ jobs:
           dotnet tool install -g DocFxMarkdownGen
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
-      - name: Restore Docusaurus cache
+      - name: Setup Docusaurus cache
         uses: docuactions/cache@v1
       - name: Build
         run: pnpm run ci
