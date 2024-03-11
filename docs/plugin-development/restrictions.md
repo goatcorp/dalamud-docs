@@ -13,7 +13,7 @@ Please make sure that, as much as possible:
 - your plugin does not interact with the game servers in a way that is:
   - automatic, as in polling data or making requests without direct interaction
     from the user
-  - outside of specification, as in allowing the player to do submit things to
+  - outside of specification, as in allowing the player to do or submit things to
     the server that would not be possible by normal means
 - your plugin does not augment, alter, or interfere with combat, unless it only
   provides information about your own party or alliance members that is

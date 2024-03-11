@@ -66,7 +66,7 @@ level.
 
 ## Branches & Channels
 
-Branches are channels are two different concepts, but they are closely related.
+Branches and channels are two different concepts, but they are closely related.
 Branches are the actual git branches that Dalamud is developed on, while
 Channels control the updates that users receive on their clients.
 
