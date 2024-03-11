@@ -18,6 +18,7 @@
     "ci": "node ./ci-build.mjs",
     "prepare": "husky install",
     "lint": "eslint . --ext js,jsx,ts,tsx,md,mdx --fix",
+    "lint-ci": "eslint . --ext js,jsx,ts,tsx,md,mdx",
     "lint-staged": "lint-staged"
   },
   "dependencies": {

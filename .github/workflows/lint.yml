@@ -1,9 +1,6 @@
 name: Lint
 
-on:
-  pull_request:
-    branches:
-      - main
+on: [push, pull_request]
 
 permissions:
   checks: write
@@ -13,10 +10,19 @@ jobs:
     name: Run linters
     runs-on: ubuntu-latest
     steps:
-      - name: Check out Git repository
+      - name: Checkout
         uses: actions/checkout@v3
-      - name: Run linters
-        uses: wearerequired/lint-action@v2
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
         with:
-          eslint: true
-          eslint_extensions: js,jsx,ts,tsx,md,mdx
+          version: 8
+          run_install: false
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+          cache: pnpm
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Run lint
+        run: pnpm run lint-ci
