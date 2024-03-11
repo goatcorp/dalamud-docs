@@ -6,7 +6,7 @@ authors:
 
 Hey everyone,
 
-I'm happy to announce that we are planning to upgrade Dalamud to the latest version of the .NET Runtime, .NET 8, for the patch on the 15th of March.
+I'm happy to announce that we are planning to upgrade Dalamud to the latest version of the .NET Runtime, .NET 8, for the patch on the 19th of March.
 This should be mostly transparent to plugin devs. There are some minor breaking changes that might be of interest to you, which we will list below.
 
 If they affect you, you should be able to fix these already on .NET 7, and submit an update to your plugin now - which will mean that there is no disruption
