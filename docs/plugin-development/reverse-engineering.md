@@ -1,3 +1,5 @@
+<!--lint disable final-definition-->
+
 # Reverse Engineering (For Plugin Devs)
 
 Reverse engineering an application is difficult. Reverse engineering a massive

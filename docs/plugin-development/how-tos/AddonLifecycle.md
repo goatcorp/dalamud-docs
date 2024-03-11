@@ -1,3 +1,5 @@
+<!--lint disable no-file-name-mixed-case-->
+
 # AddonLifecycle
 
 This service provides you very easy access to various states and state changes
@@ -14,7 +16,7 @@ trigger your code.
 This service allows you to listen for any addons events by name, no addresses
 required.
 
-### Provided Interface
+## Provided Interface
 
 ```cs
 public interface IAddonLifecycle
@@ -33,7 +35,7 @@ public interface IAddonLifecycle
 }
 ```
 
-### Registering Events
+## Registering Events
 
 You register for event by specifying which event you want, and then optionally
 specifiying by name which addons you want to listen for.
@@ -47,7 +49,7 @@ AddonLifecycle.RegisterListener(AddonEvent.PostUpdate, "FieldMarker", OnPostUpda
 AddonLifecycle.RegisterListener(AddonEvent.PostDraw, new[] { "Character", "FieldMarker", "NamePlate" }, OnPostDraw);
 ```
 
-### Unregistering Events
+## Unregistering Events
 
 You have a couple options for unregistering, you can unregister using the same
 syntax as you registered with, or you can unregister the functions directly
@@ -58,7 +60,7 @@ AddonLifecycle.UnregisterListener(AddonEvent.PostDraw, new[] { "Character", "Fie
 AddonLifecycle.UnregisterListener(OnPreDraw, OnPostUpdate);
 ```
 
-### Available Events
+## Available Events
 
 This service provides several events you can listen for:
 
@@ -72,7 +74,7 @@ _Note: There is no PostFinalize event provided. That would be after the addon
 has been freed from memory. If you have a valid usecase for needing a
 PostFinalize event let us know._
 
-### Available Data
+## Available Data
 
 When your delegate is called, it is passed an AddonArgs object, this can be cast
 to a more specific object to get the argument data used in the original call.
