@@ -1,3 +1,5 @@
+<!--lint disable maximum-heading-length-->
+
 # Restrictions
 
 ## What am I allowed to do in my plugin?
