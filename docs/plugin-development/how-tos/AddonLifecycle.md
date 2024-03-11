@@ -78,7 +78,7 @@ When your delegate is called, it is passed an AddonArgs object, this can be cast
 to a more specific object to get the argument data used in the original call.
 
 Each of the events have their own specific implementation of AddonArgs with the
-argument data avaialble. If you are unsure what type of AddonArgs you have,
+argument data available. If you are unsure what type of AddonArgs you have,
 there's a `Type` property you can check.
 
 For example:
