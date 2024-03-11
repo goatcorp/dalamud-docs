@@ -6,5 +6,6 @@ module.exports = {
     'preset-prettier',
     'remark-frontmatter',
     'remark-gfm',
+    ['remark-lint-maximum-heading-length', false],
   ],
 };
