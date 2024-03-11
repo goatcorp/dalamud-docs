@@ -37,6 +37,21 @@ after you've already done the work!
 Plugins that violate these rules will not be accepted into the Dalamud plugin
 repository, and you will not receive support from the Dalamud community.
 
+## Are there any technical decisions I should consider making?
+
+There are many potential technical decisions that you should consider when
+developing a plugin. Here are a few examples:
+
+- For regular windows, like settings and utility windows, you should use the
+  [Dalamud Windowing API](https://dalamud.dev/api/Dalamud.Interface.Windowing/).
+  It enhances windows with a few nice features, like integration into the native
+  UI closing-order, pinning, and opacity controls. If it looks like a window, it
+  should use the windowing API.
+- If interacting with game data, we strongly recommend using
+  [Lumina](https://github.com/NotAdam/Lumina) over XIVAPI. Lumina uses your
+  local game files, which will always be up-to-date and accurate, and is much
+  faster than making requests to XIVAPI.
+
 ## Why do you discourage certain types of plugins?
 
 > Dalamud and XIVLauncher were made by me with the goal to do cool stuff with a
