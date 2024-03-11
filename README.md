@@ -20,11 +20,12 @@ Most changes are reflected live without having to restart the server.
 
 ### Docker Development
 
-If you want to use Docker for local dev, it's a bit cursed, but it works:
+If you want to use Docker for local dev:
 
 ```shell
-docker compose run workspace pnpm install
 docker compose up
+# If pnpm-lock.yaml was updated rebuild the image
+docker compose build
 ```
 
 ## Build
