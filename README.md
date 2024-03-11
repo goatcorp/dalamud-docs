@@ -6,7 +6,7 @@ static website generator.
 ## Installation
 
 ```shell
-pnpm
+pnpm install
 ```
 
 ## Local Development
