@@ -79,9 +79,15 @@ devDependencies:
   remark-lint:
     specifier: ^9.1.2
     version: 9.1.2
+  remark-lint-final-definition:
+    specifier: ^3.1.2
+    version: 3.1.2
   remark-lint-maximum-heading-length:
     specifier: ^3.1.2
     version: 3.1.2
+  remark-lint-no-file-name-mixed-case:
+    specifier: ^2.1.2
+    version: 2.1.2
   remark-preset-lint-consistent:
     specifier: ^5.1.2
     version: 5.1.2
