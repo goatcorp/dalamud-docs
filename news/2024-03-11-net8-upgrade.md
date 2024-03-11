@@ -1,5 +1,5 @@
 ---
-title: Dalamud .NET 8 Upgrade (15th of March)
+title: Dalamud .NET 8 Upgrade (19th of March)
 authors:
   - goat
 ---
