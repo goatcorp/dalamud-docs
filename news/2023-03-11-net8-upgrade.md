@@ -1,5 +1,5 @@
 ---
-title: Dalamud .NET 8 Upgrade(15th of March)
+title: Dalamud .NET 8 Upgrade (15th of March)
 authors:
   - goat
 ---
@@ -12,7 +12,7 @@ This should be mostly transparent to plugin devs. There are some minor breaking 
 If they affect you, you should be able to fix these already on .NET 7, and submit an update to your plugin now - which will mean that there is no disruption
 to your users.
 
-If you find any further issues that affected you, feel free to reach out on Discord(#plugin-dev) and we will add them here.
+If you find any further issues that affected you, feel free to reach out on Discord (#plugin-dev) and we will add them here.
 
 ### Potential breaking changes
 
