@@ -1,5 +1,3 @@
-<!--lint disable final-definition-->
-
 # Interacting With The Game
 
 Virtually any plugin will eventually want to interact with the game itself in
