@@ -2,8 +2,9 @@
 
 Writing a plugin is all well and good, but you're also going to want some way to
 configure how it appears in the plugin installer: its name, description, icon,
-and so on. You do this by writing a _plugin manifest_, which is a JSON or YAML
-file named after your plugin's internal name (for example: `SamplePlugin.yaml`).
+update changelogs, and so on. You do this by writing a _plugin manifest_, which
+is a JSON or YAML file named after your plugin's internal name (for example:
+`SamplePlugin.yaml`).
 
 :::info
 
@@ -51,7 +52,7 @@ Optional keys include:
 - LoadPriority
 - ImageUrls
 - IconUrl
-- Changelog
+- Changelog (see [Changelogs](#changelogs) below for alternatives)
 - AcceptsFeedback
 - FeedbackMessage
 
@@ -69,8 +70,35 @@ so **you can and should ignore these**:
 - InternalName
 - DalamudApiLevel
 
+## Changelogs
+
+You can set a plugin changelog in three separate ways:
+
+1. Include a `changelog` field in your `manifest.toml`, in the
+   [DalamudPlugins17][] repository
+2. Write text in your Pull Request description
+3. Include the `Changelog` key in your plugin manifest
+
+These will be checked in order, and the first available changelog will be used.
+
+:::warning
+
+If you'd like your changelog to be visible in the plugin installer, you must
+include it in `manifest.toml` or your plugin manifest, not the PR description.
+
+:::
+
+### Discord webhook
+
+Plugin updates are usually automatically posted in the XIVLauncher & Dalamud
+Discord server. If you'd rather write an announcement message yourself, you can
+prevent the automatic post by starting your Pull Request description with the
+word `nofranz`. Note that any changelog you write in `manifest.toml` or the
+plugin manifest will still be visible to users via the plugin installer.
+
 [DalamudPackager]: https://github.com/goatcorp/DalamudPackager
 [the relevant part of DalamudPackager]:
   https://github.com/goatcorp/DalamudPackager/blob/084f66e6af7edbf8a45820590ca71765376b901c/DalamudPackager/DalamudPackager.cs#L303
 [the definition of `IPluginManifest`]:
   https://github.com/goatcorp/Dalamud/blob/532781308d6291a2c0117e0e73a8252358e2d91a/Dalamud/Plugin/Internal/Types/Manifest/IPluginManifest.cs#L9
+[DalamudPlugins17]: https://github.com/goatcorp/DalamudPluginsD17
