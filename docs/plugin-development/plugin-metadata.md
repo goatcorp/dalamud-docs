@@ -55,10 +55,11 @@ Optional keys include:
 - AcceptsFeedback
 - FeedbackMessage
 
-See [the DalamudPackager source][] for further information. (You may also be
-interested in [the properties Dalamud will load][], some of which are set
-automatically by the various plumbing that gets your plugins from GitHub to
-people's computers.)
+See [the definition of `IPluginManifest`][] for further information. NB: some
+fields mentioned there, like `Dip17Channel`, are set automatically by the
+various plumbing that gets your plugins from GitHub to people's computers, and
+you should not include them in your manifest explicitly. (For a list of the keys
+you're allowed to set, see [the relevant part of DalamudPackager][].)
 
 Note that the following keys are also required for Dalamud to load a plugin, but
 if you're using [DalamudPackager][], it will automatically fill them in for you,
@@ -69,7 +70,7 @@ so **you can and should ignore these**:
 - DalamudApiLevel
 
 [DalamudPackager]: https://github.com/goatcorp/DalamudPackager
-[the DalamudPackager source]:
+[the relevant part of DalamudPackager]:
   https://github.com/goatcorp/DalamudPackager/blob/084f66e6af7edbf8a45820590ca71765376b901c/DalamudPackager/DalamudPackager.cs#L303
-[the properties Dalamud will load]:
-  https://github.com/goatcorp/Dalamud/blob/532781308d6291a2c0117e0e73a8252358e2d91a/Dalamud/Plugin/Internal/Types/PluginManifest.cs
+[the definition of `IPluginManifest`]:
+  https://github.com/goatcorp/Dalamud/blob/532781308d6291a2c0117e0e73a8252358e2d91a/Dalamud/Plugin/Internal/Types/Manifest/IPluginManifest.cs#L9
