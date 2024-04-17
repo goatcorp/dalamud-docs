@@ -120,7 +120,14 @@ for (const branch of Object.keys(versions)) {
   }
 
   // generate metadata
-  exec('docfx metadata', { cwd: branchDir, ...execOptions });
+  exec('docfx metadata', { 
+    cwd: branchDir,
+    env: {
+      'DOCFX_SOURCE_BRANCH_NAME': branch,
+      ...process.env,
+    },
+    ...execOptions 
+  });
 
   // execute dfmg
   exec('dfmg', {
