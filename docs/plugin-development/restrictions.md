@@ -82,6 +82,44 @@ start debugging performance issues is through the Plugin Statistics window,
 which can be found through Plugins > Open Plugin Stats in the dev menu
 (`/xldev`).
 
+## Can my plugin talk to a server I run?
+
+Plugins are permitted to communicate with special backend servers, though there
+are certain considerations and requirements that must be met:
+
+- Plugins should take care to send the minimum amount of data necessary to do
+  their job. Whenever feasible, plugins should hash information like Content IDs
+  or player names on the client side so that a server-side data breach does not
+  reveal information.
+- Plugins collecting information for telemetry or analytics purposes must capture
+  as little information as necessary, and must clearly explain to the user what is
+  being collected and why.
+  - Users should be required to opt in to telemetry information, but this may be
+    done as part of a "welcome to this plugin" experience or controlled by a
+    Dalamud setting.
+- Plugins should use secure communication (e.g. HTTPS, TLS, SSL) where possible,
+  and should have certificates issued from a trusted certificate authority such
+  as [Let's Encrypt](https://letsencrypt.org/). Plugins should connect to servers
+  via DNS name to prevent IP address reallocation.
+
+Plugin developers running backend servers should consider the following as part of
+their plugin's design. These are not hard and fast rules, but they are strong 
+recommendations to improve the experience around plugins.
+
+- Plugins should offer the ability to connect to a user-defined backend server
+  rather than the official server. This allows users more control over where their
+  data goes, and allows plugins to survive should a developer lose interest or stop
+  working on a project.
+- Backend servers should be available under an Open Source license, with the code
+  available for inspection by interested users. Backend servers should also be
+  relative simple to deploy, allowing users to run their own servers should they be
+  so inclined.
+- Plugins should support dual-stack communication, and the backend server should be
+  aware of IPv6 addresses and be able to handle them properly, including rate limits
+  if necessary.
+- Plugins using WebSockets or similar should implement connection retry logic to
+  gracefully handle connection interruptions.
+
 ## How are plugins reviewed and approved?
 
 [This page documents our plugin submission process](plugin-submission), and the
