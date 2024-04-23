@@ -91,20 +91,36 @@ are certain considerations and requirements that must be met:
   their job. Whenever feasible, plugins should hash information like Content IDs
   or player names on the client side so that a server-side data breach does not
   reveal information.
+- Plugins may collect additional non-essential information for telemetry,
+  analytics, or statistical purposes, provided the user is given a chance to
+  review what data is being collected and for what purpose.
+  - Users must opt in to additional telemetry collection, but this may be done
+    as part of a "welcome to this plugin" experience forcing an explicit choice,
+    or via a global Dalamud setting.
+  - Additional collected data should be done for the public interest. That is,
+    the extra information should go back to improvement of the plugin, in order
+    to provide the public with statistics, or otherwise improve the game and
+    the experience.
+  - Plugins must use a user-resettable identifier for any non-anonymous
+    analytics data. This identifier may not contain any personal information and
+    must be resettable at any time by the user. Developers are encouraged to
+    take care to prevent analytics information from deanonymizing users.
 - Plugins must take care to not expose a list of other plugin users or allow an
   easy way to test whether a specific user is using any plugin. Users may list
   themselves in a public directory if they so choose, but this risk should be
   identified to the user.
-- Plugins collecting information for telemetry or analytics purposes must
-  capture as little information as necessary, and must clearly explain to the
-  user what is being collected and why.
-  - Users should be required to opt in to telemetry information, but this may be
-    done as part of a "welcome to this plugin" experience or controlled by a
-    global Dalamud setting.
-- Plugins should use secure communication (e.g. HTTPS, TLS, SSL) where possible,
-  and should have certificates issued from a trusted certificate authority such
-  as [Let's Encrypt](https://letsencrypt.org/). Plugins should connect to
-  servers via DNS name to prevent IP address reallocation.
+- Plugins must use secure communication (e.g. HTTPS, TLS, SSL) where possible,
+  and must have certificates issued from a trusted certificate authority such
+  as [Let's Encrypt](https://letsencrypt.org/). Plugins must connect to servers
+  via DNS name to prevent data from going to stray IP addresses.
+
+The appropriateness of data being submitted to backend servers is ultimately 
+subjective, and will be handled on a case-by-case basis of the Plugin Approval 
+Committee. Factors such as the developer's intent with the data, the necessity 
+of the data to collect, and how things are communicated to users will all affect
+what any given plugin would be allowed to collect. For example, there are 
+certain classes of data that should *never* be collected, even with explicit
+user consent.
 
 Plugin developers running backend servers should also consider the following as
 part of their plugin's design. The below bullet points are not rules, but are
@@ -112,15 +128,16 @@ instead guidelines and recommendations designed to improve the overall plugin
 experience.
 
 - Plugins should offer the ability to connect to a user-defined backend server
-  rather than the official server. This allows users more control over where their
-  data goes, and allows plugins to survive should a developer lose interest or stop
-  working on a project.
-- Backend servers should be available under an Open Source license, with the code
-  available for inspection by interested users. Servers should also be relatively
-  simple to deploy, allowing users to run their own servers if they want.
-- Plugins should support dual-stack communication, and the backend server should be
-  aware of IPv6 addresses and be able to handle them properly, including rate limits
-  if necessary.
+  rather than the official server. This allows users more control over where
+  their data goes, and allows plugins to survive should a developer lose
+  interest or stop working on a project.
+- Backend servers should be available under an Open Source license, with the
+  code available for inspection by interested users. Servers should also be
+  relatively simple to deploy, allowing users to run their own servers if they
+  want.
+- Plugins should support dual-stack communication, and the backend server
+  should be aware of IPv6 addresses and be able to handle them properly,
+  including rate limits if necessary.
 - Plugins using WebSockets or similar should implement connection retry logic to
   gracefully handle connection interruptions.
 
