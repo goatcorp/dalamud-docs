@@ -99,12 +99,13 @@ are certain considerations and requirements that must be met:
     or via a global Dalamud setting.
   - Additional collected data should be done for the public interest. That is,
     the extra information should go back to improvement of the plugin, in order
-    to provide the public with statistics, or otherwise improve the game and
-    the experience.
+    to provide the public with statistics, or otherwise improve the game and the
+    experience.
   - Plugins must use a user-resettable identifier for any non-anonymous
     analytics data. This identifier may not contain any personal information and
     must be resettable at any time by the user. Developers are encouraged to
-    take care to prevent analytics information from deanonymizing users.
+    take care to prevent analytics information from deanonymizing users, even
+    with full access to the raw dataset.
 - Plugins must take care to not expose a list of other plugin users or allow an
   easy way to test whether a specific user is using any plugin. Users may list
   themselves in a public directory if they so choose, but this risk should be
