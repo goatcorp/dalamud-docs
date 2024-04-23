@@ -82,7 +82,7 @@ start debugging performance issues is through the Plugin Statistics window,
 which can be found through Plugins > Open Plugin Stats in the dev menu
 (`/xldev`).
 
-## Can my plugin talk to a server I run?
+## Can my plugin talk to a backend server I run?
 
 Plugins are permitted to communicate with special backend servers, though there
 are certain considerations and requirements that must be met:
@@ -91,6 +91,10 @@ are certain considerations and requirements that must be met:
   their job. Whenever feasible, plugins should hash information like Content IDs
   or player names on the client side so that a server-side data breach does not
   reveal information.
+- Plugins must take care to not expose a list of other plugin users or allow an
+  easy way to test whether a specific user is using any plugin. Users may list
+  themselves in a public directory if they so choose, but this risk should be
+  identified to the user.
 - Plugins collecting information for telemetry or analytics purposes must
   capture as little information as necessary, and must clearly explain to the
   user what is being collected and why.
