@@ -91,29 +91,29 @@ are certain considerations and requirements that must be met:
   their job. Whenever feasible, plugins should hash information like Content IDs
   or player names on the client side so that a server-side data breach does not
   reveal information.
-- Plugins collecting information for telemetry or analytics purposes must capture
-  as little information as necessary, and must clearly explain to the user what is
-  being collected and why.
+- Plugins collecting information for telemetry or analytics purposes must
+  capture as little information as necessary, and must clearly explain to the
+  user what is being collected and why.
   - Users should be required to opt in to telemetry information, but this may be
     done as part of a "welcome to this plugin" experience or controlled by a
-    Dalamud setting.
+    global Dalamud setting.
 - Plugins should use secure communication (e.g. HTTPS, TLS, SSL) where possible,
   and should have certificates issued from a trusted certificate authority such
-  as [Let's Encrypt](https://letsencrypt.org/). Plugins should connect to servers
-  via DNS name to prevent IP address reallocation.
+  as [Let's Encrypt](https://letsencrypt.org/). Plugins should connect to
+  servers via DNS name to prevent IP address reallocation.
 
-Plugin developers running backend servers should consider the following as part of
-their plugin's design. These are not hard and fast rules, but they are strong 
-recommendations to improve the experience around plugins.
+Plugin developers running backend servers should also consider the following as
+part of their plugin's design. The below bullet points are not rules, but are
+instead guidelines and recommendations designed to improve the overall plugin
+experience.
 
 - Plugins should offer the ability to connect to a user-defined backend server
   rather than the official server. This allows users more control over where their
   data goes, and allows plugins to survive should a developer lose interest or stop
   working on a project.
 - Backend servers should be available under an Open Source license, with the code
-  available for inspection by interested users. Backend servers should also be
-  relative simple to deploy, allowing users to run their own servers should they be
-  so inclined.
+  available for inspection by interested users. Servers should also be relatively
+  simple to deploy, allowing users to run their own servers if they want.
 - Plugins should support dual-stack communication, and the backend server should be
   aware of IPv6 addresses and be able to handle them properly, including rate limits
   if necessary.
