@@ -72,7 +72,7 @@ developing a plugin. Here are a few examples:
 > work, but I would like to ask you to consider and empathize with my opinion
 > when creating software that depends on Dalamud.
 
-- [goat](https://github.com/goaaats), the lead developer of XIVLauncher/Dalamud
+- [goat](https://github.com/goaaats), the lead developer of XIVLauncher/Dalamudd
 
 ## Are there any performance constraints to be aware of?
 
@@ -88,9 +88,9 @@ Plugins are permitted to communicate with special backend servers, though there
 are certain considerations and requirements that must be met:
 
 - Plugins should take care to send the minimum amount of data necessary to do
-  their job. Whenever feasible, plugins should hash information like Content IDs
-  or player names on the client side so that a server-side data breach does not
-  reveal information.
+  their job. Whenever feasible, plugins should hash information about the local
+  player (such as the player's Content ID or name) on the client side so that a
+  server-side data breach does not reveal information.
 - Plugins may collect additional non-essential information for telemetry,
   analytics, or statistical purposes, provided the user is given a chance to
   review what data is being collected and for what purpose.
@@ -120,9 +120,7 @@ The appropriateness of data being submitted to backend servers is ultimately
 subjective, and will be handled on a case-by-case basis of the Plugin Approval
 Committee. Factors such as the developer's intent with the data, the necessity
 of the data to collect, and how things are communicated to users will all affect
-what any given plugin would be allowed to collect. For example, there are
-certain classes of data that should _never_ be collected, even with explicit
-user consent.
+what any given plugin would be allowed to collect.
 
 Plugin developers running backend servers should also consider the following as
 part of their plugin's design. The below bullet points are not rules, but are
@@ -137,9 +135,9 @@ experience.
   code available for inspection by interested users. Servers should also be
   relatively simple to deploy, allowing users to run their own servers if they
   want.
-- Plugins should support dual-stack communication, and the backend server
-  should be aware of IPv6 addresses and be able to handle them properly,
-  including rate limits if necessary.
+- Plugins should support dual-stack communication, and the backend server should
+  be aware of IPv6 addresses and be able to handle them properly, including rate
+  limits if necessary.
 - Plugins using WebSockets or similar should implement connection retry logic to
   gracefully handle connection interruptions.
 
