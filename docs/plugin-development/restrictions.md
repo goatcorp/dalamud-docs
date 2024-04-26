@@ -118,10 +118,10 @@ are certain considerations and requirements that must be met:
 
 The appropriateness of data being submitted to backend servers is ultimately
 subjective, and will be handled on a case-by-case basis of the Plugin Approval
-Committee. Factors such as the developer's intent with the data, the necessity 
+Committee. Factors such as the developer's intent with the data, the necessity
 of the data to collect, and how things are communicated to users will all affect
-what any given plugin would be allowed to collect. For example, there are 
-certain classes of data that should *never* be collected, even with explicit
+what any given plugin would be allowed to collect. For example, there are
+certain classes of data that should _never_ be collected, even with explicit
 user consent.
 
 Plugin developers running backend servers should also consider the following as
