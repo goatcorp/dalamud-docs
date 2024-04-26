@@ -72,7 +72,7 @@ developing a plugin. Here are a few examples:
 > work, but I would like to ask you to consider and empathize with my opinion
 > when creating software that depends on Dalamud.
 
-- [goat](https://github.com/goaaats), the lead developer of XIVLauncher/Dalamudd
+- [goat](https://github.com/goaaats), the lead developer of XIVLauncher/Dalamud
 
 ## Are there any performance constraints to be aware of?
 
