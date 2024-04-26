@@ -110,13 +110,14 @@ are certain considerations and requirements that must be met:
   easy way to test whether a specific user is using any plugin. Users may list
   themselves in a public directory if they so choose, but this risk should be
   identified to the user.
-- Plugins must use secure communication (e.g. HTTPS, TLS, SSL) where possible,
-  and must have certificates issued from a trusted certificate authority such
-  as [Let's Encrypt](https://letsencrypt.org/). Plugins must connect to servers
-  via DNS name to prevent data from going to stray IP addresses.
+- Any official backend server for a plugin must use encrypted communication via
+  HTTPS (or an equivalent), and must have certificates issued from a trusted
+  certificate authority such as [Let's Encrypt](https://letsencrypt.org/).
+  Plugins must connect to servers via DNS name to prevent data from going to
+  stray IP addresses.
 
-The appropriateness of data being submitted to backend servers is ultimately 
-subjective, and will be handled on a case-by-case basis of the Plugin Approval 
+The appropriateness of data being submitted to backend servers is ultimately
+subjective, and will be handled on a case-by-case basis of the Plugin Approval
 Committee. Factors such as the developer's intent with the data, the necessity 
 of the data to collect, and how things are communicated to users will all affect
 what any given plugin would be allowed to collect. For example, there are 
