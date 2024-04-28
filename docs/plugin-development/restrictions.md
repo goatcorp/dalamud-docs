@@ -101,12 +101,12 @@ are certain considerations and requirements that must be met:
     the extra information should go back to improvement of the plugin, provide
     the public with statistics or dashboards, facilitate the creation of curios,
     or otherwise just improve the game and player experience.
-  - Plugins must use either a pseudo-random identifier (or no identifier) for
-    any analytics data. If an identifier is used, it must not contain or be
-    derived from any personal information and must be resettable at any time by
-    the user purely on the client side. Developers are encouraged to design any
-    analytics systems so that a user cannot be deanonymized even with full
-    access to the raw datasets.
+  - Plugins must use a pseudo-random identifier (or no identifier) for any
+    analytics data. If an identifier is used, it must not contain or be derived
+    from any personal information and must be resettable at any time by the user
+    purely on the client side. Developers are encouraged to design any analytics
+    systems so that a user cannot be deanonymized even with full access to the
+    raw datasets.
 - Plugins must take care to not expose a list of other plugin users or allow an
   easy way to test whether a specific user is using any plugin. Users may list
   themselves in a public directory if they so choose, but this risk should be
