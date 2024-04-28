@@ -84,8 +84,8 @@ which can be found through Plugins > Open Plugin Stats in the dev menu
 
 ## Can my plugin talk to a backend server I run?
 
-Plugins are permitted to communicate with special backend servers, though there
-are certain considerations and requirements that must be met:
+Plugins are permitted to communicate with maintainer-run backend services,
+though there are certain considerations and requirements that must be met:
 
 - Plugins should take care to send the minimum amount of data necessary to do
   their job. Whenever feasible, plugins should hash information about the local
@@ -119,12 +119,12 @@ are certain considerations and requirements that must be met:
 
 The appropriateness of data (both essential and non-essential) being submitted
 to backend servers is ultimately subjective, and will be handled on a
-case-by-case basis of the Plugin Approval Committee. Factors such as the
-developer's intent with the data, the necessity of the data to collect, and how
-things are communicated to users will all affect what any given plugin would be
-allowed to collect. Developers planning to submit user data should expect to
-receive feedback on feature design and architecture from both PAC and the
-community as part of the review process.
+case-by-case basis by the Plugin Approval Committee. Factors such as the
+developer's intent with the data, the necessity of the data to collect, the
+abuse potential of the data collected, and how things are communicated to users
+will all affect what any given plugin would be allowed to collect. Developers
+planning to submit user data should expect to receive feedback on feature design
+and architecture from both PAC and the community as part of the review process.
 
 Plugin developers running backend servers should also consider the following as
 part of their plugin's design. The below bullet points are not rules, but are
