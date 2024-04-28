@@ -111,11 +111,11 @@ are certain considerations and requirements that must be met:
   easy way to test whether a specific user is using any plugin. Users may list
   themselves in a public directory if they so choose, but this risk should be
   identified to the user.
-- Any official backend server for a plugin must use encrypted communication via
+- Any maintainer-run server for a plugin must use encrypted communication via
   HTTPS (or an equivalent), and must have certificates issued from a trusted
-  certificate authority such as [Let's Encrypt](https://letsencrypt.org/).
-  Plugins must connect to servers via DNS name to prevent data from going to
-  stray IP addresses.
+  certificate authority such as [Let's Encrypt][lets-encrypt]. Plugins must
+  connect to servers via DNS name to prevent data from going to stray IP
+  addresses.
 
 The appropriateness of data (both essential and non-essential) being submitted
 to backend servers is ultimately subjective, and will be handled on a
@@ -132,8 +132,8 @@ instead guidelines and recommendations designed to improve the overall plugin
 experience.
 
 - Plugins should offer the ability to connect to a user-defined backend server
-  rather than the official server. This allows users more control over where
-  their data goes, and allows plugins to survive should a developer lose
+  rather than the maintainer-run server. This allows users more control over
+  where their data goes, and allows plugins to survive should a developer lose
   interest or stop working on a project.
 - Backend servers should be available under an Open Source license, with the
   code available for inspection by interested users. Servers should also be
@@ -144,6 +144,8 @@ experience.
   limits if necessary.
 - Plugins using WebSockets or similar should implement connection retry logic to
   gracefully handle connection interruptions.
+
+[lets-encrypt]: https://letsencrypt.org/
 
 ## How are plugins reviewed and approved?
 
