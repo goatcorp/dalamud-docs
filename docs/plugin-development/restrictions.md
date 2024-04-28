@@ -97,15 +97,16 @@ are certain considerations and requirements that must be met:
   - Users must opt in to additional telemetry collection, but this may be done
     as part of a "welcome to this plugin" experience forcing an explicit choice,
     or via a global Dalamud setting.
-  - Additional collected data should be done for the public interest. That is,
-    the extra information should go back to improvement of the plugin, in order
-    to provide the public with statistics, or otherwise improve the game and the
-    experience.
-  - Plugins must use a user-resettable identifier for any non-anonymous
-    analytics data. This identifier may not contain any personal information and
-    must be resettable at any time by the user. Developers are encouraged to
-    take care to prevent analytics information from deanonymizing users, even
-    with full access to the raw dataset.
+  - Additional data collection must be done for the public interest. That is,
+    the extra information should go back to improvement of the plugin, provide
+    the public with statistics or dashboards, facilitate the creation of curios,
+    or otherwise just improve the game and player experience.
+  - Plugins must use either a pseudo-random identifier (or no identifier) for
+    any analytics data. If an identifier is used, it must not contain or be
+    derived from any personal information and must be resettable at any time by
+    the user purely on the client side. Developers are encouraged to design any
+    analytics systems so that a user cannot be deanonymized even with full
+    access to the raw datasets.
 - Plugins must take care to not expose a list of other plugin users or allow an
   easy way to test whether a specific user is using any plugin. Users may list
   themselves in a public directory if they so choose, but this risk should be
@@ -116,11 +117,14 @@ are certain considerations and requirements that must be met:
   Plugins must connect to servers via DNS name to prevent data from going to
   stray IP addresses.
 
-The appropriateness of data being submitted to backend servers is ultimately
-subjective, and will be handled on a case-by-case basis of the Plugin Approval
-Committee. Factors such as the developer's intent with the data, the necessity
-of the data to collect, and how things are communicated to users will all affect
-what any given plugin would be allowed to collect.
+The appropriateness of data (both essential and non-essential) being submitted
+to backend servers is ultimately subjective, and will be handled on a
+case-by-case basis of the Plugin Approval Committee. Factors such as the
+developer's intent with the data, the necessity of the data to collect, and how
+things are communicated to users will all affect what any given plugin would be
+allowed to collect. Developers planning to submit user data should expect to
+receive feedback on feature design and architecture to help best match the
+spirit of these rules and guidelines.
 
 Plugin developers running backend servers should also consider the following as
 part of their plugin's design. The below bullet points are not rules, but are
