@@ -123,8 +123,8 @@ case-by-case basis of the Plugin Approval Committee. Factors such as the
 developer's intent with the data, the necessity of the data to collect, and how
 things are communicated to users will all affect what any given plugin would be
 allowed to collect. Developers planning to submit user data should expect to
-receive feedback on feature design and architecture to help best match the
-spirit of these rules and guidelines.
+receive feedback on feature design and architecture from both PAC and the
+community as part of the review process.
 
 Plugin developers running backend servers should also consider the following as
 part of their plugin's design. The below bullet points are not rules, but are
