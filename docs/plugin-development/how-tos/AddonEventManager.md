@@ -1,5 +1,3 @@
-<!--lint disable no-file-name-mixed-case-->
-
 # AddonEventManager
 
 This service provides a manager for adding and removing custom events from the

@@ -1,5 +1,3 @@
-<!--lint disable no-file-name-mixed-case-->
-
 # AddonLifecycle
 
 This service provides you very easy access to various states and state changes

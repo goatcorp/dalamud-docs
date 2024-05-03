@@ -52,28 +52,10 @@ votes, it is approved and will appear in the repo. Every team member can veto a
 plugin, blocking it from being merged until the concern is resolved. This hasn't
 happened yet.
 
-The most important guidelines include:
-
-- that the plugin does not interact with the game servers in a way that is:
-  - automatic, as in polling data or making requests without direct interaction
-    from the user
-  - outside of specification, as in allowing the player to do submit things to
-    the server that would not be possible by normal means
-- that the plugin does not augment, alter, or interfere with combat, unless it
-  only provides information about your own party or alliance members that is
-  otherwise available, but represents said information differently.
-  - Note that there are plugins on the repository that do not abide by this
-    rule, but they have been grandfathered. We think that removing them would be
-    stupid, but a lot of these plugins were accepted very early into Dalamud's
-    life and we've learned a lot since then. They probably wouldn't be accepted
-    if they were submitted nowadays.
-- that the plugin does not interfere with Square Enix's monetary interests (i.e.
-  granting access to Mog Station items)
-
-These guidelines exist because we want to improve the experience Square Enix
-provides - not harm it or any other player playing the game. We think that they
-allow for a lot of freedom for plugin developers, while encouraging them to stay
-true to that intent.
+These [guidelines](restrictions#what-am-i-allowed-to-do-in-my-plugin) exist
+because we want to improve the experience Square Enix provides - not harm it or
+any other player playing the game. We think that they allow for a lot of freedom
+for plugin developers, while encouraging them to stay true to that intent.
 
 Technical criteria include a thorough code review, that the plugin works and
 that it does not upload any personal data. All of this can take a while, which
