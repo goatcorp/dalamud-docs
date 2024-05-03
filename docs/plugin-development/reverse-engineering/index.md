@@ -117,9 +117,10 @@ used to automatically generate one.
 
 ### Using Game Functions
 
-There are two major ways that a developer can use a function: creating a hook to
-intercept a function, or creating a delegate to use that function from their
-plugin.
+There are two major ways that a developer can use a function: \[creating a hook]
+(interaction/expanding-game-events.md) to intercept a function, or
+[creating a delegate](interaction/calling-game-code.md) to use that function
+from their plugin.
 
 Developers will use hooks when they want to intercept, modify, cancel, or
 otherwise act upon a function call. For example, a plugin that wants to know
@@ -135,6 +136,19 @@ arguments are known (and will generally be represented as `a3` or similar), or
 an argument may be a pointer to a specific (and potentially unknown!) struct.
 
 ## On Structures and Data Types
+
+Fundamentally, this game is just like any other C or C++ program. This means
+that internal to the game, many data objects are really just classes, which in
+turn got compiled down to a plain C `struct`. One of the key aspects of the
+ClientStructs project is that it leverages C#'s interoperability features to
+translate these C structs (either in part or in full) into usable C# structs -
+which then can make accessing certain aspects of memory far simpler.
+
+For cases where structures do not yet exist (or are not yet known), developers
+can fall back to using pointer math and various C# tricks (e.g. the `Marshal`
+methods) to read information out of the game's memory. Generally, though,
+developers are encouraged to just take the extra time to write out the struct to
+their ability.
 
 Structures are just C structures. We port them into C# sometimes, and we use
 layouts. Pointer math is also a thing. We use intptr/nint a lot.
