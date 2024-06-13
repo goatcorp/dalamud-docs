@@ -144,6 +144,11 @@ experience.
   limits if necessary.
 - Plugins using WebSockets or similar should implement connection retry logic to
   gracefully handle connection interruptions.
+- Plugins and backend servers should implement version checking logic such that
+  outdated clients are properly handled. Plugins and backend servers should also
+  consider implementing MOTD or notification systems to inform users of planned
+  outages, impending upgrades, deprecation notices, maintenance, and similar
+  status updates. 
 
 [lets-encrypt]: https://letsencrypt.org/
 
