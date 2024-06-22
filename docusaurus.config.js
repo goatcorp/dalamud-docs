@@ -24,6 +24,12 @@ const config = {
   onBrokenLinks: 'ignore',
   onBrokenMarkdownLinks: 'warn',
 
+  // Some API comments contain curly brackets \{expression\} which are in the new mdx evaluated as expressions
+  // 'detect' uses mdx for .mdx files and CommonMark
+  markdown: {
+    format: 'detect',
+  },
+
   webpack: {
     jsLoader: (isServer) => ({
       loader: require.resolve('swc-loader'),
