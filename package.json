@@ -2,7 +2,7 @@
   "name": "dalamud-docs",
   "version": "0.0.0",
   "private": true,
-  "packageManager": "pnpm@8.6.2",
+  "packageManager": "pnpm@9.4.0",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "docusaurus": "docusaurus",
