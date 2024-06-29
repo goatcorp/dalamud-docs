@@ -44,8 +44,8 @@ jobs:
           dotnet-version: '8.0.x'
       - name: Install .NET tools
         run: |
-          dotnet tool install -g docfx
-          dotnet tool install -g DocFxMarkdownGen
+          dotnet tool install -g docfx || true
+          dotnet tool install -g DocFxMarkdownGen || true
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
       - name: Setup Docusaurus cache
