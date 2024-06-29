@@ -111,7 +111,7 @@ for (const branch of Object.keys(versions)) {
     });
   } else {
     exec(
-      'bash ./build.sh CompileDalamud -Configuration Release -IsDocsBuild /p:EnableWindowsTargeting=true',
+      'bash ./build.sh CompileDalamud -Configuration Release -IsDocsBuild true /p:EnableWindowsTargeting=true',
       {
         cwd: branchDir,
         ...execOptions,
