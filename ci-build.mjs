@@ -5,7 +5,7 @@ import { fileURLToPath } from 'url';
 import path from 'path';
 
 const mainBranchName = 'master';
-const versionBranchRegex = /^v[\d\.]+$/;
+const versionBranchRegex = /^api[\S]+$/;
 
 // shim for __dirname in ESM
 const __dirname = path.resolve(path.dirname(fileURLToPath(import.meta.url)));
