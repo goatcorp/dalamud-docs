@@ -104,14 +104,14 @@ for (const branch of Object.keys(versions)) {
 
   // build Dalamud
   if (isWindows) {
-    exec('.\\build.ps1 CompileDalamud -Configuration Release --is-docs-build', {
+    exec('.\\build.ps1 CompileDalamud -Configuration Release -IsDocsBuild', {
       cwd: branchDir,
       shell: 'pwsh.exe',
       ...execOptions,
     });
   } else {
     exec(
-      'bash ./build.sh CompileDalamud -Configuration Release --is-docs-build /p:EnableWindowsTargeting=true',
+      'bash ./build.sh CompileDalamud -Configuration Release -IsDocsBuild',
       {
         cwd: branchDir,
         ...execOptions,
