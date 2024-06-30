@@ -1,13 +1,13 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
-
-const lightCodeTheme = require('prism-react-renderer/themes/github');
-const darkCodeTheme = require('prism-react-renderer/themes/dracula');
+import { themes } from 'prism-react-renderer';
+const lightCodeTheme = themes.github;
+const darkCodeTheme = themes.dracula;
 
 const isDev = process.env.NODE_ENV === 'development';
 
 /** @type {import('@docusaurus/types').Config} */
-const config = {
+export default {
   title: 'Dalamud',
   tagline:
     'Documentation for the Dalamud plugin framework for FINAL FANTASY XIV.',
@@ -23,6 +23,12 @@ const config = {
   // broken links check can cause the build to hang for a long time
   onBrokenLinks: 'ignore',
   onBrokenMarkdownLinks: 'warn',
+
+  // Some API comments contain curly brackets \{expression\} which are in the new mdx evaluated as expressions
+  // 'detect' uses mdx for .mdx files and CommonMark
+  markdown: {
+    format: 'detect',
+  },
 
   webpack: {
     jsLoader: (isServer) => ({
@@ -159,7 +165,7 @@ const config = {
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
-        additionalLanguages: ['csharp'],
+        additionalLanguages: ['csharp', 'bash'],
       },
       colorMode: {
         defaultMode: 'dark',
@@ -173,5 +179,3 @@ const config = {
       },
     },
 };
-
-module.exports = config;
