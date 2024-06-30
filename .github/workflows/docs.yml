@@ -21,7 +21,7 @@ env:
 
 jobs:
   deploy:
-    runs-on: docs
+    runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -46,8 +46,8 @@ jobs:
             6.0.x 
       - name: Install .NET tools
         run: |
-          dotnet tool install -g docfx || true
-          dotnet tool install -g DocFxMarkdownGen || true
+          dotnet tool install -g docfx
+          dotnet tool install -g DocFxMarkdownGen
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
       - name: Setup Docusaurus cache
