@@ -29,7 +29,7 @@ game-based interactions:
 
 Most plugins will stay firmly in the realm of stages 1 and 2, with stage 3 being
 used for novel concepts that have yet to be
-[reverse engineered](reverse-engineering.md) or fully understood. Where
+[reverse engineered](../reverse-engineering/index.md) or fully understood. Where
 possible, plugin developers who do reverse engineering as part of their plugin
 development are encouraged to contribute their findings back to the Client
 Structs project, so that other developers may use them in the future.
