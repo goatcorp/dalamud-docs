@@ -1,6 +1,6 @@
 # Dalamud Documentation
 
-This website is built using [Docusaurus 2](https://docusaurus.io/), a modern
+This website is built using [Docusaurus 3](https://docusaurus.io/), a modern
 static website generator.
 
 ## Installation
@@ -30,7 +30,7 @@ docker compose up
 ## Build
 
 ```shell
-pnpm build
+pnpm build --dev
 ```
 
 This command generates static content into the `build` directory and can be

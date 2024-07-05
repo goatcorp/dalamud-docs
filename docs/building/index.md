@@ -120,7 +120,7 @@ injector with the following arguments:
 .\Dalamud.Injector.exe launch -f
 ```
 
-:::caution
+:::warning
 
 If your game is installed in a non-standard location, you must use the `-g`
 argument to pass the full path to `ffxiv_dx11.exe`, e.g.:

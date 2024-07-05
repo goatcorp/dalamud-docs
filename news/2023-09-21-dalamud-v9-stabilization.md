@@ -20,7 +20,7 @@ Please [check the full list of changes here](https://dalamud.dev/versions/v9/).
 
 One major change that you will encounter is that all of the services you've
 already been using are now accessed via interfaces, and not directly via the
-implementing type. <br> We decided to go this route, as it gives us the
+implementing type. <br/> We decided to go this route, as it gives us the
 opportunity to slowly switch all services over to plugin-specific services -
 which know what resources are allocated to what plugin, and allows us to track
 and dispose of them in case something goes wrong - and can enhance some Dalamud
@@ -36,11 +36,11 @@ services you're using with I. That's it!
 ### A note about ImGui
 
 I want to encourage everyone to have a look at the wonderful new ImRaii APIs we
-introduced into the main Dalamud assembly via `Dalamud.Interface.Utility`! <br>
+introduced into the main Dalamud assembly via `Dalamud.Interface.Utility`! <br/>
 They make it a lot easier to prevent crashes your plugin may cause due to e.g.
 unhandled exceptions, and are just all-around more convenient to use, in my
 opinion. You also will never again forget to pop a color, or that children
-always need to be ended. <br> There also are some other convenience APIs, for
+always need to be ended. <br/> There also are some other convenience APIs, for
 example, to interact with tables.
 
 Another thing you might want to look into, if you aren't already, is the Dalamud
@@ -70,4 +70,4 @@ not working correctly, please reach out to us via
 [#dalamud-dev](https://discord.com/channels/581875019861328007/860813266468732938)
 channel on our Discord server.
 
-Thanks for sticking around, and have a great autumn! <br> ~goat
+Thanks for sticking around, and have a great autumn! <br/> ~goat
