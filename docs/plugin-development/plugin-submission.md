@@ -60,8 +60,8 @@ for plugin developers, while encouraging them to stay true to that intent.
 Technical criteria include a thorough code review, that the plugin works and
 that it does not upload any personal data. All of this can take a while, which
 is why it's not uncommon for a new plugin to sit in the queue for more than a
-week - all the team members are doing this in their free time, so they might
-not get to it before then.
+week - all the team members are doing this in their free time, so they might not
+get to it before then.
 
 We also require all new plugins to go through the plugin testing track
 beforehand, which distributes the plugin to testing users before it goes out to
