@@ -1,6 +1,5 @@
 label: Interacting With The Game
 position: 3
 link:
-  type: generated-index
-  title: Interacting With The Game
-  description: Learn how to interact and tie into the game in a richer fashion than just showing a window.
+  type: doc
+  id: index
