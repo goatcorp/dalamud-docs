@@ -16,7 +16,8 @@ maintained, the others are updated as required:
 - [@lmcintyre/PluginTemplate](https://github.com/lmcintyre/PluginTemplate)
 
 To distribute a plugin, it needs to be packaged correctly. This can be done
-manually or [with DalamudPackager](https://github.com/goatcorp/DalamudPackager).
+manually or [with DalamudPackager](https://github.com/goatcorp/DalamudPackager)
+– see [Setting Plugin Metadata](plugin-metadata) for more details.
 
 When your plugin is ready for testing/release, you should make a pull request to
 the [DalamudPluginsD17](https://github.com/goatcorp/DalamudPluginsD17) repo.
