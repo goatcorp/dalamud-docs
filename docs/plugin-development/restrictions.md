@@ -28,9 +28,9 @@ Please make sure that, as much as possible:
 - your plugin does not have a hard dependency on any plugin that violates the
   Plugin Guidelines
 
-If you are not sure about whether or not your plugin will be allowed, _please_
-contact us before you start work on it. We don't want to have to turn you down
-after you've already done the work!
+If you are not sure whether your plugin will be allowed, _please_ contact us 
+before you start work on it. We don't want to have to turn you down after 
+you've already done the work!
 
 Plugins that violate these rules will not be accepted into the Dalamud plugin
 repository, and you will not receive support from the Dalamud community.
