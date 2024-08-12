@@ -25,7 +25,7 @@ environment and building Dalamud.
 - [Visual Studio 2022](https://visualstudio.microsoft.com/vs/)
   - Both the "Desktop Development with C++" and "Desktop Development with .NET"
     workloads are required.
-- [.NET 7.0 SDK](https://dotnet.microsoft.com/download/dotnet/7.0)
+- [.NET 8.0 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
   - This is included with Visual Studio 2022, but you can also install it
     separately if desired.
 - [Git](https://git-scm.com/downloads)
