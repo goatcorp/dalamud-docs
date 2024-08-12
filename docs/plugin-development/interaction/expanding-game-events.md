@@ -13,7 +13,7 @@ similar to the following snippet:
 
 ```csharp
 public class HealthWatcher : IDisposable {
-    private int? _lastHealth;
+    private uint _lastHealth;
 
     public HealthWatcher() {
         Services.Framework.Update += this.OnFrameworkTick;
@@ -24,14 +24,16 @@ public class HealthWatcher : IDisposable {
         Services.Framework.Update -= this.OnFrameworkTick;
     }
 
-    private void OnFrameworkTick() {
-        var player = Services.ClientState.LocalPlayer;
+    private void OnFrameworkTick(IFramework framework) {
+        var player = Injections.ClientState.LocalPlayer;
 
         if (player == null) return; // Player is not logged in, nothing we can do.
-        if (player.CurrentHp == this._lastHealth) return;
+        var currentHealth = player.CurrentHp;
+        
+        if (currentHealth == this._lastHealth) return;  // Nothing happened we care about, return.
 
         this._lastHealth = currentHealth;
-        PluginLog.Information("The player's health has updated to {health}.", currentHealth);
+        Services.PluginLog.Information("The player's health has updated to {health}.", currentHealth);
     }
 }
 ```
@@ -88,14 +90,15 @@ affair pretty simple. For example, a plugin that wants to be informed when any
 macro changes might hook RaptureMacroModule's `SetSavePendingFlag`:
 
 ```csharp
-public class MyHook : IDisposable {
-    private delegate void SetSavePendingDelegate(RaptureMacroModule* self, byte needsSave, uint set);
+// Grab the delegate from ClientStructs rather than declaring it ourselves.
+using SetSavePendingDelegate = RaptureMacroModule.Delegates.SetSavePendingFlag;
 
+public unsafe class MyHook : IDisposable {
     private readonly Hook<SetSavePendingDelegate>? _macroUpdateHook;
 
     public MyHook() {
-        this._macroUpdateHook = Services.GameInteropProvider.HookFromAddress<MacroUpdate>(
-            (nint) RaptureMacroModule.Addresses.SetSavePendingFlag.Value,
+        this._macroUpdateHook = Services.GameInteropProvider.HookFromAddress<SetSavePendingDelegate>(
+            RaptureMacroModule.MemberFunctionPointers.SetSavePendingFlag,
             this.DetourSetSavePending
         );
 
@@ -103,19 +106,23 @@ public class MyHook : IDisposable {
     }
 
     public void Dispose() {
-        this._macroUpdateHook.Dispose();
+        // While this *likely* wouldn't be null, it's still good practice to use nullability checks just in case
+        // this wasn't initialized somehow.
+        this._macroUpdateHook?.Dispose();
     }
 
-    private nint DetourSetSavePending(RaptureMacroModule* self, byte needsSave, uint set) {
-        PluginLog.Information("A macro save happened!");
+    private void DetourSetSavePending(RaptureMacroModule* self, bool needsSave, uint set) {
+        Services.PluginLog.Information("A macro save happened!");
 
         try {
             // your plugin logic goes here.
         } catch (Exception ex) {
-            PluginLog.Error(ex, "An error occured when handling a macro save event.");
+            Services.PluginLog.Error(ex, "An error occured when handling a macro save event.");
         }
 
-        return this._macroUpdateHook.Original(self, needsSave, set);
+        // We're intentionally suppressing nullability checks. You can only get to this code if the hook exists.
+        // There's no way this can ever be null.
+        this._macroUpdateHook!.Original(self, needsSave, set);
     }
 }
 ```
@@ -132,15 +139,17 @@ This can also be done with a direct signature via `IGameInteropProvider`, if the
 function being hooked is not within Client Structs:
 
 ```csharp
-public class MySiggedHook : IDisposable {
-    private delegate nint SetSavePendingDelegate(RaptureMacroModule* self, byte needsSave, uint set);
+public unsafe class MySiggedHook : IDisposable {
+    // This method isn't in CS (in theory), so we need to declare our own delegate.
+    private delegate void SetSavePendingDelegate(RaptureMacroModule* self, bool needsSave, uint set);
 
     [Signature("45 85 C0 75 04 88 51 3D", DetourName = nameof(DetourSetSavePending))]
     private Hook<SetSavePendingDelegate>? _macroUpdateHook;
 
-    public MyHook() {
+    public MySiggedHook() {
         Services.GameInteropProvider.InitializeFromAttributes(this);
-
+        
+        // Nullable because this might not have been initialized from IFA above, e.g. the sig was invalid.
         this._macroUpdateHook?.Enable();
     }
 
@@ -148,27 +157,28 @@ public class MySiggedHook : IDisposable {
         this._macroUpdateHook?.Dispose();
     }
 
-    private nint DetourSetSavePending(RaptureMacroModule* self, byte needsSave, uint set) {
-        PluginLog.Information("A macro save happened!");
+    private void DetourSetSavePending(RaptureMacroModule* self, bool needsSave, uint set) {
+        Services.PluginLog.Information("A macro save happened!");
 
         try {
             // your plugin logic goes here.
         } catch (Exception ex) {
-            PluginLog.Error(ex, "An error occured when handling a macro save event.");
+            Injections.PluginLog.Error(ex, "An error occured when handling a macro save event.");
         }
 
-        return this._macroUpdateHook!.Original(self, needsSave, set);
+        this._macroUpdateHook!.Original(self, needsSave, set);
     }
 }
 ```
 
 Both of these examples more or less follow the same pattern, with only a few
-semantic differences depending on how the actual hook is created. In all cases,
-however, the `delegate` representing the method in question must be defined
-properly. This delegate _must_ have the expected return type, as well as any
-expected arguments, and the detour method _must_ match the delegate
-appropriately. For information about what delegates are and how they work,
-scroll back up.
+semantic differences depending on how the actual hook is created. Pay special
+attention to the `delegate` representing the method in question. When
+interacting with the ClientStructs-backed method, we use the ClientStructs
+declared delegate in order to prevent duplicating code and definitions. For the
+signature variant, however, we need to declare our own delegate. In all cases,
+the delegate used _must_ have the expected return type and arguments, and the
+detour method _must_ match the delegate appropriately.
 
 Like polling, hooks must be properly disposed when they are no longer needed. If
 they are not, the detour function will continue to run in place of the hooked
