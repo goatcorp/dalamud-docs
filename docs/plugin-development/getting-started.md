@@ -7,10 +7,10 @@ that your plugin is approved into the official plugin repository, and to
 minimise the risk of action by Square Enix. You can read more about this
 [here](restrictions#why-do-you-discourage-certain-types-of-plugins).
 
-We recommend that you start by cloning the
-[`SamplePlugin` repository][sample-plugin] and then customizing it to your
-specific requirements. This plugin template contains many common settings as
-well as frequently-used sample code to help bootstrap plugin creation.
+We recommend that you start by cloning the [`SamplePlugin`
+repository][sample-plugin] and then customizing it to your specific
+requirements. This plugin template contains many common settings as well as
+frequently-used sample code to help bootstrap plugin creation.
 
 To distribute a plugin, it needs to be packaged correctly. This can be done
 manually or [with DalamudPackager](https://github.com/goatcorp/DalamudPackager).
