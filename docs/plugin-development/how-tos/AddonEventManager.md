@@ -27,8 +27,8 @@ public interface IAddonEventManager
 
 ## Node and Components
 
-_You must register a `Node` for events, you can not register a `Component`,
-attempting to register the address of a `Component` will result in a crash._
+You must register a `Node` for events, you can not register a `Component`,
+attempting to register the address of a `Component` will result in a crash.
 
 Valid Node types will have their type names ending in `Node`.
 

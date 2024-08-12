@@ -25,11 +25,11 @@ public class HealthWatcher : IDisposable {
     }
 
     private void OnFrameworkTick(IFramework framework) {
-        var player = Injections.ClientState.LocalPlayer;
+        var player = Services.ClientState.LocalPlayer;
 
         if (player == null) return; // Player is not logged in, nothing we can do.
         var currentHealth = player.CurrentHp;
-        
+
         if (currentHealth == this._lastHealth) return;  // Nothing happened we care about, return.
 
         this._lastHealth = currentHealth;
@@ -148,7 +148,7 @@ public unsafe class MySiggedHook : IDisposable {
 
     public MySiggedHook() {
         Services.GameInteropProvider.InitializeFromAttributes(this);
-        
+
         // Nullable because this might not have been initialized from IFA above, e.g. the sig was invalid.
         this._macroUpdateHook?.Enable();
     }
@@ -163,7 +163,7 @@ public unsafe class MySiggedHook : IDisposable {
         try {
             // your plugin logic goes here.
         } catch (Exception ex) {
-            Injections.PluginLog.Error(ex, "An error occured when handling a macro save event.");
+            Services.PluginLog.Error(ex, "An error occured when handling a macro save event.");
         }
 
         this._macroUpdateHook!.Original(self, needsSave, set);
