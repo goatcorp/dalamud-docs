@@ -1,54 +1,45 @@
-# Restrictions
+# Plugin Restrictions
 
-## What am I allowed to do in my plugin?
-
-Dalamud plugin development, by its nature, interferes with the game's
-functioning and changes the experience as intended by Square Enix. This makes it
-very important to ensure that your plugin does not do anything that a human
-player could not do; Dalamud plugins should enhance the experience, not
-radically alter it.
+Dalamud plugin development, by its nature, interferes with the game's functioning and changes the experience as 
+intended by Square Enix. This makes it very important to ensure that your plugin does not do anything that a human
+player could not do; Dalamud plugins should enhance the experience, not radically alter it.
 
 Please make sure that, as much as possible:
 
 - your plugin does not interact with the game servers in a way that is:
-  - automatic, as in polling data or making requests without direct interaction
-    from the user
-  - outside of specification, as in allowing the player to do or submit things
-    to the server that would not be possible by normal means
+    - automatic, as in polling data or making requests without direct interaction
+      from the user
+    - outside of specification, as in allowing the player to do or submit things
+      to the server that would not be possible by normal means
 - your plugin does not augment, alter, or interfere with combat, unless it only
   provides information about your own party or alliance members that is
   otherwise available, but represents said information differently.
-  - Note that there are plugins on the repository that do not abide by this
-    rule, but they have been grandfathered and similar plugins will not be
-    allowed.
+    - Note that there are plugins on the repository that do not abide by this
+      rule, but they have been grandfathered and similar plugins will not be
+      allowed.
 - your plugin does not interfere with Square Enix's monetary interests (i.e.
   granting access to Mog Station items)
 - your plugin does not provide parsing, raid logging, DPS meters, or similar
   (i.e. information beyond what is traditionally available to players)
 - your plugin does not have a hard dependency on any plugin that violates the
-  Plugin Guidelines
+  Plugin Guidelines.
 
-If you are not sure whether your plugin will be allowed, _please_ contact us
-before you start work on it. We don't want to have to turn you down after you've
-already done the work!
+Certain plugins may be subject to certain additional constraints or review based on their featureset, potential
+impact to the ecosystem, and other factors. [Plugin review is a subjective process](./submission.md) and many factors go
+into making a decision for any specific plugin.
 
-Plugins that violate these rules will not be accepted into the Dalamud plugin
-repository, and you will not receive support from the Dalamud community.
+## I'm not sure if my plugin idea violates the guidelines!
 
-## Are there any technical decisions I should consider making?
+If you are not sure whether your plugin will be allowed, _please_ contact us in the
+[Dalamud Discord](https://discord.gg/holdshift) before you start work on it. Members of the Plugin Approval Committee or
+Dalamud staff will evaluate your idea and let you know if there are any risk factors that may put it in breach of one
+of our guidelines. We *highly* suggest you ask us to weigh in on an idea before starting to work on it - it's not a 
+good feeling for anyone when we need to reject a completed plugin that breaks our rules.
 
-There are many potential technical decisions that you should consider when
-developing a plugin. Here are a few examples:
-
-- For regular windows, like settings and utility windows, you should use the
-  [Dalamud Windowing API](https://dalamud.dev/api/Dalamud.Interface.Windowing/).
-  It enhances windows with a few nice features, like integration into the native
-  UI closing-order, pinning, and opacity controls. If it looks like a window, it
-  should use the windowing API.
-- If interacting with game data, we strongly recommend using
-  [Lumina](https://github.com/NotAdam/Lumina) over XIVAPI. Lumina uses your
-  local game files, which will always be up-to-date and accurate, and is much
-  faster than making requests to XIVAPI.
+It's not particularly uncommon for a newly-submitted plugin to unintentionally violate one or more guidelines. When
+this happens, the Plugin Approval Committee will leave detailed commentary explaining the nature of the violation as
+well as possible remediations in your plugin submission. We ultimately *want* your plugin to be on our repository, so
+we are very willing to work with developers to find a solution or workaround that makes everyone happy.
 
 ## Why do you discourage certain types of plugins?
 
@@ -72,21 +63,7 @@ developing a plugin. Here are a few examples:
 > work, but I would like to ask you to consider and empathize with my opinion
 > when creating software that depends on Dalamud.
 
-- [goat](https://github.com/goaaats), the lead developer of XIVLauncher/Dalamud
-
-## Are there any performance constraints to be aware of?
-
-You should generally aim to not impact game performance too much as that can
-degrade the experience for the player and cause other issues. A good place to
-start debugging performance issues is through the Plugin Statistics window,
-which can be found through Plugins > Open Plugin Stats in the dev menu
-(`/xldev`).
-
-## How are plugins reviewed and approved?
-
-[This page documents our plugin submission process](plugin-submission), and the
-stringent review that is applied to each new submission. Feel free to join the
-Discord and ask for more details if required.
+\- [goat](https://github.com/goaaats), the lead developer of XIVLauncher/Dalamud
 
 ## I don't like plugin X, can you block it or delete it?
 
@@ -104,7 +81,7 @@ rules, there is very little we can do as a project to prevent this.
   we are not immune to deception or politics.
 - Most ready-to-use APIs offered by Dalamud itself are read-only and don't allow
   changing the actual state of the game. Plugins run on your PC like any other
-  program and are not "sandboxed", so they have free reign to interact with the
+  program and are not "sandboxed", so they have free rein to interact with the
   game in any way they please with their own code.
 - Limiting what plugins can do is a very difficult technical problem, and might
   lead to a lot of very popular plugins not being able to do what they do
