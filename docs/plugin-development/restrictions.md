@@ -99,14 +99,19 @@ though there are certain considerations and requirements that must be met:
     or via a global Dalamud setting.
   - Additional data collection must be done for the public interest. That is,
     the extra information should go back to improvement of the plugin, provide
-    the public with statistics or dashboards, facilitate the creation of curios,
-    or otherwise just improve the game and player experience.
+    the public with statistics or dashboards, or otherwise improve or augment
+    the game and player experience.
   - Plugins must use a pseudo-random identifier (or no identifier) for any
     analytics data. If an identifier is used, it must not contain or be derived
     from any personal information and must be resettable at any time by the user
     purely on the client side. Developers are encouraged to design any analytics
     systems so that a user cannot be deanonymized even with full access to the
     raw datasets.
+  - Collected data must be topical to the plugin in question. For example, a
+    plugin providing Party Finder features may not record information about
+    which face type is the most popular among its users, but _may_ collect
+    analytics to find which face type is most likely to create Ultimate clear
+    parties.
 - Plugins must take care to not expose a list of other plugin users or allow an
   easy way to test whether a specific user is using any plugin. Users may list
   themselves in a public directory if they so choose, but this risk should be
@@ -148,7 +153,7 @@ experience.
   outdated clients are properly handled. Plugins and backend servers should also
   consider implementing MOTD or notification systems to inform users of planned
   outages, impending upgrades, deprecation notices, maintenance, and similar
-  status updates. 
+  status updates.
 
 [lets-encrypt]: https://letsencrypt.org/
 
