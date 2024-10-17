@@ -67,7 +67,7 @@ private void OnPostSetup(AddonEvent type, AddonArgs args)
 
 private void TooltipHandler(AddonEventType type, IntPtr addon, IntPtr node)
 {
-    var addonId = ((AtkUnitBase*) addon)->ID;
+    var addonId = ((AtkUnitBase*) addon)->DrawOrderIndex;
 
     switch (type)
     {
