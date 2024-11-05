@@ -23,7 +23,7 @@ Lumina 5 provides some new types that are designed specificially for subrows in 
 
 ## LazyRow is now RowRef
 
-The `LazyRow<T>` and `LazyRow` classes have been split into three separate structs: `RowRef<T>`, `SubrowRef<T>`, and `RowRef`. `RowRef<T>` is used to access a referenced row in a particular sheet, while `SubrowRef<T>` is used to access a collection of all the referenced subrows of a certain row. The name change was made to better reflect the purpose of these structs, as there is no lazy evaluation happening anymore (remember that all row types are trivially constructed on access).
+The `LazyRow<T>` and `LazyRow` classes have been split into three separate structs: `RowRef<T>`, `SubrowRef<T>`, and `RowRef`. `RowRef<T>` is used to access a referenced row in a particular sheet, while `SubrowRef<T>` is used to access a collection of all the referenced subrows of a certain row. The name change was made to better reflect the purpose of these structs, as there is no lazy evaluation happening anymore (recall that all row types are trivially constructed on access).
 
 The API for these types have also changed slightly, partly as a way to conform to the new row value semantics:
 
@@ -138,7 +138,7 @@ The `IExcelSubrow<T>` interface is used to denote that this is a subrow type. Th
 using Lumina.Excel;
 
 [Sheet("BankaCraftWorksSupply", 0x444A6117)]
-readonly public unsafe struct BankaCraftWorksSupply(ExcelPage page, uint offset, uint row) : IExcelRow<BankaCraftWorksSupply>
+public readonly unsafe struct BankaCraftWorksSupply(ExcelPage page, uint offset, uint row) : IExcelRow<BankaCraftWorksSupply>
 {
     public uint RowId => row;
 
@@ -186,6 +186,36 @@ public readonly RowRef UnlockLink =>
 ```
 For more information on how to use `RowRef.GetFirstValidRowOrUntyped`, see the [additional changes](#using-rowrefcreatetypehash-to-improve-performance-for-getfirstvalidroworuntyped) section.
 
+## Reading Columns
+
+Reading columns is now a little bit different. Since column definitions are decoupled from the struct definiton itself, you should now use `RawRow` and `RawSubrow` to help with reading columns. These are helper skeleton types to dynamically read any data type from any particular column of a row.
+
+Here is an example of using `RawRow` to create an `IExcelRow`:
+<details>
+<summary>Code</summary>
+
+```csharp
+[Sheet("GatheringType")]
+public readonly struct GatheringType(RawRow row) : IExcelRow<GatheringType>
+{
+    public uint RowId => row.RowId;
+
+    public readonly ReadOnlySeString Name => row.ReadStringColumn(0);
+    public readonly int IconMain => row.ReadInt32Column(1);
+    public readonly int IconOff => row.ReadInt32Column(2);
+
+    static GatheringType IExcelRow<GatheringType>.Create( ExcelPage page, uint offset, uint row ) =>
+        new(new(page, offset, row));
+}
+```
+</details>
+
+You can also just use `RawRow` as is, as well:
+```csharp
+var sheet = DataManager.GameData.GetExcelSheet<RawRow>(name: "GatheringType")!;
+var name = sheet.GetRow(1).ReadStringColumn(0); // Quarrying
+```
+
 ## Additional Changes
 
 ### Transparent RSV resolution
@@ -200,4 +230,4 @@ Dalamud is only aware of RSVs that the game has already loaded. RSVs that haven'
 
 ### Using `RowRef.CreateTypeHash` to improve performance for `GetFirstValidRowOrUntyped`
 
-As a side effect of removing all caching, accessing properties that use `GetFirstValidRowOrUntyped` can be ~3x slower than before. To mitigate this, you can use `RowRef.CreateTypeHash` to create a unique hash of the list of types you want to access. This hash is then used to quickly resolve the referenced sheet. This type of optimization isn't 100% necessary, but you should consider using it if you're experiencing performance issues or using a code generator to create row parsing code.
+As a side effect of removing all caching, accessing properties that use `GetFirstValidRowOrUntyped` can be ~3x slower than before. To mitigate this, you can use `RowRef.CreateTypeHash` to create a unique hash of the list of types you want to access. This hash is then used to quickly resolve the referenced sheet. This type of optimization isn't required, but you should consider using it if you're experiencing performance issues or if you're using a code generator to create row parsing code.
