@@ -25,6 +25,9 @@ environment and building Dalamud.
 - [Visual Studio 2022](https://visualstudio.microsoft.com/vs/)
   - Both the "Desktop Development with C++" and "Desktop Development with .NET"
     workloads are required.
+  - We generally work with the latest versions of Visual Studio and MSVC. If you
+    are seeing build errors in generators or C++ projects, even if you use Rider
+    or another IDE, **make sure that Visual Studio is fully up to date**.
 - [.NET 8.0 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
   - This is included with Visual Studio 2022, but you can also install it
     separately if desired.
