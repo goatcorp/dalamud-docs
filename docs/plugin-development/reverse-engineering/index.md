@@ -22,7 +22,7 @@ useful information present in it. To this end, the community has created and
 maintained a project known as
 [FFXIVClientStructs](https://github.com/aers/FFXIVClientStructs), which provides
 a general source of information on the game internals and provides set of C#
-bindings that effectively allow plugins to use the game as a library. However,
+bindings that effectively allow plugins to use the game as a library. Docs can be found [here](https://ffxiv.wildwolf.dev) however,
 this documentation is incomplete and plugin developers will inevitably need to
 reverse engineer the game itself to discover new things. Which leads us cleanly
 to...
