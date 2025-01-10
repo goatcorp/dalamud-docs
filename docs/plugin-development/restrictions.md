@@ -188,7 +188,7 @@ rules, there is very little we can do as a project to prevent this.
   to the community that uses Dalamud.
 
 If you have a problem with a plugin on the official repository, we recommend
-reading [our plugin submission guidelines](https://dalamud.dev/plugin-development/plugin-submission) to get some
+reading [our plugin submission guidelines](./plugin-submission.md) to get some
 background on how we decide if a plugin should be on the official repo. If you
 still think that the plugin should not be there, feel free to reach out to a
 member of our team via Discord.
