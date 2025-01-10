@@ -159,7 +159,7 @@ experience.
 
 ## How are plugins reviewed and approved?
 
-[This page documents our plugin submission process](plugin-submission), and the
+[This page documents our plugin submission process](./plugin-submission.md), and the
 stringent review that is applied to each new submission. Feel free to join the
 Discord and ask for more details if required.
 
@@ -188,7 +188,7 @@ rules, there is very little we can do as a project to prevent this.
   to the community that uses Dalamud.
 
 If you have a problem with a plugin on the official repository, we recommend
-reading [our plugin submission guidelines](plugin-submission) to get some
+reading [our plugin submission guidelines](./plugin-submission.md) to get some
 background on how we decide if a plugin should be on the official repo. If you
 still think that the plugin should not be there, feel free to reach out to a
 member of our team via Discord.
@@ -197,7 +197,7 @@ member of our team via Discord.
 
 There are various reasons for why a plugin might not be on the official repo.
 
-- It doesn't conform to our [rules and guidelines](plugin-submission).
+- It doesn't conform to our [rules and guidelines](./plugin-submission.md).
 - It only works in conjunction with another custom repo plugin. This doesn't
   necessarily mean that the plugin in question, or the plugin it depends on,
   violate our rules and guidelines.
