@@ -15,3 +15,9 @@ kazwolfe:
   name: KazWolfe
   title: Dalamud maintainer
   image_url: https://github.com/kazwolfe.png
+
+maintainers:
+  name: Dalamud Maintainers
+  title:
+  image_url: https://raw.githubusercontent.com/goatcorp/DalamudAssets/refs/heads/master/UIRes/tsmLogo.png
+
