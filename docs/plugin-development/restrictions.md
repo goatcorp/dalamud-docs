@@ -159,7 +159,7 @@ experience.
 
 ## How are plugins reviewed and approved?
 
-[This page documents our plugin submission process](https://dalamud.dev/plugin-development/plugin-submission), and the
+[This page documents our plugin submission process](./plugin-submission.md), and the
 stringent review that is applied to each new submission. Feel free to join the
 Discord and ask for more details if required.
 
