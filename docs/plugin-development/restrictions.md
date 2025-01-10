@@ -197,7 +197,7 @@ member of our team via Discord.
 
 There are various reasons for why a plugin might not be on the official repo.
 
-- It doesn't conform to our [rules and guidelines](https://dalamud.dev/plugin-development/plugin-submission).
+- It doesn't conform to our [rules and guidelines](./plugin-submission.md).
 - It only works in conjunction with another custom repo plugin. This doesn't
   necessarily mean that the plugin in question, or the plugin it depends on,
   violate our rules and guidelines.
