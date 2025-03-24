@@ -78,3 +78,6 @@ The `.targets` method of building is also deprecated. Migrate by:
 ```xml
 <Import Project="Dalamud.Plugin.Bootstrap.targets"/>
 ```
+3. If you haven't already, Find the line `<Project Sdk="Microsoft.NET.Sdk">` in this file and replace it with: `<Project Sdk="Dalamud.NET.SDK/12.0.0">` or the current SDK version.
+
+You're done!
