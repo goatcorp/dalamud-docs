@@ -11,7 +11,7 @@ Migration is easy and the number of steps you must take depend on how old your p
 1. Remove the DalamudPackager reference from your project.
 2. Open your `.csproj` file (Right-click -> `Edit Project File` if Visual Studio)
 3. Find the line `<Project Sdk="Microsoft.NET.Sdk">` in this file.
-4. Replace it with: `<Project Sdk="Dalamud.NET.SDK/12.0.1">` or the [current SDK version](https://www.nuget.org/packages/Dalamud.NET.Sdk) on nuget.
+4. Replace it with: `<Project Sdk="Dalamud.NET.SDK/12.0.2">` or the [current SDK version](https://www.nuget.org/packages/Dalamud.NET.Sdk) on nuget.
 5. Locate the defined references for the various dalamud libraries and remove them as they're already included in the SDK (unless you are specifically overriding one or more for your own use cases). They will usually look like this in your `.csproj`:
 
 ```xml
@@ -62,6 +62,6 @@ The `.targets` method of building is also deprecated. Migrate by:
 ```xml
 <Import Project="Dalamud.Plugin.Bootstrap.targets"/>
 ```
-3. If you haven't already, Find the line `<Project Sdk="Microsoft.NET.Sdk">` in this file and replace it with: `<Project Sdk="Dalamud.NET.SDK/12.0.1">` or the [current SDK version](https://www.nuget.org/packages/Dalamud.NET.Sdk).
+3. If you haven't already, Find the line `<Project Sdk="Microsoft.NET.Sdk">` in this file and replace it with: `<Project Sdk="Dalamud.NET.SDK/12.0.2">` or the [current SDK version](https://www.nuget.org/packages/Dalamud.NET.Sdk).
 
 You're done!
