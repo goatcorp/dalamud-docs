@@ -18,6 +18,10 @@ Please make sure that, as much as possible:
 - your plugin does not augment, alter, or interfere with combat, unless it only
   provides information about your own party or alliance members that is
   otherwise available, but represents said information differently.
+  - **Reach out to the approval team before submitting a plugin that fits
+    the description above.** We do not accept submissions of combat plugins that
+    were not previously communicated, as we want to avoid having people do the
+    work of creating a submission only to have it be rejected.
   - Note that there are plugins on the repository that do not abide by this
     rule, but they have been grandfathered and similar plugins will not be
     allowed.
@@ -25,6 +29,8 @@ Please make sure that, as much as possible:
   granting access to Mog Station items)
 - your plugin does not provide parsing, raid logging, DPS meters, or similar
   (i.e. information beyond what is traditionally available to players)
+- your plugin does not collect account IDs of player characters beyond your own
+  in any form, regardless of the intended use or whether it is exposed to users
 - your plugin does not have a hard dependency on any plugin that violates the
   Plugin Guidelines
 
