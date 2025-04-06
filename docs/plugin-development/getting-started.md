@@ -13,7 +13,8 @@ requirements. This plugin template contains many common settings as well as
 frequently-used sample code to help bootstrap plugin creation.
 
 To distribute a plugin, it needs to be packaged correctly. This can be done
-manually or [with DalamudPackager](https://github.com/goatcorp/DalamudPackager).
+manually or [with DalamudPackager](https://github.com/goatcorp/DalamudPackager)
+– see [Setting Plugin Metadata](plugin-metadata) for more details.
 
 When your plugin is ready for testing/release, you should make a pull request to
 the [DalamudPluginsD17](https://github.com/goatcorp/DalamudPluginsD17) repo.
