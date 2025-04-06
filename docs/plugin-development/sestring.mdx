@@ -1,5 +1,8 @@
 ---
 title: SeString
+description:
+  A custom null-terminated string implementation, which allows strings to carry
+  binary payloads.
 ---
 
 import Tabs from '@theme/Tabs';
@@ -9,9 +12,6 @@ export const LUMINA_COMMIT = 'd0adbcf1';
 export const DALAMUD_COMMIT = '97b01d69';
 
 # SeString
-
-{/* TODO: SeStringBuilder object pool */}
-{/* TODO: section about sheet redirects */}
 
 The game uses a custom null-terminated string implementation, which allows
 strings to carry binary payloads.
@@ -1188,7 +1188,7 @@ href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/T
 
 ```cs
 var example = new SeStringBuilder()
-  .Append("15 in hexadecimal is ")
+  .Append("The damage was over ")
   .BeginMacro(MacroCode.Kilo)
     .AppendIntExpression(9000)
     .AppendStringExpression(".")
@@ -1284,7 +1284,7 @@ Expressions:
 <details>
 <summary>Example</summary>
 
-`The limit break is filled up to <num(1337,100,.)> %.`
+`The limit break is filled up to <float(1337,100,.)> %.`
 
 → Prints `The limit break is filled up to 13.37 %.`
 
