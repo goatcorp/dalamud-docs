@@ -7,6 +7,11 @@ description:
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import AutoTranslate from '@site/src/components/icons/AutoTranslate.tsx';
+import GfdIcon from '@site/src/components/icons/GfdIcon.tsx';
+import LinkMarker from '@site/src/components/icons/LinkMarker.tsx';
+import StatusBuff from '@site/src/components/icons/StatusBuff.tsx';
+import StatusDebuff from '@site/src/components/icons/StatusDebuff.tsx';
 
 export const LUMINA_COMMIT = 'd0adbcf1';
 export const DALAMUD_COMMIT = '97b01d69';
@@ -1485,7 +1490,7 @@ Expressions:
 - \[0] Integer Expression: <a
   href={`https://github.com/NotAdam/Lumina/blob/${LUMINA_COMMIT}/src/Lumina/Text/Payloads/LinkPayloadType.cs`}>LinkMacroPayloadType</a>
 - \[1] Integer Expression: Usage depends on LinkMacroPayloadType, most of the
-  time it's an ID
+  time it's an Id
 - \[2] Integer Expression: Usage depends on LinkMacroPayloadType
 - \[3] Integer Expression: Usage depends on LinkMacroPayloadType
 - \[4] String Expression: Plain string of the linked thing, used when the text
@@ -1725,6 +1730,297 @@ A multi-functional macro to generate auto translated links or texts.
 See implementation in <a
 href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L958`}>SeStringEvaluator</a>
 for more details.
+
+Usages:
+
+<details open>
+<summary>Auto Translation</summary>
+
+If the first expression is neither 100 nor 200, the fixed macro is used for the
+auto-translation system.
+
+Expressions:
+
+- \[0] Integer Expression: Group column in the Completion sheet (0-indexed in
+  the macro)
+- \[1] Integer Expression: RowId of the referenced sheet (depends on the
+  LookupTable column - if empty, uses Completion sheet)
+
+`<fixed(0,101)>`
+
+→ Prints <AutoTranslate>Please use the auto-translate function.</AutoTranslate>
+
+---
+
+Based on the LookupTable for Group 49, the RowId is for the Mount sheet:
+
+`<fixed(48,209)>`
+
+→ Prints <AutoTranslate>albino karakul</AutoTranslate>
+
+</details>
+
+The following uses all have 200 as the first expression (100 would also work and
+is identical to 200).  
+We can only assume that these numbers indicate the version of the game (1.00 for
+FFXIV, 2.00 for FFXIV ARR).
+
+<details open>
+<summary>\[1] Player Link</summary>
+
+If the second expression is 1, the fixed macro generates a player link.
+
+Expressions:
+
+- \[0] Integer Expression: 200
+- \[1] Integer Expression: 1
+- \[2] Integer Expression: World Id
+- \[3] String Expression: Player Name
+
+`<fixed(200,1,1,Player Name)>`
+
+→ Prints interactable player link <code>Player Name<GfdIcon id={88} />Dev</code>
+if the World Id is not the owns Home World Id.  
+→ Prints interactable player link `Player Name` if the World Id is the owns Home
+World Id.
+
+</details>
+
+<details open>
+<summary>\[2] ClassJob Level</summary>
+
+If the second expression is 2, the fixed macro prints the ClassJob name and
+level.
+
+Expressions:
+
+- \[0] Integer Expression: 200
+- \[1] Integer Expression: 2
+- \[2] Integer Expression: ClassJob Id
+- \[3] Integer Expression: Level
+
+`<fixed(200,2,28,0)>`
+
+→ Prints `scholar`.
+
+`<fixed(200,2,28,100)>`
+
+→ Prints `scholar(100)`.
+
+</details>
+
+<details open>
+<summary>\[3] Map Link</summary>
+
+If the second expression is 3, the fixed macro generates a map link.
+
+Expressions:
+
+- \[0] Integer Expression: 200
+- \[1] Integer Expression: 3
+- \[2] Integer Expression: TerritoryType Id
+- \[3] Integer Expression: Packed Ids
+  - Instance (upper 16 bits as ushort): `value >> 16`
+  - Map Id (lower 16 bits as ushort): `value & 0xFFFF`
+- \[4] Integer Expression: Raw X coordinates
+- \[5] Integer Expression: Raw Y coordinates
+- \[6] Integer Expression: Raw Z coordinates (if not available use 0xFFFF8AD0)
+- \[7] Integer Expression: PlaceName Id override (if not 0, otherwise defaulted
+  to the TerritoryType's PlaceName)
+
+`<fixed(200,3,146,23,0xFFFE896A,0xFFFD0649,0xFFFF8AD0,0)>`
+
+→ Prints interactable map link <code><LinkMarker/>Southern Thanalan ( 19.5 ,
+17.5 )</code>.
+
+</details>
+
+<details open>
+<summary>\[4] Item Link</summary>
+
+If the second expression is 4, the fixed macro generates an item link.
+
+Expressions:
+
+- \[0] Integer Expression: 200
+- \[1] Integer Expression: 4
+- \[2] Integer Expression: Item Id with flags applied or EventItem Id
+- \[3] Integer Expression: Rarity (for the item name color)
+  - 1: White
+  - 2: Green
+  - 3: Blue
+  - 4: Purple (Relics)
+  - 5: Orange
+  - 6: Yellow
+  - 7: Pink (Aetherial Items)
+- \[4] Integer Expression: Unknown
+- \[5] Integer Expression: Unknown
+- \[6] String Expression: Item Name
+
+`<fixed(200,4,4801,1,0,0,Dalamud Nut)>`
+
+→ Prints interactable item link <code><LinkMarker/>Dalamud Nut</code>.
+
+</details>
+
+<details open>
+<summary>\[5] Chat Sound Effect</summary>
+
+If the second expression is 5, the fixed macro plays a chat sound effect and
+prints its `<se.x>` code.
+
+Expressions:
+
+- \[0] Integer Expression: 200
+- \[1] Integer Expression: 5
+- \[2] Integer Expression: Sound Effect Id (0-indexed)
+
+`<fixed(200,5,5)>`
+
+→ Prints `<se.6>` and plays the bongo sound effect.
+
+<audio
+  src='https://www.myinstants.com/media/sounds/danger-bongos.mp3'
+  controls
+  preload='none'
+/>
+
+</details>
+
+<details open>
+<summary>\[6] ObjStr name</summary>
+
+If the second expression is 6, the fixed macro prints an ObjStr's name.
+
+Expressions:
+
+- \[0] Integer Expression: 200
+- \[1] Integer Expression: 6
+- \[2] Integer Expression: ObjStr Id (see <a
+  href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Utility/ObjectKindExtensions.cs#L16`}>ObjectKind.GetObjStrId</a>)
+
+`<fixed(200,6,1008170)>`
+
+→ Prints `Cid`, based on ENpcResident 1008170.
+
+</details>
+
+<details open>
+<summary>\[7] String</summary>
+
+If the second expression is 7, the fixed macro prints the string that was passed
+to it.
+
+Expressions:
+
+- \[0] Integer Expression: 200
+- \[1] Integer Expression: 6
+- \[2] String Expression
+
+`<fixed(200,7,Hello World!)>`
+
+→ Prints `Hello World!`.
+
+</details>
+
+<details open>
+<summary>\[8] Time Remaining</summary>
+
+If the second expression is 8, the fixed macro prints the remaining time in a
+formatted style.
+
+Expressions:
+
+- \[0] Integer Expression: 200
+- \[1] Integer Expression: 6
+- \[2] Integer Expression: Remaining time in seconds
+
+`<fixed(200,8,69)>`
+
+→ Prints `1:09`.
+
+</details>
+
+<details open>
+<summary>\[9] Unknown</summary>
+
+It's currently unclear what type 9 does, but it may be related to the Mentor or
+Beginner icons that appear in front of player names in the Novice Network chat
+channel.
+
+</details>
+
+<details open>
+<summary>\[10] Status Link</summary>
+
+If the second expression is 10, the fixed macro generates a status link.
+
+Expressions:
+
+- \[0] Integer Expression: 200
+- \[1] Integer Expression: 10
+- \[2] Integer Expression: Status Id
+- \[3] Boolean Expression: Has Override
+- \[4] String Expression: Status Name Override (optional, depending on Has
+  Override)
+- \[5] String Expression: Status Description Override (optional, depending on
+  Has Override)
+
+`<fixed(200,10,851,0)>`
+
+{/* prettier-ignore */}
+→ Prints interactable status link <code><LinkMarker/><StatusBuff/>Reassembled</code>.
+
+`<fixed(200,10,3698,0)>`
+
+→ Prints interactable status link <code><LinkMarker/><StatusDebuff/>Forward
+March</code>.
+
+</details>
+
+<details open>
+<summary>\[11] Party Finder Link</summary>
+
+If the second expression is 11, the fixed macro generates a party finder link.
+
+Expressions:
+
+- \[0] Integer Expression: 200
+- \[1] Integer Expression: 11
+- \[2] Integer Expression: Listing Id
+- \[3] Integer Expression: Unknown
+- \[4] Integer Expression: World Id
+- \[5] Integer Expression: Cross World flag (0 = Cross World, 1 = not Cross
+  World)
+- \[6] String Expression: Player Name
+
+`<fixed(200,11,123456,1,1,0,Player Name)>`
+
+→ Prints interactable party finder link <code><LinkMarker/>Looking for Party
+(Player Name) <GfdIcon id={88} /></code>.
+
+</details>
+
+<details open>
+<summary>\[12] Quest Link</summary>
+
+If the second expression is 12, the fixed macro generates a quest link.
+
+Expressions:
+
+- \[0] Integer Expression: 200
+- \[1] Integer Expression: 12
+- \[2] Integer Expression: Quest Id
+- \[3] Integer Expression: Unused
+- \[4] Integer Expression: Unused
+- \[5] Integer Expression: Unused
+- \[6] String Expression: Quest Name
+
+`<fixed(200,12,70058,0,0,0,The Ultimate Weapon)>`
+
+→ Prints interactable quest link <code><LinkMarker/>The Ultimate Weapon</code>.
+
+</details>
 
 ### \[`0x2F`] Lower \{#macro-lower}
 
