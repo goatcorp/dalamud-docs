@@ -16,6 +16,12 @@ import StatusDebuff from '@site/src/components/icons/StatusDebuff.tsx';
 export const LUMINA_COMMIT = 'd0adbcf1';
 export const DALAMUD_COMMIT = '97b01d69';
 
+<style>
+  {`
+  details .theme-code-block:last-child { margin-bottom: 0; }
+`}
+</style>
+
 # SeString
 
 The game uses a custom null-terminated string implementation, which allows
@@ -552,6 +558,9 @@ Expressions:
 - \[0] Integer Expression: Hour
 - \[1] Integer Expression: WeekDay
 
+Can be evaluated using ISeStringEvaluator (<a
+href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L356`}>code</a>).
+
 <details open>
 <summary>Example</summary>
 
@@ -559,8 +568,7 @@ Expressions:
 
 → Sets the contextual time to next Tuesday, 7 am UTC.
 
-Can be evaluated using ISeStringEvaluator (<a
-href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L356`}>code</a>):
+---
 
 ```cs
 var example = new SeStringBuilder()
@@ -585,8 +593,10 @@ var example = new SeStringBuilder()
   .EndMacro()
   .ToReadOnlySeString();
 
-var result = SeStringEvaluator.Evaluate(example); // similar to "08.04. at 09:00"
+var result = SeStringEvaluator.Evaluate(example);
 ```
+
+→ Prints `08.04. at 09:00` (at current time of writing).
 
 </details>
 
@@ -598,6 +608,9 @@ Expressions:
 
 - \[0] Integer Expression: Unix Timestamp
 
+Can be evaluated using ISeStringEvaluator (<a
+href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L383`}>code</a>).
+
 <details open>
 <summary>Example</summary>
 
@@ -605,8 +618,7 @@ Expressions:
 
 → Sets the contextual time to Sat Apr 05 2025 19:10:07 UTC.
 
-Can be evaluated using ISeStringEvaluator (<a
-href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L383`}>code</a>):
+---
 
 ```cs
 var example = new SeStringBuilder()
@@ -622,8 +634,10 @@ var example = new SeStringBuilder()
   .EndMacro()
   .ToReadOnlySeString();
 
-var result = SeStringEvaluator.Evaluate(example); // "21:10"
+var result = SeStringEvaluator.Evaluate(example);
 ```
+
+→ Prints `21:10`.
 
 </details>
 
@@ -637,6 +651,9 @@ Expressions:
 - \[1] Expression to use if condition is true
 - \[2] Expression to use if condition is false
 
+Can be evaluated using ISeStringEvaluator (<a
+href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L394`}>code</a>).
+
 <details open>
 <summary>Example</summary>
 
@@ -647,8 +664,7 @@ Expressions:
 `Good day to you, friend.`  
 → Between 5 pm and 4 am Eorzea Time, this will print `Good evening, friend.`
 
-Can be evaluated using ISeStringEvaluator (<a
-href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L394`}>code</a>):
+---
 
 ```cs
 var example = new SeStringBuilder()
@@ -698,6 +714,9 @@ Expressions:
 - ...
 - \[n] Expression to use if condition is n
 
+Can be evaluated using ISeStringEvaluator (<a
+href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L405`}>code</a>).
+
 <details open>
 <summary>Example</summary>
 
@@ -708,8 +727,7 @@ Expressions:
 → Prints `L` when `lnum1` is 3.  
 → Prints `XL` when `lnum1` is 4.
 
-Can be evaluated using ISeStringEvaluator (<a
-href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L405`}>code</a>):
+---
 
 ```cs
 var example = new SeStringBuilder()
@@ -722,8 +740,10 @@ var example = new SeStringBuilder()
   .EndMacro()
   .ToReadOnlySeString();
 
-var result = SeStringEvaluator.Evaluate(example, [2]); // "M"
+var result = SeStringEvaluator.Evaluate(example, [2]);
 ```
+
+→ Prints `M`.
 
 </details>
 
@@ -735,6 +755,9 @@ Expressions:
 
 - \[0] Integer Expression: EntityId
 
+Can be evaluated using ISeStringEvaluator (<a
+href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L426`}>code</a>).
+
 <details open>
 <summary>Example</summary>
 
@@ -742,8 +765,7 @@ Expressions:
 
 → Prints the name of the player character with EntityId 0x10778681.
 
-Can be evaluated using ISeStringEvaluator (<a
-href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L426`}>code</a>):
+---
 
 ```cs
 var example = new SeStringBuilder()
@@ -767,6 +789,9 @@ Expressions:
 - \[1] Expression to use if the character is male
 - \[2] Expression to use if the character is female
 
+Can be evaluated using ISeStringEvaluator (<a
+href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L460`}>code</a>).
+
 <details open>
 <summary>Example</summary>
 
@@ -777,8 +802,7 @@ male.
 → Prints `Good day, Ma'am.` if the player character with EntityId 0x10778681 is
 female.
 
-Can be evaluated using ISeStringEvaluator (<a
-href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L460`}>code</a>):
+---
 
 ```cs
 var example = new SeStringBuilder()
@@ -807,6 +831,9 @@ Expressions:
 - \[2] Expression to use if the name matches
 - \[3] Expression to use if the name doesn't match
 
+Can be evaluated using ISeStringEvaluator (<a
+href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L477`}>code</a>).
+
 <details open>
 <summary>Example</summary>
 
@@ -817,8 +844,7 @@ Expressions:
 → Prints `Hello, adventurer!` if the player character with EntityId 0x10778681
 is not called Local Player.
 
-Can be evaluated using ISeStringEvaluator (<a
-href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L477`}>code</a>):
+---
 
 ```cs
 var example = new SeStringBuilder()
@@ -869,6 +895,9 @@ Expressions:
 - \[1] Expression to use if the character is the local player
 - \[2] Expression to use if the character is not the local player
 
+Can be evaluated using ISeStringEvaluator (<a
+href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L496`}>code</a>).
+
 <details open>
 <summary>Example</summary>
 
@@ -879,8 +908,7 @@ Local Player.
 → Prints `Other Player is KO'd.` if the player character with EntityId
 0x10778681 is not the Local Player, called Other Player.
 
-Can be evaluated using ISeStringEvaluator (<a
-href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L496`}>code</a>):
+---
 
 ```cs
 var example = new SeStringBuilder()
@@ -908,6 +936,8 @@ Adds a line break.
 
 No expressions.
 
+This macro is used for formatting. It is not evaluated by ISeStringEvaluator.
+
 <details open>
 <summary>Example</summary>
 
@@ -920,7 +950,7 @@ Hello
 World
 ```
 
-This macro is used for formatting. It is not evaluated by ISeStringEvaluator.
+---
 
 ```cs
 var example = new SeStringBuilder()
@@ -1284,6 +1314,9 @@ Expressions:
 
 - \[0] Integer Expression: Value
 
+Can be evaluated using ISeStringEvaluator (<a
+href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L569`}>code</a>).
+
 <details open>
 <summary>Example</summary>
 
@@ -1292,8 +1325,7 @@ Expressions:
 → Prints `It's currently hour 5.` if `gnum11` (hour of current Eorzea Time)
 is 5.
 
-Can be evaluated using ISeStringEvaluator (<a
-href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L569`}>code</a>):
+---
 
 ```cs
 var example = new SeStringBuilder()
@@ -1317,6 +1349,9 @@ Expressions:
 
 - \[0] Integer Expression: Value
 
+Can be evaluated using ISeStringEvaluator (<a
+href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L582`}>code</a>).
+
 <details open>
 <summary>Example</summary>
 
@@ -1324,8 +1359,7 @@ Expressions:
 
 → Prints `15 in hexadecimal is 0x0000000F.`
 
-Can be evaluated using ISeStringEvaluator (<a
-href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L582`}>code</a>):
+---
 
 ```cs
 var example = new SeStringBuilder()
@@ -1350,6 +1384,9 @@ Expressions:
 - \[0] Integer Expression: Value
 - \[1] String Expression: Separator (usually a comma or a dot)
 
+Can be evaluated using ISeStringEvaluator (<a
+href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L596`}>code</a>).
+
 <details open>
 <summary>Example</summary>
 
@@ -1357,8 +1394,7 @@ Expressions:
 
 → Prints `The damage was over 9.000.`
 
-Can be evaluated using ISeStringEvaluator (<a
-href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L596`}>code</a>):
+---
 
 ```cs
 var example = new SeStringBuilder()
@@ -1383,6 +1419,8 @@ Expressions:
 
 - \[0] Integer Expression: Value
 
+ISeStringEvaluator does currently not support evaluation for this macro.
+
 <details open>
 <summary>Example</summary>
 
@@ -1390,7 +1428,7 @@ Expressions:
 
 → Prints `The file size is 146.5K.`
 
-ISeStringEvaluator does currently not support evaluation for this macro.
+---
 
 ```cs
 var example = new SeStringBuilder()
@@ -1413,6 +1451,9 @@ Expressions:
 
 - \[0] Integer Expression: Value
 
+Can be evaluated using ISeStringEvaluator (<a
+href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L650`}>code</a>).
+
 <details open>
 <summary>Example</summary>
 
@@ -1420,8 +1461,7 @@ Expressions:
 
 → Prints `The current time is 04:32.` when the Eorzea Time is 04:32.
 
-Can be evaluated using ISeStringEvaluator (<a
-href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L650`}>code</a>):
+---
 
 ```cs
 var example = new SeStringBuilder()
@@ -1455,6 +1495,9 @@ Expressions:
 - \[1] Integer Expression: Radix
 - \[2] String Expression: Separator
 
+Can be evaluated using ISeStringEvaluator (<a
+href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L650`}>code</a>).
+
 <details open>
 <summary>Example</summary>
 
@@ -1462,8 +1505,7 @@ Expressions:
 
 → Prints `The limit break is filled up to 13.37 %.`
 
-Can be evaluated using ISeStringEvaluator (<a
-href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L650`}>code</a>):
+---
 
 ```cs
 var example = new SeStringBuilder()
@@ -1503,6 +1545,8 @@ Expressions:
 
 → Prints a clickable `Dalamud Nut` item link.
 
+---
+
 ```cs
 var example = new SeStringBuilder()
   .PushLink(LinkMacroPayloadType.Item, 4801, 0, 0, "Dalamud Nut")
@@ -1531,6 +1575,9 @@ Expressions:
 - \[2] Integer Expression: Column Index
 - \[3] Expression used as local parameter to evaluate the the columns text
 
+Can be evaluated using ISeStringEvaluator (<a
+href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L696`}>code</a>).
+
 <details open>
 <summary>Example</summary>
 
@@ -1538,8 +1585,7 @@ Expressions:
 
 → Prints `Ul'dah`
 
-Can be evaluated using ISeStringEvaluator (<a
-href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L696`}>code</a>):
+---
 
 ```cs
 var example = new SeStringBuilder()
@@ -1565,6 +1611,9 @@ Expressions:
 
 - \[0] String Expression: Text
 
+Can be evaluated using ISeStringEvaluator (<a
+href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L795`}>code</a>).
+
 <details open>
 <summary>Example</summary>
 
@@ -1572,8 +1621,7 @@ Expressions:
 
 → Prints `This is amazing!` when `lstr1` is `amazing`.
 
-Can be evaluated using ISeStringEvaluator (<a
-href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L795`}>code</a>):
+---
 
 ```cs
 var example = new SeStringBuilder()
@@ -1597,6 +1645,9 @@ Expressions:
 
 - \[0] String Expression: Text
 
+Can be evaluated using ISeStringEvaluator (<a
+href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L800`}>code</a>).
+
 <details open>
 <summary>Example</summary>
 
@@ -1604,8 +1655,7 @@ Expressions:
 
 → Prints `This is AMAZING!` when `lstr1` is `amazing`.
 
-Can be evaluated using ISeStringEvaluator (<a
-href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L800`}>code</a>):
+---
 
 ```cs
 var example = new SeStringBuilder()
@@ -1629,6 +1679,9 @@ Expressions:
 
 - \[0] String Expression: Text
 
+Can be evaluated using ISeStringEvaluator (<a
+href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L841`}>code</a>).
+
 <details open>
 <summary>Example</summary>
 
@@ -1637,8 +1690,7 @@ RowId 22, Column 43 is `the Lost City of Amdapor`
 
 → Prints `The Lost City of Amdapor`.
 
-Can be evaluated using ISeStringEvaluator (<a
-href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L841`}>code</a>):
+---
 
 ```cs
 var example = new SeStringBuilder()
@@ -1669,6 +1721,9 @@ Expressions:
 - \[1] String Expression: Separator
 - \[2] Integer Expression: Index, starting at 1
 
+Can be evaluated using ISeStringEvaluator (<a
+href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L882`}>code</a>).
+
 <details open>
 <summary>Example</summary>
 
@@ -1676,8 +1731,7 @@ Expressions:
 
 → Prints `Lastname`.
 
-Can be evaluated using ISeStringEvaluator (<a
-href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L882`}>code</a>):
+---
 
 ```cs
 var example = new SeStringBuilder()
@@ -1701,6 +1755,9 @@ Expressions:
 
 - \[0] String Expression: Text
 
+Can be evaluated using ISeStringEvaluator (<a
+href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L918`}>code</a>).
+
 <details open>
 <summary>Example</summary>
 
@@ -1708,8 +1765,7 @@ Expressions:
 
 → Prints `The Great Gubal Library`.
 
-Can be evaluated using ISeStringEvaluator (<a
-href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L918`}>code</a>):
+---
 
 ```cs
 var example = new SeStringBuilder()
@@ -1727,9 +1783,8 @@ var result = SeStringEvaluator.Evaluate(example);
 
 A multi-functional macro to generate auto translated links or texts.
 
-See implementation in <a
-href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L958`}>SeStringEvaluator</a>
-for more details.
+Can be evaluated using ISeStringEvaluator (<a
+href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L958`}>code</a>).
 
 Usages:
 
@@ -2030,6 +2085,9 @@ Expressions:
 
 - \[0] String Expression: Text
 
+Can be evaluated using ISeStringEvaluator (<a
+href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L1451`}>code</a>).
+
 <details open>
 <summary>Example</summary>
 
@@ -2037,8 +2095,7 @@ Expressions:
 
 → Prints `chocobo`.
 
-Can be evaluated using ISeStringEvaluator (<a
-href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L1451`}>code</a>):
+---
 
 ```cs
 var example = new SeStringBuilder()
@@ -2065,6 +2122,11 @@ Expressions:
 - \[2] Integer Expression: RowId
 - \[3] Integer Expression: Amount
 
+{/* prettier-ignore */}
+<p>Can be evaluated using ISeStringEvaluator (<a
+href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L1490`}>code</a>, <a
+href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Noun/NounProcessor.cs#L139`}>NounProcessor</a>).</p>
+
 ### \[`0x31`] EnNoun \{#macro-ennoun}
 
 Adds a properly formatted name based on the games noun system for the English
@@ -2077,6 +2139,11 @@ Expressions:
   href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Noun/Enums/EnglishArticleType.cs`}>EnglishArticleType</a>
 - \[2] Integer Expression: RowId
 - \[3] Integer Expression: Amount
+
+{/* prettier-ignore */}
+<p>Can be evaluated using ISeStringEvaluator (<a
+href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L1490`}>code</a>, <a
+href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Noun/NounProcessor.cs#L184`}>NounProcessor</a>).</p>
 
 ### \[`0x32`] DeNoun \{#macro-denoun}
 
@@ -2096,6 +2163,11 @@ Expressions:
   - 3 = Dative
   - 4 = Accusative
 
+{/* prettier-ignore */}
+<p>Can be evaluated using ISeStringEvaluator (<a
+href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L1490`}>code</a>, <a
+href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Noun/NounProcessor.cs#L244`}>NounProcessor</a>).</p>
+
 ### \[`0x33`] FrNoun \{#macro-frnoun}
 
 Adds a properly formatted name based on the games noun system for the French
@@ -2109,6 +2181,11 @@ Expressions:
 - \[2] Integer Expression: RowId
 - \[3] Integer Expression: Amount
 
+{/* prettier-ignore */}
+<p>Can be evaluated using ISeStringEvaluator (<a
+href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L1490`}>code</a>, <a
+href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Noun/NounProcessor.cs#L368`}>NounProcessor</a>).</p>
+
 ### \[`0x34`] ChNoun \{#macro-chnoun}
 
 Not supported in Dalamud.
@@ -2121,6 +2198,9 @@ Expressions:
 
 - \[0] String Expression: Text
 
+Can be evaluated using ISeStringEvaluator (<a
+href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L1552`}>code</a>).
+
 <details open>
 <summary>Example</summary>
 
@@ -2128,8 +2208,7 @@ Expressions:
 
 → Prints `cHOCOBO`.
 
-Can be evaluated using ISeStringEvaluator (<a
-href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L1552`}>code</a>):
+---
 
 ```cs
 var example = new SeStringBuilder()
@@ -2199,6 +2278,9 @@ Expressions:
 - \[0] Integer Expression: Value
 - \[1] Integer Expression: Target length
 
+Can be evaluated using ISeStringEvaluator (<a
+href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L1621`}>code</a>).
+
 <details open>
 <summary>Example</summary>
 
@@ -2206,8 +2288,7 @@ Expressions:
 
 → Prints `0015`.
 
-Can be evaluated using ISeStringEvaluator (<a
-href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L1621`}>code</a>):
+---
 
 ```cs
 var example = new SeStringBuilder()
@@ -2230,6 +2311,9 @@ Expressions:
 
 - \[0] Integer Expression: Value
 
+Can be evaluated using ISeStringEvaluator (<a
+href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L1637`}>code</a>).
+
 <details open>
 <summary>Example</summary>
 
@@ -2237,8 +2321,7 @@ Expressions:
 
 → Prints `1st 2nd 3rd 4th`.
 
-Can be evaluated using ISeStringEvaluator (<a
-href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L1637`}>code</a>):
+---
 
 ```cs
 var example = new SeStringBuilder()
@@ -2281,6 +2364,9 @@ Expressions:
 
 - \[0] Integer Expression: RowId in Level sheet
 
+Can be evaluated using ISeStringEvaluator (<a
+href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L1655`}>code</a>).
+
 <details open>
 <summary>Example</summary>
 
@@ -2293,8 +2379,7 @@ South Shroud
  ( 27.7  , 21.1 )
 ```
 
-Can be evaluated using ISeStringEvaluator (<a
-href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L1655`}>code</a>):
+---
 
 ```cs
 var example = new SeStringBuilder()
