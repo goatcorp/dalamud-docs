@@ -1161,6 +1161,13 @@ href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/T
 
 ![EdgeColor example](/img/sestring/example-edgecolor.png)
 
+:::tip
+
+Always make sure that when you push an edgecolor, it is popped from the stack
+with `stackcolor`!
+
+:::
+
 ### \[`0x15`] ShadowColor \{#macro-shadowcolor}
 
 Pushes the text shadow color.
@@ -1851,6 +1858,13 @@ Expressions:
 Expression can be evaluated using ISeStringEvaluator (<a
 href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L1593`}>code</a>).
 
+:::tip
+
+Always make sure that when you push a colortype, it is popped from the stack
+with `stackcolor` using the color macro!
+
+:::
+
 ### \[`0x49`] EdgeColorType \{#macro-edgecolortype}
 
 Pushes the text border color, referring to a color defined in UIColor sheet.
@@ -1861,6 +1875,13 @@ Expressions:
 
 Expression can be evaluated using ISeStringEvaluator (<a
 href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L1607`}>code</a>).
+
+:::tip
+
+Always make sure that when you push an edgecolortype, it is popped from the
+stack with `stackcolor` using the edgecolor macro!
+
+:::
 
 ### \[`0x4A`] Ruby \{#macro-ruby}
 
