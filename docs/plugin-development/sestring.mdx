@@ -1194,14 +1194,14 @@ See [Color](#macro-color) macro for expression description.
 The expression can be evaluated using ISeStringEvaluator (<a
 href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L521`}>code</a>).
 
-![EdgeColor example](/img/sestring/example-edgecolor.png)
-
 :::tip
 
 Always make sure that when you push an edgecolor, it is popped from the stack
 with `stackcolor`!
 
 :::
+
+![EdgeColor example](/img/sestring/example-edgecolor.png)
 
 ### \[`0x15`] ShadowColor \{#macro-shadowcolor}
 
@@ -1538,6 +1538,25 @@ Expressions:
 - \[4] String Expression: Plain string of the linked thing, used when the text
   is copied to the clipboard
 
+:::tip
+
+Always make sure that a link payload has a corresponding link terminator
+payload.
+
+:::
+
+:::note
+
+This does not add formatting or the <LinkMarker/> link marker to the output.
+
+To add the <LinkMarker/> link marker you can evaluate Addon#371 with the link as
+local parameter.
+
+For some link types you can also use the [`fixed`](#macro-fixed) macro instead,
+which adds proper formatting too (for example, the item name rarity color).
+
+:::
+
 <details open>
 <summary>Example</summary>
 
@@ -1545,24 +1564,7 @@ Expressions:
 
 → Prints a clickable `Dalamud Nut` item link.
 
----
-
-```cs
-var example = new SeStringBuilder()
-  .PushLink(LinkMacroPayloadType.Item, 4801, 0, 0, "Dalamud Nut")
-    .Append("Dalamud Nut")
-  .PopLink()
-  .ToReadOnlySeString();
-```
-
 </details>
-
-:::tip
-
-Always make sure that a link payload has a corresponding link terminator
-payload.
-
-:::
 
 ### \[`0x28`] Sheet \{#macro-sheet}
 

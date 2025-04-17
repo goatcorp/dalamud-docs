@@ -5,7 +5,7 @@ export default () => (
     xmlns='http://www.w3.org/2000/svg'
     height={15}
     width={15}
-    style={{ filter: 'drop-shadow(0 0 10px #000)', verticalAlign: 'middle' }}
+    style={{ filter: 'drop-shadow(0 0 2px #000)', verticalAlign: 'middle' }}
     viewBox='0 0 40 40'
   >
     <path
