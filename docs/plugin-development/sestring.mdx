@@ -1924,7 +1924,7 @@ Expressions:
 <summary>\[5] Chat Sound Effect</summary>
 
 If the second expression is 5, the fixed macro plays a chat sound effect and
-prints its `<se.x>` code.
+prints its `<se.#>` code.
 
 Expressions:
 
@@ -1941,6 +1941,20 @@ Expressions:
   controls
   preload='none'
 />
+
+<br />
+<br />
+
+:::warning
+
+To prevent sounds from playing every frame, ISeStringEvaluator will **not** play
+the sound effect.  
+The payload will only be evaluated to a plain string, making the game also not
+play the sound effect when printed to chat.  
+Use [`UIGlobals.PlayChatSoundEffect()`](https://github.com/aers/FFXIVClientStructs/blob/main/FFXIVClientStructs/FFXIV/Client/UI/UIGlobals.cs)
+from ClientStructs if you want to play it.
+
+:::
 
 </details>
 
