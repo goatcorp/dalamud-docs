@@ -547,7 +547,7 @@ Expressions:
 - \[0] Integer Expression: Hour
 - \[1] Integer Expression: WeekDay
 
-<details>
+<details open>
 <summary>Example</summary>
 
 `<setresettime(7,2)>`
@@ -593,7 +593,7 @@ Expressions:
 
 - \[0] Integer Expression: Unix Timestamp
 
-<details>
+<details open>
 <summary>Example</summary>
 
 `<settime(1743880207)>`
@@ -632,7 +632,7 @@ Expressions:
 - \[1] Expression to use if condition is true
 - \[2] Expression to use if condition is false
 
-<details>
+<details open>
 <summary>Example</summary>
 
 `Good <if([gnum11<12],<if([gnum11<4],evening,morning)>,<if([gnum11<17],day to you,evening)>)>, friend.`
@@ -693,7 +693,7 @@ Expressions:
 - ...
 - \[n] Expression to use if condition is n
 
-<details>
+<details open>
 <summary>Example</summary>
 
 `<switch(lnum1,S,M,L,XL)>`
@@ -730,7 +730,7 @@ Expressions:
 
 - \[0] Integer Expression: EntityId
 
-<details>
+<details open>
 <summary>Example</summary>
 
 `<pcname(0x10778681)>`
@@ -762,7 +762,7 @@ Expressions:
 - \[1] Expression to use if the character is male
 - \[2] Expression to use if the character is female
 
-<details>
+<details open>
 <summary>Example</summary>
 
 `Good day, <ifpcgender(0x10778681,Sir,Ma'am)>.`
@@ -802,7 +802,7 @@ Expressions:
 - \[2] Expression to use if the name matches
 - \[3] Expression to use if the name doesn't match
 
-<details>
+<details open>
 <summary>Example</summary>
 
 `Hello, <ifpcname(0x10778681,Local Player,Warrior of Light,adventurer)>!`
@@ -864,7 +864,7 @@ Expressions:
 - \[1] Expression to use if the character is the local player
 - \[2] Expression to use if the character is not the local player
 
-<details>
+<details open>
 <summary>Example</summary>
 
 `<ifself(0x10778681,You are,<pcname(0x10778681)> is)> KO'd.`
@@ -903,7 +903,7 @@ Adds a line break.
 
 No expressions.
 
-<details>
+<details open>
 <summary>Example</summary>
 
 `Hello<br>World`
@@ -1272,7 +1272,7 @@ Expressions:
 
 - \[0] Integer Expression: Value
 
-<details>
+<details open>
 <summary>Example</summary>
 
 `It's currently hour <num(gnum11)>.`
@@ -1305,7 +1305,7 @@ Expressions:
 
 - \[0] Integer Expression: Value
 
-<details>
+<details open>
 <summary>Example</summary>
 
 `15 in hexadecimal is <hex(15)>.`
@@ -1338,7 +1338,7 @@ Expressions:
 - \[0] Integer Expression: Value
 - \[1] String Expression: Separator (usually a comma or a dot)
 
-<details>
+<details open>
 <summary>Example</summary>
 
 `The damage was over <kilo(9000,.)>.`
@@ -1371,7 +1371,7 @@ Expressions:
 
 - \[0] Integer Expression: Value
 
-<details>
+<details open>
 <summary>Example</summary>
 
 `The file size is <byte(150000)>.`
@@ -1401,7 +1401,7 @@ Expressions:
 
 - \[0] Integer Expression: Value
 
-<details>
+<details open>
 <summary>Example</summary>
 
 `The current time is <sec(gnum11)>:<sec(gnum12)>.`
@@ -1443,7 +1443,7 @@ Expressions:
 - \[1] Integer Expression: Radix
 - \[2] String Expression: Separator
 
-<details>
+<details open>
 <summary>Example</summary>
 
 `The limit break is filled up to <float(1337,100,.)> %.`
@@ -1484,7 +1484,7 @@ Expressions:
 - \[4] String Expression: Plain string of the linked thing, used when the text
   is copied to the clipboard
 
-<details>
+<details open>
 <summary>Example</summary>
 
 `<link(2,4801,0,0,Dalamud Nut)>Dalamud Nut<link(0xCE,0,0,0)>`
@@ -1519,7 +1519,7 @@ Expressions:
 - \[2] Integer Expression: Column Index
 - \[3] Expression used as local parameter to evaluate the the columns text
 
-<details>
+<details open>
 <summary>Example</summary>
 
 `<sheet(Addon,762,0,3)>`, with Addon#762 being `<sheet(Town,lnum1,0)>`
@@ -1553,7 +1553,7 @@ Expressions:
 
 - \[0] String Expression: Text
 
-<details>
+<details open>
 <summary>Example</summary>
 
 `This is <string(lstr1)>!`
@@ -1585,7 +1585,7 @@ Expressions:
 
 - \[0] String Expression: Text
 
-<details>
+<details open>
 <summary>Example</summary>
 
 `This is <caps(lstr1)>!`
@@ -1617,7 +1617,7 @@ Expressions:
 
 - \[0] String Expression: Text
 
-<details>
+<details open>
 <summary>Example</summary>
 
 `<head(<sheet(ContentFinderCondition,22,43)>)>` where ContentFinderCondition
@@ -1657,7 +1657,7 @@ Expressions:
 - \[1] String Expression: Separator
 - \[2] Integer Expression: Index, starting at 1
 
-<details>
+<details open>
 <summary>Example</summary>
 
 `<split(Forename Lastname, ,2)>`
@@ -1689,7 +1689,7 @@ Expressions:
 
 - \[0] String Expression: Text
 
-<details>
+<details open>
 <summary>Example</summary>
 
 `<headall(the great gubal library)>`
@@ -1727,7 +1727,7 @@ Expressions:
 
 - \[0] String Expression: Text
 
-<details>
+<details open>
 <summary>Example</summary>
 
 `<lower(CHOCOBO)>`
@@ -1818,7 +1818,7 @@ Expressions:
 
 - \[0] String Expression: Text
 
-<details>
+<details open>
 <summary>Example</summary>
 
 `<lowerhead(CHOCOBO)>`
@@ -1882,7 +1882,7 @@ Expressions:
 - \[0] Integer Expression: Value
 - \[1] Integer Expression: Target length
 
-<details>
+<details open>
 <summary>Example</summary>
 
 `<digit(15,4)>`
@@ -1913,7 +1913,7 @@ Expressions:
 
 - \[0] Integer Expression: Value
 
-<details>
+<details open>
 <summary>Example</summary>
 
 `<ordinal(1)> <ordinal(2)> <ordinal(3)> <ordinal(4)>`
@@ -1964,7 +1964,7 @@ Expressions:
 
 - \[0] Integer Expression: RowId in Level sheet
 
-<details>
+<details open>
 <summary>Example</summary>
 
 `<levelpos(3871103)>`
