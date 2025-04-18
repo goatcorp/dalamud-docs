@@ -505,7 +505,8 @@ Example `Hello <split(<string(gstr1)>, ,1)>!`:
     0x02, // Payload start
       0x29, // Macro code for string
       0x03, // Integer expression for the payload length (2)
-      0xEB, 0x01, // Parameter Expression gstr1 (local player name)
+      0xEB, // Parameter expression gstr
+        0x02, // Integer expression for gstr1 (local player name)
     0x03, // Payload end
   0xFF, // String expression for the separator
     0x02, // Integer expression for the length of the following string (1)
