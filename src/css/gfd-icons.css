@@ -1,0 +1,177 @@
+/* This file was generated with scripts/create-gfd-css.js */
+.gfd-game-version { display: inline; }
+.gfd-game-version::after { content: '7.2'; }
+.gfd-icon {
+  --w: 20;
+  --h: 20;
+  --x: 0;
+  --y: 0;
+  --scale: 2;
+  --y-offset: 340;
+  display: inline-block;
+  aspect-ratio: calc(var(--w) / var(--h));
+  width: calc(var(--w) * 1px);
+  height: calc(var(--h) * 1px);
+  background-image: url('https://v2.xivapi.com/api/asset?path=common/font/fonticon_xinput.tex&format=png&version=7.2');
+  background-repeat: no-repeat;
+  background-size: calc(512px * (1 / var(--scale))) calc(1024px * (1 / var(--scale)));
+  background-position: 
+    calc(var(--x) * var(--scale) * -1px * (1 / var(--scale))) 
+    calc((var(--y) * var(--scale) * -1px + var(--y-offset) * -1px) * (1 / var(--scale)));
+  vertical-align: middle;
+}
+.gfd-icon-2 { --x: 20; }
+.gfd-icon-3 { --x: 40; }
+.gfd-icon-4 { --x: 60; }
+.gfd-icon-5 { --x: 80; }
+.gfd-icon-6 { --y: 20; }
+.gfd-icon-7 { --x: 20; --y: 20; }
+.gfd-icon-8 { --x: 40; --y: 20; }
+.gfd-icon-9 { --x: 60; --y: 20; }
+.gfd-icon-10 { --x: 80; --y: 20; }
+.gfd-icon-11 { --y: 40; }
+.gfd-icon-12 { --x: 20; --y: 40; }
+.gfd-icon-13 { --x: 40; --y: 40; }
+.gfd-icon-14 { --x: 60; --y: 40; }
+.gfd-icon-15 { --x: 80; --y: 40; }
+.gfd-icon-16 { --x: 60; --y: 100; }
+.gfd-icon-17 { --x: 80; --y: 100; }
+.gfd-icon-18 { --w: 54; --y: 60; }
+.gfd-icon-19 { --w: 54; --x: 54; --y: 60; }
+.gfd-icon-20 { --x: 60; --y: 80; }
+.gfd-icon-21 { --w: 28; --y: 80; }
+.gfd-icon-22 { --w: 32; --x: 28; --y: 80; }
+.gfd-icon-23 { --x: 80; --y: 80; }
+.gfd-icon-24 { --w: 28; --y: 100; }
+.gfd-icon-25 { --w: 32; --x: 28; --y: 100; }
+.gfd-icon-51 { --x: 124; }
+.gfd-icon-52 { --x: 144; }
+.gfd-icon-53 { --x: 164; }
+.gfd-icon-54 { --w: 12; --x: 100; }
+.gfd-icon-55 { --w: 12; --x: 112; }
+.gfd-icon-56 { --x: 100; --y: 20; }
+.gfd-icon-57 { --x: 120; --y: 20; }
+.gfd-icon-58 { --x: 140; --y: 20; }
+.gfd-icon-59 { --x: 100; --y: 40; }
+.gfd-icon-60 { --x: 120; --y: 40; }
+.gfd-icon-61 { --x: 140; --y: 40; }
+.gfd-icon-62 { --x: 160; --y: 20; }
+.gfd-icon-63 { --x: 160; --y: 40; }
+.gfd-icon-64 { --x: 184; }
+.gfd-icon-65 { --x: 204; }
+.gfd-icon-66 { --x: 224; }
+.gfd-icon-67 { --x: 180; --y: 20; }
+.gfd-icon-68 { --x: 200; --y: 20; }
+.gfd-icon-69 { --x: 220; --y: 320; }
+.gfd-icon-70 { --x: 180; --y: 40; }
+.gfd-icon-71 { --x: 200; --y: 40; }
+.gfd-icon-72 { --x: 220; --y: 40; }
+.gfd-icon-73 { --x: 220; --y: 20; }
+.gfd-icon-74 { --x: 108; --y: 60; }
+.gfd-icon-75 { --x: 128; --y: 60; }
+.gfd-icon-76 { --x: 148; --y: 60; }
+.gfd-icon-77 { --x: 168; --y: 60; }
+.gfd-icon-78 { --x: 188; --y: 60; }
+.gfd-icon-79 { --x: 208; --y: 60; }
+.gfd-icon-80 { --x: 228; --y: 60; }
+.gfd-icon-81 { --x: 100; --y: 80; }
+.gfd-icon-82 { --x: 120; --y: 80; }
+.gfd-icon-83 { --x: 140; --y: 80; }
+.gfd-icon-84 { --x: 160; --y: 80; }
+.gfd-icon-85 { --x: 180; --y: 80; }
+.gfd-icon-86 { --x: 200; --y: 80; }
+.gfd-icon-87 { --x: 220; --y: 80; }
+.gfd-icon-88 { --x: 100; --y: 100; }
+.gfd-icon-89 { --x: 120; --y: 100; }
+.gfd-icon-90 { --x: 140; --y: 100; }
+.gfd-icon-91 { --x: 160; --y: 100; }
+.gfd-icon-92 { --x: 180; --y: 100; }
+.gfd-icon-93 { --x: 200; --y: 100; }
+.gfd-icon-94 { --x: 220; --y: 100; }
+.gfd-icon-95 { --y: 120; }
+.gfd-icon-96 { --x: 20; --y: 120; }
+.gfd-icon-97 { --x: 40; --y: 120; }
+.gfd-icon-98 { --x: 60; --y: 120; }
+.gfd-icon-99 { --x: 80; --y: 120; }
+.gfd-icon-100 { --x: 100; --y: 120; }
+.gfd-icon-101 { --x: 120; --y: 120; }
+.gfd-icon-102 { --x: 140; --y: 120; }
+.gfd-icon-103 { --x: 160; --y: 120; }
+.gfd-icon-104 { --x: 180; --y: 120; }
+.gfd-icon-105 { --x: 200; --y: 120; }
+.gfd-icon-106 { --x: 220; --y: 120; }
+.gfd-icon-107 { --y: 140; }
+.gfd-icon-108 { --x: 20; --y: 140; }
+.gfd-icon-109 { --x: 40; --y: 140; }
+.gfd-icon-110 { --x: 60; --y: 140; }
+.gfd-icon-111 { --x: 80; --y: 140; }
+.gfd-icon-112 { --x: 100; --y: 140; }
+.gfd-icon-113 { --x: 120; --y: 140; }
+.gfd-icon-114 { --x: 140; --y: 140; }
+.gfd-icon-115 { --x: 160; --y: 140; }
+.gfd-icon-116 { --x: 180; --y: 140; }
+.gfd-icon-117 { --x: 200; --y: 140; }
+.gfd-icon-118 { --x: 220; --y: 140; }
+.gfd-icon-119 { --y: 160; }
+.gfd-icon-120 { --x: 20; --y: 160; }
+.gfd-icon-121 { --x: 40; --y: 160; }
+.gfd-icon-122 { --x: 60; --y: 160; }
+.gfd-icon-123 { --x: 80; --y: 160; }
+.gfd-icon-124 { --x: 100; --y: 160; }
+.gfd-icon-125 { --x: 120; --y: 160; }
+.gfd-icon-126 { --x: 140; --y: 160; }
+.gfd-icon-127 { --x: 160; --y: 160; }
+.gfd-icon-128 { --y: 180; }
+.gfd-icon-129 { --x: 20; --y: 180; }
+.gfd-icon-130 { --x: 40; --y: 180; }
+.gfd-icon-131 { --x: 60; --y: 180; }
+.gfd-icon-132 { --x: 80; --y: 180; }
+.gfd-icon-133 { --x: 100; --y: 180; }
+.gfd-icon-134 { --x: 120; --y: 180; }
+.gfd-icon-135 { --x: 140; --y: 180; }
+.gfd-icon-136 { --x: 160; --y: 180; }
+.gfd-icon-137 { --x: 180; --y: 180; }
+.gfd-icon-138 { --x: 200; --y: 180; }
+.gfd-icon-139 { --x: 220; --y: 180; }
+.gfd-icon-140 { --y: 200; }
+.gfd-icon-141 { --x: 20; --y: 200; }
+.gfd-icon-142 { --x: 40; --y: 200; }
+.gfd-icon-143 { --x: 60; --y: 200; }
+.gfd-icon-144 { --x: 80; --y: 200; }
+.gfd-icon-145 { --x: 100; --y: 200; }
+.gfd-icon-146 { --x: 120; --y: 200; }
+.gfd-icon-147 { --x: 140; --y: 200; }
+.gfd-icon-148 { --x: 160; --y: 200; }
+.gfd-icon-149 { --x: 180; --y: 200; }
+.gfd-icon-150 { --x: 200; --y: 200; }
+.gfd-icon-151 { --x: 220; --y: 200; }
+.gfd-icon-152 { --y: 220; }
+.gfd-icon-153 { --x: 20; --y: 220; }
+.gfd-icon-154 { --x: 40; --y: 220; }
+.gfd-icon-155 { --x: 60; --y: 220; }
+.gfd-icon-156 { --x: 80; --y: 220; }
+.gfd-icon-157 { --x: 100; --y: 220; }
+.gfd-icon-158 { --x: 120; --y: 220; }
+.gfd-icon-159 { --x: 140; --y: 220; }
+.gfd-icon-160 { --x: 160; --y: 220; }
+.gfd-icon-161 { --x: 180; --y: 220; }
+.gfd-icon-162 { --x: 200; --y: 220; }
+.gfd-icon-163 { --x: 220; --y: 220; }
+.gfd-icon-164 { --y: 240; }
+.gfd-icon-165 { --x: 20; --y: 240; }
+.gfd-icon-166 { --x: 40; --y: 240; }
+.gfd-icon-167 { --x: 60; --y: 240; }
+.gfd-icon-168 { --x: 180; --y: 160; }
+.gfd-icon-169 { --x: 200; --y: 160; }
+.gfd-icon-170 { --x: 80; --y: 240; }
+.gfd-icon-171 { --x: 100; --y: 240; }
+.gfd-icon-172 { --x: 220; --y: 160; }
+.gfd-icon-173 { --y: 260; }
+.gfd-icon-174 { --x: 20; --y: 260; }
+.gfd-icon-175 { --x: 40; --y: 260; }
+.gfd-icon-176 { --x: 60; --y: 260; }
+.gfd-icon-177 { --x: 80; --y: 260; }
+.gfd-icon-178 { --x: 100; --y: 260; }
+.gfd-icon-179 { --x: 120; --y: 260; }
+.gfd-icon-180 { --x: 140; --y: 260; }
+.gfd-icon-181 { --x: 160; --y: 260; }
