@@ -70,7 +70,10 @@ export default {
           showReadingTime: true,
         },
         theme: {
-          customCss: require.resolve('./custom.css'),
+          customCss: [
+            require.resolve('./src/css/custom.css'),
+            require.resolve('./src/css/gfd-icons.css'),
+          ],
         },
       }),
     ],

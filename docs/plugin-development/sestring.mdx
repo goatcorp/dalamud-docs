@@ -7,9 +7,20 @@ description:
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import AutoTranslate from '@site/src/components/icons/AutoTranslate.tsx';
+import GfdIcon from '@site/src/components/icons/GfdIcon.tsx';
+import LinkMarker from '@site/src/components/icons/LinkMarker.tsx';
+import StatusBuff from '@site/src/components/icons/StatusBuff.tsx';
+import StatusDebuff from '@site/src/components/icons/StatusDebuff.tsx';
 
 export const LUMINA_COMMIT = 'd0adbcf1';
 export const DALAMUD_COMMIT = '97b01d69';
+
+<style>
+  {`
+  details .theme-code-block:last-child { margin-bottom: 0; }
+`}
+</style>
 
 # SeString
 
@@ -494,7 +505,8 @@ Example `Hello <split(<string(gstr1)>, ,1)>!`:
     0x02, // Payload start
       0x29, // Macro code for string
       0x03, // Integer expression for the payload length (2)
-      0xEB, 0x01, // Parameter Expression gstr1 (local player name)
+      0xEB, // Parameter expression gstr
+        0x02, // Integer expression for gstr1 (local player name)
     0x03, // Payload end
   0xFF, // String expression for the separator
     0x02, // Integer expression for the length of the following string (1)
@@ -547,15 +559,17 @@ Expressions:
 - \[0] Integer Expression: Hour
 - \[1] Integer Expression: WeekDay
 
-<details>
+Can be evaluated using ISeStringEvaluator (<a
+href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L356`}>code</a>).
+
+<details open>
 <summary>Example</summary>
 
 `<setresettime(7,2)>`
 
 → Sets the contextual time to next Tuesday, 7 am UTC.
 
-Can be evaluated using ISeStringEvaluator (<a
-href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L356`}>code</a>):
+---
 
 ```cs
 var example = new SeStringBuilder()
@@ -580,8 +594,10 @@ var example = new SeStringBuilder()
   .EndMacro()
   .ToReadOnlySeString();
 
-var result = SeStringEvaluator.Evaluate(example); // similar to "08.04. at 09:00"
+var result = SeStringEvaluator.Evaluate(example);
 ```
+
+→ Prints `08.04. at 09:00` (at current time of writing).
 
 </details>
 
@@ -593,15 +609,17 @@ Expressions:
 
 - \[0] Integer Expression: Unix Timestamp
 
-<details>
+Can be evaluated using ISeStringEvaluator (<a
+href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L383`}>code</a>).
+
+<details open>
 <summary>Example</summary>
 
 `<settime(1743880207)>`
 
 → Sets the contextual time to Sat Apr 05 2025 19:10:07 UTC.
 
-Can be evaluated using ISeStringEvaluator (<a
-href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L383`}>code</a>):
+---
 
 ```cs
 var example = new SeStringBuilder()
@@ -617,8 +635,10 @@ var example = new SeStringBuilder()
   .EndMacro()
   .ToReadOnlySeString();
 
-var result = SeStringEvaluator.Evaluate(example); // "21:10"
+var result = SeStringEvaluator.Evaluate(example);
 ```
+
+→ Prints `21:10`.
 
 </details>
 
@@ -632,7 +652,10 @@ Expressions:
 - \[1] Expression to use if condition is true
 - \[2] Expression to use if condition is false
 
-<details>
+Can be evaluated using ISeStringEvaluator (<a
+href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L394`}>code</a>).
+
+<details open>
 <summary>Example</summary>
 
 `Good <if([gnum11<12],<if([gnum11<4],evening,morning)>,<if([gnum11<17],day to you,evening)>)>, friend.`
@@ -642,8 +665,7 @@ Expressions:
 `Good day to you, friend.`  
 → Between 5 pm and 4 am Eorzea Time, this will print `Good evening, friend.`
 
-Can be evaluated using ISeStringEvaluator (<a
-href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L394`}>code</a>):
+---
 
 ```cs
 var example = new SeStringBuilder()
@@ -693,7 +715,10 @@ Expressions:
 - ...
 - \[n] Expression to use if condition is n
 
-<details>
+Can be evaluated using ISeStringEvaluator (<a
+href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L405`}>code</a>).
+
+<details open>
 <summary>Example</summary>
 
 `<switch(lnum1,S,M,L,XL)>`
@@ -703,8 +728,7 @@ Expressions:
 → Prints `L` when `lnum1` is 3.  
 → Prints `XL` when `lnum1` is 4.
 
-Can be evaluated using ISeStringEvaluator (<a
-href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L405`}>code</a>):
+---
 
 ```cs
 var example = new SeStringBuilder()
@@ -717,8 +741,10 @@ var example = new SeStringBuilder()
   .EndMacro()
   .ToReadOnlySeString();
 
-var result = SeStringEvaluator.Evaluate(example, [2]); // "M"
+var result = SeStringEvaluator.Evaluate(example, [2]);
 ```
+
+→ Prints `M`.
 
 </details>
 
@@ -730,15 +756,17 @@ Expressions:
 
 - \[0] Integer Expression: EntityId
 
-<details>
+Can be evaluated using ISeStringEvaluator (<a
+href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L426`}>code</a>).
+
+<details open>
 <summary>Example</summary>
 
 `<pcname(0x10778681)>`
 
 → Prints the name of the player character with EntityId 0x10778681.
 
-Can be evaluated using ISeStringEvaluator (<a
-href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L426`}>code</a>):
+---
 
 ```cs
 var example = new SeStringBuilder()
@@ -762,7 +790,10 @@ Expressions:
 - \[1] Expression to use if the character is male
 - \[2] Expression to use if the character is female
 
-<details>
+Can be evaluated using ISeStringEvaluator (<a
+href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L460`}>code</a>).
+
+<details open>
 <summary>Example</summary>
 
 `Good day, <ifpcgender(0x10778681,Sir,Ma'am)>.`
@@ -772,8 +803,7 @@ male.
 → Prints `Good day, Ma'am.` if the player character with EntityId 0x10778681 is
 female.
 
-Can be evaluated using ISeStringEvaluator (<a
-href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L460`}>code</a>):
+---
 
 ```cs
 var example = new SeStringBuilder()
@@ -802,7 +832,10 @@ Expressions:
 - \[2] Expression to use if the name matches
 - \[3] Expression to use if the name doesn't match
 
-<details>
+Can be evaluated using ISeStringEvaluator (<a
+href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L477`}>code</a>).
+
+<details open>
 <summary>Example</summary>
 
 `Hello, <ifpcname(0x10778681,Local Player,Warrior of Light,adventurer)>!`
@@ -812,8 +845,7 @@ Expressions:
 → Prints `Hello, adventurer!` if the player character with EntityId 0x10778681
 is not called Local Player.
 
-Can be evaluated using ISeStringEvaluator (<a
-href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L477`}>code</a>):
+---
 
 ```cs
 var example = new SeStringBuilder()
@@ -864,7 +896,10 @@ Expressions:
 - \[1] Expression to use if the character is the local player
 - \[2] Expression to use if the character is not the local player
 
-<details>
+Can be evaluated using ISeStringEvaluator (<a
+href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L496`}>code</a>).
+
+<details open>
 <summary>Example</summary>
 
 `<ifself(0x10778681,You are,<pcname(0x10778681)> is)> KO'd.`
@@ -874,8 +909,7 @@ Local Player.
 → Prints `Other Player is KO'd.` if the player character with EntityId
 0x10778681 is not the Local Player, called Other Player.
 
-Can be evaluated using ISeStringEvaluator (<a
-href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L496`}>code</a>):
+---
 
 ```cs
 var example = new SeStringBuilder()
@@ -903,7 +937,9 @@ Adds a line break.
 
 No expressions.
 
-<details>
+This macro is used for formatting. It is not evaluated by ISeStringEvaluator.
+
+<details open>
 <summary>Example</summary>
 
 `Hello<br>World`
@@ -915,7 +951,7 @@ Hello
 World
 ```
 
-This macro is used for formatting. It is not evaluated by ISeStringEvaluator.
+---
 
 ```cs
 var example = new SeStringBuilder()
@@ -960,6 +996,168 @@ This does not support icons from `ui/icon/`.
 
 :::
 
+<details>
+  <summary>Expand for a list available icons (as of Patch <div class="gfd-game-version"></div>)</summary>
+
+| Id  | Icon                                      |
+| --- | ----------------------------------------- |
+| 1   | <div class="gfd-icon gfd-icon-1"></div>   |
+| 2   | <div class="gfd-icon gfd-icon-2"></div>   |
+| 3   | <div class="gfd-icon gfd-icon-3"></div>   |
+| 4   | <div class="gfd-icon gfd-icon-4"></div>   |
+| 5   | <div class="gfd-icon gfd-icon-5"></div>   |
+| 6   | <div class="gfd-icon gfd-icon-6"></div>   |
+| 7   | <div class="gfd-icon gfd-icon-7"></div>   |
+| 8   | <div class="gfd-icon gfd-icon-8"></div>   |
+| 9   | <div class="gfd-icon gfd-icon-9"></div>   |
+| 10  | <div class="gfd-icon gfd-icon-10"></div>  |
+| 11  | <div class="gfd-icon gfd-icon-11"></div>  |
+| 12  | <div class="gfd-icon gfd-icon-12"></div>  |
+| 13  | <div class="gfd-icon gfd-icon-13"></div>  |
+| 14  | <div class="gfd-icon gfd-icon-14"></div>  |
+| 15  | <div class="gfd-icon gfd-icon-15"></div>  |
+| 16  | <div class="gfd-icon gfd-icon-16"></div>  |
+| 17  | <div class="gfd-icon gfd-icon-17"></div>  |
+| 18  | <div class="gfd-icon gfd-icon-18"></div>  |
+| 19  | <div class="gfd-icon gfd-icon-19"></div>  |
+| 20  | <div class="gfd-icon gfd-icon-20"></div>  |
+| 21  | <div class="gfd-icon gfd-icon-21"></div>  |
+| 22  | <div class="gfd-icon gfd-icon-22"></div>  |
+| 23  | <div class="gfd-icon gfd-icon-23"></div>  |
+| 24  | <div class="gfd-icon gfd-icon-24"></div>  |
+| 25  | <div class="gfd-icon gfd-icon-25"></div>  |
+| 51  | <div class="gfd-icon gfd-icon-51"></div>  |
+| 52  | <div class="gfd-icon gfd-icon-52"></div>  |
+| 53  | <div class="gfd-icon gfd-icon-53"></div>  |
+| 54  | <div class="gfd-icon gfd-icon-54"></div>  |
+| 55  | <div class="gfd-icon gfd-icon-55"></div>  |
+| 56  | <div class="gfd-icon gfd-icon-56"></div>  |
+| 57  | <div class="gfd-icon gfd-icon-57"></div>  |
+| 58  | <div class="gfd-icon gfd-icon-58"></div>  |
+| 59  | <div class="gfd-icon gfd-icon-59"></div>  |
+| 60  | <div class="gfd-icon gfd-icon-60"></div>  |
+| 61  | <div class="gfd-icon gfd-icon-61"></div>  |
+| 62  | <div class="gfd-icon gfd-icon-62"></div>  |
+| 63  | <div class="gfd-icon gfd-icon-63"></div>  |
+| 64  | <div class="gfd-icon gfd-icon-64"></div>  |
+| 65  | <div class="gfd-icon gfd-icon-65"></div>  |
+| 66  | <div class="gfd-icon gfd-icon-66"></div>  |
+| 67  | <div class="gfd-icon gfd-icon-67"></div>  |
+| 68  | <div class="gfd-icon gfd-icon-68"></div>  |
+| 70  | <div class="gfd-icon gfd-icon-70"></div>  |
+| 71  | <div class="gfd-icon gfd-icon-71"></div>  |
+| 72  | <div class="gfd-icon gfd-icon-72"></div>  |
+| 73  | <div class="gfd-icon gfd-icon-73"></div>  |
+| 74  | <div class="gfd-icon gfd-icon-74"></div>  |
+| 75  | <div class="gfd-icon gfd-icon-75"></div>  |
+| 76  | <div class="gfd-icon gfd-icon-76"></div>  |
+| 77  | <div class="gfd-icon gfd-icon-77"></div>  |
+| 78  | <div class="gfd-icon gfd-icon-78"></div>  |
+| 79  | <div class="gfd-icon gfd-icon-79"></div>  |
+| 80  | <div class="gfd-icon gfd-icon-80"></div>  |
+| 81  | <div class="gfd-icon gfd-icon-81"></div>  |
+| 82  | <div class="gfd-icon gfd-icon-82"></div>  |
+| 83  | <div class="gfd-icon gfd-icon-83"></div>  |
+| 84  | <div class="gfd-icon gfd-icon-84"></div>  |
+| 85  | <div class="gfd-icon gfd-icon-85"></div>  |
+| 86  | <div class="gfd-icon gfd-icon-86"></div>  |
+| 87  | <div class="gfd-icon gfd-icon-87"></div>  |
+| 88  | <div class="gfd-icon gfd-icon-88"></div>  |
+| 89  | <div class="gfd-icon gfd-icon-89"></div>  |
+| 90  | <div class="gfd-icon gfd-icon-90"></div>  |
+| 91  | <div class="gfd-icon gfd-icon-91"></div>  |
+| 92  | <div class="gfd-icon gfd-icon-92"></div>  |
+| 93  | <div class="gfd-icon gfd-icon-93"></div>  |
+| 94  | <div class="gfd-icon gfd-icon-94"></div>  |
+| 95  | <div class="gfd-icon gfd-icon-95"></div>  |
+| 96  | <div class="gfd-icon gfd-icon-96"></div>  |
+| 97  | <div class="gfd-icon gfd-icon-97"></div>  |
+| 98  | <div class="gfd-icon gfd-icon-98"></div>  |
+| 99  | <div class="gfd-icon gfd-icon-99"></div>  |
+| 100 | <div class="gfd-icon gfd-icon-100"></div> |
+| 101 | <div class="gfd-icon gfd-icon-101"></div> |
+| 102 | <div class="gfd-icon gfd-icon-102"></div> |
+| 103 | <div class="gfd-icon gfd-icon-103"></div> |
+| 104 | <div class="gfd-icon gfd-icon-104"></div> |
+| 105 | <div class="gfd-icon gfd-icon-105"></div> |
+| 106 | <div class="gfd-icon gfd-icon-106"></div> |
+| 107 | <div class="gfd-icon gfd-icon-107"></div> |
+| 108 | <div class="gfd-icon gfd-icon-108"></div> |
+| 109 | <div class="gfd-icon gfd-icon-109"></div> |
+| 110 | <div class="gfd-icon gfd-icon-110"></div> |
+| 111 | <div class="gfd-icon gfd-icon-111"></div> |
+| 112 | <div class="gfd-icon gfd-icon-112"></div> |
+| 113 | <div class="gfd-icon gfd-icon-113"></div> |
+| 114 | <div class="gfd-icon gfd-icon-114"></div> |
+| 115 | <div class="gfd-icon gfd-icon-115"></div> |
+| 116 | <div class="gfd-icon gfd-icon-116"></div> |
+| 117 | <div class="gfd-icon gfd-icon-117"></div> |
+| 118 | <div class="gfd-icon gfd-icon-118"></div> |
+| 119 | <div class="gfd-icon gfd-icon-119"></div> |
+| 120 | <div class="gfd-icon gfd-icon-120"></div> |
+| 121 | <div class="gfd-icon gfd-icon-121"></div> |
+| 122 | <div class="gfd-icon gfd-icon-122"></div> |
+| 124 | <div class="gfd-icon gfd-icon-124"></div> |
+| 125 | <div class="gfd-icon gfd-icon-125"></div> |
+| 126 | <div class="gfd-icon gfd-icon-126"></div> |
+| 127 | <div class="gfd-icon gfd-icon-127"></div> |
+| 128 | <div class="gfd-icon gfd-icon-128"></div> |
+| 129 | <div class="gfd-icon gfd-icon-129"></div> |
+| 130 | <div class="gfd-icon gfd-icon-130"></div> |
+| 131 | <div class="gfd-icon gfd-icon-131"></div> |
+| 132 | <div class="gfd-icon gfd-icon-132"></div> |
+| 133 | <div class="gfd-icon gfd-icon-133"></div> |
+| 134 | <div class="gfd-icon gfd-icon-134"></div> |
+| 135 | <div class="gfd-icon gfd-icon-135"></div> |
+| 136 | <div class="gfd-icon gfd-icon-136"></div> |
+| 137 | <div class="gfd-icon gfd-icon-137"></div> |
+| 138 | <div class="gfd-icon gfd-icon-138"></div> |
+| 139 | <div class="gfd-icon gfd-icon-139"></div> |
+| 140 | <div class="gfd-icon gfd-icon-140"></div> |
+| 141 | <div class="gfd-icon gfd-icon-141"></div> |
+| 142 | <div class="gfd-icon gfd-icon-142"></div> |
+| 143 | <div class="gfd-icon gfd-icon-143"></div> |
+| 144 | <div class="gfd-icon gfd-icon-144"></div> |
+| 145 | <div class="gfd-icon gfd-icon-145"></div> |
+| 146 | <div class="gfd-icon gfd-icon-146"></div> |
+| 147 | <div class="gfd-icon gfd-icon-147"></div> |
+| 148 | <div class="gfd-icon gfd-icon-148"></div> |
+| 149 | <div class="gfd-icon gfd-icon-149"></div> |
+| 150 | <div class="gfd-icon gfd-icon-150"></div> |
+| 151 | <div class="gfd-icon gfd-icon-151"></div> |
+| 152 | <div class="gfd-icon gfd-icon-152"></div> |
+| 153 | <div class="gfd-icon gfd-icon-153"></div> |
+| 154 | <div class="gfd-icon gfd-icon-154"></div> |
+| 155 | <div class="gfd-icon gfd-icon-155"></div> |
+| 156 | <div class="gfd-icon gfd-icon-156"></div> |
+| 157 | <div class="gfd-icon gfd-icon-157"></div> |
+| 158 | <div class="gfd-icon gfd-icon-158"></div> |
+| 159 | <div class="gfd-icon gfd-icon-159"></div> |
+| 160 | <div class="gfd-icon gfd-icon-160"></div> |
+| 161 | <div class="gfd-icon gfd-icon-161"></div> |
+| 162 | <div class="gfd-icon gfd-icon-162"></div> |
+| 163 | <div class="gfd-icon gfd-icon-163"></div> |
+| 164 | <div class="gfd-icon gfd-icon-164"></div> |
+| 165 | <div class="gfd-icon gfd-icon-165"></div> |
+| 166 | <div class="gfd-icon gfd-icon-166"></div> |
+| 167 | <div class="gfd-icon gfd-icon-167"></div> |
+| 168 | <div class="gfd-icon gfd-icon-168"></div> |
+| 169 | <div class="gfd-icon gfd-icon-169"></div> |
+| 170 | <div class="gfd-icon gfd-icon-170"></div> |
+| 171 | <div class="gfd-icon gfd-icon-171"></div> |
+| 172 | <div class="gfd-icon gfd-icon-172"></div> |
+| 173 | <div class="gfd-icon gfd-icon-173"></div> |
+| 174 | <div class="gfd-icon gfd-icon-174"></div> |
+| 175 | <div class="gfd-icon gfd-icon-175"></div> |
+| 176 | <div class="gfd-icon gfd-icon-176"></div> |
+| 177 | <div class="gfd-icon gfd-icon-177"></div> |
+| 178 | <div class="gfd-icon gfd-icon-178"></div> |
+| 179 | <div class="gfd-icon gfd-icon-179"></div> |
+| 180 | <div class="gfd-icon gfd-icon-180"></div> |
+| 181 | <div class="gfd-icon gfd-icon-181"></div> |
+
+</details>
+
 ### \[`0x13`] Color \{#macro-color}
 
 Pushes the text foreground color.
@@ -996,6 +1194,13 @@ See [Color](#macro-color) macro for expression description.
 
 The expression can be evaluated using ISeStringEvaluator (<a
 href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L521`}>code</a>).
+
+:::tip
+
+Always make sure that when you push an edgecolor, it is popped from the stack
+with `stackcolor`!
+
+:::
 
 ![EdgeColor example](/img/sestring/example-edgecolor.png)
 
@@ -1089,8 +1294,8 @@ Macro string: `<nbsp>`
 
 ### \[`0x1E`] Icon2 \{#macro-icon2}
 
-Behaves like the `icon` macro, but displays the controller buttons based on the
-player's Button Configuration.
+Behaves like the [`icon`](#macro-icon) macro, but dynamically remaps controller
+button icons based on the player's configured Button Configuration.
 
 ### \[`0x1F`] Hyphen \{#macro-hyphen}
 
@@ -1110,7 +1315,10 @@ Expressions:
 
 - \[0] Integer Expression: Value
 
-<details>
+Can be evaluated using ISeStringEvaluator (<a
+href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L569`}>code</a>).
+
+<details open>
 <summary>Example</summary>
 
 `It's currently hour <num(gnum11)>.`
@@ -1118,8 +1326,7 @@ Expressions:
 → Prints `It's currently hour 5.` if `gnum11` (hour of current Eorzea Time)
 is 5.
 
-Can be evaluated using ISeStringEvaluator (<a
-href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L569`}>code</a>):
+---
 
 ```cs
 var example = new SeStringBuilder()
@@ -1143,15 +1350,17 @@ Expressions:
 
 - \[0] Integer Expression: Value
 
-<details>
+Can be evaluated using ISeStringEvaluator (<a
+href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L582`}>code</a>).
+
+<details open>
 <summary>Example</summary>
 
 `15 in hexadecimal is <hex(15)>.`
 
 → Prints `15 in hexadecimal is 0x0000000F.`
 
-Can be evaluated using ISeStringEvaluator (<a
-href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L582`}>code</a>):
+---
 
 ```cs
 var example = new SeStringBuilder()
@@ -1176,15 +1385,17 @@ Expressions:
 - \[0] Integer Expression: Value
 - \[1] String Expression: Separator (usually a comma or a dot)
 
-<details>
+Can be evaluated using ISeStringEvaluator (<a
+href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L596`}>code</a>).
+
+<details open>
 <summary>Example</summary>
 
 `The damage was over <kilo(9000,.)>.`
 
 → Prints `The damage was over 9.000.`
 
-Can be evaluated using ISeStringEvaluator (<a
-href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L596`}>code</a>):
+---
 
 ```cs
 var example = new SeStringBuilder()
@@ -1209,14 +1420,16 @@ Expressions:
 
 - \[0] Integer Expression: Value
 
-<details>
+ISeStringEvaluator does currently not support evaluation for this macro.
+
+<details open>
 <summary>Example</summary>
 
 `The file size is <byte(150000)>.`
 
 → Prints `The file size is 146.5K.`
 
-ISeStringEvaluator does currently not support evaluation for this macro.
+---
 
 ```cs
 var example = new SeStringBuilder()
@@ -1239,15 +1452,17 @@ Expressions:
 
 - \[0] Integer Expression: Value
 
-<details>
+Can be evaluated using ISeStringEvaluator (<a
+href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L650`}>code</a>).
+
+<details open>
 <summary>Example</summary>
 
 `The current time is <sec(gnum11)>:<sec(gnum12)>.`
 
 → Prints `The current time is 04:32.` when the Eorzea Time is 04:32.
 
-Can be evaluated using ISeStringEvaluator (<a
-href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L650`}>code</a>):
+---
 
 ```cs
 var example = new SeStringBuilder()
@@ -1281,15 +1496,17 @@ Expressions:
 - \[1] Integer Expression: Radix
 - \[2] String Expression: Separator
 
-<details>
+Can be evaluated using ISeStringEvaluator (<a
+href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L650`}>code</a>).
+
+<details open>
 <summary>Example</summary>
 
 `The limit break is filled up to <float(1337,100,.)> %.`
 
 → Prints `The limit break is filled up to 13.37 %.`
 
-Can be evaluated using ISeStringEvaluator (<a
-href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L650`}>code</a>):
+---
 
 ```cs
 var example = new SeStringBuilder()
@@ -1316,28 +1533,11 @@ Expressions:
 - \[0] Integer Expression: <a
   href={`https://github.com/NotAdam/Lumina/blob/${LUMINA_COMMIT}/src/Lumina/Text/Payloads/LinkPayloadType.cs`}>LinkMacroPayloadType</a>
 - \[1] Integer Expression: Usage depends on LinkMacroPayloadType, most of the
-  time it's an ID
+  time it's an Id
 - \[2] Integer Expression: Usage depends on LinkMacroPayloadType
 - \[3] Integer Expression: Usage depends on LinkMacroPayloadType
 - \[4] String Expression: Plain string of the linked thing, used when the text
   is copied to the clipboard
-
-<details>
-<summary>Example</summary>
-
-`<link(2,4801,0,0,Dalamud Nut)>Dalamud Nut<link(0xCE,0,0,0)>`
-
-→ Prints a clickable `Dalamud Nut` item link.
-
-```cs
-var example = new SeStringBuilder()
-  .PushLink(LinkMacroPayloadType.Item, 4801, 0, 0, "Dalamud Nut")
-    .Append("Dalamud Nut")
-  .PopLink()
-  .ToReadOnlySeString();
-```
-
-</details>
 
 :::tip
 
@@ -1345,6 +1545,27 @@ Always make sure that a link payload has a corresponding link terminator
 payload.
 
 :::
+
+:::note
+
+This does not add formatting or the <LinkMarker/> link marker to the output.
+
+To add the <LinkMarker/> link marker you can evaluate Addon#371 with the link as
+local parameter.
+
+For some link types you can also use the [`fixed`](#macro-fixed) macro instead,
+which adds proper formatting too (for example, the item name rarity color).
+
+:::
+
+<details open>
+<summary>Example</summary>
+
+`<link(2,4801,0,0,Dalamud Nut)>Dalamud Nut<link(0xCE,0,0,0)>`
+
+→ Prints a clickable `Dalamud Nut` item link.
+
+</details>
 
 ### \[`0x28`] Sheet \{#macro-sheet}
 
@@ -1357,15 +1578,17 @@ Expressions:
 - \[2] Integer Expression: Column Index
 - \[3] Expression used as local parameter to evaluate the the columns text
 
-<details>
+Can be evaluated using ISeStringEvaluator (<a
+href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L696`}>code</a>).
+
+<details open>
 <summary>Example</summary>
 
 `<sheet(Addon,762,0,3)>`, with Addon#762 being `<sheet(Town,lnum1,0)>`
 
 → Prints `Ul'dah`
 
-Can be evaluated using ISeStringEvaluator (<a
-href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L696`}>code</a>):
+---
 
 ```cs
 var example = new SeStringBuilder()
@@ -1391,15 +1614,17 @@ Expressions:
 
 - \[0] String Expression: Text
 
-<details>
+Can be evaluated using ISeStringEvaluator (<a
+href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L795`}>code</a>).
+
+<details open>
 <summary>Example</summary>
 
 `This is <string(lstr1)>!`
 
 → Prints `This is amazing!` when `lstr1` is `amazing`.
 
-Can be evaluated using ISeStringEvaluator (<a
-href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L795`}>code</a>):
+---
 
 ```cs
 var example = new SeStringBuilder()
@@ -1423,15 +1648,17 @@ Expressions:
 
 - \[0] String Expression: Text
 
-<details>
+Can be evaluated using ISeStringEvaluator (<a
+href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L800`}>code</a>).
+
+<details open>
 <summary>Example</summary>
 
 `This is <caps(lstr1)>!`
 
 → Prints `This is AMAZING!` when `lstr1` is `amazing`.
 
-Can be evaluated using ISeStringEvaluator (<a
-href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L800`}>code</a>):
+---
 
 ```cs
 var example = new SeStringBuilder()
@@ -1455,7 +1682,10 @@ Expressions:
 
 - \[0] String Expression: Text
 
-<details>
+Can be evaluated using ISeStringEvaluator (<a
+href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L841`}>code</a>).
+
+<details open>
 <summary>Example</summary>
 
 `<head(<sheet(ContentFinderCondition,22,43)>)>` where ContentFinderCondition
@@ -1463,8 +1693,7 @@ RowId 22, Column 43 is `the Lost City of Amdapor`
 
 → Prints `The Lost City of Amdapor`.
 
-Can be evaluated using ISeStringEvaluator (<a
-href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L841`}>code</a>):
+---
 
 ```cs
 var example = new SeStringBuilder()
@@ -1495,15 +1724,17 @@ Expressions:
 - \[1] String Expression: Separator
 - \[2] Integer Expression: Index, starting at 1
 
-<details>
+Can be evaluated using ISeStringEvaluator (<a
+href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L882`}>code</a>).
+
+<details open>
 <summary>Example</summary>
 
 `<split(Forename Lastname, ,2)>`
 
 → Prints `Lastname`.
 
-Can be evaluated using ISeStringEvaluator (<a
-href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L882`}>code</a>):
+---
 
 ```cs
 var example = new SeStringBuilder()
@@ -1527,15 +1758,17 @@ Expressions:
 
 - \[0] String Expression: Text
 
-<details>
+Can be evaluated using ISeStringEvaluator (<a
+href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L918`}>code</a>).
+
+<details open>
 <summary>Example</summary>
 
 `<headall(the great gubal library)>`
 
 → Prints `The Great Gubal Library`.
 
-Can be evaluated using ISeStringEvaluator (<a
-href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L918`}>code</a>):
+---
 
 ```cs
 var example = new SeStringBuilder()
@@ -1553,9 +1786,313 @@ var result = SeStringEvaluator.Evaluate(example);
 
 A multi-functional macro to generate auto translated links or texts.
 
-See implementation in <a
-href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L958`}>SeStringEvaluator</a>
-for more details.
+Can be evaluated using ISeStringEvaluator (<a
+href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L958`}>code</a>).
+
+Usages:
+
+<details open>
+<summary>Auto Translation</summary>
+
+If the first expression is neither 100 nor 200, the fixed macro is used for the
+auto-translation system.
+
+Expressions:
+
+- \[0] Integer Expression: Group column in the Completion sheet (0-indexed in
+  the macro)
+- \[1] Integer Expression: RowId of the referenced sheet (depends on the
+  LookupTable column - if empty, uses Completion sheet)
+
+`<fixed(0,101)>`
+
+→ Prints <AutoTranslate>Please use the auto-translate function.</AutoTranslate>
+
+---
+
+Based on the LookupTable for Group 49, the RowId is for the Mount sheet:
+
+`<fixed(48,209)>`
+
+→ Prints <AutoTranslate>albino karakul</AutoTranslate>
+
+</details>
+
+The following uses all have 200 as the first expression (100 would also work and
+is identical to 200).  
+We can only assume that these numbers indicate the version of the game (1.00 for
+FFXIV, 2.00 for FFXIV ARR).
+
+<details open>
+<summary>\[1] Player Link</summary>
+
+If the second expression is 1, the fixed macro generates a player link.
+
+Expressions:
+
+- \[0] Integer Expression: 200
+- \[1] Integer Expression: 1
+- \[2] Integer Expression: World Id
+- \[3] String Expression: Player Name
+
+`<fixed(200,1,1,Player Name)>`
+
+→ Prints interactable player link <code>Player Name<GfdIcon id={88} />Dev</code>
+if the World Id is not the owns Home World Id.  
+→ Prints interactable player link `Player Name` if the World Id is the owns Home
+World Id.
+
+</details>
+
+<details open>
+<summary>\[2] ClassJob Level</summary>
+
+If the second expression is 2, the fixed macro prints the ClassJob name and
+level.
+
+Expressions:
+
+- \[0] Integer Expression: 200
+- \[1] Integer Expression: 2
+- \[2] Integer Expression: ClassJob Id
+- \[3] Integer Expression: Level
+
+`<fixed(200,2,28,0)>`
+
+→ Prints `scholar`.
+
+`<fixed(200,2,28,100)>`
+
+→ Prints `scholar(100)`.
+
+</details>
+
+<details open>
+<summary>\[3] Map Link</summary>
+
+If the second expression is 3, the fixed macro generates a map link.
+
+Expressions:
+
+- \[0] Integer Expression: 200
+- \[1] Integer Expression: 3
+- \[2] Integer Expression: TerritoryType Id
+- \[3] Integer Expression: Packed Ids
+  - Instance (upper 16 bits as ushort): `value >> 16`
+  - Map Id (lower 16 bits as ushort): `value & 0xFFFF`
+- \[4] Integer Expression: Raw X coordinates
+- \[5] Integer Expression: Raw Y coordinates
+- \[6] Integer Expression: Raw Z coordinates (if not available use 0xFFFF8AD0)
+- \[7] Integer Expression: PlaceName Id override (if not 0, otherwise defaulted
+  to the TerritoryType's PlaceName)
+
+`<fixed(200,3,146,23,0xFFFE896A,0xFFFD0649,0xFFFF8AD0,0)>`
+
+→ Prints interactable map link <code><LinkMarker/>Southern Thanalan ( 19.5 ,
+17.5 )</code>.
+
+</details>
+
+<details open>
+<summary>\[4] Item Link</summary>
+
+If the second expression is 4, the fixed macro generates an item link.
+
+Expressions:
+
+- \[0] Integer Expression: 200
+- \[1] Integer Expression: 4
+- \[2] Integer Expression: Item Id with flags applied or EventItem Id
+- \[3] Integer Expression: Rarity (for the item name color)
+  - 1 = White
+  - 2 = Green
+  - 3 = Blue
+  - 4 = Purple (Relics)
+  - 5 = Orange
+  - 6 = Yellow
+  - 7 = Pink (Aetherial Items)
+- \[4] Integer Expression: Unknown
+- \[5] Integer Expression: Unknown
+- \[6] String Expression: Item Name
+
+`<fixed(200,4,4801,1,0,0,Dalamud Nut)>`
+
+→ Prints interactable item link <code><LinkMarker/>Dalamud Nut</code>.
+
+</details>
+
+<details open>
+<summary>\[5] Chat Sound Effect</summary>
+
+If the second expression is 5, the fixed macro plays a chat sound effect and
+prints its `<se.#>` code.
+
+Expressions:
+
+- \[0] Integer Expression: 200
+- \[1] Integer Expression: 5
+- \[2] Integer Expression: Sound Effect Id (0-indexed)
+
+`<fixed(200,5,5)>`
+
+→ Prints `<se.6>` and plays the bongo sound effect.
+
+<audio
+  src='https://www.myinstants.com/media/sounds/danger-bongos.mp3'
+  controls
+  preload='none'
+/>
+
+<br />
+<br />
+
+:::warning
+
+To prevent sounds from playing every frame, ISeStringEvaluator will **not** play
+the sound effect.  
+The payload will only be evaluated to a plain string, making the game also not
+play the sound effect when printed to chat.  
+Use [`UIGlobals.PlayChatSoundEffect()`](https://github.com/aers/FFXIVClientStructs/blob/main/FFXIVClientStructs/FFXIV/Client/UI/UIGlobals.cs)
+from ClientStructs if you want to play it.
+
+:::
+
+</details>
+
+<details open>
+<summary>\[6] ObjStr name</summary>
+
+If the second expression is 6, the fixed macro prints an ObjStr's name.
+
+Expressions:
+
+- \[0] Integer Expression: 200
+- \[1] Integer Expression: 6
+- \[2] Integer Expression: ObjStr Id (see <a
+  href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Utility/ObjectKindExtensions.cs#L16`}>ObjectKind.GetObjStrId</a>)
+
+`<fixed(200,6,1008170)>`
+
+→ Prints `Cid`, based on ENpcResident 1008170.
+
+</details>
+
+<details open>
+<summary>\[7] String</summary>
+
+If the second expression is 7, the fixed macro prints the string that was passed
+to it.
+
+Expressions:
+
+- \[0] Integer Expression: 200
+- \[1] Integer Expression: 6
+- \[2] String Expression
+
+`<fixed(200,7,Hello World!)>`
+
+→ Prints `Hello World!`.
+
+</details>
+
+<details open>
+<summary>\[8] Time Remaining</summary>
+
+If the second expression is 8, the fixed macro prints the remaining time in a
+formatted style.
+
+Expressions:
+
+- \[0] Integer Expression: 200
+- \[1] Integer Expression: 6
+- \[2] Integer Expression: Remaining time in seconds
+
+`<fixed(200,8,69)>`
+
+→ Prints `1:09`.
+
+</details>
+
+<details open>
+<summary>\[9] Unknown</summary>
+
+It's currently unclear what type 9 does, but it may be related to the Mentor or
+Beginner icons that appear in front of player names in the Novice Network chat
+channel.
+
+</details>
+
+<details open>
+<summary>\[10] Status Link</summary>
+
+If the second expression is 10, the fixed macro generates a status link.
+
+Expressions:
+
+- \[0] Integer Expression: 200
+- \[1] Integer Expression: 10
+- \[2] Integer Expression: Status Id
+- \[3] Boolean Expression: Has Override
+- \[4] String Expression: Status Name Override (optional, depending on Has
+  Override)
+- \[5] String Expression: Status Description Override (optional, depending on
+  Has Override)
+
+`<fixed(200,10,851,0)>`
+
+{/* prettier-ignore */}
+→ Prints interactable status link <code><LinkMarker/><StatusBuff/>Reassembled</code>.
+
+`<fixed(200,10,3698,0)>`
+
+→ Prints interactable status link <code><LinkMarker/><StatusDebuff/>Forward
+March</code>.
+
+</details>
+
+<details open>
+<summary>\[11] Party Finder Link</summary>
+
+If the second expression is 11, the fixed macro generates a party finder link.
+
+Expressions:
+
+- \[0] Integer Expression: 200
+- \[1] Integer Expression: 11
+- \[2] Integer Expression: Listing Id
+- \[3] Integer Expression: Unknown
+- \[4] Integer Expression: World Id
+- \[5] Integer Expression: Cross World flag (0 = Cross World, 1 = not Cross
+  World)
+- \[6] String Expression: Player Name
+
+`<fixed(200,11,123456,1,1,0,Player Name)>`
+
+→ Prints interactable party finder link <code><LinkMarker/>Looking for Party
+(Player Name) <GfdIcon id={88} /></code>.
+
+</details>
+
+<details open>
+<summary>\[12] Quest Link</summary>
+
+If the second expression is 12, the fixed macro generates a quest link.
+
+Expressions:
+
+- \[0] Integer Expression: 200
+- \[1] Integer Expression: 12
+- \[2] Integer Expression: Quest Id
+- \[3] Integer Expression: Unused
+- \[4] Integer Expression: Unused
+- \[5] Integer Expression: Unused
+- \[6] String Expression: Quest Name
+
+`<fixed(200,12,70058,0,0,0,The Ultimate Weapon)>`
+
+→ Prints interactable quest link <code><LinkMarker/>The Ultimate Weapon</code>.
+
+</details>
 
 ### \[`0x2F`] Lower \{#macro-lower}
 
@@ -1565,15 +2102,17 @@ Expressions:
 
 - \[0] String Expression: Text
 
-<details>
+Can be evaluated using ISeStringEvaluator (<a
+href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L1451`}>code</a>).
+
+<details open>
 <summary>Example</summary>
 
 `<lower(CHOCOBO)>`
 
 → Prints `chocobo`.
 
-Can be evaluated using ISeStringEvaluator (<a
-href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L1451`}>code</a>):
+---
 
 ```cs
 var example = new SeStringBuilder()
@@ -1600,6 +2139,13 @@ Expressions:
 - \[2] Integer Expression: RowId
 - \[3] Integer Expression: Amount
 
+{/* prettier-ignore */}
+<p>Can be evaluated using ISeStringEvaluator (<a
+href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L1490`}>code</a>, <a
+href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Noun/NounProcessor.cs#L139`}>NounProcessor</a>).</p>
+
+For examples, see the Noun Processor widget in `/xldata`.
+
 ### \[`0x31`] EnNoun \{#macro-ennoun}
 
 Adds a properly formatted name based on the games noun system for the English
@@ -1612,6 +2158,13 @@ Expressions:
   href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Noun/Enums/EnglishArticleType.cs`}>EnglishArticleType</a>
 - \[2] Integer Expression: RowId
 - \[3] Integer Expression: Amount
+
+{/* prettier-ignore */}
+<p>Can be evaluated using ISeStringEvaluator (<a
+href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L1490`}>code</a>, <a
+href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Noun/NounProcessor.cs#L184`}>NounProcessor</a>).</p>
+
+For examples, see the Noun Processor widget in `/xldata`.
 
 ### \[`0x32`] DeNoun \{#macro-denoun}
 
@@ -1626,10 +2179,17 @@ Expressions:
 - \[2] Integer Expression: RowId
 - \[3] Integer Expression: Amount
 - \[4] Integer Expression: Grammatical Case
-  - 0 = Nominative
-  - 1 = Genitive
-  - 2 = Dative
-  - 3 = Accusative
+  - 1 = Nominative
+  - 2 = Genitive
+  - 3 = Dative
+  - 4 = Accusative
+
+{/* prettier-ignore */}
+<p>Can be evaluated using ISeStringEvaluator (<a
+href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L1490`}>code</a>, <a
+href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Noun/NounProcessor.cs#L244`}>NounProcessor</a>).</p>
+
+For examples, see the Noun Processor widget in `/xldata`.
 
 ### \[`0x33`] FrNoun \{#macro-frnoun}
 
@@ -1644,6 +2204,13 @@ Expressions:
 - \[2] Integer Expression: RowId
 - \[3] Integer Expression: Amount
 
+{/* prettier-ignore */}
+<p>Can be evaluated using ISeStringEvaluator (<a
+href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L1490`}>code</a>, <a
+href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Noun/NounProcessor.cs#L368`}>NounProcessor</a>).</p>
+
+For examples, see the Noun Processor widget in `/xldata`.
+
 ### \[`0x34`] ChNoun \{#macro-chnoun}
 
 Not supported in Dalamud.
@@ -1656,15 +2223,17 @@ Expressions:
 
 - \[0] String Expression: Text
 
-<details>
+Can be evaluated using ISeStringEvaluator (<a
+href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L1552`}>code</a>).
+
+<details open>
 <summary>Example</summary>
 
 `<lowerhead(CHOCOBO)>`
 
 → Prints `cHOCOBO`.
 
-Can be evaluated using ISeStringEvaluator (<a
-href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L1552`}>code</a>):
+---
 
 ```cs
 var example = new SeStringBuilder()
@@ -1689,6 +2258,13 @@ Expressions:
 Expression can be evaluated using ISeStringEvaluator (<a
 href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L1593`}>code</a>).
 
+:::tip
+
+Always make sure that when you push a colortype, it is popped from the stack
+with `stackcolor` using the color macro!
+
+:::
+
 ### \[`0x49`] EdgeColorType \{#macro-edgecolortype}
 
 Pushes the text border color, referring to a color defined in UIColor sheet.
@@ -1699,6 +2275,13 @@ Expressions:
 
 Expression can be evaluated using ISeStringEvaluator (<a
 href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L1607`}>code</a>).
+
+:::tip
+
+Always make sure that when you push an edgecolortype, it is popped from the
+stack with `stackcolor` using the edgecolor macro!
+
+:::
 
 ### \[`0x4A`] Ruby \{#macro-ruby}
 
@@ -1720,15 +2303,17 @@ Expressions:
 - \[0] Integer Expression: Value
 - \[1] Integer Expression: Target length
 
-<details>
+Can be evaluated using ISeStringEvaluator (<a
+href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L1621`}>code</a>).
+
+<details open>
 <summary>Example</summary>
 
 `<digit(15,4)>`
 
 → Prints `0015`.
 
-Can be evaluated using ISeStringEvaluator (<a
-href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L1621`}>code</a>):
+---
 
 ```cs
 var example = new SeStringBuilder()
@@ -1751,15 +2336,17 @@ Expressions:
 
 - \[0] Integer Expression: Value
 
-<details>
+Can be evaluated using ISeStringEvaluator (<a
+href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L1637`}>code</a>).
+
+<details open>
 <summary>Example</summary>
 
 `<ordinal(1)> <ordinal(2)> <ordinal(3)> <ordinal(4)>`
 
 → Prints `1st 2nd 3rd 4th`.
 
-Can be evaluated using ISeStringEvaluator (<a
-href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L1637`}>code</a>):
+---
 
 ```cs
 var example = new SeStringBuilder()
@@ -1802,7 +2389,10 @@ Expressions:
 
 - \[0] Integer Expression: RowId in Level sheet
 
-<details>
+Can be evaluated using ISeStringEvaluator (<a
+href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L1655`}>code</a>).
+
+<details open>
 <summary>Example</summary>
 
 `<levelpos(3871103)>`
@@ -1814,8 +2404,7 @@ South Shroud
  ( 27.7  , 21.1 )
 ```
 
-Can be evaluated using ISeStringEvaluator (<a
-href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L1655`}>code</a>):
+---
 
 ```cs
 var example = new SeStringBuilder()
