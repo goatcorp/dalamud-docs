@@ -60,12 +60,13 @@ AddonLifecycle.UnregisterListener(OnPreDraw, OnPostUpdate);
 
 ## Available Events
 
-This service provides several events you can listen for:
+This service provides several events you can listen for, documented in the
+[`AddonEvent`][] enum.
 
-Setup, Update, Draw, RequestedUpdate, Refresh, Finalize
+[`AddonEvent`]: /api/Dalamud.Game.Addon.Lifecycle/Enums/AddonEvent/
 
 Each of these events are used in a Pre or Post listener, for example if you want
-to be notified **_right before_** and addon is about to do a refresh, you can
+to be notified _right before_ an addon is about to do a refresh, you can
 subscribe to **PreRefresh**.
 
 _Note: There is no PostFinalize event provided. That would be after the addon
