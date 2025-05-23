@@ -35,26 +35,26 @@ repo_url: https://example.com # where can users find your plugin's source code?
 
 These keys are required:
 
-- Name
-- Author
-- Description
-- Punchline
+- `Name`
+- `Author`
+- `Description`
+- `Punchline`
 
 Optional keys include:
 
-- ApplicableVersion
-- RepoUrl
-- Tags
-- CategoryTags
-- LoadRequiredState
-- LoadSync
-- CanUnloadAsync
-- LoadPriority
-- ImageUrls
-- IconUrl
-- Changelog (see [Changelogs](#changelogs) below for alternatives)
-- AcceptsFeedback
-- FeedbackMessage
+- `ApplicableVersion`
+- `RepoUrl`
+- `Tags`
+- `CategoryTags`
+- `LoadRequiredState`
+- `LoadSync`
+- `CanUnloadAsync`
+- `LoadPriority`
+- `ImageUrls`
+- `IconUrl`
+- `Changelog` (see [Changelogs](#changelogs) below for alternatives)
+- `AcceptsFeedback`
+- `FeedbackMessage`
 
 See [the definition of `IPluginManifest`][] for further information. NB: some
 fields mentioned there, like `Dip17Channel`, are set automatically by the
@@ -75,7 +75,7 @@ so **you can and should ignore these**:
 You can set a plugin changelog in three separate ways:
 
 1. Include a `changelog` field in your `manifest.toml`, in the
-   [DalamudPlugins17][] repository
+   [DalamudPluginsD17][] repository
 2. Write text in your Pull Request description
 3. Include the `Changelog` key in your plugin manifest
 
@@ -98,7 +98,7 @@ plugin manifest will still be visible to users via the plugin installer.
 
 [DalamudPackager]: https://github.com/goatcorp/DalamudPackager
 [the relevant part of DalamudPackager]:
-  https://github.com/goatcorp/DalamudPackager/blob/084f66e6af7edbf8a45820590ca71765376b901c/DalamudPackager/DalamudPackager.cs#L303
+  https://github.com/goatcorp/DalamudPackager/blob/f199a98840389779f2398f37f08211cf66f77486/DalamudPackager/DalamudPackager.cs#L303
 [the definition of `IPluginManifest`]:
-  https://github.com/goatcorp/Dalamud/blob/532781308d6291a2c0117e0e73a8252358e2d91a/Dalamud/Plugin/Internal/Types/Manifest/IPluginManifest.cs#L9
-[DalamudPlugins17]: https://github.com/goatcorp/DalamudPluginsD17
+  https://github.com/goatcorp/Dalamud/blob/15352a3e235a893e097e8f3e998818124a278416/Dalamud/Plugin/Internal/Types/Manifest/IPluginManifest.cs#L8
+[DalamudPluginsD17]: https://github.com/goatcorp/DalamudPluginsD17
