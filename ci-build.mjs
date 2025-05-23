@@ -95,43 +95,60 @@ for (const branch of Object.keys(versions)) {
   console.log(`==> Generating API documentation for branch ${branch}...`);
 
   // TODO: set up actions caching for Dalamud builds
-  exec(
-    `git clone --recursive --depth 1 --branch ${branch} https://github.com/goatcorp/Dalamud Dalamud-${branch}`,
-    { cwd: tempDir, ...execOptions },
-  );
-
-  const branchDir = path.join(tempDir, `Dalamud-${branch}`);
+  const branchDirName = `Dalamud-${branch}`;
+  const branchDirPath = path.join(tempDir, branchDirName);
+  if (fs.existsSync(branchDirPath)) {
+    // If directory exists, update it
+    exec('git fetch --all', { cwd: branchDirPath, ...execOptions });
+    exec('git reset --hard origin/' + branch, {
+      cwd: branchDirPath,
+      ...execOptions,
+    });
+    exec('git submodule update --init --recursive', {
+      cwd: branchDirPath,
+      ...execOptions,
+    });
+  } else {
+    // If directory doesn't exist, clone it
+    exec(
+      `git clone --recursive --depth 1 --branch ${branch} https://github.com/goatcorp/Dalamud ${branchDirName}`,
+      { cwd: tempDir, ...execOptions },
+    );
+  }
 
   // build Dalamud
   if (isWindows) {
-    exec('.\\build.ps1 CompileDalamud -Configuration Release --is-docs-build true', {
-      cwd: branchDir,
-      shell: 'pwsh.exe',
-      ...execOptions,
-    });
+    exec(
+      '.\\build.ps1 CompileDalamud -Configuration Release --is-docs-build true',
+      {
+        cwd: branchDirPath,
+        shell: 'pwsh.exe',
+        ...execOptions,
+      },
+    );
   } else {
     exec(
       'bash ./build.sh CompileDalamud -Configuration Release --is-docs-build true',
       {
-        cwd: branchDir,
+        cwd: branchDirPath,
         ...execOptions,
       },
     );
   }
 
   // generate metadata
-  exec('docfx metadata', { 
-    cwd: branchDir,
+  exec('docfx metadata', {
+    cwd: branchDirPath,
     env: {
-      'DOCFX_SOURCE_BRANCH_NAME': branch,
+      DOCFX_SOURCE_BRANCH_NAME: branch,
       ...process.env,
     },
-    ...execOptions 
+    ...execOptions,
   });
 
   // execute dfmg
   exec('dfmg', {
-    cwd: branchDir,
+    cwd: branchDirPath,
     env: {
       ...process.env,
       DFMG_CONFIG: path.join(__dirname, 'dfmg-config.yml'),
@@ -140,7 +157,7 @@ for (const branch of Object.keys(versions)) {
         'api_versioned_docs',
         `version-${branch}`,
       ),
-      DFMG_YAML_PATH: path.join(branchDir, 'api'),
+      DFMG_YAML_PATH: path.join(branchDirPath, 'api'),
     },
     ...execOptions,
   });
