@@ -70,7 +70,10 @@ export default {
           showReadingTime: true,
         },
         theme: {
-          customCss: require.resolve('./custom.css'),
+          customCss: [
+            require.resolve('./src/css/custom.css'),
+            require.resolve('./src/css/gfd-icons.css'),
+          ],
         },
       }),
     ],
@@ -160,7 +163,7 @@ export default {
             ],
           },
         ],
-        copyright: `Final Fantasy XIV © 2010-2023 SQUARE ENIX CO., LTD. All Rights Reserved. We are not affiliated with SQUARE ENIX CO., LTD. in any way.`,
+        copyright: `Final Fantasy XIV © 2010-2024 SQUARE ENIX CO., LTD. All Rights Reserved. We are not affiliated with SQUARE ENIX CO., LTD. in any way.`,
       },
       prism: {
         theme: lightCodeTheme,
@@ -169,8 +172,8 @@ export default {
       },
       colorMode: {
         defaultMode: 'dark',
-        disableSwitch: true,
-        respectPrefersColorScheme: false,
+        disableSwitch: false,
+        respectPrefersColorScheme: true,
       },
       algolia: {
         appId: 'FA3MQDJLPG',

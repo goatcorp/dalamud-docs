@@ -9,12 +9,11 @@ Dalamud has two major concepts in terms of versioning: **API Level** and
 
 ## Summary
 
-| Channel | Branch   | API Level | Stability | Recommended For                                           |
-| ------- | -------- | --------- | --------- | --------------------------------------------------------- |
-| Release | `master` | 8         | Highest   | Auto-assigned to most users                               |
-| Canary  | `master` | 8         | Very High | Auto-assigned to a small number of users                  |
-| Staging | `master` | 8         | Medium    | Core/plugin developers, testing-inclined users            |
-| v9      | `v9`     | 9         | Low       | Core/plugin developers who want to get a head start on v9 |
+| Channel | Branch   | API Level | Stability | Recommended For                                |
+| ------- | -------- | --------- | --------- | ---------------------------------------------- |
+| Release | `master` | 10        | Highest   | Auto-assigned to most users                    |
+| Canary  | `master` | 10        | Very High | Auto-assigned to a small number of users       |
+| Staging | `master` | 10        | Medium    | Core/plugin developers, testing-inclined users |
 
 ## API Level
 
@@ -26,8 +25,7 @@ API Level will not work with newer versions of Dalamud.
 
 For Dalamud v9 and higher, the API Level will _always_ match the major version
 number - i.e. Dalamud 9.0.0 will have API Level 9, Dalamud 10.0.0 will have API
-Level 10, etc. For the current release version of Dalamud (7.x), the current API
-level is 8.
+Level 10, etc.
 
 Before Dalamud v9, the API level did not have a direct relation to the Dalamud
 version. The API level was incremented whenever a breaking change was made to
@@ -49,6 +47,8 @@ level.
 
 | API Level | First Dalamud Version | First Game Version | .NET Version | First Commit                                                                                      |
 | --------- | --------------------- | ------------------ | ------------ | ------------------------------------------------------------------------------------------------- |
+| 10        | 10.0.0.0              | Patch 7.0          | .NET 8.0     | [2024-07-05](https://github.com/goatcorp/Dalamud/releases/tag/10.0.0.0)                           |
+| 9         | 9.0.0.0               | Patch 6.5          | .NET 7.0     | [2023-10-05](https://github.com/goatcorp/Dalamud/releases/tag/9.0.0.1)                            |
 | 8         | 7.4.0.0               | Patch 6.3          | .NET 7.0     | [2023-01-10](https://github.com/goatcorp/Dalamud/commit/251359abe92ed805f1163f1a9da28a0aa4f891cb) |
 | 7         | 7.0.0.0               | Patch 6.2          | .NET 6.0     | [2022-08-23](https://github.com/goatcorp/Dalamud/commit/6692d560296baab7758a372df10794cdf3717c17) |
 | 6         | 6.4.0.0               | Patch 6.1          | .NET 5.0     | [2022-04-13](https://github.com/goatcorp/Dalamud/commit/d9f3800257fe1fa5621b9c13028c06911555889c) |
@@ -87,10 +87,6 @@ time through the "Branch Switcher" option in the `/xldev` > `Dalamud` menu.
 - **Staging (`stg`)**: This channel is updated with the latest commits to
   `master`, before a release version is tagged. New features are made available
   here before being moved to Canary/Release.
-- **v9**: This channel tracks the latest commits to the `v9` branch. This branch
-  is the current development branch for Dalamud v9, and is recommended only for
-  developers to use, as it has breaking changes (including an API level bump).
-  [You can view information on what's new in v9 here.](v9)
 
 ### Branches
 
@@ -102,4 +98,3 @@ The current main branches are:
 
 - `master`: The main development branch for Dalamud. This branch is used for all
   releases, and is the default branch for all pull requests.
-- `v9`: The development branch for Dalamud v9.

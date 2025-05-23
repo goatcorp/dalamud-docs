@@ -7,13 +7,10 @@ that your plugin is approved into the official plugin repository, and to
 minimise the risk of action by Square Enix. You can read more about this
 [here](../plugin-publishing/approval-process.md).
 
-We recommend that you start by cloning one of the following templates, and then
-customising it to your requirements. While `SamplePlugin` is the most actively
-maintained, the others are updated as required:
-
-- [@goatcorp/SamplePlugin](https://github.com/goatcorp/SamplePlugin)
-- [@karashiiro/DalamudPluginProjectTemplate](https://github.com/karashiiro/DalamudPluginProjectTemplate)
-- [@lmcintyre/PluginTemplate](https://github.com/lmcintyre/PluginTemplate)
+We recommend that you start by cloning the [`SamplePlugin`
+repository][sample-plugin] and then customizing it to your specific
+requirements. This plugin template contains many common settings as well as
+frequently-used sample code to help bootstrap plugin creation.
 
 To distribute a plugin, it needs to be packaged correctly. This can be done
 manually or [with DalamudPackager](https://github.com/goatcorp/DalamudPackager).
@@ -21,3 +18,5 @@ manually or [with DalamudPackager](https://github.com/goatcorp/DalamudPackager).
 When your plugin is ready for testing/release, you should make a pull request to
 the [DalamudPluginsD17](https://github.com/goatcorp/DalamudPluginsD17) repo.
 **Please place testing plugins in the testing/live folder**.
+
+[sample-plugin]: https://github.com/goatcorp/SamplePlugin

@@ -1,6 +1,6 @@
 # Plugin Restrictions
 
-Dalamud plugin development, by its nature, interferes with the game's functioning and changes the experience as 
+Dalamud plugin development, by its nature, interferes with the game's functioning and changes the experience as
 intended by Square Enix. This makes it very important to ensure that your plugin does not do anything that a human
 player could not do; Dalamud plugins should enhance the experience, not radically alter it.
 
@@ -14,6 +14,10 @@ Please make sure that, as much as possible:
 - your plugin does not augment, alter, or interfere with combat, unless it only
   provides information about your own party or alliance members that is
   otherwise available, but represents said information differently.
+    - **Reach out to the approval team before submitting a plugin that fits
+      the description above.** We do not accept submissions of combat plugins that
+      were not previously communicated, as we want to avoid having people do the
+      work of creating a submission only to have it be rejected.
     - Note that there are plugins on the repository that do not abide by this
       rule, but they have been grandfathered and similar plugins will not be
       allowed.
@@ -21,6 +25,8 @@ Please make sure that, as much as possible:
   granting access to Mog Station items)
 - your plugin does not provide parsing, raid logging, DPS meters, or similar
   (i.e. information beyond what is traditionally available to players)
+- your plugin does not collect account IDs of player characters beyond your own
+  in any form, regardless of the intended use or whether it is exposed to users
 - your plugin does not have a hard dependency on any plugin that violates the
   Plugin Guidelines.
 
@@ -33,7 +39,7 @@ into making a decision for any specific plugin.
 If you are not sure whether your plugin will be allowed, _please_ contact us in the
 [Dalamud Discord](https://discord.gg/holdshift) before you start work on it. Members of the Plugin Approval Committee or
 Dalamud staff will evaluate your idea and let you know if there are any risk factors that may put it in breach of one
-of our guidelines. We *highly* suggest you ask us to weigh in on an idea before starting to work on it - it's not a 
+of our guidelines. We *highly* suggest you ask us to weigh in on an idea before starting to work on it - it's not a
 good feeling for anyone when we need to reject a completed plugin that breaks our rules.
 
 It's not particularly uncommon for a newly-submitted plugin to unintentionally violate one or more guidelines. When
@@ -90,7 +96,7 @@ rules, there is very little we can do as a project to prevent this.
   to the community that uses Dalamud.
 
 If you have a problem with a plugin on the official repository, we recommend
-reading [our plugin submission guidelines](plugin-submission) to get some
+reading the plugin submission guidelines above to get some
 background on how we decide if a plugin should be on the official repo. If you
 still think that the plugin should not be there, feel free to reach out to a
 member of our team via Discord.
@@ -99,7 +105,7 @@ member of our team via Discord.
 
 There are various reasons for why a plugin might not be on the official repo.
 
-- It doesn't conform to our [rules and guidelines](plugin-submission).
+- It doesn't conform to our rules and guidelines above.
 - It only works in conjunction with another custom repo plugin. This doesn't
   necessarily mean that the plugin in question, or the plugin it depends on,
   violate our rules and guidelines.
