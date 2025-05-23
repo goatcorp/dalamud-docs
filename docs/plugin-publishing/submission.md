@@ -5,6 +5,19 @@ is a relatively involved process where a plugin developer will build _yet
 another_ manifest file and submit it to [our GitHub Repository][d17] for
 inclusion in the official ("mainline") plugin repository.
 
+:::info
+
+Before submitting your plugin, make sure you have:
+
+1. Set up your [plugin metadata](../plugin-development/plugin-metadata)
+   correctly
+2. Reviewed the
+   [technical considerations](../plugin-development/technical-considerations)
+   for your plugin
+3. Ensured your plugin meets all [restrictions](./restrictions)
+
+:::
+
 ## The D17 Workflow
 
 Dalamud's plugin workflow is managed by a system called [Plogon][plogon], which
@@ -72,6 +85,13 @@ The `icon.png` image must have a 1:1 aspect ratio, and must be between 64x64 and
 
 Plugin developers may optionally upload up to five marketing/preview images,
 named `image1.png` through `image5.png`.
+
+:::info
+
+For more information about plugin metadata and changelogs, see
+[Setting Plugin Metadata](../plugin-development/plugin-metadata).
+
+:::
 
 ### Submitting Plugin Updates
 

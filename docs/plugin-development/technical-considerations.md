@@ -13,6 +13,16 @@ developing a plugin. Here are a few examples:
   local game files, which will always be up-to-date and accurate, and is much
   faster than making requests to XIVAPI.
 
+:::info
+
+For information about submitting your plugin and the approval process, see:
+
+- [The Submission Process](../plugin-publishing/submission)
+- [The Approval Process](../plugin-publishing/approval-process)
+- [Plugin Restrictions](../plugin-publishing/restrictions)
+
+:::
+
 ## Are there any performance constraints to be aware of?
 
 You should generally aim to not impact game performance too much as that can
@@ -60,6 +70,14 @@ though there are certain considerations and requirements that must be met:
   certificate authority such as [Let's Encrypt][lets-encrypt]. Plugins must
   connect to servers via DNS name to prevent data from going to stray IP
   addresses.
+
+:::warning
+
+These requirements are part of the
+[plugin restrictions](../plugin-publishing/restrictions) and must be followed
+for your plugin to be approved.
+
+:::
 
 The appropriateness of data (both essential and non-essential) being submitted
 to backend servers is ultimately subjective, and will be handled on a

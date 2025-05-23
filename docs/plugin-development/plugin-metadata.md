@@ -96,6 +96,16 @@ prevent the automatic post by starting your Pull Request description with the
 word `nofranz`. Note that any changelog you write in `manifest.toml` or the
 plugin manifest will still be visible to users via the plugin installer.
 
+:::info
+
+For more information about submitting your plugin and the approval process, see:
+
+- [The Submission Process](../plugin-publishing/submission)
+- [The Approval Process](../plugin-publishing/approval-process)
+- [Plugin Restrictions](../plugin-publishing/restrictions)
+
+:::
+
 [DalamudPackager]: https://github.com/goatcorp/DalamudPackager
 [the relevant part of DalamudPackager]:
   https://github.com/goatcorp/DalamudPackager/blob/f199a98840389779f2398f37f08211cf66f77486/DalamudPackager/DalamudPackager.cs#L303
