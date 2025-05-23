@@ -51,10 +51,5 @@ pkgs.mkShell {
       echo "Installing docfx..."
       dotnet tool install -g docfx
     fi
-
-    if ! command -v DocFxMarkdownGen &> /dev/null; then
-      echo "Installing DocFxMarkdownGen..."
-      dotnet tool install -g DocFxMarkdownGen
-    fi
   '';
 }

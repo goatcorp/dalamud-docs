@@ -147,7 +147,8 @@ for (const branch of Object.keys(versions)) {
   });
 
   // execute dfmg
-  exec('dfmg', {
+  const dfmgPath = path.resolve('DocFxMarkdownGen', 'DocFxMarkdownGen.csproj');
+  exec(`dotnet run --project ${dfmgPath}`, {
     cwd: branchDirPath,
     env: {
       ...process.env,
