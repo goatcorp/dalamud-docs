@@ -1,4 +1,4 @@
-# Plugin Submission & Approval
+# The Approval Process
 
 This article describes the process that decides which plugins are merged into
 the official repository, and how we make sure that what goes in is safe for you
@@ -45,17 +45,17 @@ plugins.
 ## New submissions
 
 When a plugin is newly submitted, the team checks that it conforms to a set of
-[guidelines](restrictions#what-am-i-allowed-to-do-in-my-plugin) and
+[guidelines](./restrictions.md) and
 [technical criteria](https://github.com/goatcorp/DalamudPluginsD17#approval-criteria).
 The team then votes on each newly submitted plugin - if a plugin clears 4 yes
 votes, it is approved and will appear in the repo. Every team member can veto a
 plugin, blocking it from being merged until the concern is resolved. This hasn't
 happened yet.
 
-These [guidelines](restrictions#what-am-i-allowed-to-do-in-my-plugin) exist
-because we want to improve the experience Square Enix provides - not harm it or
-any other player playing the game. We think that they allow for a lot of freedom
-for plugin developers, while encouraging them to stay true to that intent.
+These [guidelines](./restrictions.md) exist because we want to improve the
+experience Square Enix provides - not harm it or any other player playing the
+game. We think that they allow for a lot of freedom for plugin developers, while
+encouraging them to stay true to that intent.
 
 Technical criteria include a thorough code review, that the plugin works and
 that it does not upload any personal data. All of this can take a while, which
@@ -92,6 +92,7 @@ listing. If you have any questions or think that something here could be
 clarified, feel free to reach out.
 
 [^1]:
-    Technically, this is still possible, but you would need NSA-grade
-    datacenters and a lot of time (at the moment, probably hundreds of years) to
-    break the hash algorithm Git uses.
+
+Technically, this is still possible, but you would need NSA-grade datacenters
+and a lot of time (at the moment, probably hundreds of years) to break the hash
+algorithm Git uses.

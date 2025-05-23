@@ -2,10 +2,10 @@
 
 Plugins allow you to interact with the game and add features, modify
 functionality, and do much more. We ask you to be respectful of
-[our guidelines](restrictions#what-am-i-allowed-to-do-in-my-plugin) to ensure
-that your plugin is approved into the official plugin repository, and to
-minimise the risk of action by Square Enix. You can read more about this
-[here](restrictions#why-do-you-discourage-certain-types-of-plugins).
+[our guidelines](../plugin-publishing/restrictions.md) to ensure that your
+plugin is approved into the official plugin repository, and to minimise the risk
+of action by Square Enix. You can read more about this
+[here](../plugin-publishing/approval-process.md).
 
 We recommend that you start by cloning the [`SamplePlugin`
 repository][sample-plugin] and then customizing it to your specific
