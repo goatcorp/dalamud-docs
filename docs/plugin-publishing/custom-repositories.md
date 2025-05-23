@@ -1,10 +1,14 @@
 # Publishing to a Custom Repository
 
-:::warning The Dalamud Project offers minimal support to custom repository
-plugins, including assistance in setting up a custom repository.
+:::warning
+
+The Dalamud Project offers minimal support to custom repository plugins,
+including assistance in setting up a custom repository.
 
 Developers wishing to publish their plugins should strongly consider submitting
-their plugin to the official ("mainline") repository. :::
+their plugin to the official ("mainline") repository.
+
+:::
 
 At times, developers may want to control the release cycle of their plugin more
 strictly than what the mainline repository can allow. Dalamud allows end users

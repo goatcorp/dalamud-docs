@@ -42,7 +42,7 @@ branch to better protect against merge conflicts.
 Every plugin submitted to D17 must follow the below directory structure, located
 in the appropriate track:
 
-```
+```plaintext
 MyPluginName/
  |- manifest.toml
  |- images/
@@ -50,7 +50,6 @@ MyPluginName/
      |- image1.png [OPTIONAL]
      |- image2.png [OPTIONAL]
      |- image3.png [OPTIONAL]
-
 ```
 
 Note that new plugins _must_ be submitted to the `testing` track; that is, their
