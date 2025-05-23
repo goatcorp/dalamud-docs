@@ -172,8 +172,8 @@ export default {
       },
       colorMode: {
         defaultMode: 'dark',
-        disableSwitch: true,
-        respectPrefersColorScheme: false,
+        disableSwitch: false,
+        respectPrefersColorScheme: true,
       },
       algolia: {
         appId: 'FA3MQDJLPG',
