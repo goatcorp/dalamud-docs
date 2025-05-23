@@ -52,10 +52,10 @@ votes, it is approved and will appear in the repo. Every team member can veto a
 plugin, blocking it from being merged until the concern is resolved. This hasn't
 happened yet.
 
-These [guidelines](./restrictions.md) exist
-because we want to improve the experience Square Enix provides - not harm it or
-any other player playing the game. We think that they allow for a lot of freedom
-for plugin developers, while encouraging them to stay true to that intent.
+These [guidelines](./restrictions.md) exist because we want to improve the
+experience Square Enix provides - not harm it or any other player playing the
+game. We think that they allow for a lot of freedom for plugin developers, while
+encouraging them to stay true to that intent.
 
 Technical criteria include a thorough code review, that the plugin works and
 that it does not upload any personal data. All of this can take a while, which
@@ -92,6 +92,7 @@ listing. If you have any questions or think that something here could be
 clarified, feel free to reach out.
 
 [^1]:
-Technically, this is still possible, but you would need NSA-grade
-datacenters and a lot of time (at the moment, probably hundreds of years) to
-break the hash algorithm Git uses.
+
+Technically, this is still possible, but you would need NSA-grade datacenters
+and a lot of time (at the moment, probably hundreds of years) to break the hash
+algorithm Git uses.
