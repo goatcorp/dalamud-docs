@@ -31,11 +31,49 @@ Please make sure that, as much as possible:
   in any form, regardless of the intended use or whether it is exposed to users
 - your plugin does not have a hard dependency on any plugin that violates the
   Plugin Guidelines.
+- your plugin is not only useful in out-of-spec scenarios (e.g., out-of-bounds
+  areas, etc.). Even if a plugin doesn't directly violate guidelines, if it only
+  serves to enhance or facilitate behavior that is outside the game's intended
+  specifications, it will not be allowed. This is because such plugins tacitly
+  encourage behavior that we cannot support or discuss within our community.
 
 Certain plugins may be subject to certain additional constraints or review based
 on their featureset, potential impact to the ecosystem, and other factors.
 [Plugin review is a subjective process](./submission.md) and many factors go
 into making a decision for any specific plugin.
+
+## Common Non-Starters
+
+The following are common plugin requests that will not be allowed, along with
+explanations:
+
+- **Emote/Expression Looping**: Violates automation rules. The game explicitly
+  indicates when an emote is persistent.
+- **Skip Cutscenes**: Violates automation rules, especially for unskippable
+  cutscenes.
+- **Skip Dialog Boxes**: Violates automation rules.
+- **Automated Crafting**: Violates automation rules.
+- **Autoroll on Loot**: Violates automation rules. (Note: Plugins that enhance
+  the loot selection UI without automation, like "Select Next Loot Item Tweak",
+  are allowed.)
+- **Friend List Login/Out Alerts**: Technically impossible without external
+  servers, as FFXIV only sends friends list data when actively opened.
+- **Visible AOE Markers for Non-Telegraphed Mechanics**: Considered cheating and
+  not allowed.
+- **Camera Zoom Adjustments**: Violates guidelines, can provide unfair
+  advantages in battle content, and can break cutscenes. Plugins that stay
+  within normal game bounds are allowed.
+- **FFLogs Integration**: Use ACT instead. We prefer to maintain distance from
+  this aspect of FFXIV.
+- **Damage Parser / ACT as Plugin**: Use ACT or alternatives instead. Similar to
+  FFLogs, we prefer to maintain distance from this aspect of FFXIV.
+- **Avoiding Fantasia**: Violates guidelines by attempting to bypass Mog Station
+  purchases.
+- **More XIV Combos**: Not allowed. See
+  [XIVComboPlugin issue #119](https://github.com/attickdoor/XIVComboPlugin/issues/119)
+  for details.
+- **AOE Recoloring**: Not allowed due to potential gameplay advantages and
+  consistency issues.
 
 ## I'm not sure if my plugin idea violates the guidelines!
 
