@@ -1,0 +1,4 @@
+[submodule "DocFxMarkdownGen"]
+	path = DocFxMarkdownGen
+	url = https://github.com/goatcorp/DocFxMarkdownGen.git
+	branch = main
