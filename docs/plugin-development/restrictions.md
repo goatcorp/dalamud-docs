@@ -18,8 +18,8 @@ Please make sure that, as much as possible:
 - your plugin does not augment, alter, or interfere with combat, unless it only
   provides information about your own party or alliance members that is
   otherwise available, but represents said information differently.
-  - **Reach out to the approval team before submitting a plugin that fits
-    the description above.** We do not accept submissions of combat plugins that
+  - **Reach out to the approval team before submitting a plugin that fits the
+    description above.** We do not accept submissions of combat plugins that
     were not previously communicated, as we want to avoid having people do the
     work of creating a submission only to have it be rejected.
   - Note that there are plugins on the repository that do not abide by this
@@ -165,9 +165,9 @@ experience.
 
 ## How are plugins reviewed and approved?
 
-[This page documents our plugin submission process](./plugin-submission.md), and the
-stringent review that is applied to each new submission. Feel free to join the
-Discord and ask for more details if required.
+[This page documents our plugin submission process](./plugin-submission.md), and
+the stringent review that is applied to each new submission. Feel free to join
+the Discord and ask for more details if required.
 
 ## I don't like plugin X, can you block it or delete it?
 

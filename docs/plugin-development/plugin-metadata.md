@@ -56,11 +56,11 @@ Optional keys include:
 - `AcceptsFeedback`
 - `FeedbackMessage`
 
-See [the definition of `IPluginManifest`][] for further information. NB: some
-fields mentioned there, like `Dip17Channel`, are set automatically by the
-various plumbing that gets your plugins from GitHub to people's computers, and
-you should not include them in your manifest explicitly. (For a list of the keys
-you're allowed to set, see [the relevant part of DalamudPackager][].)
+See [the definition of `IPluginManifest`][] for further information. NB: some fields
+mentioned there, like `Dip17Channel`, are set automatically by the various plumbing
+that gets your plugins from GitHub to people's computers, and you should not include
+them in your manifest explicitly. (For a list of the keys you're allowed to set,
+see [the relevant part of DalamudPackager][].)
 
 Note that the following keys are also required for Dalamud to load a plugin, but
 if you're using [DalamudPackager][], it will automatically fill them in for you,
