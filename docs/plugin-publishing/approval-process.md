@@ -91,8 +91,6 @@ We hope that this helps clarify how plugins land in the official Dalamud plugin
 listing. If you have any questions or think that something here could be
 clarified, feel free to reach out.
 
-[^1]:
-
-Technically, this is still possible, but you would need NSA-grade datacenters
+[^1]: Technically, this is still possible, but you would need NSA-grade datacenters
 and a lot of time (at the moment, probably hundreds of years) to break the hash
 algorithm Git uses.
