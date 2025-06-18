@@ -220,7 +220,7 @@ Example `<num(300000)>`:
 ```c {4-5}
 0x02, // Payload start
   0x20, // Macro code for num
-  0x05, // Integer expression for the payload length (3)
+  0x05, // Integer expression for the payload length (4)
   0xF6, // Integer expression for the value
     0x04, 0x93, 0xE0, // 0x0493E0 = 300000
 0x03 // Payload end
@@ -1573,7 +1573,7 @@ Adds a column from a sheet.
 
 Expressions:
 
-- \[0] String Expression: Sheet name
+- \[0] String Expression: Sheet Name
 - \[1] Integer Expression: RowId
 - \[2] Integer Expression: Column Index
 - \[3] Expression used as local parameter to evaluate the the columns text
@@ -2487,7 +2487,7 @@ corresponding UTF-8 characters. Make sure to read the note about
 [SoftHyphen](#macro-softhyphen).
 
 Avoid using `ToString()` as it generates a macro string, as seen in the examples
-throughout this guide. This is a common pitfall, particularly with the Dungeon
+throughout this guide. This is a common pitfall, particularly with the Trial
 `the <italic(1)>Whorleater<italic(0)> (Hard)`, where the ship's name is intended
 to be displayed in italics.
 
