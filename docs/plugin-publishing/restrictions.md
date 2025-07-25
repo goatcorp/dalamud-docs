@@ -36,6 +36,8 @@ Please make sure that, as much as possible:
   serves to enhance or facilitate behavior that is outside the game's intended
   specifications, it will not be allowed. This is because such plugins tacitly
   encourage behavior that we cannot support or discuss within our community.
+- your plugin does not give any advantage in any competition 
+  or player versus player environment
 
 Certain plugins may be subject to certain additional constraints or review based
 on their featureset, potential impact to the ecosystem, and other factors.
@@ -74,6 +76,8 @@ explanations:
   for details.
 - **AOE Recoloring**: Not allowed due to potential gameplay advantages and
   consistency issues.
+- **Anything in pvp**: changing pvp behavior elevates the plugin user with a unfair advantage,
+  allowing anything like this would cause pvp to turn into a arms-race.
 
 ## I'm not sure if my plugin idea violates the guidelines!
 
