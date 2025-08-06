@@ -2247,6 +2247,43 @@ var result = SeStringEvaluator.Evaluate(example);
 
 </details>
 
+### \[`0x41`] SheetSub \{#macro-sheetsub}
+
+Adds a string from a subsheets secondary sheet.
+
+Expressions:
+
+- \[0] String Expression: Sheet Name
+- \[1] Integer Expression: RowId
+- \[2] Integer Expression: SubrowId
+- \[3] Integer Expression: Column Index
+- \[4] String Expression: Secondary Sheet Name
+- \[5] String Expression: Secondary Sheet Column Index
+
+<details open>
+<summary>Example</summary>
+
+`<sheetsub(WKSPioneeringTrail,1,1,3,WKSPioneeringTrailString,1)>`
+
+→ Prints `Peaceful Living and Technological Leaps`.
+
+---
+
+```cs
+var example = new SeStringBuilder()
+  .BeginMacro(MacroCode.SheetSub)
+    .AppendStringExpression("WKSPioneeringTrail")
+    .AppendIntExpression(1)
+    .AppendIntExpression(3)
+    .AppendIntExpression(3)
+    .AppendStringExpression("WKSPioneeringTrailString")
+    .AppendIntExpression(1)
+  .EndMacro()
+  .ToReadOnlySeString();
+```
+
+</details>
+
 ### \[`0x48`] ColorType \{#macro-colortype}
 
 Pushes the text foreground color, referring to a color defined in UIColor sheet.
