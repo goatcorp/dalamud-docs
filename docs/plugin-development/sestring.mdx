@@ -2295,6 +2295,53 @@ var example = new SeStringBuilder()
 
 </details>
 
+### \[`0x42`] SwitchPlatform \{#macro-switchplatform}
+
+Prints text from the Platform sheet, depending on the current clients' platform.
+
+Expressions:
+
+- \[0] Integer Expression: Text Index
+
+Can be evaluated using ISeStringEvaluator (<a
+href={`https://github.com/goatcorp/Dalamud/blob/2affbe36/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L465`}>code</a>).
+
+:::note
+
+The Platform sheet is split into two sections: the first 20 rows are for wired
+controllers, and the next 20 rows are for wireless controllers.
+
+On Windows, however, it currently always prints `Gamepad` for any text index
+that’s passed in.
+
+We assume the original code contains platform-specific C preprocessor sections
+that were omitted from the Windows build.
+
+:::
+
+<details open>
+<summary>Example</summary>
+
+`<switchplatform(1)>`
+
+→ Prints `Gamepad`.
+
+---
+
+```cs
+var example = new SeStringBuilder()
+  .BeginMacro(MacroCode.SwitchPlatform)
+    .AppendUIntExpression(1)
+  .EndMacro()
+  .ToReadOnlySeString();
+
+var result = SeStringEvaluator.Evaluate(example);
+```
+
+→ Prints `Gamepad`.
+
+</details>
+
 ### \[`0x48`] ColorType \{#macro-colortype}
 
 Pushes the text foreground color, referring to a color defined in UIColor sheet.
