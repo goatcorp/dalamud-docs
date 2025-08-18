@@ -399,14 +399,14 @@ starts at 0).
 
 | Index | Type    | Label                                                 |
 | ----- | ------- | ----------------------------------------------------- |
-| 1     | String  | Local Player's Name                                   |
-| 2     | String  | Temp Player 1 Name                                    |
-| 3     | String  | Temp Player 2 Name                                    |
-| 4     | Integer | Local Player's Sex                                    |
-| 5     | Integer | Temp Player 1 Sex                                     |
-| 6     | Integer | Temp Player 2 Sex                                     |
-| 7     | Integer | Temp Player 1 Unk 1                                   |
-| 8     | Integer | Temp Player 2 Unk 1                                   |
+| 1     | String  | Player Name                                           |
+| 2     | String  | Temp Entity 1: Name                                   |
+| 3     | String  | Temp Entity 2: Name                                   |
+| 4     | Integer | Player Sex                                            |
+| 5     | Integer | Temp Entity 1: Sex                                    |
+| 6     | Integer | Temp Entity 2: Sex                                    |
+| 7     | Integer | Temp Entity 1: ObjStrId                               |
+| 8     | Integer | Temp Entity 2: ObjStrId                               |
 | 11    | Integer | Eorzea Time Hours                                     |
 | 12    | Integer | Eorzea Time Minutes                                   |
 | 13    | Integer | ConfigOption ColorSay                                 |
@@ -444,7 +444,7 @@ starts at 0).
 | 52    | Integer | Player Grand Company Rank (Maelstrom)                 |
 | 53    | Integer | Player Grand Company Rank (Twin Adders)               |
 | 54    | Integer | Player Grand Company Rank (Immortal Flames)           |
-| 55    | String  | Local Player's Companion Name                         |
+| 55    | String  | Companion Name                                        |
 | 56    | String  | Content Name                                          |
 | 57    | Integer | ConfigOption ColorSysBattle                           |
 | 58    | Integer | ConfigOption ColorSysGathering                        |
@@ -455,14 +455,19 @@ starts at 0).
 | 63    | Integer | ConfigOption ColorLoot                                |
 | 64    | Integer | ConfigOption ColorCraft                               |
 | 65    | Integer | ConfigOption ColorGathering                           |
-| 66    | Integer | Temp Player 1 Unk 2                                   |
-| 67    | Integer | Temp Player 2 Unk 2                                   |
-| 68    | Integer | Local Player's ClassJobId                             |
-| 69    | Integer | Local Player's Level                                  |
-| 71    | Integer | Local Player's Race                                   |
-| 72    | Integer | Local Player's Synced Level                           |
-| 78    | Integer | Client/Plattform?                                     |
-| 79    | Integer | Local Player's BirthMonth                             |
+| 66    | Integer | Temp Entity 1: Name starts with Vowel                 |
+| 67    | Integer | Temp Entity 2: Name starts with Vowel                 |
+| 68    | Integer | Player ClassJobId                                     |
+| 69    | Integer | Player Level                                          |
+| 70    | Integer | Player StartTown                                      |
+| 71    | Integer | Player Race                                           |
+| 72    | Integer | Player Synced Level                                   |
+| 74    | Integer | Quest#66047: Has met Alphinaud and Alisaie            |
+| 75    | Integer | PlayStation Generation                                |
+| 76    | Integer | Is Legacy Player                                      |
+| 78    | Integer | Client/Platform?                                      |
+| 79    | Integer | Player BirthMonth                                     |
+| 80    | Integer | ConfigOption PadMode                                  |
 | 83    | Integer | Datacenter Region                                     |
 | 84    | Integer | ConfigOption ColorCWLS2                               |
 | 85    | Integer | ConfigOption ColorCWLS3                               |
@@ -471,7 +476,7 @@ starts at 0).
 | 88    | Integer | ConfigOption ColorCWLS6                               |
 | 89    | Integer | ConfigOption ColorCWLS7                               |
 | 90    | Integer | ConfigOption ColorCWLS8                               |
-| 92    | Integer | Local Player's Grand Company                          |
+| 92    | Integer | Player Grand Company                                  |
 | 93    | Integer | TerritoryType Id                                      |
 | 94    | Integer | Is Soft Keyboard Enabled                              |
 | 95    | Integer | ConfigOption LogColorRoleTank for LogSetRoleColor 1   |
@@ -483,6 +488,11 @@ starts at 0).
 | 101   | Integer | ConfigOption LogColorOtherClass for LogSetRoleColor 1 |
 | 102   | Integer | ConfigOption LogColorOtherClass for LogSetRoleColor 2 |
 | 103   | Integer | Has Login Security Token                              |
+| 104   | Integer | Is subscribed to PlayStation Plus                     |
+| 105   | Integer | ConfigOption PadMouseMode                             |
+| 107   | Integer | Preferred World Bonus Max Level                       |
+| 108   | Integer | Occult Crescent Support Job Level                     |
+| 109   | Integer | Deep Dungeon Id                                       |
 
 </details>
 
