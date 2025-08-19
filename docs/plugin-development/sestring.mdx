@@ -14,7 +14,7 @@ import LinkMarker from '@site/src/components/icons/LinkMarker.tsx';
 import StatusBuff from '@site/src/components/icons/StatusBuff.tsx';
 import StatusDebuff from '@site/src/components/icons/StatusDebuff.tsx';
 
-export const LUMINA_COMMIT = 'd0adbcf1';
+export const LUMINA_COMMIT = 'a268028';
 export const DALAMUD_COMMIT = '97b01d69';
 
 <style>
@@ -1241,11 +1241,11 @@ German texts, will almost certainly contain soft hyphens (represented in macro
 strings as \<->). Soft hyphens indicate potential word break points at
 syllables. They are normally invisible and only appear at the end of a line when
 a word needs to be broken. In this case, they render as a visible \- to mark the
-split. However ImGui (for example, `ImGui.TextUnformatted()`) doesn't handle
-this correctly and will always display soft hyphens, even if no line break
-occurs.
+split. However ImGui (for example, `ImGui.Text()`) doesn't handle this correctly
+and will always display soft hyphens, even if no line break occurs.
 
-You can remove soft hyphens from a string using the
+If you notice soft hyphens are being displayed, you can remove them from a
+`string` using the
 [`StripSoftHyphen()`](https://dalamud.dev/api/Dalamud.Utility/Classes/StringExtensions#stripsofthyphenstring)
 extension provided by Dalamud.
 
@@ -2574,17 +2574,9 @@ be passed through:
 ## Rendering SeStrings in ImGui
 
 If you're certain a `ReadOnlySeString` doesn't contain macro payloads, you can
-safely convert it to a plain C# string using <a
-href={`https://github.com/NotAdam/Lumina/blob/${LUMINA_COMMIT}/src/Lumina/Text/ReadOnly/ReadOnlySeStringSpan.cs#L214`}>`ExtractText()`</a>.
-This function strips out all macro payloads except for NewLine,
-NonBreakingSpace, Hyphen and SoftHyphen, which are replaced with their
-corresponding UTF-8 characters. Make sure to read the note about
-[SoftHyphen](#macro-softhyphen).
-
-Avoid using `ToString()` as it generates a macro string, as seen in the examples
-throughout this guide. This is a common pitfall, particularly with the Trial
-`the <italic(1)>Whorleater<italic(0)> (Hard)`, where the ship's name is intended
-to be displayed in italics.
+safely convert it to a plain C# string using `ToString()`. This function strips
+out all macro payloads except for NewLine, NonBreakingSpace and Hyphen, which
+are replaced with their corresponding UTF-8 characters.
 
 If you do want to preserve and render formatting payloads, Dalamud provides
 convenient SeString rendering helpers for ImGui. These handle soft hyphens and
