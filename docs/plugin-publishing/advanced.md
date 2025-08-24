@@ -4,14 +4,18 @@ sidebar_position: 999
 
 # Advanced Plugin Publishing
 
-## Disabling a Plugin
+This document covers certain advanced topics related to publishing plugins for
+Dalamud. The information in these sections is generally not considered required
+reading, but will be useful in certain edge cases.
+
+## Globally Disabling a Plugin
 
 On occasion, it may be desirable to globally disable a specific plugin for all
 users. This may be due to a serious bug, game crashes, server-side issues, or
-other concerns. Dalamud provides the ability to "ban" a plugin via a built-in
-kill switch, preventing it from being loaded or installed by any user until an
-updated version is published. It is important to note that the plugin ban system
-is built as a safety tool, and can [not be used for plugin
+other concerns. Dalamud provides the ability to "ban" a broken plugin version 
+via a built-in kill switch, preventing it from being loaded or installed by any
+user until an updated version is published. It is important to note that the
+plugin ban system is built as a safety tool, and can [not be used for plugin
 moderation][not-a-mod-tool].
 
 To ban a plugin, the plugin's maintainer must open a pull request against the
