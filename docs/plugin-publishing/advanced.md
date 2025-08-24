@@ -46,6 +46,12 @@ contributor.
 
 :::
 
+Internally, after a pull request is merged, any future launches via XIVLauncher
+will download the updated assets package (including the `bannedPlugin.json`
+file) and apply it. The Plugin Installer will then show a warning on any banned
+plugins and prevent them from being loaded. Banned plugin data will remain
+preserved, and Dalamud will not automatically uninstall or delete the plugin.
+
 To unban a plugin, the maintainer of the plugin must publish a new version of
 the plugin with an `AssemblyVersion` greater than the banned version. Entries
 are generally not removed from the `bannedPlugin.json` file, as old versions of
