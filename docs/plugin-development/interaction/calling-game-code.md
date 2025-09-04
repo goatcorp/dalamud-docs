@@ -1,3 +1,7 @@
+---
+sidebar_position: 2
+---
+
 # Calling The Game's Code
 
 Sometimes, it is beneficial to ask the game itself to do something, rather than

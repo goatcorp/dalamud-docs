@@ -1,3 +1,7 @@
+---
+sidebar_position: 8
+---
+
 # Plugin Technical Considerations
 
 There are many potential technical decisions that you should consider when

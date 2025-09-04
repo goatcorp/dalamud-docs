@@ -1,3 +1,7 @@
+---
+sidebar_position: 2
+---
+
 # Project Layout and Configuration
 
 Dalamud does not strictly require much in the form of project layout, but will

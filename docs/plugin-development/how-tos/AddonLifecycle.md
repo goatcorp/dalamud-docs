@@ -1,3 +1,7 @@
+---
+sidebar_position: 1
+---
+
 # AddonLifecycle
 
 This service provides you very easy access to various states and state changes

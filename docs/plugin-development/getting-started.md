@@ -1,3 +1,7 @@
+---
+sidebar_position: 1
+---
+
 # Getting Started
 
 Plugins allow you to interact with the game and add features, modify

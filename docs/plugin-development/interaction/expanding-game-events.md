@@ -1,3 +1,7 @@
+---
+sidebar_position: 1
+---
+
 # Expanding On Game Events
 
 A plugin may wish to be informed of a certain event happening in the game. If an
