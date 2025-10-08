@@ -76,8 +76,8 @@ explanations:
   for details.
 - **AOE Recoloring**: Not allowed due to potential gameplay advantages and
   consistency issues.
-- **Anything in pvp**: changing pvp behavior elevates the plugin user with a
-  unfair advantage, allowing anything like this would cause pvp to turn into a
+- **Anything in pvp**: changing pvp behavior elevates the plugin user with an
+  unfair advantage, allowing anything like this would cause pvp to turn into an
   arms-race.
 
 ## I'm not sure if my plugin idea violates the guidelines!
