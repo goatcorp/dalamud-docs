@@ -12,59 +12,41 @@ Oftentimes, ClientStructs contributors may want to verify or test their changes
 in a familiar codebase. Both Dalamud and ClientStructs provide the capability to
 do this, but some extra work needs to be done to get this working.
 
-## Prerequisites
-
-Using custom versions of Dalamud dependencies is not compatible with the
-provided `Dalamud.Plugin.targets` file. This will generally be the case if your
-plugin was based on [SamplePlugin](https://github.com/goatcorp/SamplePlugin),
-but may be there in other cases as well. You can check for this by looking for
-the below line in your `.csproj` file:
-
-```xml
-    <Import Project="$(DalamudLibPath)/targets/Dalamud.Plugin.targets"/>
-```
-
-If this is the case, you will need to delete this line and manually manage your
-dependencies. The easiest way to do this is to just copy the declarations from
-the [plugin targets file][plugin-targets] into your own `.csproj`. Please note
-that by doing this, your plugin will no longer automatically track the
-Dalamud-provided dependencies and Dalamud's target framework.
-
-You will also need to have successfully built ClientStructs at least once, and
-have the relevant artifacts ready to go. Developers who are actively working on
-ClientStructs should normally have this prerequisite met.
-
-[plugin-targets]:
-  https://github.com/goatcorp/Dalamud/blob/master/targets/Dalamud.Plugin.targets
-
-## Building Against Custom Client Structs
+## Referencing a Custom ClientStructs
 
 To use a custom ClientStructs, your plugin's `.csproj` file needs to be updated
-such that the `FFXIVClientStructs` dependency is pointing to the resulting DLL.
-Depending on how your project is configured, this may take one of a few
-different methods, but will generally involve removing any `Reference`s
-mentioning `FFXIVClientStructs` and replacing it with something that looks
-similar to the one below:
+such that the `FFXIVClientStructs` dependency is pointing to your custom version of the DLL.
+Depending on how your project is configured, this may require one of a few
+different methods, but will generally involve overriding any `Reference` elements
+mentioning `FFXIVClientStructs` by adding the following as part of an `ItemGroup`
+***after*** any other references to ClientStructs:
 
 ```xml
-    <Reference Include="FFXIVClientStructs">
+<ItemGroup>
+    <Reference Update="FFXIVClientStructs"> <!-- note the use of "Update" -->
         <HintPath>C:\The\Path\To\Your\FFXIVClientStructs\bin\Debug\FFXIVClientStructs.dll</HintPath>
-        <Private>true</Private>  <!-- not necessary, but a good reminder -->
+        <Private>true</Private> <!-- not necessary, but a good reminder -->
     </Reference>
+</ItemGroup>
 ```
 
 It is critical that the `Private` attribute either be set to `true` or unset.
 This will force MSBuild to copy the DLL to your plugin's output folder, which is
 in turn required to ensure that it's used over Dalamud's provided version.
 
-Once your `.csproj` is patched, you will additionally be responsible for
+As long as you are using an SDK-style project with Dalamud as the SDK, this should
+be the only change to the project file that is required.
+
+## Building against your Custom ClientStructs
+
+Once your `.csproj` has been updated as described above, you will additionally be responsible for
 [manually initializing the ClientStructs resolver](https://github.com/aers/FFXIVClientStructs#signature-resolution).
-This is normally done by putting the following two lines of code in your
-plugin's constructor:
+This is normally done by putting the following code in your plugin's constructor:
 
 ```csharp
-FFXIVClientStructs.Interop.Resolver.GetInstance.SetupSearchSpace();
-FFXIVClientStructs.Interop.Resolver.GetInstance.Resolve();
+InteropGenerator.Runtime.Resolver.GetInstance.Setup();
+FFXIVClientStructs.Interop.Generated.Addresses.Register();
+InteropGenerator.Runtime.Resolver.GetInstance.Resolve();
 ```
 
 While also not _strictly_ necessary, it is generally good convention to run a
