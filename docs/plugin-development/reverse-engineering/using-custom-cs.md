@@ -39,7 +39,8 @@ be the only change to the project file that is required.
 
 ## Building against your Custom ClientStructs
 
-Once your `.csproj` has been updated as described above, you will additionally be responsible for
+Once you have built your custom ClientStructs DLL and your plugin's `.csproj`
+has been updated as described above, you will additionally be responsible for
 [manually initializing the ClientStructs resolver](https://github.com/aers/FFXIVClientStructs#signature-resolution).
 This is normally done by putting the following code in your plugin's constructor:
 
@@ -49,12 +50,12 @@ FFXIVClientStructs.Interop.Generated.Addresses.Register();
 InteropGenerator.Runtime.Resolver.GetInstance.Resolve();
 ```
 
-While also not _strictly_ necessary, it is generally good convention to run a
+While also not _strictly_ necessary, it is generally a good practice to run
 `dotnet clean` on your project when switching to/from a custom ClientStructs
 build. This should be your first step in troubleshooting if things don't seem to
 be working properly.
 
 To revert these changes, simply undo your `.csproj` changes and remove the
-initializer code. It is generally advised to fall back to the Dalamud-provided
-ClientStructs when your testing is completed so that you don't inadvertently get
-stuck running a old forgotten DLL on your local computer.
+initializer code. It is generally advised to revert to the Dalamud-provided
+ClientStructs when your testing is complete so that you don't inadvertently get
+stuck running an old forgotten DLL on your local computer.
