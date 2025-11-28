@@ -11,6 +11,27 @@ pnpm install
 
 ## Local Development
 
+Ensure that you have .NET 6 installed for DocFxMarkdownGen to work.
+
+```shell
+winget install --exact --id Microsoft.DotNet.SDK.6
+```
+
+Ensure that you have all of the submodules:
+
+```shell
+git submodule update --init --recursive
+```
+
+You will need to have the actual content built for the website to work. You can
+run the CI build script:
+
+```shell
+node ./ci-build.mjs
+```
+
+Once complete, you can start the development server:
+
 ```shell
 pnpm start
 ```
