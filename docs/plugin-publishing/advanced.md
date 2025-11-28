@@ -12,7 +12,7 @@ reading, but will be useful in certain edge cases.
 
 On occasion, it may be desirable to globally disable a specific plugin for all
 users. This may be due to a serious bug, game crashes, server-side issues, or
-other concerns. Dalamud provides the ability to "ban" a broken plugin version 
+other concerns. Dalamud provides the ability to "ban" a broken plugin version
 via a built-in kill switch, preventing it from being loaded or installed by any
 user until an updated version is published. It is important to note that the
 plugin ban system is built as a safety tool, and can [not be used for plugin
