@@ -4,8 +4,6 @@ import { themes } from 'prism-react-renderer';
 const lightCodeTheme = themes.github;
 const darkCodeTheme = themes.dracula;
 
-const isDev = process.env.NODE_ENV === 'development';
-
 /** @type {import('@docusaurus/types').Config} */
 export default {
   title: 'Dalamud',
@@ -86,16 +84,10 @@ export default {
       ({
         id: 'api',
         routeBasePath: '/api',
-        lastVersion: isDev ? 'placeholder' : 'master',
+        lastVersion: 'master',
         /* "current" = unversioned, we exclude this and only use versioned dirs to make CI easier */
         includeCurrentVersion: false,
-        versions: isDev
-          ? {
-              placeholder: {
-                label: 'X.x (Placeholder)',
-              },
-            }
-          : require('./dalamud-versions.json'),
+        versions: require('./dalamud-versions.json'),
       }),
     ],
   ],
