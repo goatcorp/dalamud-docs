@@ -1,3 +1,7 @@
+---
+sidebar_position: 3
+---
+
 # Setting Plugin Metadata
 
 Writing a plugin is all well and good, but you're also going to want some way to

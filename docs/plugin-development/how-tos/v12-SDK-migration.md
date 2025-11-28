@@ -1,3 +1,7 @@
+---
+sidebar_position: 3
+---
+
 # Migrating to Dalamud.NET.Sdk
 
 Prior to the existance of an the Dalamud SDK, you would typically include the
