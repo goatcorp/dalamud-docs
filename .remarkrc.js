@@ -9,5 +9,6 @@ module.exports = {
     ['remark-lint-maximum-heading-length', false],
     ['remark-lint-final-definition', false],
     ['remark-lint-no-file-name-mixed-case', false],
+    ['remark-lint-no-undefined-references', false],
   ],
 };

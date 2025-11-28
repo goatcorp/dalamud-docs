@@ -19,11 +19,12 @@ do this, but some extra work needs to be done to get this working.
 ## Referencing a Custom ClientStructs
 
 To use a custom ClientStructs, your plugin's `.csproj` file needs to be updated
-such that the `FFXIVClientStructs` and `InteropGenerator.Runtime` dependencies are
-pointing to your custom versions of the DLLs.  Depending on how your project is
-configured, this may require one of a few different methods, but if you are using
-the Dalamud SDK as recommended, it should be as simple as adding the following to
-your project file (with the paths set as appropriate for your folder structure):
+such that the `FFXIVClientStructs` and `InteropGenerator.Runtime` dependencies
+are pointing to your custom versions of the DLLs. Depending on how your project
+is configured, this may require one of a few different methods, but if you are
+using the Dalamud SDK as recommended, it should be as simple as adding the
+following to your project file (with the paths set as appropriate for your
+folder structure):
 
 ```xml
 <PropertyGroup>
@@ -45,7 +46,8 @@ in turn required to ensure that it's used over Dalamud's provided version.
 Once you have built your custom ClientStructs DLLs and your plugin's `.csproj`
 has been updated as described above, you will additionally be responsible for
 [manually initializing the ClientStructs resolver](https://github.com/aers/FFXIVClientStructs#signature-resolution).
-This is normally done by putting the following code in your plugin's constructor:
+This is normally done by putting the following code in your plugin's
+constructor:
 
 ```csharp
 InteropGenerator.Runtime.Resolver.GetInstance.Setup(
@@ -56,10 +58,10 @@ FFXIVClientStructs.Interop.Generated.Addresses.Register();
 InteropGenerator.Runtime.Resolver.GetInstance.Resolve();
 ```
 
-Where `SigScanner` and `DataManager` are properties or fields with the `[PluginService]`
-attribute into which Dalamud has injected.  These may be in your plugin class,
-or may be part of a separate "service"-type class depending upon how your project
-is structured.
+Where `SigScanner` and `DataManager` are properties or fields with the
+`[PluginService]` attribute into which Dalamud has injected. These may be in
+your plugin class, or may be part of a separate "service"-type class depending
+upon how your project is structured.
 
 While also not _strictly_ necessary, it is generally a good practice to run
 `dotnet clean` on your project when switching to/from a custom ClientStructs

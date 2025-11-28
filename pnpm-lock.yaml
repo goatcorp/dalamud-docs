@@ -93,6 +93,9 @@ importers:
       remark-lint-no-file-name-mixed-case:
         specifier: ^3.0.0
         version: 3.0.0
+      remark-lint-no-undefined-references:
+        specifier: ^5.0.2
+        version: 5.0.2
       remark-preset-lint-consistent:
         specifier: ^6.0.0
         version: 6.0.0
@@ -4785,8 +4788,8 @@ packages:
   remark-lint-no-table-indentation@5.0.0:
     resolution: {integrity: sha512-MaLmnzgirpnRiRjWwrsyOX0RmP2eG4YAv169MtsxTVa6O3CpUDwTuTzivudE9L0kVvTlyF9DXEmdyjm85LDyVA==}
 
-  remark-lint-no-undefined-references@5.0.0:
-    resolution: {integrity: sha512-O0q8bHpRHK1T85oqO+uep4BkvQnZZp3y+wahDeeLLq9dCJfF56sq6Tt5OOTt1BAOZlpobS3OPQHUiJWYP6hX1w==}
+  remark-lint-no-undefined-references@5.0.2:
+    resolution: {integrity: sha512-5prkVb1tKwJwr5+kct/UjsLjvMdEDO7uClPeGfrxfAcN59+pWU8OUSYiqYmpSKWJPIdyxPRS8Oyf1HtaYvg8VQ==}
 
   remark-lint-no-unused-definitions@4.0.0:
     resolution: {integrity: sha512-YCZ6k575NCTx7mnN+9ls0G6YgMsZHi0LYQqfLW8MNVHBtbpTBvfmk8I39bmsvuKWeBD98weZoXSDqIiIGg+Q/g==}
@@ -7966,7 +7969,7 @@ snapshots:
 
   '@types/mdast@3.0.11':
     dependencies:
-      '@types/unist': 2.0.6
+      '@types/unist': 3.0.2
 
   '@types/mdast@4.0.4':
     dependencies:
@@ -11959,7 +11962,7 @@ snapshots:
       unist-util-visit-parents: 6.0.1
       vfile-location: 5.0.2
 
-  remark-lint-no-undefined-references@5.0.0:
+  remark-lint-no-undefined-references@5.0.2:
     dependencies:
       '@types/mdast': 4.0.4
       collapse-white-space: 2.1.0
@@ -12171,7 +12174,7 @@ snapshots:
       remark-lint-no-literal-urls: 4.0.0
       remark-lint-no-shortcut-reference-image: 4.0.0
       remark-lint-no-shortcut-reference-link: 4.0.0
-      remark-lint-no-undefined-references: 5.0.0
+      remark-lint-no-undefined-references: 5.0.2
       remark-lint-no-unused-definitions: 4.0.0
       remark-lint-ordered-list-marker-style: 4.0.0
       unified: 11.0.5
