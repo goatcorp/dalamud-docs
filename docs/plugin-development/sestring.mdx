@@ -578,7 +578,7 @@ href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/T
 
 `<setresettime(7,2)>`
 
-- Sets the contextual time to next Tuesday, 7 am UTC.
+→ Sets the contextual time to next Tuesday, 7 am UTC.
 
 ---
 
@@ -608,7 +608,7 @@ var example = new SeStringBuilder()
 var result = SeStringEvaluator.Evaluate(example);
 ```
 
-- Prints `08.04. at 09:00` (at current time of writing).
+→ Prints `08.04. at 09:00` (at current time of writing).
 
 </details>
 
@@ -628,7 +628,7 @@ href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/T
 
 `<settime(1743880207)>`
 
-- Sets the contextual time to Sat Apr 05 2025 19:10:07 UTC.
+→ Sets the contextual time to Sat Apr 05 2025 19:10:07 UTC.
 
 ---
 
@@ -671,9 +671,10 @@ href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/T
 
 `Good <if([gnum11<12],<if([gnum11<4],evening,morning)>,<if([gnum11<17],day to you,evening)>)>, friend.`
 
-- Between 4 am and 12 pm Eorzea Time, this will print `Good morning, friend.`
-- Between 12 pm and 5 pm Eorzea Time, this will print `Good day to you, friend.`
-- Between 5 pm and 4 am Eorzea Time, this will print `Good evening, friend.`
+→ Between 4 am and 12 pm Eorzea Time, this will print `Good morning, friend.`  
+→ Between 12 pm and 5 pm Eorzea Time, this will print
+`Good day to you, friend.`  
+→ Between 5 pm and 4 am Eorzea Time, this will print `Good evening, friend.`
 
 ---
 
@@ -733,10 +734,10 @@ href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/T
 
 `<switch(lnum1,S,M,L,XL)>`
 
-- Prints `S` when `lnum1` is 1.
-- Prints `M` when `lnum1` is 2.
-- Prints `L` when `lnum1` is 3.
-- Prints `XL` when `lnum1` is 4.
+→ Prints `S` when `lnum1` is 1.  
+→ Prints `M` when `lnum1` is 2.  
+→ Prints `L` when `lnum1` is 3.  
+→ Prints `XL` when `lnum1` is 4.
 
 ---
 
@@ -774,7 +775,7 @@ href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/T
 
 `<pcname(0x10778681)>`
 
-- Prints the name of the player character with EntityId 0x10778681.
+→ Prints the name of the player character with EntityId 0x10778681.
 
 ---
 
@@ -808,10 +809,10 @@ href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/T
 
 `Good day, <ifpcgender(0x10778681,Sir,Ma'am)>.`
 
-- Prints `Good day, Sir.` if the player character with EntityId 0x10778681 is
-  male.
-- Prints `Good day, Ma'am.` if the player character with EntityId 0x10778681 is
-  female.
+→ Prints `Good day, Sir.` if the player character with EntityId 0x10778681 is
+male.  
+→ Prints `Good day, Ma'am.` if the player character with EntityId 0x10778681 is
+female.
 
 ---
 
@@ -850,10 +851,10 @@ href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/T
 
 `Hello, <ifpcname(0x10778681,Local Player,Warrior of Light,adventurer)>!`
 
-- Prints `Hello, Warrior of Light!` if the player character with EntityId
-  0x10778681 is called Local Player.
-- Prints `Hello, adventurer!` if the player character with EntityId 0x10778681
-  is not called Local Player.
+→ Prints `Hello, Warrior of Light!` if the player character with EntityId
+0x10778681 is called Local Player.  
+→ Prints `Hello, adventurer!` if the player character with EntityId 0x10778681
+is not called Local Player.
 
 ---
 
@@ -914,10 +915,10 @@ href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/T
 
 `<ifself(0x10778681,You are,<pcname(0x10778681)> is)> KO'd.`
 
-- Prints `You are KO'd.` if the player character with EntityId 0x10778681 is the
-  Local Player.
-- Prints `Other Player is KO'd.` if the player character with EntityId
-  0x10778681 is not the Local Player, called Other Player.
+→ Prints `You are KO'd.` if the player character with EntityId 0x10778681 is the
+Local Player.  
+→ Prints `Other Player is KO'd.` if the player character with EntityId
+0x10778681 is not the Local Player, called Other Player.
 
 ---
 
@@ -954,7 +955,7 @@ This macro is used for formatting. It is not evaluated by ISeStringEvaluator.
 
 `Hello<br>World`
 
-- Prints
+→ Prints
 
 ```plain
 Hello
@@ -1230,7 +1231,7 @@ No expressions.
 
 Macro string: `<->`
 
-- Invisible soft hyphen `\u00AD`.
+→ Invisible soft hyphen `\u00AD`.
 
 :::info
 
@@ -1299,7 +1300,7 @@ No expressions.
 
 Macro string: `<nbsp>`
 
-- Prints ` ` (`\u00A0`).
+→ Prints ` ` (`\u00A0`).
 
 ### \[`0x1E`] Icon2 \{#macro-icon2}
 
@@ -1314,7 +1315,7 @@ No expressions.
 
 Macro string: `<-->`
 
-- Prints `-`.
+→ Prints `-`.
 
 ### \[`0x20`] Num \{#macro-num}
 
@@ -1332,8 +1333,8 @@ href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/T
 
 `It's currently hour <num(gnum11)>.`
 
-- Prints `It's currently hour 5.` if `gnum11` (hour of current Eorzea Time)
-  is 5.
+→ Prints `It's currently hour 5.` if `gnum11` (hour of current Eorzea Time)
+is 5.
 
 ---
 
@@ -1367,7 +1368,7 @@ href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/T
 
 `15 in hexadecimal is <hex(15)>.`
 
-- Prints `15 in hexadecimal is 0x0000000F.`
+→ Prints `15 in hexadecimal is 0x0000000F.`
 
 ---
 
@@ -1402,7 +1403,7 @@ href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/T
 
 `The damage was over <kilo(9000,.)>.`
 
-- Prints `The damage was over 9.000.`
+→ Prints `The damage was over 9.000.`
 
 ---
 
@@ -1436,7 +1437,7 @@ ISeStringEvaluator does currently not support evaluation for this macro.
 
 `The file size is <byte(150000)>.`
 
-- Prints `The file size is 146.5K.`
+→ Prints `The file size is 146.5K.`
 
 ---
 
@@ -1469,7 +1470,7 @@ href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/T
 
 `The current time is <sec(gnum11)>:<sec(gnum12)>.`
 
-- Prints `The current time is 04:32.` when the Eorzea Time is 04:32.
+→ Prints `The current time is 04:32.` when the Eorzea Time is 04:32.
 
 ---
 
@@ -1513,7 +1514,7 @@ href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/T
 
 `The limit break is filled up to <float(1337,100,.)> %.`
 
-- Prints `The limit break is filled up to 13.37 %.`
+→ Prints `The limit break is filled up to 13.37 %.`
 
 ---
 
@@ -1572,7 +1573,7 @@ which adds proper formatting too (for example, the item name rarity color).
 
 `<link(2,4801,0,0,Dalamud Nut)>Dalamud Nut<link(0xCE,0,0,0)>`
 
-- Prints a clickable `Dalamud Nut` item link.
+→ Prints a clickable `Dalamud Nut` item link.
 
 </details>
 
@@ -1595,7 +1596,7 @@ href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/T
 
 `<sheet(Addon,762,0,3)>`, with Addon#762 being `<sheet(Town,lnum1,0)>`
 
-- Prints `Ul'dah`
+→ Prints `Ul'dah`
 
 ---
 
@@ -1631,7 +1632,7 @@ href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/T
 
 `This is <string(lstr1)>!`
 
-- Prints `This is amazing!` when `lstr1` is `amazing`.
+→ Prints `This is amazing!` when `lstr1` is `amazing`.
 
 ---
 
@@ -1665,7 +1666,7 @@ href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/T
 
 `This is <caps(lstr1)>!`
 
-- Prints `This is AMAZING!` when `lstr1` is `amazing`.
+→ Prints `This is AMAZING!` when `lstr1` is `amazing`.
 
 ---
 
@@ -1700,7 +1701,7 @@ href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/T
 `<head(<sheet(ContentFinderCondition,22,43)>)>` where ContentFinderCondition
 RowId 22, Column 43 is `the Lost City of Amdapor`
 
-- Prints `The Lost City of Amdapor`.
+→ Prints `The Lost City of Amdapor`.
 
 ---
 
@@ -1741,7 +1742,7 @@ href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/T
 
 `<split(Forename Lastname, ,2)>`
 
-- Prints `Lastname`.
+→ Prints `Lastname`.
 
 ---
 
@@ -1775,7 +1776,7 @@ href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/T
 
 `<headall(the great gubal library)>`
 
-- Prints `The Great Gubal Library`.
+→ Prints `The Great Gubal Library`.
 
 ---
 
@@ -1815,7 +1816,7 @@ Expressions:
 
 `<fixed(0,101)>`
 
-- Prints <AutoTranslate>Please use the auto-translate function.</AutoTranslate>
+→ Prints <AutoTranslate>Please use the auto-translate function.</AutoTranslate>
 
 ---
 
@@ -1823,7 +1824,7 @@ Based on the LookupTable for Group 49, the RowId is for the Mount sheet:
 
 `<fixed(48,209)>`
 
-- Prints <AutoTranslate>albino karakul</AutoTranslate>
+→ Prints <AutoTranslate>albino karakul</AutoTranslate>
 
 </details>
 
@@ -1845,10 +1846,10 @@ Expressions:
 
 `<fixed(200,1,1,Player Name)>`
 
-- Prints interactable player link <code>Player Name<GfdIcon id={88} />Dev</code>
-  if the World Id is not the owns Home World Id.
-- Prints interactable player link `Player Name` if the World Id is the owns Home
-  World Id.
+→ Prints interactable player link <code>Player Name<GfdIcon id={88} />Dev</code>
+if the World Id is not the owns Home World Id.  
+→ Prints interactable player link `Player Name` if the World Id is the owns Home
+World Id.
 
 </details>
 
@@ -1867,11 +1868,11 @@ Expressions:
 
 `<fixed(200,2,28,0)>`
 
-- Prints `scholar`.
+→ Prints `scholar`.
 
 `<fixed(200,2,28,100)>`
 
-- Prints `scholar(100)`.
+→ Prints `scholar(100)`.
 
 </details>
 
@@ -1896,8 +1897,8 @@ Expressions:
 
 `<fixed(200,3,146,23,0xFFFE896A,0xFFFD0649,0xFFFF8AD0,0)>`
 
-- Prints interactable map link <code><LinkMarker/>Southern Thanalan ( 19.5 ,
-  17.5 )</code>.
+→ Prints interactable map link <code><LinkMarker/>Southern Thanalan ( 19.5 ,
+17.5 )</code>.
 
 </details>
 
@@ -1925,7 +1926,7 @@ Expressions:
 
 `<fixed(200,4,4801,1,0,0,Dalamud Nut)>`
 
-- Prints interactable item link <code><LinkMarker/>Dalamud Nut</code>.
+→ Prints interactable item link <code><LinkMarker/>Dalamud Nut</code>.
 
 </details>
 
@@ -1943,7 +1944,7 @@ Expressions:
 
 `<fixed(200,5,5)>`
 
-- Prints `<se.6>` and plays the bongo sound effect.
+→ Prints `<se.6>` and plays the bongo sound effect.
 
 <audio
   src='https://www.myinstants.com/media/sounds/danger-bongos.mp3'
@@ -1980,7 +1981,7 @@ Expressions:
 
 `<fixed(200,6,1008170)>`
 
-- Prints `Cid`, based on ENpcResident 1008170.
+→ Prints `Cid`, based on ENpcResident 1008170.
 
 </details>
 
@@ -1998,7 +1999,7 @@ Expressions:
 
 `<fixed(200,7,Hello World!)>`
 
-- Prints `Hello World!`.
+→ Prints `Hello World!`.
 
 </details>
 
@@ -2016,7 +2017,7 @@ Expressions:
 
 `<fixed(200,8,69)>`
 
-- Prints `1:09`.
+→ Prints `1:09`.
 
 </details>
 
@@ -2048,12 +2049,12 @@ Expressions:
 `<fixed(200,10,851,0)>`
 
 {/* prettier-ignore */}
-- Prints interactable status link <code><LinkMarker/><StatusBuff/>Reassembled</code>.
+→ Prints interactable status link <code><LinkMarker/><StatusBuff/>Reassembled</code>.
 
 `<fixed(200,10,3698,0)>`
 
-- Prints interactable status link <code><LinkMarker/><StatusDebuff/>Forward
-  March</code>.
+→ Prints interactable status link <code><LinkMarker/><StatusDebuff/>Forward
+March</code>.
 
 </details>
 
@@ -2075,8 +2076,8 @@ Expressions:
 
 `<fixed(200,11,123456,1,1,0,Player Name)>`
 
-- Prints interactable party finder link <code><LinkMarker/>Looking for Party
-  (Player Name) <GfdIcon id={88} /></code>.
+→ Prints interactable party finder link <code><LinkMarker/>Looking for Party
+(Player Name) <GfdIcon id={88} /></code>.
 
 </details>
 
@@ -2097,7 +2098,7 @@ Expressions:
 
 `<fixed(200,12,70058,0,0,0,The Ultimate Weapon)>`
 
-- Prints interactable quest link <code><LinkMarker/>The Ultimate Weapon</code>.
+→ Prints interactable quest link <code><LinkMarker/>The Ultimate Weapon</code>.
 
 </details>
 
@@ -2117,7 +2118,7 @@ href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/T
 
 `<lower(CHOCOBO)>`
 
-- Prints `chocobo`.
+→ Prints `chocobo`.
 
 ---
 
@@ -2238,7 +2239,7 @@ href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/T
 
 `<lowerhead(CHOCOBO)>`
 
-- Prints `cHOCOBO`.
+→ Prints `cHOCOBO`.
 
 ---
 
@@ -2272,7 +2273,7 @@ Expressions:
 
 `<sheetsub(WKSPioneeringTrail,1,1,3,WKSPioneeringTrailString,1)>`
 
-- Prints `Peaceful Living and Technological Leaps`.
+→ Prints `Peaceful Living and Technological Leaps`.
 
 ---
 
@@ -2320,7 +2321,7 @@ that were omitted from the Windows build.
 
 `<switchplatform(1)>`
 
-- Prints `Gamepad`.
+→ Prints `Gamepad`.
 
 ---
 
@@ -2334,7 +2335,7 @@ var example = new SeStringBuilder()
 var result = SeStringEvaluator.Evaluate(example);
 ```
 
-- Prints `Gamepad`.
+→ Prints `Gamepad`.
 
 </details>
 
@@ -2402,7 +2403,7 @@ href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/T
 
 `<digit(15,4)>`
 
-- Prints `0015`.
+→ Prints `0015`.
 
 ---
 
@@ -2435,7 +2436,7 @@ href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/T
 
 `<ordinal(1)> <ordinal(2)> <ordinal(3)> <ordinal(4)>`
 
-- Prints `1st 2nd 3rd 4th`.
+→ Prints `1st 2nd 3rd 4th`.
 
 ---
 
@@ -2488,7 +2489,7 @@ href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/T
 
 `<levelpos(3871103)>`
 
-- Prints
+→ Prints
 
 ```plain
 South Shroud
