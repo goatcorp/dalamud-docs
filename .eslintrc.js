@@ -9,6 +9,9 @@ module.exports = {
     {
       files: ['*.md', '*.mdx'],
       extends: ['plugin:mdx/recommended'],
+      rules: {
+        'prettier/prettier': 'off'
+      }
     },
   ],
   rules: {
