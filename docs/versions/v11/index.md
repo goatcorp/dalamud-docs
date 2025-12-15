@@ -68,3 +68,12 @@ Helios747, Infi, ItsBexy, Kurochi51, MidoriKami, NotNite, Pilzinsel64,
 RyouBakura, Sabine Lim, SlashNephy, WorkingRobot, Xpahtalo, attickdoor,
 jlkeesey, kizer, nebel, pohky, thesabinelim and wolfcomp for their contributions
 during this patch cycle.
+
+## FFXIVClientStructs Changes
+
+FFXIVClientStructs will introduce their own breaking changes for Patch 7.1,
+which will be documented
+[on their docs page](https://ffxiv.wildwolf.dev/docs/breaking/7.1.html).
+
+We want to thank aers, Caraxi, Haselnussbomber, Pohky, WildWolf and the other
+FFXIVClientStructs contributors for their work.
