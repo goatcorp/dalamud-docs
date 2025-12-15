@@ -46,6 +46,7 @@
     "lint-staged": "^15.2.7",
     "prettier": "3.3.2",
     "remark-cli": "^12.0.1",
+    "remark-directive": "^4.0.0",
     "remark-frontmatter": "^5.0.0",
     "remark-gfm": "^4.0.0",
     "remark-lint": "^10.0.0",
