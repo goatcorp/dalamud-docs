@@ -14,7 +14,7 @@ let
       if [ -d "${sdk}/share/dotnet" ]; then
         ${pkgs.rsync}/bin/rsync -a "${sdk}"/share/dotnet/ $out/share/dotnet/
       fi
-    '') [pkgs.dotnet-sdk_6 pkgs.dotnet-sdk_8 pkgs.dotnet-sdk_9]}
+    '') [pkgs.dotnet-sdk_6 pkgs.dotnet-sdk_8 pkgs.dotnet-sdk_9 pkgs.dotnet-sdk_10]}
 
     # Ensure the main dotnet executable is executable
     chmod +x $out/share/dotnet/dotnet
@@ -35,6 +35,9 @@ pkgs.mkShell {
     # Additional tools that might be useful
     curl
     wget
+
+    # C++ standard library (needed by docfx)
+    stdenv.cc.cc.lib
   ];
 
   # Environment variables matching the GitHub Actions workflow
@@ -45,6 +48,9 @@ pkgs.mkShell {
     # Set up .NET tools path
     export DOTNET_ROOT="${unifiedDotnet}/share/dotnet"
     export PATH="$HOME/.dotnet/tools:$DOTNET_ROOT:$PATH"
+
+    # Add C++ standard library to library path (needed by docfx)
+    export LD_LIBRARY_PATH="${pkgs.stdenv.cc.cc.lib}/lib:$LD_LIBRARY_PATH"
 
     # Install .NET global tools if they don't exist
     if ! command -v docfx &> /dev/null; then

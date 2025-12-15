@@ -47,6 +47,9 @@ level.
 
 | API Level | First Dalamud Version | First Game Version | .NET Version | First Commit                                                                                      |
 | --------- | --------------------- | ------------------ | ------------ | ------------------------------------------------------------------------------------------------- |
+| 13        | 13.0.0.0              | Patch 7.3          | .NET 9.0     | [2025-08-10](https://github.com/goatcorp/Dalamud/releases/tag/13.0.0.0)                           |
+| 12        | 12.0.0.0              | Patch 7.2          | .NET 9.0     | [2025-03-28](https://github.com/goatcorp/Dalamud/releases/tag/12.0.0.0)                           |
+| 11        | 11.0.0.0              | Patch 7.1          | .NET 8.0     | [2024-11-20](https://github.com/goatcorp/Dalamud/releases/tag/11.0.0.0)                           |
 | 10        | 10.0.0.0              | Patch 7.0          | .NET 8.0     | [2024-07-05](https://github.com/goatcorp/Dalamud/releases/tag/10.0.0.0)                           |
 | 9         | 9.0.0.0               | Patch 6.5          | .NET 7.0     | [2023-10-05](https://github.com/goatcorp/Dalamud/releases/tag/9.0.0.1)                            |
 | 8         | 7.4.0.0               | Patch 6.3          | .NET 7.0     | [2023-01-10](https://github.com/goatcorp/Dalamud/commit/251359abe92ed805f1163f1a9da28a0aa4f891cb) |
