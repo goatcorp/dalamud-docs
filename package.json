@@ -18,7 +18,7 @@
     "ci": "node ./ci-build.mjs",
     "prepare": "husky",
     "format": "prettier --write docs",
-    "lint": "eslint . --ext js,jsx,ts,tsx,md,mdx --fix",
+    "lint": "prettier --write docs && eslint . --ext js,jsx,ts,tsx,md,mdx --fix",
     "lint-ci": "eslint . --ext js,jsx,ts,tsx,md,mdx",
     "lint-staged": "lint-staged"
   },
@@ -79,6 +79,7 @@
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,md,mdx}": [
+      "prettier --write",
       "eslint --fix"
     ]
   }
