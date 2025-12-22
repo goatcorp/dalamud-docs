@@ -10,7 +10,7 @@ Dalamud has two major concepts in terms of versioning: **API Level** and
 ## Summary
 
 | Channel | Branch   | API Level | Stability | Recommended For                                |
-|---------|----------|-----------|-----------|------------------------------------------------|
+| ------- | -------- | --------- | --------- | ---------------------------------------------- |
 | Release | `master` | 14        | Highest   | Auto-assigned to most users                    |
 | Canary  | `master` | 13        | Very High | Auto-assigned to a small number of users       |
 | Staging | `master` | 14        | Medium    | Core/plugin developers, testing-inclined users |
@@ -46,7 +46,7 @@ level.
 :::
 
 | API Level | First Dalamud Version | First Game Version | .NET Version | First Commit                                                                                      |
-|-----------|-----------------------|--------------------|--------------|---------------------------------------------------------------------------------------------------|
+| --------- | --------------------- | ------------------ | ------------ | ------------------------------------------------------------------------------------------------- |
 | 14        | 14.0.0.0              | Patch 7.4          | .NET 10.0    | [2025-12-20](https://github.com/goatcorp/Dalamud/releases/tag/14.0.0.0)                           |
 | 13        | 13.0.0.0              | Patch 7.3          | .NET 9.0     | [2025-08-10](https://github.com/goatcorp/Dalamud/releases/tag/13.0.0.0)                           |
 | 12        | 12.0.0.0              | Patch 7.2          | .NET 9.0     | [2025-03-28](https://github.com/goatcorp/Dalamud/releases/tag/12.0.0.0)                           |
@@ -63,6 +63,7 @@ level.
 | 1         | 4.9.8.2[^1]           | Patch 5.25?        | .NET 4.7.2   | [2020-06-11](https://github.com/goatcorp/Dalamud/commit/ad93b6324f921b11c7e7dbd4565023697512c0bf) |
 
 [^1]:
+
 This was the first commit to introduce the `DALAMUD_API_LEVEL` constant. The
 more you know! ✨
 
