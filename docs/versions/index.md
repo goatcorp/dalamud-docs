@@ -9,10 +9,10 @@ Dalamud has two major concepts in terms of versioning: **API Level** and
 
 ## Summary
 
-| Channel | Branch                | API Level | Stability | Recommended For                                |
-| ------- |-----------------------|-----------| --------- | ---------------------------------------------- |
+| Channel | Branch                  | API Level | Stability | Recommended For                                |
+|---------|-------------------------|-----------|-----------|------------------------------------------------|
 | Release | `master` `@Release Tag` | 14        | Highest   | Auto-assigned to most users                    |
-| Staging | `master` `@HEAD`         | 14        | Medium    | Core/plugin developers, testing-inclined users |
+| Staging | `master` `@HEAD`        | 14        | Medium    | Core/plugin developers, testing-inclined users |
 
 ## API Level
 
@@ -62,8 +62,8 @@ level.
 | 1         | 4.9.8.2[^1]           | Patch 5.25?        | .NET 4.7.2   | [2020-06-11](https://github.com/goatcorp/Dalamud/commit/ad93b6324f921b11c7e7dbd4565023697512c0bf) |
 
 [^1]:
-    This was the first commit to introduce the `DALAMUD_API_LEVEL` constant. The
-    more you know! ✨
+This was the first commit to introduce the `DALAMUD_API_LEVEL` constant. The
+more you know! ✨
 
 </details>
 
