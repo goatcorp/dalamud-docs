@@ -9,10 +9,11 @@ Dalamud has two major concepts in terms of versioning: **API Level** and
 
 ## Summary
 
-| Channel | Branch                  | API Level | Stability | Recommended For                                |
-|---------|-------------------------|-----------|-----------|------------------------------------------------|
-| Release | `master` `@Release Tag` | 14        | Highest   | Auto-assigned to most users                    |
-| Staging | `master` `@HEAD`        | 14        | Medium    | Core/plugin developers, testing-inclined users |
+| Channel | Branch   | API Level | Stability | Recommended For                                |
+|---------|----------|-----------|-----------|------------------------------------------------|
+| Release | `master` | 14        | Highest   | Auto-assigned to most users                    |
+| Canary  | `master` | 13        | Very High | Auto-assigned to a small number of users       |
+| Staging | `master` | 14        | Medium    | Core/plugin developers, testing-inclined users |
 
 ## API Level
 
