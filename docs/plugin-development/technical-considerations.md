@@ -49,7 +49,7 @@ though there are certain considerations and requirements that must be met:
   review what data is being collected and for what purpose.
   - Users must explicitly opt in to additional telemetry collection, but this
     may be done as part of a config option or a welcome wizard that forces a
-    choice. 
+    choice.
   - Additional data collection must be done for the public interest. That is,
     the extra information should go back to improvement of the plugin, provide
     the public with statistics or dashboards, or otherwise improve or augment
