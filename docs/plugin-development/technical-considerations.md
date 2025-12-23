@@ -47,9 +47,9 @@ though there are certain considerations and requirements that must be met:
 - Plugins may collect additional non-essential information for telemetry,
   analytics, or statistical purposes, provided the user is given a chance to
   review what data is being collected and for what purpose.
-  - Users must opt in to additional telemetry collection, but this may be done
-    as part of a "welcome to this plugin" experience forcing an explicit choice,
-    or via a global Dalamud setting.
+  - Users must explicitly opt in to additional telemetry collection, but this
+    may be done as part of a config option or a welcome wizard that forces a
+    choice. 
   - Additional data collection must be done for the public interest. That is,
     the extra information should go back to improvement of the plugin, provide
     the public with statistics or dashboards, or otherwise improve or augment
@@ -67,13 +67,13 @@ though there are certain considerations and requirements that must be met:
     parties.
 - Plugins must take care to not expose a list of other plugin users or allow an
   easy way to test whether a specific user is using any plugin. Users may list
-  themselves in a public directory if they so choose, but this risk should be
+  themselves in a public directory if they so choose, but the risks should be
   identified to the user.
 - Any maintainer-run server for a plugin must use encrypted communication via
-  HTTPS (or an equivalent), and must have certificates issued from a trusted
-  certificate authority such as [Let's Encrypt][lets-encrypt]. Plugins must
-  connect to servers via DNS name to prevent data from going to stray IP
-  addresses.
+  HTTPS, TLS, or equivalent, and must have certificates issued from a trusted
+  certificate authority such as [Let's Encrypt][lets-encrypt].
+- Plugins connecting to backend servers must do so via a DNS hostname rather
+  than an IP address.
 
 :::warning
 
