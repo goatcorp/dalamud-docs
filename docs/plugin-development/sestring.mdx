@@ -567,8 +567,9 @@ Sets the reset time to the contextual time storage.
 
 Expressions:
 
-- \[0] Integer Expression: Hour
-- \[1] Integer Expression: WeekDay
+- \[0] Integer Expression: Hour (in Japan Standard Time)
+- \[1] Integer Expression: Weekday (0-6 = Sunday to Saturday, 7 = Special case
+  for daily resets)
 
 Can be evaluated using ISeStringEvaluator (<a
 href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/Text/Evaluator/SeStringEvaluator.cs#L356`}>code</a>).
@@ -576,16 +577,16 @@ href={`https://github.com/goatcorp/Dalamud/blob/${DALAMUD_COMMIT}/Dalamud/Game/T
 <details open>
 <summary>Example</summary>
 
-`<setresettime(7,2)>`
+`<setresettime(17,2)>`
 
-→ Sets the contextual time to next Tuesday, 7 am UTC.
+→ Sets the contextual time to next Tuesday, 8 am UTC.
 
 ---
 
 ```cs
 var example = new SeStringBuilder()
   .BeginMacro(MacroCode.SetResetTime)
-    .AppendIntExpression(7)
+    .AppendIntExpression(17)
     .AppendIntExpression(2)
   .EndMacro()
   .BeginMacro(MacroCode.Sec)
@@ -608,7 +609,7 @@ var example = new SeStringBuilder()
 var result = SeStringEvaluator.Evaluate(example);
 ```
 
-→ Prints `08.04. at 09:00` (at current time of writing).
+→ Prints `03.03. at 09:00` (at time of writing, in UTC+1).
 
 </details>
 
