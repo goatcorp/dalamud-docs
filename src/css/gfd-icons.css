@@ -1,6 +1,6 @@
 /* This file was generated with scripts/create-gfd-css.js */
 .gfd-game-version { display: inline; }
-.gfd-game-version::after { content: '7.2'; }
+.gfd-game-version::after { content: '7.4'; }
 .gfd-icon {
   --w: 20;
   --h: 20;
