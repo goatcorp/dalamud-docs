@@ -12,7 +12,7 @@
   aspect-ratio: calc(var(--w) / var(--h));
   width: calc(var(--w) * 1px);
   height: calc(var(--h) * 1px);
-  background-image: url('https://v2.xivapi.com/api/asset?path=common/font/fonticon_xinput.tex&format=png&version=7.2');
+  background-image: url('https://v2.xivapi.com/api/asset?path=common/font/fonticon_xinput.tex&format=png&version=7.4');
   background-repeat: no-repeat;
   background-size: calc(512px * (1 / var(--scale))) calc(1024px * (1 / var(--scale)));
   background-position: 
@@ -175,3 +175,4 @@
 .gfd-icon-179 { --x: 120; --y: 260; }
 .gfd-icon-180 { --x: 140; --y: 260; }
 .gfd-icon-181 { --x: 160; --y: 260; }
+.gfd-icon-182 { --x: 180; --y: 260; }
