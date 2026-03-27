@@ -11,11 +11,22 @@ pnpm install
 
 ## Local Development
 
-Ensure that you have .NET 6 installed for DocFxMarkdownGen to work.
+### Prerequisites
+
+#### Using Nix (recommended)
+
+A `shell.nix` is provided that includes all required dependencies (Node.js,
+pnpm, .NET 8 SDK, docfx):
 
 ```shell
-winget install --exact --id Microsoft.DotNet.SDK.6
+nix-shell
 ```
+
+#### Manual Setup
+
+Ensure that you have .NET 8 installed for DocFxMarkdownGen to work.
+
+### Building
 
 Ensure that you have all of the submodules:
 

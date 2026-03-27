@@ -1,9 +1,8 @@
-# Note that you will need to use NIXPKGS_ALLOW_INSECURE as .NET 6 is EOL.
-# Unfortunately, we use .NET 6 for DocFxMarkdownGen.
 { pkgs ? import <nixpkgs> {} }:
 
 let
   # Create a unified .NET environment by combining all SDK versions
+  # (Dalamud builds with .NET 10, DocFxMarkdownGen/docfx use .NET 8)
   unifiedDotnet = pkgs.runCommand "dotnet-unified" {
     buildInputs = [ pkgs.rsync ];
   } ''
@@ -14,7 +13,7 @@ let
       if [ -d "${sdk}/share/dotnet" ]; then
         ${pkgs.rsync}/bin/rsync -a "${sdk}"/share/dotnet/ $out/share/dotnet/
       fi
-    '') [pkgs.dotnet-sdk_6 pkgs.dotnet-sdk_8 pkgs.dotnet-sdk_9 pkgs.dotnet-sdk_10]}
+    '') [pkgs.dotnet-sdk_8 pkgs.dotnet-sdk_10]}
 
     # Ensure the main dotnet executable is executable
     chmod +x $out/share/dotnet/dotnet
