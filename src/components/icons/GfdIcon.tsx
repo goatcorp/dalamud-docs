@@ -1,3 +1,3 @@
 ﻿import React from 'react';
 
-export default ({ id }) => <div className={`gfd-icon gfd-icon-${id}`} />;
+export default ({ id }) => <span className={`gfd-icon gfd-icon-${id}`} />;
