@@ -6,7 +6,15 @@ Usage: Extract game/sqpack/ffxiv/000000.win32.index/common/font/gfdata.gfd and
 place it next to this script. Then just run the script with node.
 */
 
-const version = '7.2';
+const version = '7.45x2'; // https://v2.xivapi.com/api/version
+
+const platforms = {
+  ps3: 'PlayStation 3',
+  ps4: 'PlayStation 4',
+  ps5: 'PlayStation 5',
+  lys: 'Xbox Series X',
+  xinput: 'Windows / MacOS',
+};
 
 const getGfd = async () => {
   const buffer = await fs.readFile(
@@ -47,13 +55,27 @@ let output = `/* This file was generated with scripts/create-gfd-css.js */
   aspect-ratio: calc(var(--w) / var(--h));
   width: calc(var(--w) * 1px);
   height: calc(var(--h) * 1px);
-  background-image: url('https://v2.xivapi.com/api/asset?path=common/font/fonticon_xinput.tex&format=png&version=${version}');
   background-repeat: no-repeat;
   background-size: calc(512px * (1 / var(--scale))) calc(1024px * (1 / var(--scale)));
   background-position: 
     calc(var(--x) * var(--scale) * -1px * (1 / var(--scale))) 
     calc((var(--y) * var(--scale) * -1px + var(--y-offset) * -1px) * (1 / var(--scale)));
   vertical-align: middle;
+}
+.gfd-icon-lys {
+  background-image: url('https://v2.xivapi.com/api/asset?path=common/font/fonticon_lys.tex&format=png&version=${version}');
+}
+.gfd-icon-ps3 {
+  background-image: url('https://v2.xivapi.com/api/asset?path=common/font/fonticon_ps3.tex&format=png&version=${version}');
+}
+.gfd-icon-ps4 {
+  background-image: url('https://v2.xivapi.com/api/asset?path=common/font/fonticon_ps4.tex&format=png&version=${version}');
+}
+.gfd-icon-ps5 {
+  background-image: url('https://v2.xivapi.com/api/asset?path=common/font/fonticon_ps5.tex&format=png&version=${version}');
+}
+.gfd-icon-xinput {
+  background-image: url('https://v2.xivapi.com/api/asset?path=common/font/fonticon_xinput.tex&format=png&version=${version}');
 }
 `;
 
@@ -99,4 +121,16 @@ for (let entry of gfd) {
 await fs.writeFile(
   path.join(import.meta.dirname, '..', 'src', 'css', 'gfd-icons.css'),
   new TextEncoder().encode(output),
+);
+
+await fs.writeFile(
+  path.join(
+    import.meta.dirname,
+    '..',
+    'src',
+    'components',
+    'icons',
+    'GfdIconData.json',
+  ),
+  new TextEncoder().encode(JSON.stringify({ platforms, icons: gfd }, null, 2)),
 );
