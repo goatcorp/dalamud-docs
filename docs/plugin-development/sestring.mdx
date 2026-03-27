@@ -1020,7 +1020,7 @@ This does not support icons from `ui/icon/`.
     {Object.keys(GfdIconData.platforms).map((platform) => {
       const title = GfdIconData.platforms[platform];
       return (
-        <th>
+        <th key={platform}>
           <abbr title={`common/font/fonticon_${platform}.tex - ${title}`}>
             {platform}
           </abbr>
@@ -1034,7 +1034,7 @@ This does not support icons from `ui/icon/`.
 
 {GfdIconData.icons.map(icon => (
 
-<tr>
+<tr key={icon.id}>
   <td>{icon.id}</td>
   <td>
     <div className={'gfd-icon gfd-icon-ps3 gfd-icon-' + icon.id} />
