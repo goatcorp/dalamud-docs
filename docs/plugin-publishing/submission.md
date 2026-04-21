@@ -15,6 +15,8 @@ Before submitting your plugin, make sure you have:
    [technical considerations](../../plugin-development/technical-considerations)
    for your plugin
 3. Ensured your plugin meets all [restrictions](../restrictions)
+4. Read the [AI Usage Policy](./ai-policy) and, if applicable, disclosed your
+   level of AI use in your pull request description
 
 :::
 

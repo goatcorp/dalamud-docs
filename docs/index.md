@@ -13,10 +13,18 @@ Welcome to the Dalamud developer documentation!
   [Building Dalamud](/building) section.
 - If you want to learn how to get started with plugin development, check out the
   [Plugin Development](/category/plugin-development) section.
+- If you plan to submit a plugin to the official repository, review the
+  [AI Usage Policy](/plugin-publishing/ai-policy) before you start.
 - If you want to learn more about the current status of Dalamud and recent
   changes, check out the [News](/news) section.
 - If you just want raw API docs, you can [go here](/api). Core Dalamud APIs are
   fully documented!
+
+## Community
+
+All XIVLauncher & Dalamud community spaces - including our Discord server and
+GitHub repositories - are governed by our [Code of Conduct](/code-of-conduct).
+Please read it before participating.
 
 ## Contributing
 
