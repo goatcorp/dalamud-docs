@@ -143,6 +143,19 @@ export default {
                 label: 'Discord',
                 href: 'https://discord.gg/holdshift',
               },
+              {
+                label: 'Code of Conduct',
+                to: '/code-of-conduct',
+              },
+            ],
+          },
+          {
+            title: 'Publishing',
+            items: [
+              {
+                label: 'AI Usage Policy',
+                to: '/plugin-publishing/ai-policy',
+              },
             ],
           },
           {

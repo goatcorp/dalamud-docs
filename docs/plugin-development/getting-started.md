@@ -11,6 +11,19 @@ plugin is approved into the official plugin repository, and to minimise the risk
 of action by Square Enix. You can read more about this
 [here](../plugin-publishing/approval-process.md).
 
+:::info
+
+Before you start, please also review:
+
+- The [AI Usage Policy](../plugin-publishing/ai-policy.md), which governs the
+  use of AI tooling in plugins submitted to the official repository. Entirely
+  AI-generated submissions are not accepted, and undisclosed AI use may result
+  in a ban.
+- Our [Code of Conduct](../code-of-conduct.md), which applies to all community
+  spaces including Discord and our GitHub repositories.
+
+:::
+
 We recommend that you start by cloning the [`SamplePlugin`
 repository][sample-plugin] and then customizing it to your specific
 requirements. This plugin template contains many common settings as well as
