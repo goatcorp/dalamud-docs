@@ -71,7 +71,7 @@ explanations:
 - **Avoiding Fantasia**: Violates guidelines by attempting to bypass Mog Station
   purchases.
 - **More XIV Combos**: Not allowed. See
-  [XIVComboPlugin issue #119](https://github.com/attickdoor/XIVComboPlugin/issues/119)
+  [XIVComboPlugin issue #119](https://github.com/MKhayle/XIVComboPlugin/issues/119)
   for details.
 - **AOE Recoloring**: Not allowed due to potential gameplay advantages and
   consistency issues.
