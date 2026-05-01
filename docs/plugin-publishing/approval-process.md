@@ -45,8 +45,9 @@ plugins.
 ## New submissions
 
 When a plugin is newly submitted, the team checks that it conforms to a set of
-[guidelines](./restrictions.md) and
-[technical criteria](https://github.com/goatcorp/DalamudPluginsD17#approval-criteria).
+[guidelines](./restrictions.md), 
+[approval criteria](https://github.com/goatcorp/DalamudPluginsD17#approval-criteria), and
+[technical criteria](https://github.com/goatcorp/DalamudPluginsD17#technical-criteria).
 The team then votes on each newly submitted plugin - if a plugin clears 4 yes
 votes, it is approved and will appear in the repo. Every team member can veto a
 plugin, blocking it from being merged until the concern is resolved. This hasn't
