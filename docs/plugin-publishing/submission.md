@@ -104,7 +104,7 @@ be on any specific branch.
 
 You may optionally provide a `changelog` field in the `manifest.toml`, which
 will be displayed in the plugin installer. If this changelog field is omitted, a
-changelog will be pulled from the JSON manifest or the pull request body, in
+changelog will be pulled from the pull request body or the JSON manifest, in
 that order.
 
 ### Changing Release Tracks

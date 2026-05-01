@@ -11,9 +11,9 @@ Dalamud has two major concepts in terms of versioning: **API Level** and
 
 | Channel | Branch   | API Level | Stability | Recommended For                                |
 | ------- | -------- | --------- | --------- | ---------------------------------------------- |
-| Release | `master` | 14        | Highest   | Auto-assigned to most users                    |
-| Canary  | `master` | 13        | Very High | Auto-assigned to a small number of users       |
-| Staging | `master` | 14        | Medium    | Core/plugin developers, testing-inclined users |
+| Release | `master` | 15        | Highest   | Auto-assigned to most users                    |
+| Canary  | `master` | 14        | Very High | Auto-assigned to a small number of users       |
+| Staging | `master` | 15        | Medium    | Core/plugin developers, testing-inclined users |
 
 ## API Level
 
@@ -47,6 +47,7 @@ level.
 
 | API Level | First Dalamud Version | First Game Version | .NET Version | First Commit                                                                                      |
 | --------- | --------------------- | ------------------ | ------------ | ------------------------------------------------------------------------------------------------- |
+| 15        | 15.0.0.0              | Patch 7.5          | .NET 10.0    | [2026-05-01](https://github.com/goatcorp/Dalamud/releases/tag/15.0.0.0)                           |
 | 14        | 14.0.0.0              | Patch 7.4          | .NET 10.0    | [2025-12-20](https://github.com/goatcorp/Dalamud/releases/tag/14.0.0.0)                           |
 | 13        | 13.0.0.0              | Patch 7.3          | .NET 9.0     | [2025-08-10](https://github.com/goatcorp/Dalamud/releases/tag/13.0.0.0)                           |
 | 12        | 12.0.0.0              | Patch 7.2          | .NET 9.0     | [2025-03-28](https://github.com/goatcorp/Dalamud/releases/tag/12.0.0.0)                           |
