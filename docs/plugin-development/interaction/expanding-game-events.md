@@ -98,35 +98,34 @@ macro changes might hook RaptureMacroModule's `SetSavePendingFlag`:
 using SetSavePendingDelegate = RaptureMacroModule.Delegates.SetSavePendingFlag;
 
 public unsafe class MyHook : IDisposable {
-    private readonly Hook<SetSavePendingDelegate>? _macroUpdateHook;
+    private readonly Hook<SetSavePendingDelegate> _macroSaveHook;
 
     public MyHook() {
-        this._macroUpdateHook = Services.GameInteropProvider.HookFromAddress<SetSavePendingDelegate>(
+        this._macroSaveHook = Services.GameInteropProvider.HookFromAddress<SetSavePendingDelegate>(
             RaptureMacroModule.MemberFunctionPointers.SetSavePendingFlag,
-            this.DetourSetSavePending
+            this.SetSavePendingDetour
         );
 
-        this._macroUpdateHook.Enable();
+        this._macroSaveHook.Enable();
     }
 
     public void Dispose() {
-        // While this *likely* wouldn't be null, it's still good practice to use nullability checks just in case
-        // this wasn't initialized somehow.
-        this._macroUpdateHook?.Dispose();
+        // When we're done, disable the hook again and clean up. Dispose does this in one go!
+        this._macroSaveHook.Dispose();
     }
 
-    private void DetourSetSavePending(RaptureMacroModule* self, bool needsSave, uint set) {
-        Services.PluginLog.Information("A macro save happened!");
-
+    private void SetSavePendingDetour(RaptureMacroModule* self, bool needsSave, uint set) {
         try {
-            // your plugin logic goes here.
+            Services.PluginLog.Information("A macro save happened!");
+
+            // Your plugin logic goes here.
+
         } catch (Exception ex) {
             Services.PluginLog.Error(ex, "An error occured when handling a macro save event.");
         }
 
-        // We're intentionally suppressing nullability checks. You can only get to this code if the hook exists.
-        // There's no way this can ever be null.
-        this._macroUpdateHook!.Original(self, needsSave, set);
+        // Call the original function, so the macro is actually saved.
+        this._macroSaveHook.Original(self, needsSave, set);
     }
 }
 ```
@@ -144,33 +143,34 @@ function being hooked is not within Client Structs:
 
 ```csharp
 public unsafe class MySiggedHook : IDisposable {
-    // This method isn't in CS (in theory), so we need to declare our own delegate.
+    // This method is in CS, but we're having this as an example of how to declare our own delegate.
     private delegate void SetSavePendingDelegate(RaptureMacroModule* self, bool needsSave, uint set);
 
-    [Signature("45 85 C0 75 04 88 51 3D", DetourName = nameof(DetourSetSavePending))]
-    private Hook<SetSavePendingDelegate>? _macroUpdateHook;
+    [Signature("45 85 C0 75 04 88 51 3D", DetourName = nameof(SetSavePendingDetour))]
+    private Hook<SetSavePendingDelegate>? _macroSaveHook;
 
     public MySiggedHook() {
         Services.GameInteropProvider.InitializeFromAttributes(this);
 
         // Nullable because this might not have been initialized from IFA above, e.g. the sig was invalid.
-        this._macroUpdateHook?.Enable();
+        this._macroSaveHook?.Enable();
     }
 
     public void Dispose() {
-        this._macroUpdateHook?.Dispose();
+        this._macroSaveHook?.Dispose();
     }
 
-    private void DetourSetSavePending(RaptureMacroModule* self, bool needsSave, uint set) {
-        Services.PluginLog.Information("A macro save happened!");
-
+    private void SetSavePendingDetour(RaptureMacroModule* self, bool needsSave, uint set) {
         try {
-            // your plugin logic goes here.
+            Services.PluginLog.Information("A macro save happened!");
+            // Your plugin logic goes here.
         } catch (Exception ex) {
             Services.PluginLog.Error(ex, "An error occured when handling a macro save event.");
         }
 
-        this._macroUpdateHook!.Original(self, needsSave, set);
+        // We're intentionally suppressing nullability checks. You can only get to this code if the hook exists.
+        // There's no way this can ever be null.
+        this._macroSaveHook!.Original(self, needsSave, set);
     }
 }
 ```
