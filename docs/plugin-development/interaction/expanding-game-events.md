@@ -29,11 +29,10 @@ public class HealthWatcher : IDisposable {
     }
 
     private void OnFrameworkTick(IFramework framework) {
-        var player = Services.ClientState.LocalPlayer;
-
+        var player = Services.ObjectTable.LocalPlayer;
         if (player == null) return; // Player is not logged in, nothing we can do.
-        var currentHealth = player.CurrentHp;
 
+        var currentHealth = player.CurrentHp;
         if (currentHealth == this._lastHealth) return;  // Nothing happened we care about, return.
 
         this._lastHealth = currentHealth;
