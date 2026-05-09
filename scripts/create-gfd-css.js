@@ -6,7 +6,7 @@ Usage: Extract game/sqpack/ffxiv/000000.win32.index/common/font/gfdata.gfd and
 place it next to this script. Then just run the script with node.
 */
 
-const version = '7.45x2'; // https://v2.xivapi.com/api/version
+const version = '7.5x1'; // https://v2.xivapi.com/api/version
 
 const platforms = {
   ps3: 'PlayStation 3',

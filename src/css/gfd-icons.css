@@ -1,6 +1,6 @@
 /* This file was generated with scripts/create-gfd-css.js */
 .gfd-game-version { display: inline; }
-.gfd-game-version::after { content: '7.45x2'; }
+.gfd-game-version::after { content: '7.5x1'; }
 .gfd-icon {
   --w: 20;
   --h: 20;
@@ -20,19 +20,19 @@
   vertical-align: middle;
 }
 .gfd-icon-lys {
-  background-image: url('https://v2.xivapi.com/api/asset?path=common/font/fonticon_lys.tex&format=png&version=7.45x2');
+  background-image: url('https://v2.xivapi.com/api/asset?path=common/font/fonticon_lys.tex&format=png&version=7.5x1');
 }
 .gfd-icon-ps3 {
-  background-image: url('https://v2.xivapi.com/api/asset?path=common/font/fonticon_ps3.tex&format=png&version=7.45x2');
+  background-image: url('https://v2.xivapi.com/api/asset?path=common/font/fonticon_ps3.tex&format=png&version=7.5x1');
 }
 .gfd-icon-ps4 {
-  background-image: url('https://v2.xivapi.com/api/asset?path=common/font/fonticon_ps4.tex&format=png&version=7.45x2');
+  background-image: url('https://v2.xivapi.com/api/asset?path=common/font/fonticon_ps4.tex&format=png&version=7.5x1');
 }
 .gfd-icon-ps5 {
-  background-image: url('https://v2.xivapi.com/api/asset?path=common/font/fonticon_ps5.tex&format=png&version=7.45x2');
+  background-image: url('https://v2.xivapi.com/api/asset?path=common/font/fonticon_ps5.tex&format=png&version=7.5x1');
 }
 .gfd-icon-xinput {
-  background-image: url('https://v2.xivapi.com/api/asset?path=common/font/fonticon_xinput.tex&format=png&version=7.45x2');
+  background-image: url('https://v2.xivapi.com/api/asset?path=common/font/fonticon_xinput.tex&format=png&version=7.5x1');
 }
 .gfd-icon-2 { --x: 20; }
 .gfd-icon-3 { --x: 40; }
@@ -190,3 +190,9 @@
 .gfd-icon-180 { --x: 140; --y: 260; }
 .gfd-icon-181 { --x: 160; --y: 260; }
 .gfd-icon-182 { --x: 180; --y: 260; }
+.gfd-icon-183 { --x: 120; --y: 240; }
+.gfd-icon-184 { --x: 200; --y: 260; }
+.gfd-icon-185 { --x: 220; --y: 260; }
+.gfd-icon-186 { --y: 280; }
+.gfd-icon-187 { --x: 20; --y: 280; }
+.gfd-icon-188 { --x: 40; --y: 280; }
