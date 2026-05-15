@@ -14,6 +14,7 @@ const platforms = {
   ps5: 'PlayStation 5',
   lys: 'Xbox Series X',
   xinput: 'Windows / MacOS',
+  obe: 'Switch',
 };
 
 const getGfd = async () => {
@@ -76,6 +77,9 @@ let output = `/* This file was generated with scripts/create-gfd-css.js */
 }
 .gfd-icon-xinput {
   background-image: url('https://v2.xivapi.com/api/asset?path=common/font/fonticon_xinput.tex&format=png&version=${version}');
+}
+.gfd-icon-obe {
+  background-image: url('https://v2.xivapi.com/api/asset?path=common/font/fonticon_obe.tex&format=png&version=${version}');
 }
 `;
 

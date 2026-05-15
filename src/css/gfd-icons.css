@@ -34,6 +34,9 @@
 .gfd-icon-xinput {
   background-image: url('https://v2.xivapi.com/api/asset?path=common/font/fonticon_xinput.tex&format=png&version=7.5x1');
 }
+.gfd-icon-obe {
+  background-image: url('https://v2.xivapi.com/api/asset?path=common/font/fonticon_obe.tex&format=png&version=7.5x1');
+}
 .gfd-icon-2 { --x: 20; }
 .gfd-icon-3 { --x: 40; }
 .gfd-icon-4 { --x: 60; }

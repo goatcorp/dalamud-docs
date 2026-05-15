@@ -4,7 +4,8 @@
     "ps4": "PlayStation 4",
     "ps5": "PlayStation 5",
     "lys": "Xbox Series X",
-    "xinput": "Windows / MacOS"
+    "xinput": "Windows / MacOS",
+    "obe": "Switch"
   },
   "icons": [
     {
