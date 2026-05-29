@@ -96,20 +96,20 @@ Terminology for game content and UI elements as seen by the player.
 
 ## Technical Terms
 
-| Term               | Description                                                                                                                             |
-| ------------------ | --------------------------------------------------------------------------------------------------------------------------------------- |
-| AccountId          | A unique id shared by all characters of an account, only valid for the current game session. Used by the blacklist system.              |
-| Addon              | A window in the user interface. Addon is just a different name for an AtkUnitBase, most likely based on World of Warcraft AddOns.       |
-| Agent              | A controller that manages Addons, handling events and callbacks.                                                                        |
-| Atk                | The name of the library used for FFXIV's UI. Assumed to be an abbreviation of Addon Toolkit.                                            |
-| BNpc / BattleNpc   | NPCs with combat abilities, like enemies, pets.                                                                                         |
-| ContentId          | A unique id of a player character. Used to locally save character settings, saved on crafted items and Eternity Ring.                   |
-| ENpc / EventNpc    | EventHandler-controlled NPCs, like quest givers, vendors etc.                                                                           |
-| EObj / EventObject | EventHandler-controlled, interactable objects, like destinations, entrances, aether currents etc.                                       |
-| EntityId           | A unique id of an entity in the current territory. An empty EntityId is `0xE0000000`. Formally named ObjectId.                          |
-| Gfd                | Gaiji Fontdata, stores sizes and positions for the fonticon sprite textures used in the Chat Log.                                       |
-| Pet                | Carbuncle, Eos/Selene, Machinists Rook Autoturret/Automaton Queen, Whitemages Lilybell (possibly more). NOT: Chocobo Companion, Minions |
-| Rapture            | The codename of FFXIV.                                                                                                                  |
+| Term                   | Description                                                                                                                                               |
+| ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `AccountId`            | A unique ID shared by all characters on an account, only valid for the current game session. Used by the blacklist system.                                |
+| `Addon`                | A window in the user interface. `Addon` is just another name for an `AtkUnitBase`, most likely based on World of Warcraft's AddOns.                       |
+| `Agent`                | A controller that manages `Addon`s, handling events and callbacks.                                                                                        |
+| `Atk`                  | The name of the library used for FFXIV's UI. Assumed to be an abbreviation of "Addon Toolkit".                                                            |
+| `BNpc` / `BattleNpc`   | NPCs with combat abilities, such as enemies and pets.                                                                                                     |
+| `ContentId`            | A unique ID for a player character. Used to locally save character settings, and saved on crafted items and the Eternity Ring.                            |
+| `ENpc` / `EventNpc`    | `EventHandler`-controlled NPCs, such as quest givers and vendors.                                                                                         |
+| `EObj` / `EventObject` | `EventHandler`-controlled interactable objects, such as destinations, entrances, and aether currents.                                                     |
+| `EntityId`             | A unique ID for an entity in the current territory. An empty `EntityId` is `0xE0000000`. Formerly named `ObjectId`.                                       |
+| `Gfd`                  | Gaiji Fontdata; stores sizes and positions for the fonticon sprite textures used in the Chat Log.                                                         |
+| `Pet`                  | Carbuncle, Eos/Selene, Machinist's Rook Autoturret/Automaton Queen, White Mage's Lilybell (possibly more). Does NOT include Chocobo Companion or Minions. |
+| `Rapture`              | The codename for FFXIV.                                                                                                                                   |
 
 ## Programs, Libraries and more
 
