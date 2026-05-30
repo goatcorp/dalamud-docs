@@ -4,10 +4,9 @@ sidebar_position: 2
 
 # Note 
 
-There is multiple ways of interacting with Dalamud offered services.  
-All examples here are based on `[PluginService]` living inside the 
-IDalamudPlugin class, see
-[SamplePlugin/Plugin.cs](https://github.com/goatcorp/SamplePlugin/blob/master/SamplePlugin/Plugin.cs)
+There are multiple ways of interacting with Dalamud-offered services.  
+All examples here require the corresponding `[PluginService]`s to be present in your `Plugin`; see
+[SamplePlugin/Plugin.cs](https://github.com/goatcorp/SamplePlugin/blob/master/SamplePlugin/Plugin.cs) for an example.
 
 # Calling The Game's Code
 
