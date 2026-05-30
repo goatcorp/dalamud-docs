@@ -2,7 +2,9 @@
 sidebar_position: 2
 ---
 
-# Note
+# Calling The Game's Code
+
+:::note
 
 There are multiple ways of interacting with Dalamud-offered services.\
 All examples here require the corresponding `[PluginService]`s to be present in
@@ -10,7 +12,7 @@ your `Plugin`; see
 [SamplePlugin/Plugin.cs](https://github.com/goatcorp/SamplePlugin/blob/master/SamplePlugin/Plugin.cs)
 for an example.
 
-# Calling The Game's Code
+:::
 
 Sometimes, it is beneficial to ask the game itself to do something, rather than
 doing it yourself. In effect, this means using the game code as a library where

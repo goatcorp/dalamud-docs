@@ -2,7 +2,9 @@
 sidebar_position: 1
 ---
 
-# Note
+# Expanding On Game Events
+
+:::note
 
 There are multiple ways of interacting with Dalamud-offered services.\
 All examples here require the corresponding `[PluginService]`s to be present in
@@ -10,7 +12,7 @@ your `Plugin`; see
 [SamplePlugin/Plugin.cs](https://github.com/goatcorp/SamplePlugin/blob/master/SamplePlugin/Plugin.cs)
 for an example.
 
-# Expanding On Game Events
+:::
 
 A plugin may wish to be informed of a certain event happening in the game. If an
 event or appropriate callback does not exist within Dalamud, there are a few
