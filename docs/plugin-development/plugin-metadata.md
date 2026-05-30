@@ -92,7 +92,7 @@ include it in `manifest.toml` or your plugin manifest, not the PR description.
 
 :::
 
-### Discord webhook
+### Discord Webhook
 
 Plugin updates are usually automatically posted in the XIVLauncher & Dalamud
 Discord server. If you'd rather write an announcement message yourself, you can

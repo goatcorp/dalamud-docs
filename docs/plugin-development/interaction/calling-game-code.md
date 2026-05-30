@@ -2,6 +2,12 @@
 sidebar_position: 2
 ---
 
+# Note 
+
+There are multiple ways of interacting with Dalamud-offered services.  
+All examples here require the corresponding `[PluginService]`s to be present in your `Plugin`; see
+[SamplePlugin/Plugin.cs](https://github.com/goatcorp/SamplePlugin/blob/master/SamplePlugin/Plugin.cs) for an example.
+
 # Calling The Game's Code
 
 Sometimes, it is beneficial to ask the game itself to do something, rather than
@@ -36,7 +42,7 @@ public class GameFunctions {
     private readonly IsQuestCompletedDelegate? _isQuestCompleted = null;
 
     public GameFunctions() {
-        Services.GameInteropProvider.InitializeFromAttributes(this);
+        Plugin.GameInteropProvider.InitializeFromAttributes(this);
     }
 
     public bool IsQuestCompleted(ushort questId) {
@@ -119,7 +125,7 @@ public class SomeSigWrapper {
     private readonly delegate* unmanaged<ushort, byte> _isQuestCompletedDelegate;
 
     public SomeSigWrapper() {
-        var fptr = Services.SigScanner.ScanText("E8 ?? ?? ?? ?? 41 88 84 2C");
+        var fptr = Plugin.SigScanner.ScanText("E8 ?? ?? ?? ?? 41 88 84 2C");
         this._isQuestCompletedDelegate = (delegate* unmanaged<ushort, byte>) fptr;
     }
 }

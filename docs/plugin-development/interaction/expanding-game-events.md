@@ -2,6 +2,12 @@
 sidebar_position: 1
 ---
 
+# Note 
+
+There are multiple ways of interacting with Dalamud-offered services.  
+All examples here require the corresponding `[PluginService]`s to be present in your `Plugin`; see
+[SamplePlugin/Plugin.cs](https://github.com/goatcorp/SamplePlugin/blob/master/SamplePlugin/Plugin.cs) for an example.
+
 # Expanding On Game Events
 
 A plugin may wish to be informed of a certain event happening in the game. If an
@@ -20,23 +26,23 @@ public class HealthWatcher : IDisposable {
     private uint _lastHealth;
 
     public HealthWatcher() {
-        Services.Framework.Update += this.OnFrameworkTick;
+        Plugin.Framework.Update += this.OnFrameworkTick;
     }
 
     public void Dispose() {
         // Remember to unregister any events you create!
-        Services.Framework.Update -= this.OnFrameworkTick;
+        Plugin.Framework.Update -= this.OnFrameworkTick;
     }
 
     private void OnFrameworkTick(IFramework framework) {
-        var player = Services.ObjectTable.LocalPlayer;
+        var player = Plugin.ObjectTable.LocalPlayer;
         if (player == null) return; // Player is not logged in, nothing we can do.
 
         var currentHealth = player.CurrentHp;
         if (currentHealth == this._lastHealth) return;  // Nothing happened we care about, return.
 
         this._lastHealth = currentHealth;
-        Services.PluginLog.Information("The player's health has updated to {health}.", currentHealth);
+        Plugin.PluginLog.Information("The player's health has updated to {health}.", currentHealth);
     }
 }
 ```
@@ -100,7 +106,7 @@ public unsafe class MyHook : IDisposable {
     private readonly Hook<SetSavePendingDelegate> _macroSaveHook;
 
     public MyHook() {
-        this._macroSaveHook = Services.GameInteropProvider.HookFromAddress<SetSavePendingDelegate>(
+        this._macroSaveHook = Plugin.GameInteropProvider.HookFromAddress<SetSavePendingDelegate>(
             RaptureMacroModule.MemberFunctionPointers.SetSavePendingFlag,
             this.SetSavePendingDetour
         );
@@ -115,12 +121,12 @@ public unsafe class MyHook : IDisposable {
 
     private void SetSavePendingDetour(RaptureMacroModule* self, bool needsSave, uint set) {
         try {
-            Services.PluginLog.Information("A macro save happened!");
+            Plugin.PluginLog.Information("A macro save happened!");
 
             // Your plugin logic goes here.
 
         } catch (Exception ex) {
-            Services.PluginLog.Error(ex, "An error occured when handling a macro save event.");
+            Plugin.PluginLog.Error(ex, "An error occured when handling a macro save event.");
         }
 
         // Call the original function, so the macro is actually saved.
@@ -149,7 +155,7 @@ public unsafe class MySiggedHook : IDisposable {
     private Hook<SetSavePendingDelegate>? _macroSaveHook;
 
     public MySiggedHook() {
-        Services.GameInteropProvider.InitializeFromAttributes(this);
+        Plugin.GameInteropProvider.InitializeFromAttributes(this);
 
         // Nullable because this might not have been initialized from IFA above, e.g. the sig was invalid.
         this._macroSaveHook?.Enable();
@@ -161,10 +167,10 @@ public unsafe class MySiggedHook : IDisposable {
 
     private void SetSavePendingDetour(RaptureMacroModule* self, bool needsSave, uint set) {
         try {
-            Services.PluginLog.Information("A macro save happened!");
+            Plugin.PluginLog.Information("A macro save happened!");
             // Your plugin logic goes here.
         } catch (Exception ex) {
-            Services.PluginLog.Error(ex, "An error occured when handling a macro save event.");
+            Plugin.PluginLog.Error(ex, "An error occured when handling a macro save event.");
         }
 
         // We're intentionally suppressing nullability checks. You can only get to this code if the hook exists.
