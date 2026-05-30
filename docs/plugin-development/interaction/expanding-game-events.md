@@ -2,11 +2,13 @@
 sidebar_position: 1
 ---
 
-# Note 
+# Note
 
-There are multiple ways of interacting with Dalamud-offered services.  
-All examples here require the corresponding `[PluginService]`s to be present in your `Plugin`; see
-[SamplePlugin/Plugin.cs](https://github.com/goatcorp/SamplePlugin/blob/master/SamplePlugin/Plugin.cs) for an example.
+There are multiple ways of interacting with Dalamud-offered services.\
+All examples here require the corresponding `[PluginService]`s to be present in
+your `Plugin`; see
+[SamplePlugin/Plugin.cs](https://github.com/goatcorp/SamplePlugin/blob/master/SamplePlugin/Plugin.cs)
+for an example.
 
 # Expanding On Game Events
 
@@ -52,18 +54,14 @@ The above snippet creates an event handler that runs once per framework tick
 that a player exists, and compares their HP to a cached value. If the player's
 HP differs from the cached value, it will dispatch a message to the Plugin Log.
 
-:::tip
-
-It is always a good idea to unregister your events when you're done with them!
-The above snippet does this through the `Dispose()` method, which is intended to
-be called by whatever created this method.
+\:::tip It is always a good idea to unregister your events when you're done with
+them! The above snippet does this through the `Dispose()` method, which is
+intended to be called by whatever created this method.
 
 Failing to unregister events when they're no longer necessary means that code
 will _still be called_, and may cause unexpected behavior. As a rule of thumb,
 for every event you subscribe to with `+=`, you need to have a `-=` somewhere
-else.
-
-:::
+else. :::
 
 Of course, the above snippet and concept can be adapted freely. Plugins can
 watch for events by checking something every second if that better suits their
@@ -80,19 +78,15 @@ for a specific thing happening. When this is the case, a plugin can set up a
 hook will be called _instead of_ the game's original function, allowing a plugin
 to observe, mutate, or even cancel the execution of that method.
 
-:::warning
-
-It is important to note that hooking is a _highly invasive_ operation! You are
-substituting out the game's code for your own, which requires certain levels of
-care to be taken. For example, if the code inside your hook throws an exception,
-you will most likely crash the game. Be sure you are properly handling/managing
-exceptions that your code may raise.
+\:::warning It is important to note that hooking is a _highly invasive_
+operation! You are substituting out the game's code for your own, which requires
+certain levels of care to be taken. For example, if the code inside your hook
+throws an exception, you will most likely crash the game. Be sure you are
+properly handling/managing exceptions that your code may raise.
 
 In most cases, hooks are also _blocking_ and will prevent the game from
 executing until they return. Ensure that any code inside a hook is reasonably
-performant and won't cause unnecessary delays.
-
-:::
+performant and won't cause unnecessary delays. :::
 
 Dalamud provides everything necessary for a plugin to create a hook, making the
 affair pretty simple. For example, a plugin that wants to be informed when any
@@ -135,13 +129,9 @@ public unsafe class MyHook : IDisposable {
 }
 ```
 
-:::tip
-
-Did you notice that the method is called `HookFromAddress`? This method can be
-used to grab an address from any source you want. This can be useful if you'd
-rather use SigScanner!
-
-:::
+\:::tip Did you notice that the method is called `HookFromAddress`? This method
+can be used to grab an address from any source you want. This can be useful if
+you'd rather use SigScanner! :::
 
 This can also be done with a direct signature via `IGameInteropProvider`, if the
 function being hooked is not within Client Structs:

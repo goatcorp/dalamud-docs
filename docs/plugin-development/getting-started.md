@@ -24,14 +24,14 @@ Before you start, please also review:
 
 :::
 
-We recommend that you start by clicking "Use this template" on the 
-[`SamplePlugin` repository][sample-plugin] and then customizing it to your 
-specific requirements. This plugin template contains many common settings as 
+We recommend that you start by clicking "Use this template" on the
+[`SamplePlugin` repository][sample-plugin] and then customizing it to your
+specific requirements. This plugin template contains many common settings as
 well as frequently-used sample code to help bootstrap plugin creation.
 
 To distribute a plugin, it needs to be packaged correctly. This will be handled
-by the [Dalamud.NET.Sdk](https://github.com/goatcorp/Dalamud.NET.Sdk)
-– see [Setting Plugin Metadata](plugin-metadata) for more details.
+by the [Dalamud.NET.Sdk](https://github.com/goatcorp/Dalamud.NET.Sdk) – see
+[Setting Plugin Metadata](plugin-metadata) for more details.
 
 When your plugin is ready for testing/release, you should make a pull request to
 the [DalamudPluginsD17](https://github.com/goatcorp/DalamudPluginsD17) repo.
