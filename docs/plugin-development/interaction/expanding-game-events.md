@@ -2,6 +2,13 @@
 sidebar_position: 1
 ---
 
+# Note 
+
+There is multiple ways of interacting with Dalamud offered services.  
+All examples here are based on `[PluginService]` living inside the 
+IDalamudPlugin class, see
+[SamplePlugin/Plugin.cs](https://github.com/goatcorp/SamplePlugin/blob/master/SamplePlugin/Plugin.cs)
+
 # Expanding On Game Events
 
 A plugin may wish to be informed of a certain event happening in the game. If an
@@ -40,9 +47,6 @@ public class HealthWatcher : IDisposable {
     }
 }
 ```
-
-> This example is based on `[PluginService]` living inside the IDalamudPlugin class,
-> see [SamplePlugin/Plugin.cs](https://github.com/goatcorp/SamplePlugin/blob/master/SamplePlugin/Plugin.cs)
 
 The above snippet creates an event handler that runs once per framework tick
 (once every frame). In each frame, the `OnFrameworkTick()` method will check
@@ -132,9 +136,6 @@ public unsafe class MyHook : IDisposable {
 }
 ```
 
-> This example is based on `[PluginService]` living inside the IDalamudPlugin class,
-> see [SamplePlugin/Plugin.cs](https://github.com/goatcorp/SamplePlugin/blob/master/SamplePlugin/Plugin.cs)
-
 :::tip
 
 Did you notice that the method is called `HookFromAddress`? This method can be
@@ -179,9 +180,6 @@ public unsafe class MySiggedHook : IDisposable {
     }
 }
 ```
-
-> This example is based on `[PluginService]` living inside the IDalamudPlugin class,
-> see [SamplePlugin/Plugin.cs](https://github.com/goatcorp/SamplePlugin/blob/master/SamplePlugin/Plugin.cs)
 
 Both of these examples more or less follow the same pattern, with only a few
 semantic differences depending on how the actual hook is created. Pay special
