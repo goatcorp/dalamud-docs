@@ -1,4 +1,4 @@
-# AI Usage Policy
+# AI Usage Policy (Official Plugin Repository Submissions)
 
 This policy applies to all who are considering submitting a plugin to the
 **official Dalamud plugin repository, hosted at
