@@ -70,9 +70,9 @@ explanations:
   FFLogs, we prefer to maintain distance from this aspect of FFXIV.
 - **Avoiding Fantasia**: Violates guidelines by attempting to bypass Mog Station
   purchases.
-- **More XIV Combos**: Not allowed. See
-  [XIVComboPlugin issue #119](https://github.com/MKhayle/XIVComboPlugin/issues/119)
-  for details.
+- **More XIV Combos**: Not allowed. XIVCombo is a specifically curated plugin. All
+  of the available combos follow a strict ruleset & must be greenlit by the Plugin
+  Approval Committee. 
 - **AOE Recoloring**: Not allowed due to potential gameplay advantages and
   consistency issues.
 - **Anything in PvP**: Not allowed. Anything that could give a plugin user an
