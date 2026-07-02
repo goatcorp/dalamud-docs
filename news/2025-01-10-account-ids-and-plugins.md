@@ -44,10 +44,10 @@ client.
 Even with all this in mind, there probably are still lingering questions about
 whether we could do anything to impede or block individual (custom repository)
 plugins that may seek to use this data. While we
-[have a significant amount of control](https://dalamud.dev/plugin-development/plugin-submission)
+[have a significant amount of control](https://dalamud.dev/plugin-publishing/submission)
 over plugins submitted to the official repository and can enforce certain rules
 about how data is used,
-[we cannot control plugins from custom repositories as a matter of design](https://dalamud.dev/plugin-development/restrictions/#i-dont-like-plugin-x-can-you-block-it-or-delete-it).
+[we cannot control plugins from custom repositories as a matter of design](https://dalamud.dev/plugin-publishing/restrictions#i-dont-like-plugin-x-can-you-block-it-or-delete-it).
 While Dalamud does have a mechanism to prevent a plugin from being loaded, this
 system is designed to only be used in cases where a plugin is causing crashes or
 taking unexpected actions. This system is not designed to allow us to
