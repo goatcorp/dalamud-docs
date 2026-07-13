@@ -59,3 +59,7 @@ Dawntrail, and a tool to extract and track Account IDs was an inevitable
 development and was not restricted to the plugin ecosystem. We encourage players
 to leverage the Blacklist and Report features in game if they have concerns
 about stalking or harassment.
+
+**UPDATE(2026-07-13):** Since this post was originally published, the account ID
+mechanism has been changed slightly to make correlation harder, but it is nonetheless
+still possible. [Please refer to our update post.](https://dalamud.dev/news/2026/07/13/an-update-on-account-ids)
