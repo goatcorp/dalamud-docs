@@ -124,7 +124,7 @@ files.
 
 ### EXDViewer
 
-[EXDSchema](https://github.com/WorkingRobot/EXDViewer) is cross-platform FFXIV
+[EXDViewer](https://github.com/WorkingRobot/EXDViewer) is cross-platform FFXIV
 game data viewer. Instantly use the [web version](https://exd.camora.dev/) or
 download a [native build](https://github.com/WorkingRobot/EXDViewer/releases).
 
