@@ -45,6 +45,7 @@ Terminology for game content and UI elements as seen by the player.
 | Ishgardian Restoration            | HwdDev                     |
 | Island Sanctuary                  | MJI                        |
 | Key Items                         | EventItem                  |
+| Keybound Brawler                  | KTG                        |
 | Lord of Verminion                 | Lovm                       |
 | Market Board                      | ItemSearch                 |
 | Mini Cactpot                      | LotteryDaily               |
@@ -72,10 +73,6 @@ Terminology for game content and UI elements as seen by the player.
 | Wachumeqimeqi Deliveries          | BankaCraftworksSupply      |
 | Waymarks                          | FieldMarker                |
 | Wondrous Tails                    | WeeklyBingo                |
-
-<!--
-| Unknown                           | KTG                        |
--->
 
 <!-- TODO: internal names for Relics -->
 
@@ -124,6 +121,12 @@ interact directly with the game.
 [EXDSchema](https://github.com/xivdev/EXDSchema) is a community-maintained
 repository containing schema definitions for FFXIV's internal, binary Excel
 files.
+
+### EXDViewer
+
+[EXDSchema](https://github.com/WorkingRobot/EXDViewer) is cross-platform FFXIV
+game data viewer. Instantly use the [web version](https://exd.camora.dev/) or
+download a [native build](https://github.com/WorkingRobot/EXDViewer/releases).
 
 ### FFXIVClientStructs
 
