@@ -90,6 +90,7 @@ Terminology for game content and UI elements as seen by the player.
 | 2019 | Final Fantasy XV                            | A Nocturne for Heroes                          | BKC           |
 | 2019 | Nier: Automata                              | YoRHa: Dark Apocalypse                         | YTC           |
 | 2023 | Fall Guys                                   | Fall Guys Collaboration                        | FGS           |
+| 2024 | Final Fantasy XI                            | Echoes of Vana'diel                            | GEA?          |
 | 2024 | Final Fantasy XVI                           | Final Fantasy XVI Crossover: The Path Infernal | SXT           |
 | 2025 | Monster Hunter Wilds                        | Guardian Arkveld Descends!                     | KGR           |
 |      | Neon Genesis Evangelion                     | Ghosts of Desire                               |               |
