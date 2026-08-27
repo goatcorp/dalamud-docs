@@ -78,18 +78,21 @@ Terminology for game content and UI elements as seen by the player.
 
 ## Crossovers / Collaborations
 
-| Event             | Internal Name |
-| ----------------- | ------------- |
-| FINAL FANTASY XVI | SXT           |
-| Fall Guys         | FGS           |
-| Yo-kai Watch      | YKW           |
-
-<!--
-| MONSTER HUNTER WILDS      | ?             |
-| MONSTER HUNTER: WORLD     | ?             |
-| Neon Genesis Evangelion   | ?             |
-| YoRHa: Dark Apocalypse    | ?             |
--->
+| Year | Collaborator                                | Event Name                                     | Internal Name |
+| ---- | ------------------------------------------- | ---------------------------------------------- | ------------- |
+| 2013 | Final Fantasy XIII                          | Lightning Strikes                              | LGT           |
+| 2014 | Dragon Quest X                              | Breaking Brick Mountains                       | DQX           |
+| 2014 | Final Fantasy XI                            | Burgeoning Dread                               | Evn0?         |
+| 2015 | Final Fantasy XI                            | The Maiden's Rhapsody                          | Evn1?         |
+| 2016 | Yo-kai Watch                                | Yo-kai Watch: Gather One, Gather All!          | YKW           |
+| 2017 | Final Fantasy Tactics and Final Fantasy XII | Return to Ivalice                              | BDI?          |
+| 2018 | Monster Hunter: World                       | The Hunt For Rathalos                          | NIKU          |
+| 2019 | Final Fantasy XV                            | A Nocturne for Heroes                          | BKC           |
+| 2019 | Nier: Automata                              | YoRHa: Dark Apocalypse                         | YTC           |
+| 2023 | Fall Guys                                   | Fall Guys Collaboration                        | FGS           |
+| 2024 | Final Fantasy XVI                           | Final Fantasy XVI Crossover: The Path Infernal | SXT           |
+| 2025 | Monster Hunter Wilds                        | Guardian Arkveld Descends!                     | KGR           |
+|      | Neon Genesis Evangelion                     | Ghosts of Desire                               |               |
 
 ## Technical Terms
 
