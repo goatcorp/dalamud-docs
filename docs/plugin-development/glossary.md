@@ -130,12 +130,6 @@ interact directly with the game.
 repository containing schema definitions for FFXIV's internal, binary Excel
 files.
 
-### EXDViewer
-
-[EXDViewer](https://github.com/WorkingRobot/EXDViewer) is cross-platform FFXIV
-game data viewer. Instantly use the [web version](https://exd.camora.dev/) or
-download a [native build](https://github.com/WorkingRobot/EXDViewer/releases).
-
 ### FFXIVClientStructs
 
 [FFXIVClientStructs](https://github.com/aers/FFXIVClientStructs) is a library
@@ -160,3 +154,9 @@ modern replacement for FFXIV's launcher, adding various quality-of-life features
 like auto-login, faster patching, the ability to verify and repair game files,
 and being a bootstrapper responsible for injecting Dalamud into the game process
 upon launch.
+
+### XIViewer
+
+[XIViewer](https://github.com/WorkingRobot/XIViewer) is cross-platform FFXIV
+game data viewer. Instantly use the [web version](https://xiviewer.app) or
+download a [native build](https://github.com/WorkingRobot/XIViewer/releases).
