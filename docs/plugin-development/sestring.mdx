@@ -40,36 +40,12 @@ the binary payload (what we call macro string) to binary data, and a
 MacroDecoder, which can decode binary payloads to execute whatever the macro
 specific implementation should do.
 
-::::info
-
-This guide will use the most up-to-date C# implementation to parse and create
-SeStrings, which is Luminas <a
+This guide will use Luminas <a
 href={`https://github.com/NotAdam/Lumina/blob/${LUMINA_COMMIT}/src/Lumina/Text/ReadOnly/ReadOnlySeString.cs`}>`ReadOnlySeString`</a>
 or <a
 href={`https://github.com/NotAdam/Lumina/blob/${LUMINA_COMMIT}/src/Lumina/Text/ReadOnly/ReadOnlySeStringSpan.cs`}>`ReadOnlySeStringSpan`</a>
 and the <a
 href={`https://github.com/NotAdam/Lumina/blob/${LUMINA_COMMIT}/src/Lumina/Text/SeStringBuilder.cs`}>`SeStringBuilder`</a>.
-
-:::warning
-
-The class `Lumina.Text.SeString` is an old implementation and should no longer
-be used.
-
-The same applies to the Dalamuds SeString and SeStringBuilder classes, but since
-many Dalamuds APIs still require Dalamuds SeString type, you can convert
-`Lumina.Text.ReadOnly.ReadOnlySeString` and
-`Lumina.Text.ReadOnly.ReadOnlySeStringSpan` to
-`Dalamud.Game.Text.SeStringHandling.SeString` using the `ToDalamudString()`
-[extensions](https://dalamud.dev/api/Dalamud.Utility/Classes/SeStringExtensions)
-found in the `Dalamud.Utility` namespace.
-
-Dalamuds SeString class is missing a lot of payloads types, has incorrect
-payload/macro names, and has no support for expressions as explained in this
-guide.
-
-:::
-
-::::
 
 `ReadOnlySeString` is an owning type that manages the underlying data buffer. In
 contrast, `ReadOnlySeStringSpan` is a lightweight, non-owning view, useful for
