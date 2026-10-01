@@ -35,9 +35,9 @@ setting up your development environment and building Dalamud.
   - This is included with Visual Studio 2026, but you can also install it
     separately if desired.
 - [CMake 4.0](https://cmake.org/download/) or newer, available on your `PATH`
-  - Alternatively, add the "C++ CMake tools for Windows" component in the
-    Visual Studio 2026 installer. The build scripts use it when no CMake is on
-    your `PATH`.
+  - Alternatively, add the "C++ CMake tools for Windows" component in the Visual
+    Studio 2026 installer. The build scripts use it when no CMake is on your
+    `PATH`.
 - [Git](https://git-scm.com/downloads)
 
 ## Getting the Source
