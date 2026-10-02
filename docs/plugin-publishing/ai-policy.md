@@ -60,6 +60,13 @@ do not need to disclose anything.
 
 **Requirements:**
 
+- **Copilot** and **Auto** level submissions are reviewed at our discretion. Our
+  reviewers are volunteers, and review effort scales with the amount of code the
+  author cannot personally account for. If a submission at these levels is
+  larger or more complex than the author's demonstrated understanding of it, we
+  may close it without a full review. We will tell you why, and you are welcome
+  to resubmit at a smaller scope or with a clearer account of the design.
+- All AI disclosures and pull request descriptions must be human written.
 - Personally test your plugin before submission
 - The answer to "Why did you implement it this way?" should never be "I'm not
   sure, the AI did it"
