@@ -117,7 +117,13 @@ for (const branch of Object.keys(versions)) {
   }
 
   // build Dalamud
-  if (isWindows) {
+  const usesNuke = fs.existsSync(path.join(branchDirPath, 'build.ps1'));
+  if (!usesNuke) {
+    exec('dotnet build Dalamud/Dalamud.csproj -c Release', {
+      cwd: branchDirPath,
+      ...execOptions,
+    });
+  } else if (isWindows) {
     exec(
       '.\\build.ps1 CompileDalamud -Configuration Release --is-docs-build true',
       {

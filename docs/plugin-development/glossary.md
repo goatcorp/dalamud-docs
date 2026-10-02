@@ -78,18 +78,26 @@ Terminology for game content and UI elements as seen by the player.
 
 ## Crossovers / Collaborations
 
-| Event             | Internal Name |
-| ----------------- | ------------- |
-| FINAL FANTASY XVI | SXT           |
-| Fall Guys         | FGS           |
-| Yo-kai Watch      | YKW           |
+| Year | Collaborator                                | Event Name                                     | Internal Name   |
+| ---- | ------------------------------------------- | ---------------------------------------------- | --------------- |
+| 2013 | Final Fantasy XIII                          | Lightning Strikes                              | LGT             |
+| 2014 | Dragon Quest X                              | Breaking Brick Mountains                       | DQX             |
+| 2014 | Final Fantasy XI                            | Burgeoning Dread                               | FesEvn0\*       |
+| 2015 | Final Fantasy XI                            | The Maiden's Rhapsody                          | FesEvn1\*       |
+| 2016 | Yo-kai Watch                                | Yo-kai Watch: Gather One, Gather All!          | YKW             |
+| 2017 | Final Fantasy Tactics and Final Fantasy XII | Return to Ivalice                              | StmBdi\*        |
+| 2017 | GARO                                        | GARO Collaboration Event                       | RegSeaPvpGaro\* |
+| 2018 | Monster Hunter: World                       | The Hunt For Rathalos                          | NIKU            |
+| 2019 | Final Fantasy XV                            | A Nocturne for Heroes                          | BKC             |
+| 2019 | Nier: Automata                              | YoRHa: Dark Apocalypse                         | YTC             |
+| 2023 | Fall Guys                                   | Fall Guys Collaboration                        | FGS             |
+| 2024 | Final Fantasy XI                            | Echoes of Vana'diel                            | KinGea\*        |
+| 2024 | Final Fantasy XVI                           | Final Fantasy XVI Crossover: The Path Infernal | SXT             |
+| 2025 | Monster Hunter Wilds                        | Guardian Arkveld Descends!                     | KGR             |
+|      | Neon Genesis Evangelion                     | Ghosts of Desire                               |                 |
 
-<!--
-| MONSTER HUNTER WILDS      | ?             |
-| MONSTER HUNTER: WORLD     | ?             |
-| Neon Genesis Evangelion   | ?             |
-| YoRHa: Dark Apocalypse    | ?             |
--->
+\* The internal name is not known, so this is the prefix of the Quest Id
+instead.
 
 ## Technical Terms
 
@@ -122,12 +130,6 @@ interact directly with the game.
 repository containing schema definitions for FFXIV's internal, binary Excel
 files.
 
-### EXDViewer
-
-[EXDViewer](https://github.com/WorkingRobot/EXDViewer) is cross-platform FFXIV
-game data viewer. Instantly use the [web version](https://exd.camora.dev/) or
-download a [native build](https://github.com/WorkingRobot/EXDViewer/releases).
-
 ### FFXIVClientStructs
 
 [FFXIVClientStructs](https://github.com/aers/FFXIVClientStructs) is a library
@@ -152,3 +154,9 @@ modern replacement for FFXIV's launcher, adding various quality-of-life features
 like auto-login, faster patching, the ability to verify and repair game files,
 and being a bootstrapper responsible for injecting Dalamud into the game process
 upon launch.
+
+### XIViewer
+
+[XIViewer](https://github.com/WorkingRobot/XIViewer) is cross-platform FFXIV
+game data viewer. Instantly use the [web version](https://xiviewer.app) or
+download a [native build](https://github.com/WorkingRobot/XIViewer/releases).
