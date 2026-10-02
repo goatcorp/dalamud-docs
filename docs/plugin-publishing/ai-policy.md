@@ -60,11 +60,13 @@ do not need to disclose anything.
 
 **Requirements:**
 
-- Plugins that are primarily or entirely a product of generative AI (i.e,
-  **Copilot** or **Auto** categories) that are deemed too complex to review are
-  subject to rejection. We want to reward creators who put the effort and
-  dedication into making plugins that last and contribute in a positive way to
-  the current ecosystem.
+- **Copilot** and **Auto** level submissions are reviewed at our discretion. Our
+  reviewers are volunteers, and review effort scales with the amount of code the
+  author cannot personally account for. If a submission at these levels is
+  larger or more complex than the author's demonstrated understanding of it, we
+  may close it without a full review. We will tell you why, and you are welcome
+  to resubmit at a smaller scope or with a clearer account of the design.
+- All AI disclosures and pull request descriptions must be human written.
 - Personally test your plugin before submission
 - The answer to "Why did you implement it this way?" should never be "I'm not
   sure, the AI did it"
