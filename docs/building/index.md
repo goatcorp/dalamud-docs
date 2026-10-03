@@ -25,16 +25,15 @@ setting up your development environment and building Dalamud.
 - [Visual Studio 2026](https://visualstudio.microsoft.com/vs/)
   - Both the "Desktop Development with C++" and "Desktop Development with .NET"
     workloads are required.
-  - The native projects use the v143 (Visual Studio 2022) toolset. In the Visual
-    Studio Installer, add the "MSVC v143 - VS 2022 C++ x64/x86 build tools"
-    component.
+  - The native projects use the v145 (Visual Studio 2026) toolset. The 2022 build
+    tools are no longer supported.
   - We generally work with the latest versions of Visual Studio and MSVC. If you
     are seeing build errors in generators or C++ projects, even if you use Rider
     or another IDE, **make sure that Visual Studio is fully up to date**.
 - [.NET 10.0 SDK](https://dotnet.microsoft.com/download/dotnet/10.0)
   - This is included with Visual Studio 2026, but you can also install it
     separately if desired.
-- [CMake 4.0](https://cmake.org/download/) or newer, available on your `PATH`
+- [CMake 4.2](https://cmake.org/download/) or newer, available on your `PATH`
   - Alternatively, add the "C++ CMake tools for Windows" component in the Visual
     Studio 2026 installer. The build scripts use it when no CMake is on your
     `PATH`.
