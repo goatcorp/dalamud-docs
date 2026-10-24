@@ -25,8 +25,8 @@ setting up your development environment and building Dalamud.
 - [Visual Studio 2026](https://visualstudio.microsoft.com/vs/)
   - Both the "Desktop Development with C++" and "Desktop Development with .NET"
     workloads are required.
-  - The native projects use the v145 (Visual Studio 2026) toolset. The 2022 build
-    tools are no longer supported.
+  - The native projects use the v145 (Visual Studio 2026) toolset. The 2022
+    build tools are no longer supported.
   - We generally work with the latest versions of Visual Studio and MSVC. If you
     are seeing build errors in generators or C++ projects, even if you use Rider
     or another IDE, **make sure that Visual Studio is fully up to date**.
