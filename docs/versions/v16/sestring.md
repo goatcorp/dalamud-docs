@@ -31,6 +31,13 @@ Every Dalamud API now takes or returns Lumina types instead:
 For the binary format, macros and expressions, **we strongly recommend that you have a look at  the
 [SeString](/plugin-development/sestring) page**. This page only covers the migration aspects for already existing code.
 
+:::note
+
+All of the Lumina APIs we are talking about here are already available on api15 right now, and some of the Dalamud APIs also already offer ReadOnlySeString APIs.
+Most of the helpers we describe have also been backported, so if you use a large amount of SeString-based code, you may already try upgrading your plugin now.
+
+:::
+
 ## Key differences
 
 - **They are immutable** and there is no `Payloads` list to edit. To change a string, you have to build a new one (see [Modifying a string](#modifying-a-string)).
