@@ -157,8 +157,10 @@ public class ExampleChatHandlerClass : IDisposable
 
 </details>
 
+For more information read [Migrating to ReadOnlySeString](sestring.md).
+
 For a deeper dive into SeString structure and macros, please have a look at our
-[SeString](../plugin-development/SeString) documentation.
+[SeString](/plugin-development/sestring) documentation.
 
 ### Dalamud.Excel.Sheets
 
@@ -201,6 +203,11 @@ PackageReference whenever they want full control over sheet updates.
   removed from all `IGameInteropProvider` functions.
 - FASM support was removed during API 15, so the `string[]` overload of the
   AsmHook constructor has now been removed.
+- Map links are built from the new `MapCoordinate` and `WorldCoordinate`
+  structs and `MapUtil.GetMapCoordinates(IGameObject, bool)` was removed.
+  `IGameObject` gained `GetMapCoordinate()` and `GetWorldCoordinate()` instead.
+  `IGameGui.OpenMapWithMapLink` also accepts both structs. See
+  [Map links](sestring.md#map-links).
 
 ### Namespace Changes
 
