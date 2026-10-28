@@ -14,7 +14,7 @@ up-to-date with new knowledge.
 
 Fundamentally, they behave similarly, but the Lumina API is a little lower-level and
 most importantly, the Lumina SeString type is immutable, as it can be backed by game memory. We think these trade-offs are
-worth the accuracy and maintainability benefits, and have added helpers and convenience functions to make working with them easier. As a bonus, the new classes are also a little faster, as they can be backed by game memory.
+worth the accuracy and maintainability benefits, and have added helpers and convenience functions to make working with them easier. As a bonus, the new classes are also a little faster.
 
 If you are running into problems, or are having trouble representing something you used to be able to do with the old classes, please reach out! We will either be able to clarify, or, if it's a common-enough thing to do, add helpers. 
 
