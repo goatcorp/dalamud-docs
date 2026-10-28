@@ -203,9 +203,9 @@ PackageReference whenever they want full control over sheet updates.
   removed from all `IGameInteropProvider` functions.
 - FASM support was removed during API 15, so the `string[]` overload of the
   AsmHook constructor has now been removed.
-- Map links are built from the new `MapCoordinate` and `WorldCoordinate`
-  structs and `MapUtil.GetMapCoordinates(IGameObject, bool)` was removed.
-  `IGameObject` gained `GetMapCoordinate()` and `GetWorldCoordinate()` instead.
+- Map links are built from the new `MapCoordinate` and `WorldCoordinate` structs
+  and `MapUtil.GetMapCoordinates(IGameObject, bool)` was removed. `IGameObject`
+  gained `GetMapCoordinate()` and `GetWorldCoordinate()` instead.
   `IGameGui.OpenMapWithMapLink` also accepts both structs. See
   [Map links](sestring.md#map-links).
 
