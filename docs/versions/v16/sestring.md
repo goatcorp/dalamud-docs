@@ -41,7 +41,7 @@ only covers the migration aspects for already existing code.
 
 :::note
 
-All of the Lumina APIs we are talking about here are already available on api15
+All of the Lumina APIs we are talking about here are already available on API 15
 right now, and some of the Dalamud APIs also already offer ReadOnlySeString
 APIs. Most of the helpers we describe have also been backported, so if you use a
 large amount of SeString-based code, you may already try upgrading your plugin
@@ -143,9 +143,9 @@ complete explanations of every macro type.
 | `RawPayload`            | any other `MacroCode`                              | `TryGetExpression(...)`                                                            |
 | link terminator         | `payload.IsLinkTerminator()`                       | —                                                                                  |
 
-expr 0 is always the link type in a link, but we recommend using the
-`TryReadLink(out type, out e1, out e2, out e3, out e4)` for link parsing, since
-it can read the entire link at once.
+expr 0 for `MacroCode.Link` is always the link type, but we recommend using
+`TryReadLink(out var type, out var e1, out var e2, out var e3, out var e4)` for
+link parsing, since it can read the entire link at once.
 
 ### Services and game objects
 
@@ -171,10 +171,10 @@ were refactored to use `ReadOnlySeString` (writable) or `ReadOnlySeStringSpan`
 ```cs
 using var rssb = new RentedSeStringBuilder();
 
-var text = rssb.Builder
+var text = rssb
     .Append("Hello ")
     .PushColorType(500)
-    .Append("World")
+        .Append("World")
     .PopColorType()
     .ToReadOnlySeString();
 ```
@@ -194,8 +194,9 @@ var b = ReadOnlySeString.Format($"Hello {playerName}!");
 ### Reading text
 
 ```cs
-string plain = str.ExtractText();     // drops macros except new lines, nbsp and hyphens
-bool isPlain = str.IsTextOnly();      // no macros at all
+string plain = str.ToString();          // drops macros except new lines, nbsp and hyphens,
+                                        // which will be converted to their UTF-8 counterpart
+bool isPlain = str.IsTextOnly();        // no macros at all
 bool hit = str.ContainsText("Dalamud"); // searches text payloads only
 ```
 
@@ -232,7 +233,7 @@ foreach (var payload in message.Message)
         && e2.TryGetUInt(out var worldId)
         && e4.TryGetString(out var name))
     {
-        Log.Info($"{name.ExtractText()} @ {worldId}");
+        Log.Info($"{name.ToString()} @ {worldId}");
     }
 }
 ```
@@ -243,9 +244,9 @@ foreach (var payload in message.Message)
 var link = chatGui.AddChatLinkHandler(0, payload => OpenMainUi());
 
 using var rssb = new RentedSeStringBuilder();
-chatGui.Print(rssb.Builder
+chatGui.Print(rssb
     .PushDalamudLink(link)
-    .Append("Click me")
+        .Append("Click me")
     .PopLink()
     .ToReadOnlySeString());
 ```
