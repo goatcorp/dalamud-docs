@@ -65,30 +65,31 @@ now.
   ReadOnlySeString name = new(gameObject.Name); // owning copy
   string plain = gameObject.Name.ToString();    // plain text
   ```
-- **Link builders need a terminator.** Lumina's `PushLink*` methods open a link,
-  which must be closed with `PopLink()`. Dalamud `PushItemLink`, `PushMapLink`
-  and `PushPartyFinderLink` extensions/helpers are the exception and don't need
-  it, since they append a complete and already-terminated link.
+- **Macros such as links and colors need a terminator.** For example, Lumina's
+  `PushLink*` methods open a link, which must be closed with `PopLink()`.
+  Dalamud `PushItemLink`, `PushMapLink` and `PushPartyFinderLink`
+  extensions/helpers are the exception and don't need it, since they append a
+  complete and already-terminated link.
 
 ## Quick reference
 
 ### SeString
 
-| API 15                               | API 16                                                                          |
-| ------------------------------------ | ------------------------------------------------------------------------------- |
-| `SeString.TextValue`, `ToString()`   | `ExtractText()` or `ToString()`                                                 |
-| `SeString.Empty`, `new SeString()`   | `default` and check with `IsEmpty` property                                     |
-| `seString.Payloads`                  | `foreach (var payload in str)`, `PayloadCount`                                  |
-| `SeString.Parse(bytes)`              | `new ReadOnlySeString(bytes)`                                                   |
-| `SeString.Parse(byte* ptr)`          | `new ReadOnlySeStringSpan(ptr)`                                                 |
-| `utf8String.AsDalamudSeString()`     | `utf8String.AsReadOnlySeString()` / `AsReadOnlySeStringSpan()`                  |
-| `MemoryHelper.ReadSeString(...)`     | `new ReadOnlySeStringSpan(ptr)` or the `Utf8String`/`CStringPointer` extensions |
-| `MemoryHelper.WriteSeString(...)`    | Write `str.Data` followed by a `0` byte or use `Utf8String.SetString(str)`      |
-| `seString.Encode()`                  | `str.Data` (implicitly converts to `ReadOnlySpan<byte>`)                        |
-| `a.Append(b)`                        | `a + b` or a builder                                                            |
-| `ToJson()` / `FromJson()`            | Store `ToMacroString()` and restore with `ReadOnlySeString.FromMacroString()`   |
-| `rosString.ToDalamudString()`        | Not needed anymore since Dalamud strings are gone                               |
-| `SeString.CreateItemLink(...)`, etc. | Same name in `Dalamud.Game.Text.SeString` and returns `ReadOnlySeString`        |
+| API 15                               | API 16                                                                                              |
+| ------------------------------------ | --------------------------------------------------------------------------------------------------- |
+| `SeString.TextValue`, `ToString()`   | `ToString()` optionally with formatting parameters                                                  |
+| `SeString.Empty`, `new SeString()`   | `default` and check with `IsEmpty` property                                                         |
+| `seString.Payloads`                  | `foreach (var payload in str)`, `PayloadCount`                                                      |
+| `SeString.Parse(bytes)`              | `new ReadOnlySeString(bytes)`                                                                       |
+| `SeString.Parse(byte* ptr)`          | `new ReadOnlySeStringSpan(ptr)`                                                                     |
+| `utf8String.AsDalamudSeString()`     | `utf8String.AsReadOnlySeString()` / `AsReadOnlySeStringSpan()`                                      |
+| `MemoryHelper.ReadSeString(...)`     | `new ReadOnlySeStringSpan(ptr)` or the `Utf8String`/`CStringPointer` extensions                     |
+| `MemoryHelper.WriteSeString(...)`    | Write `str.Data` followed by a `0` byte or use `Utf8String.SetString(str)` (WIP, may be simplified) |
+| `seString.Encode()`                  | `str.Data` (implicitly converts to `ReadOnlySpan<byte>`)                                            |
+| `a.Append(b)`                        | `a + b` or a builder                                                                                |
+| `ToJson()` / `FromJson()`            | Store `ToMacroString()` and restore with `ReadOnlySeString.FromMacroString()`                       |
+| `rosString.ToDalamudString()`        | Not needed anymore since Dalamud strings are gone                                                   |
+| `SeString.CreateItemLink(...)`, etc. | Same name in `Dalamud.Game.Text.SeString` and returns `ReadOnlySeString`                            |
 
 ### SeStringBuilder
 
@@ -111,6 +112,16 @@ now.
 | `Build()`                              | `ToReadOnlySeString()`                                     |
 
 ### Payloads
+
+::warning
+
+This table is designed to be a **short overview** of possible macro types and
+what payloads they used to map to. What is represented in the data column is
+only intended to be an example and is not thorough. We stronly suggest that you
+**have a look at the [SeString](/plugin-development/sestring) page** for
+complete explanations of every macro type.
+
+::
 
 | API 15 payload          | API 16 check                                       | Data                                                                               |
 | ----------------------- | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
