@@ -167,25 +167,24 @@ The goal of this example is to retrieve item information from a looted item.
 
 Specifically, this example looks for `LogMessage#1053`. This ID was found by
 logging incoming message IDs during item looting and referencing the payload
-structure via
-[EXDViewer/LogMessage](https://xiviewer.app/sheet/LogMessage).
+structure via [EXDViewer/LogMessage](https://xiviewer.app/sheet/LogMessage).
 
 While a `LogMessage`'s text varies depending on the client language,
-as long as the payload exists in all languages this provides a consistent
+ as long as the payload exists in all languages this provides a consistent
 and powerful way to extract data:
 
-* **EN:** `You obtain <kilo(lnum2,\,)> <ennoun(Item,3,lnum1,lnum2,1)>.`
-* **JP:** `<sheet(Item,lnum1,0)>`
-* **DE:** `<head(<denoun(Item,5,lnum1,1,1,1)>)>`
-* **FR:** `<head(<frnoun(Item,1,lnum1,1,1)>)>`
+- **EN:** `You obtain <kilo(lnum2,\,)> <ennoun(Item,3,lnum1,lnum2,1)>.`
+- **JP:** `<sheet(Item,lnum1,0)>`
+- **DE:** `<head(<denoun(Item,5,lnum1,1,1,1)>)>`
+- **FR:** `<head(<frnoun(Item,1,lnum1,1,1)>)>`
 
 The [`ennoun`](https://dalamud.dev/plugin-development/sestring#macro-ennoun)
 macro defines how an item is parsed from the item sheet. By examining its
 payload parameter, we can see that the third parameter of `ennoun`
-corresponds to the item ID (`itemId`).
+ corresponds to the item ID (`itemId`).
 
 To retrieve the item ID from the payload string, we need to parse `lnum1`,
-which is the 0th integer parameter of the message. We can extract
+ which is the 0th integer parameter of the message. We can extract
 it as follows:
 
 ```cs
