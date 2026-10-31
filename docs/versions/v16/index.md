@@ -169,6 +169,10 @@ Specifically, this example looks for `LogMessage#1053`. This ID was found by
 logging incoming message IDs during item looting and referencing the payload
 structure via [EXDViewer/LogMessage](https://xiviewer.app/sheet/LogMessage).
 
+Note: this `LogMessage` represents the popup text message you see on your screen,
+If you need to track other looting messages, you must discover which specific
+`LogMessage` ID you actually need.
+
 While a `LogMessage`'s text varies depending on the client language, as long as
 the payload exists in all languages this provides a consistent and powerful way
 to extract data:
