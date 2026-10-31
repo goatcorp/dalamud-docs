@@ -170,8 +170,8 @@ logging incoming message IDs during item looting and referencing the payload
 structure via [EXDViewer/LogMessage](https://xiviewer.app/sheet/LogMessage).
 
 While a `LogMessage`'s text varies depending on the client language, as long as
-the payload exists in all languages this provides a consistent
-and powerful way to extract data:
+the payload exists in all languages this provides a consistent and powerful way
+to extract data:
 
 - **EN:** `You obtain <kilo(lnum2,\,)> <ennoun(Item,3,lnum1,lnum2,1)>.`
 - **JP:** `<sheet(Item,lnum1,0)>`
