@@ -169,8 +169,8 @@ Specifically, this example looks for `LogMessage#1053`. This ID was found by
 logging incoming message IDs during item looting and referencing the payload
 structure via [EXDViewer/LogMessage](https://xiviewer.app/sheet/LogMessage).
 
-While a `LogMessage`'s text varies depending on the client language,
- as long as the payload exists in all languages this provides a consistent
+While a `LogMessage`'s text varies depending on the client language, as long as
+the payload exists in all languages this provides a consistent
 and powerful way to extract data:
 
 - **EN:** `You obtain <kilo(lnum2,\,)> <ennoun(Item,3,lnum1,lnum2,1)>.`
@@ -180,12 +180,11 @@ and powerful way to extract data:
 
 The [`ennoun`](https://dalamud.dev/plugin-development/sestring#macro-ennoun)
 macro defines how an item is parsed from the item sheet. By examining its
-payload parameter, we can see that the third parameter of `ennoun`
- corresponds to the item ID (`itemId`).
+payload parameter, we can see that the third parameter of `ennoun` corresponds
+to the item ID (`itemId`).
 
-To retrieve the item ID from the payload string, we need to parse `lnum1`,
- which is the 0th integer parameter of the message. We can extract
-it as follows:
+To retrieve the item ID from the payload string, we need to parse `lnum1`, which
+is the 0th integer parameter of the message. We can extract it as follows:
 
 ```cs
 public class ExampleChatHandlerClass : IDisposable
