@@ -157,6 +157,77 @@ public class ExampleChatHandlerClass : IDisposable
 
 </details>
 
+<details>
+<summary><b>Example: Extracting Item Id from a LogMessage</b></summary>
+
+The following example demonstrates how to inspect a chat message to extract an
+item ID from a specific log message.
+
+The goal of this example is to retrieve item information from a looted item.
+
+Specifically, this example looks for `LogMessage#1053`. This ID was found by
+logging incoming message IDs during item looting and referencing the payload
+structure via
+[EXDViewer/LogMessage](https://xiviewer.app/sheet/LogMessage).
+
+While a `LogMessage`'s text varies depending on the client language,
+as long as the payload exists in all languages this provides a consistent
+and powerful way to extract data:
+
+* **EN:** `You obtain <kilo(lnum2,\,)> <ennoun(Item,3,lnum1,lnum2,1)>.`
+* **JP:** `<sheet(Item,lnum1,0)>`
+* **DE:** `<head(<denoun(Item,5,lnum1,1,1,1)>)>`
+* **FR:** `<head(<frnoun(Item,1,lnum1,1,1)>)>`
+
+The [`ennoun`](https://dalamud.dev/plugin-development/sestring#macro-ennoun)
+macro defines how an item is parsed from the item sheet. By examining its
+payload parameter, we can see that the third parameter of `ennoun`
+corresponds to the item ID (`itemId`).
+
+To retrieve the item ID from the payload string, we need to parse `lnum1`,
+which is the 0th integer parameter of the message. We can extract
+it as follows:
+
+```cs
+public class ExampleChatHandlerClass : IDisposable
+{
+    private readonly IChatGui _chatGui;
+    private readonly IPluginLog _pluginLog;
+    private readonly IDataManager _dataManager;
+
+    public ExampleChatHandlerClass(IChatGui chatGui, IPluginLog pluginLog, IDataManager dataManager)
+    {
+        _chatGui = chatGui;
+        _pluginLog = pluginLog;
+        _dataManager = dataManager;
+        _chatGui.LogMessage += OnLogMessage;
+    }
+
+    public void Dispose()
+    {
+        _chatGui.LogMessage -= OnLogMessage;
+    }
+
+    private void OnLogMessage(ILogMessage message)
+    {
+        if (message.LogMessageId is not 1053)
+            return;
+
+        if (!message.TryGetIntParameter(0, out var itemId))
+            return;
+
+        if (itemId is 0)
+            return;
+
+        var itemInfo = _dataManager.GetExcelSheet<Item>().GetRow((uint) itemId);
+
+        _pluginLog.Debug($"Found Item {itemInfo.Name}");
+    }
+}
+```
+
+</details>
+
 For more information read [Migrating to ReadOnlySeString](sestring.md).
 
 For a deeper dive into SeString structure and macros, please have a look at our
