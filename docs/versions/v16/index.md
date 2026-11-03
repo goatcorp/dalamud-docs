@@ -219,6 +219,7 @@ PackageReference whenever they want full control over sheet updates.
 - `IDragDropManager` and `IDalamudAssetManager` have been moved into the
   `Dalamud.Plugin.Services` namespace.
 
+
 <!--
 ## SDK & Packages
 
@@ -237,13 +238,13 @@ API version.
 ## Contributors
 
 We want to thank TODO.
+-->
 
 ## FFXIVClientStructs Changes
 
 FFXIVClientStructs will introduce their own breaking changes for Patch 8.0,
 which will be documented
-[on their docs page](https://ffxiv.wildwolf.dev/docs/breaking/8.0.html).
+[on their docs page](https://ffxiv.wildwolf.dev/docs/breaking/evercold/8.0.html).
 
 We want to thank aers, Caraxi, Haselnussbomber, Pohky, WildWolf and the other
 FFXIVClientStructs contributors for their work.
--->
