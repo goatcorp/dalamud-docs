@@ -219,7 +219,6 @@ PackageReference whenever they want full control over sheet updates.
 - `IDragDropManager` and `IDalamudAssetManager` have been moved into the
   `Dalamud.Plugin.Services` namespace.
 
-
 <!--
 ## SDK & Packages
 
