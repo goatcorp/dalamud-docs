@@ -188,6 +188,13 @@ PackageReference whenever they want full control over sheet updates.
 
 ### Changes to existing features
 
+#### IClientState
+
+- The `CfPop` event now fires on the Framework thread instead of inside
+  `Task.Run`. Plugins performing long-running operations, like network requests,
+  should wrap their logic in a `Task.Run` call to avoid blocking the main
+  thread.
+
 ## Minor Changes
 
 - The `On` prefix was removed from event names and delegates.
