@@ -226,6 +226,21 @@ PackageReference whenever they want full control over sheet updates.
 - `IDragDropManager` and `IDalamudAssetManager` have been moved into the
   `Dalamud.Plugin.Services` namespace.
 
+## SDK Changes
+
+- The PackageReferences `DalamudPackager` and `DotNet.ReproducibleBuilds` are
+  now
+  [defined implicitly](https://learn.microsoft.com/en-us/nuget/consume-packages/package-references-in-project-files#isimplicitlydefined-metadata),
+  so their version is controlled by the SDK. Please remove them from your
+  plugins .csproj file.
+- The `RuntimeIdentifier` is now set to only target the `win-x64` platform by
+  default.
+- Added the option to opt-in to outdated SDK warnings after builds by setting
+  `<Warn_Outdated_Sdk>true</Warn_Outdated_Sdk>`.
+- Added a reference to the `Dalamud.Common` assembly.
+- Replaced the `Lumina.Excel` reference with `Dalamud.Excel.Sheets`.
+- Renamed the `Use_Dalamud_Lumina_Excel` property to `Use_Dalamud_Excel_Sheets`.
+
 <!--
 ## SDK & Packages
 
