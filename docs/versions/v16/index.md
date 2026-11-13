@@ -26,6 +26,14 @@ these changes
 
 ## Major Changes
 
+### Upgrade to .NET 11 / C# 15 (Pending)
+
+Please refer to the official documentation for more information:
+
+- [What's new in .NET 11](https://learn.microsoft.com/en-us/dotnet/core/whats-new/dotnet-11/overview)
+- [What's new in C# 15](https://learn.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-15)
+- [Breaking changes in .NET 11](https://learn.microsoft.com/en-us/dotnet/core/compatibility/11)
+
 ### SeString and Payload classes removed
 
 The mutable `SeString` class and its associated Payload classes have been
