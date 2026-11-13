@@ -218,11 +218,18 @@ PackageReference whenever they want full control over sheet updates.
   removed from all `IGameInteropProvider` functions.
 - FASM support was removed during API 15, so the `string[]` overload of the
   AsmHook constructor has now been removed.
-- Map links are built from the new `MapCoordinate` and `WorldCoordinate` structs
-  and `MapUtil.GetMapCoordinates(IGameObject, bool)` was removed. `IGameObject`
-  gained `GetMapCoordinate()` and `GetWorldCoordinate()` instead.
-  `IGameGui.OpenMapWithMapLink` also accepts both structs. See
-  [Map links](sestring.md#map-links).
+- Added the `MapCoordinate` and `WorldCoordinate` structs to help with
+  converting between the coordinate systems and providing a better defined API
+  for map links.
+  - `MapUtil.GetMapCoordinates(IGameObject, bool)` was removed in favor of the
+    new `IGameObject.GetMapCoordinate()` and `IGameObject.GetWorldCoordinate()`
+    functions.
+  - New extension functions `ToWorldCoordinate()` and `ToMapCoordinate()` were
+    added for the `Level` sheet.
+  - `IGameGui.OpenMapWithMapLink` was changed to accept both of the mentioned
+    structs.
+  - See also:
+    [Migrating to ReadOnlySeString - Map links](sestring.md#map-links).
 
 ### Namespace Changes
 
