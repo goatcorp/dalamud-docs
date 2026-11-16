@@ -38,8 +38,8 @@ Please refer to the official documentation for more information:
 
 The mutable `SeString` class and its associated Payload classes have been
 removed. All Dalamud APIs now use the immutable `ReadOnlySeString` or
-`ReadOnlySeStringSpan` structs to improve memory efficiency and to provide a
-modern implementation that propertly supports the type.
+`ReadOnlySeStringSpan` structs from Lumina to improve memory efficiency and to
+provide a modern implementation that propertly supports the type.
 
 Because `ReadOnlySeString` is immutable, its contents cannot be modified
 directly. To alter an existing string, instantiate a `SeStringBuilder`, iterate
